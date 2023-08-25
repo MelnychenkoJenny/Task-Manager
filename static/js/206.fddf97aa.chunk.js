@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktask_manager=self.webpackChunktask_manager||[]).push([[206],{206:function(e,a,r){r.r(a);var n=r(87),o=r(184);a.default=function(){return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)("h1",{children:"Hello, I am a HomePage (provate route). I have 2 components (Header and Sidebar) and a ScreensPage. I have a links to different user's boards as well ('/home/:boardName'):"}),(0,o.jsx)("p",{children:(0,o.jsx)(n.OL,{to:"/home/project-office",children:"Project office board (click me)"})})]})}}}]);
-//# sourceMappingURL=206.fddf97aa.chunk.js.map
