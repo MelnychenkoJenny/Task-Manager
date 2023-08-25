@@ -1,6 +1,14 @@
 @import "../styles/fonts.scss";
 
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
 body {
+  background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 25%, #BEDBB0 92.19%);
+  background-repeat: no-repeat;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Poppins", "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",

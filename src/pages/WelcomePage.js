@@ -1,18 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import Welcome from '../components/Welcome';
+import RegisterForm from '../components/RegisterForm';
+import LoginForm from '../components/LoginForm';
 
-const WelcomePage = () => (
-  <>
-  <h1>
-      Hello, I am a WelcomePage (public route). 
-      I have the link to AuthPage (/auth/:id):
-  </h1>
-  <p>
-    <NavLink to="/auth/register">Register (click me)</NavLink>
-  </p>
-  <p>
-    <NavLink to="/auth/login">Login (click me)</NavLink>
-  </p>
-</>
-);
+const WelcomePage = () => <LoginForm />;
 
 export default WelcomePage;
