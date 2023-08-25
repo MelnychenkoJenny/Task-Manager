@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktask_manager=self.webpackChunktask_manager||[]).push([[730],{730:function(e,t,a){a.r(t);var n=a(87),i=a(184);t.default=function(){return(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)("h1",{children:"Hello, I am a WelcomePage (public route). I have the link to AuthPage (/auth/:id):"}),(0,i.jsx)("p",{children:(0,i.jsx)(n.OL,{to:"/auth/register",children:"Register (click me)"})}),(0,i.jsx)("p",{children:(0,i.jsx)(n.OL,{to:"/auth/login",children:"Login (click me)"})})]})}}}]);
-//# sourceMappingURL=730.cf6c8f6d.chunk.js.map
