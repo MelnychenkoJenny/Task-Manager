@@ -19,7 +19,7 @@ export const App = () => {
     <div>
       <Suspense fallback={<div>Loading...</div>}>
          <Routes>  
-            <Route path='welcome' element={<WelcomePage />} />
+            <Route path='/welcome' element={<WelcomePage />} />
             <Route path='/auth/:id' element={ /*<PublicRoute>*/ <AuthPage /> /*<PublicRoute>*/ } />   
             <Route path='/home' element={ /*<PrivateRoute>*/ <HomePage /> /*<PrivateRoute>*/} />     
             <Route path='/home/:boardName' element={ /*<PrivateRoute>*/  <ScreensPage /> /*<PrivateRoute>*/} /> 
