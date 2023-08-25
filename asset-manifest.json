@@ -1,7 +1,12 @@
 {
   "files": {
     "main.css": "/Task-Manager/static/css/main.55b61295.css",
-    "main.js": "/Task-Manager/static/js/main.d7fc3167.js",
+    "main.js": "/Task-Manager/static/js/main.07bd9e72.js",
+    "static/js/730.cf6c8f6d.chunk.js": "/Task-Manager/static/js/730.cf6c8f6d.chunk.js",
+    "static/js/422.9bb37f46.chunk.js": "/Task-Manager/static/js/422.9bb37f46.chunk.js",
+    "static/js/206.fddf97aa.chunk.js": "/Task-Manager/static/js/206.fddf97aa.chunk.js",
+    "static/js/176.c249d3bf.chunk.js": "/Task-Manager/static/js/176.c249d3bf.chunk.js",
+    "static/js/354.db40670c.chunk.js": "/Task-Manager/static/js/354.db40670c.chunk.js",
     "static/media/Poppins-Regular.ttf": "/Task-Manager/static/media/Poppins-Regular.82a4136eb848dae8b116.ttf",
     "static/media/Poppins-Medium.ttf": "/Task-Manager/static/media/Poppins-Medium.5c0f64feb1225c5f04f9.ttf",
     "static/media/Poppins-SemiBold.ttf": "/Task-Manager/static/media/Poppins-SemiBold.f486b91ddcf2a6c146e1.ttf",
@@ -13,10 +18,15 @@
     "static/media/Poppins-SemiBold.woff2": "/Task-Manager/static/media/Poppins-SemiBold.810728e0001e1f7c0a71.woff2",
     "index.html": "/Task-Manager/index.html",
     "main.55b61295.css.map": "/Task-Manager/static/css/main.55b61295.css.map",
-    "main.d7fc3167.js.map": "/Task-Manager/static/js/main.d7fc3167.js.map"
+    "main.07bd9e72.js.map": "/Task-Manager/static/js/main.07bd9e72.js.map",
+    "730.cf6c8f6d.chunk.js.map": "/Task-Manager/static/js/730.cf6c8f6d.chunk.js.map",
+    "422.9bb37f46.chunk.js.map": "/Task-Manager/static/js/422.9bb37f46.chunk.js.map",
+    "206.fddf97aa.chunk.js.map": "/Task-Manager/static/js/206.fddf97aa.chunk.js.map",
+    "176.c249d3bf.chunk.js.map": "/Task-Manager/static/js/176.c249d3bf.chunk.js.map",
+    "354.db40670c.chunk.js.map": "/Task-Manager/static/js/354.db40670c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.55b61295.css",
-    "static/js/main.d7fc3167.js"
+    "static/js/main.07bd9e72.js"
   ]
 }
