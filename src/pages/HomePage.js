@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import Sidebar from '../components/Sidebar/Sidebar.jsx'
 
 const HomePage = () => (
   <>
@@ -9,7 +10,8 @@ const HomePage = () => (
     </h1>
     <p>
       <NavLink to="/home/project-office">Project office board (click me)</NavLink>
-    </p>
+      </p>
+      <Sidebar/>
   </>
 );
 
