@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from "react";
 
 // import PublicRoute from "./PublicRoute";
@@ -23,6 +23,7 @@ export const App = () => {
             <Route path='/auth/:id' element={ /*<PublicRoute>*/ <AuthPage /> /*<PublicRoute>*/ } />   
             <Route path='/home' element={ /*<PrivateRoute>*/ <HomePage /> /*<PrivateRoute>*/} />     
             <Route path='/home/:boardName' element={ /*<PrivateRoute>*/  <ScreensPage /> /*<PrivateRoute>*/} /> 
+            <Route path="/" element={<Navigate to="/welcome" />} />
             <Route path='*' element={<ErrorPage />} />  
          </Routes>
       </Suspense>
