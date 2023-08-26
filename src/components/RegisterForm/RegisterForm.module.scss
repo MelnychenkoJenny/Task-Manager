@@ -2,7 +2,7 @@
   margin: 225px auto;
   padding: 24px;
   width: 335px;
-  height: 363px;
+  min-height: 363px;
 
   background: #151515;
   color: #fff;
@@ -14,7 +14,7 @@
     margin: 315px auto;
     padding: 40px;
     width: 424px;
-    height: 395px;
+    min-height: 395px;
   }
 
   @media (min-width: 1440px) {
@@ -58,7 +58,7 @@
 
 .formInput {
   box-sizing: border-box;
-  padding: 14px 157px 14px 18px;
+  padding: 14px 0 14px 18px;
   width: 287px;
 
   outline: none;
@@ -71,7 +71,7 @@
   border-radius: 8px;
 
   @media (min-width: 768px) {
-    padding: 14px 214px 14px 18px;
+    padding: 14px 0 14px 18px;
     width: 344px;
   }
 }
@@ -101,4 +101,11 @@
     padding: 14px 0px;
     width: 344px;
   }
+}
+
+.error {
+  margin-top: 5px;
+  color: #ba0f30;
+  font-size: 14px;
+  font-weight: normal;
 }
