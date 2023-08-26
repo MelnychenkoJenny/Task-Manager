@@ -1,13 +1,17 @@
 import { useDispatch } from 'react-redux';
+import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+
 import scss from './LoginForm.module.scss';
-import Eye from '../../images/sprite.svg#eye';
+import Eye from '../../images/sprite.svg#icon-eye';
 
 const initialValues = {
   email: '',
   password: '',
+  show: false
 };
+
 
 const loginSchema = object({
   email: string()
@@ -22,10 +26,20 @@ const loginSchema = object({
 });
 
 export const LoginForm = () => {
+
+  const [showHidePassword, changeShowHidePassword] = useState(false);
+
+  const togglePassword = () => {
+    changeShowHidePassword(!showHidePassword)
+    console.log(showHidePassword)
+  };
+  
+
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
   };
+  
   return (
     <Formik
       validationSchema={loginSchema}
@@ -42,25 +56,27 @@ export const LoginForm = () => {
             name="email"
             placeholder="Enter your email"
           />
-          <ErrorMessage className={scss.error} name="email" component="div" />
+          
         </label>
+        <ErrorMessage className={scss.error} name="email" component="div" />
         <label className={`${scss.formLabel} ${scss.showPassword}`}>
           <Field
             className={scss.formInput}
             id="password"
-            type="password"
+            type={showHidePassword ? 'text' : 'password'}
             name="password"
             placeholder="Confirm your password"
           />
-          <ErrorMessage
+          
+          <svg className={scss.imgIcon} alt="watch password icon" onClick={togglePassword}>
+            <use href={Eye} />
+          </svg>
+        </label>
+        <ErrorMessage
             className={scss.error}
             name="password"
             component="div"
           />
-          <svg className={scss.imgIcon} alt="watch password icon">
-            <use href={Eye} />
-          </svg>
-        </label>
         <button className={scss.formSubmitBtn} type="submit">
           Register Now
         </button>

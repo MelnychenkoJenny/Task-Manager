@@ -1,7 +1,5 @@
 import Welcome from '../components/Welcome';
-import RegisterForm from '../components/RegisterForm';
-import LoginForm from '../components/LoginForm';
 
-const WelcomePage = () => <RegisterForm />;
+const WelcomePage = () => <Welcome />;
 
 export default WelcomePage;
