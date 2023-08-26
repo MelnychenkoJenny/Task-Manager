@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import Sidebar from '../components/Sidebar/Sidebar.jsx'
+import {ImageUpload} from '../components/ImageUpload/ImageUpload.jsx'
 
 const HomePage = () => (
   <>
@@ -12,6 +13,7 @@ const HomePage = () => (
       <NavLink to="/home/project-office">Project office board (click me)</NavLink>
       </p>
       <Sidebar/>
+      <ImageUpload/>
   </>
 );
 
