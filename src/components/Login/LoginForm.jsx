@@ -24,9 +24,9 @@ const LoginForm = () => {
     console.log(showHidePassword);
   };
 
-  const handleSubmit = async (values, { resetForm }) => {
-    const dataLogin = { ...values };
-
+  const handleSubmit = async ({email, password}, { resetForm }) => {
+    const dataLogin = { email, password };
+    
     const res = await dispatch(authOperations.userLogin(dataLogin));
     if (res.error) {
       console.log(res.payload);
