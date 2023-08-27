@@ -1,0 +1,60 @@
+.headerWrap {
+
+    padding: 14px 20px 14px 194px;
+    background-color: var(--bg-header);
+    
+    @media (min-width: 768px) {
+        padding: 18px 32px 18px 575px;
+    }
+    
+    @media (min-width: 1440px) {
+        padding: 18px 24px 18px 995px;
+    }
+}
+
+.headerTextWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;  
+}
+
+.headerUserInfoWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.headerUserName {
+    color: var(--bg-header);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    margin-right: 8px;
+}
+
+.headerAvatar {
+    width: 32px;
+    height: 32px;
+    background-image: url(../../images/user.png);
+    background-size: cover;
+    border-radius: 8px;
+}
+
+.svgTheme {
+    fill: var(--bg-header);
+    margin-left: 4px;
+    margin-right: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.themeWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import Sidebar from '../components/Sidebar/Sidebar.jsx'
-import {ImageUpload} from '../components/ImageUpload/ImageUpload.jsx'
+import { ImageUpload } from '../components/ImageUpload/ImageUpload.jsx'
+import Header from '../components/Header/Header.jsx';
+import EditProfile from '../components/EditProfile/EditProfile.jsx';
+
 
 const HomePage = () => (
   <>
+    <Header/>
     <h1>
       Hello, I am a HomePage (provate route).
       I have 2 components (Header and Sidebar) and a ScreensPage. 
@@ -13,7 +17,9 @@ const HomePage = () => (
       <NavLink to="/home/project-office">Project office board (click me)</NavLink>
       </p>
       <Sidebar/>
-      <ImageUpload/>
+    <ImageUpload />
+    <EditProfile/>
+    
   </>
 );
 

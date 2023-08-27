@@ -1,0 +1,73 @@
+.titleEditUser {
+    color: var(--bg-header);
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.36px;
+    padding-top: 24px;
+    padding-left: 24px;
+    padding-bottom: 24px;
+}
+
+.avatar {
+    width: 68px;
+    height: 68px;
+    background-image: url(../../images/user.png);
+    margin-bottom: 25px;
+    margin-left: 134px;
+}
+
+.formUserInfoWrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.formInputEditUser {
+    margin-bottom: 14px;
+    margin-left: 24px;
+    margin-right: 24px;
+    padding-left: 18px;
+    width: 287px;
+    height: 49px;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    color: var(--bg-header);
+    font-family: Poppins;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    border: 1px solid var(--accent);
+    // opacity: 0.4;
+}
+
+.formInputEditUser:hover,
+.formInputEditUser:focus {
+    border: 1px solid var(--accent-hover);           
+}
+
+.formInputEditUser:active,
+ .formInputEditUser:focus {
+    border: 1px solid var(--accent-hover);
+    outline: none;
+    
+}
+
+.formBtnEditUser {
+    margin-top: 10px;
+    margin-left: 24px;
+    width: 287px;
+    height: 49px;
+    border-radius: 8px;
+    background: var(--accent);
+    // border: none;
+}
+
+// .svgCloseEditUser {
+//     fill: black;
+// }
+
+.svgPlusEditUser {
+fill: black;
+}
