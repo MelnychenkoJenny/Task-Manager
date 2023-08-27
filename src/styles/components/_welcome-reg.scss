@@ -1,0 +1,137 @@
+.AfWelcomReg {
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
+  &Wr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  &Form {
+    border: 1px solid black;
+    padding: 40px;
+    width: calc(100% - 84px);
+
+    background: color(welcom-primary);
+    border-radius: 8px;
+
+    @include minSm() {
+      width: 335px;
+    }
+    @include minMd() {
+      padding: 40px;
+      width: 424px;
+    }
+    &Nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 40px;
+
+      &Log {
+        font-family: map-get($fonts, m);
+        font-size: 18px;
+        letter-spacing: -0.36px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.3);
+        background: none;
+        border: none;
+        transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+        &:hover {
+          color: color(welcom-secondary);
+        }
+      }
+
+      &Reg {
+        font-family: map-get($fonts, m);
+        font-size: 18px;
+        letter-spacing: -0.36px;
+        text-decoration: none;
+        color: color(welcom-secondary);
+        background: none;
+        border: none;
+        transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+        &:hover {
+          color: color(welcom-secondary);
+        }
+      }
+    }
+    &Button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 49px;
+      padding: 14px;
+      border: none;
+      margin-top: 10px;
+      background: rgb(190, 219, 176);
+      border-radius: 8px;
+      width: 100%;
+
+      font-family: map-get($fonts, m);
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: color(welcom-primary);
+      transition: all 150ms linear 0s;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+    &InCn {
+      margin-bottom: 24px;
+    }
+    &WrInp {
+      position: relative;
+      margin-bottom: 14px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+    &Input {
+      padding: 14px 18px;
+      width: calc(100%);
+      height: 49px;
+
+      font-family: map-get($fonts, m);
+      font-size: 14px;
+      letter-spacing: -0.28px;
+      color: rgb(255, 255, 255);
+      border-radius: 8px;
+      border: 1px solid rgb(190, 219, 176);
+      background: rgb(31, 31, 31);
+      box-shadow: rgba(22, 22, 22, 0.08) 0px 4px 16px 0px;
+      outline: none;
+      transition: all 150ms ease 0s;
+      opacity: 0.4;
+      &:focus {
+        opacity: 1;
+      }
+    }
+    &IconShowPass {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      top: 50%;
+      left: 90%;
+
+      fill: #1f1f1f;
+      cursor: pointer;
+      stroke: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    &Error {
+      color: #ba0f30;
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+}
+//      font-family: map-get($fonts, b);

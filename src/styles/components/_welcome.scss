@@ -1,0 +1,115 @@
+.AfWelcom {
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
+  &Wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    &Card {
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include minSm() {
+        width: 335px;
+      }
+      @include minMd() {
+        width: 473px;
+      }
+      &Logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        height: 42px;
+        margin-top: 14px;
+        @include minMd() {
+          margin-top: 24px;
+          height: 60px;
+        }
+        &Img {
+          width: 40px;
+          height: 40px;
+          @include minMd() {
+            width: 48px;
+            height: 48px;
+          }
+        }
+      }
+      &LogoText {
+        font-family: map-get($fonts, b);
+        color: color(welcom-primary);
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -1.12px;
+
+        @include minMd() {
+          font-size: 40px;
+          letter-spacing: -1.6px;
+        }
+      }
+
+      &Text {
+        margin-top: 24px;
+        margin-bottom: 48px;
+
+        font-family: map-get($fonts, r);
+        color: color(welcom-primary);
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.28;
+        letter-spacing: -0.28px;
+      }
+      &BtnReg {
+        padding: 14px;
+        margin-bottom: 14px;
+        text-decoration: none;
+        color: color(welcom-secondary);
+        text-align: center;
+        width: calc(100% - 40px);
+
+        font-family: map-get($fonts, m);
+        letter-spacing: -0.28px;
+        font-size: 14px;
+        border-radius: 8px;
+        background: color(welcom-primary);
+        transition: all 150ms linear 0s;
+        cursor: pointer;
+        @include minMd() {
+          width: 344px;
+        }
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+      &BtnLogin {
+        padding: 14px;
+        text-decoration: none;
+        color: color(welcom-primary);
+        text-align: center;
+        width: calc(100% - 40px);
+
+        font-family: map-get($fonts, m);
+        letter-spacing: -0.28px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        transition: all 150ms linear 0s;
+        cursor: pointer;
+        @include minMd() {
+          width: 344px;
+        }
+        &:hover {
+          border: 1px solid black;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}
