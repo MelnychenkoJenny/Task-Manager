@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import person1 from 'images/person/person@1x.png';
-import person2 from 'images/person/person@2x.png';
-import person3 from 'images/person/person@3x.png';
+import personDesc from 'images/WelcomePage/welcome-desctop.png';
+import personDesc2 from 'images/WelcomePage/welcome-desctop-2x.png';
+import personTab from 'images/WelcomePage/welcome-tablet.png';
+import personTab2 from 'images/WelcomePage/welcome-tablet-2x.png';
+import personMob from 'images/WelcomePage/welcome-mobile.png';
+import personMob2 from 'images/WelcomePage/welcome-mobile-2x.png';
 import spriteSvg from 'images/sprite.svg';
 
 import styles from 'styles/index.module.scss';
@@ -10,13 +13,21 @@ const Welcome = () => {
     <section className={styles.AfWelcom}>
       <div className={styles.AfWelcomWrapper}>
         <div className={styles.AfWelcomWrapperCard}>
-          <img
-            src={person1}
-            srcSet={`${person1} 1x, ${person2} 2x, ${person3} 3x,`}
-            width="200px"
-            height="200px"
-            alt=""
-          />
+          <picture>
+            <source
+              srcSet={`${personDesc} 1x,${personDesc2} 2x`}
+              media="(min-width: 1200px)"
+            />
+            <source
+              srcSet={`${personTab} 1x,${personTab2} 2x`}
+              media="(min-width: 768px)"
+            />
+            <source
+              srcSet={`${personMob} 1x,${personMob2} 2x`}
+              media=" (max-width: 767px)"
+            />
+            <img src={personMob} width="200px" height="200px" alt="" />
+          </picture>
 
           <div className={styles.AfWelcomWrapperCardLogo}>
             <svg className={styles.AfWelcomWrapperCardLogoImg}>
