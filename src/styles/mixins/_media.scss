@@ -1,0 +1,52 @@
+// Пример использование
+// @include maxLg() {
+//   background: rgba(0, 0, 0, 0.85);
+// }
+
+@mixin minXl() {
+  @media screen and (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin maxXl() {
+  @media screen and (max-width: 1439.99px) {
+    @content;
+  }
+}
+
+@mixin minLg() {
+  @media screen and (min-width: 1199.99px) {
+    @content;
+  }
+}
+
+@mixin maxLg() {
+  @media screen and (max-width: 1199.98px) {
+    @content;
+  }
+}
+
+@mixin minMd() {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin maxMd() {
+  @media screen and (max-width: 767.98px) {
+    @content;
+  }
+}
+
+@mixin minSm() {
+  @media screen and (min-width: 375px) {
+    @content;
+  }
+}
+
+@mixin maxSm() {
+  @media screen and (max-width: 374.99px) {
+    @content;
+  }
+}

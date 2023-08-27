@@ -1,0 +1,27 @@
+.AfWelcomLogFormNavReg {
+  font-family: map-get($fonts, m);
+  font-size: 18px;
+  letter-spacing: -0.36px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.3);
+  background: none;
+  border: none;
+  transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+  &:hover {
+    color: color(welcom-secondary);
+  }
+}
+.AfWelcomLogFormNavLog {
+  font-family: map-get($fonts, m);
+  font-size: 18px;
+  letter-spacing: -0.36px;
+  text-decoration: none;
+  color: color(welcom-secondary);
+  background: none;
+  border: none;
+  transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+  &:hover {
+    color: color(welcom-secondary);
+  }
+}
+//      font-family: map-get($fonts, b);
