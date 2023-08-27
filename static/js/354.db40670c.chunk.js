@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktask_manager=self.webpackChunktask_manager||[]).push([[354],{354:function(e,a,r){r.r(a);var n=r(184);a.default=function(){return(0,n.jsx)("h1",{children:"Hello, I am an ErrorPage. You will be here if you choose a wrong route."})}}}]);
-//# sourceMappingURL=354.db40670c.chunk.js.map
