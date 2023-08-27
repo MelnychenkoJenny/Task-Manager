@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 
 import scss from './LoginForm.module.scss';
-import Eye from '../../images/sprite.svg#icon-eye';
+import SvgSprite from '../../images/sprite.svg';
 
 const initialValues = {
   email: '',
@@ -69,7 +69,7 @@ export const LoginForm = () => {
           />
           
           <svg className={scss.imgIcon} alt="watch password icon" onClick={togglePassword}>
-            <use href={Eye} />
+            <use href={SvgSprite + '#icon-eye'} />
           </svg>
         </label>
         <ErrorMessage

@@ -108,13 +108,14 @@
 
 .imgIcon {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 18px;
+  height: 18px;
   top: 50%;
   left: 90%;
 
+  fill: #1f1f1f;
   cursor: pointer;
-  fill: rgba(255, 255, 255, 0.3);
+  stroke: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%) scale(1);
 }
 
