@@ -5,7 +5,7 @@ import person3 from 'images/person/person@3x.png';
 import spriteSvg from 'images/sprite.svg';
 
 import styles from 'styles/index.module.scss';
-const Welcom = () => {
+const Welcome = () => {
   return (
     <section className={styles.AfWelcom}>
       <div className={styles.AfWelcomWrapper}>
@@ -34,7 +34,10 @@ const Welcom = () => {
           >
             Registration
           </NavLink>
-          <NavLink to="auth/login" className={styles.AfWelcomWrapperCardBtnLogin}>
+          <NavLink
+            to="auth/login"
+            className={styles.AfWelcomWrapperCardBtnLogin}
+          >
             Sign in
           </NavLink>
         </div>
@@ -42,4 +45,4 @@ const Welcom = () => {
     </section>
   );
 };
-export default Welcom;
+export default Welcome;

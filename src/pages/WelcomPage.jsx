@@ -1,4 +1,4 @@
-import Welcom from 'components/Welcom/Welcom';
+import Welcom from 'components/Welcome/Welcome';
 const WelcomPage = () => {
   return (
     <>
