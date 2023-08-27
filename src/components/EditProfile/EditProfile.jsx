@@ -44,21 +44,24 @@ const editProfile = () => {
             //   onSubmit={handleSubmit}
             >
                 <Form className={scss.formEditUser} autoComplete="off">
-                    <div>
+                    <div className={scss.mainModalEditUserWrap}>
+                    <div className={scss.modalEditUserTopWrap}>
                     <p className={scss.titleEditUser}>Edite Profile</p>
-                    <span>
-                        <svg className={scss.svgPlusEditUser} width="18" height="18">
+                        <span>
+                        <svg className={scss.svgCloseEditUser} width="18" height="18">
                             <use href={`${sprite}#icon-close`}></use>
                         </svg>
                     </span>
                     </div>
-                    <div>
+                    <div className={scss.addAvatarBtnWrap}>
                         <p className={scss.avatar}></p>
-                        <span>
-                            <svg className={scss.svgCloseEditUser} width="18" height="18">
+                        <button type='button' className={scss.btnAddAvatar}>
+                        <span className={scss.btnSpan}>
+                            <svg className={scss.svgPlusEditUser} width="10" height="10">
                                 <use href={`${sprite}#icon-plus`}></use>
                             </svg>
                         </span>
+                        </button>
                     </div>
                     <div className={scss.formUserInfoWrap}>
                     <label className={scss.formLabelEditUser}>
@@ -86,7 +89,8 @@ const editProfile = () => {
                     </div>
                     <button className={scss.formBtnEditUser} type="submit">
                     Send
-                    </button>
+                        </button>
+                        </div>
             </Form>      
         </Formik>
 
