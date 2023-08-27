@@ -1,10 +1,10 @@
 // import { useState } from 'react';
 import styles from 'styles/index.module.scss';
-import { NavLink } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import authOperations from 'redux/auth/authOperations';
+import { NavLink, useNavigate } from 'react-router-dom';
+import authOperations from 'redux/auth/authOperations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { object, string } from 'yup';
+import { useDispatch } from 'react-redux';
+import { registerSchema } from './registerSchema';
 
 const initialValues = {
   name: '',
@@ -12,24 +12,26 @@ const initialValues = {
   password: '',
 };
 
-const registerSchema = object({
-  name: string()
-    .matches(/^[0-9a-zA-Z!@#$%^&*]{2,32}$/, 'Type in correct name')
-    .trim(),
-  email: string()
-    .matches(
-      /^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-      'Type in correct email'
-    )
-    .required(),
-  password: string()
-    .matches(/^[0-9a-zA-Z!@#$%^&*]{8,64}$/, 'Type in correct password')
-    .required(),
-});
-
 const RegistrationForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (values, { resetForm }) => {
+    // Потрібно ще додадти логіку з неможливістю відправити поле, яке містить пробіли
+    // { name, email, password }
+    // const dataRegister = {
+    //   email: email.trim(),
+    //   name: name.trim(),
+    //   password: password.trim(),
+    // };
+    const dataRegister = { ...values };
+
+    const res = await dispatch(authOperations.userRegistration(dataRegister));
+    if (res.error) {
+      console.log(res.payload);
+    } else {
+      navigate('/home');
+    }
     resetForm();
   };
 
@@ -39,50 +41,64 @@ const RegistrationForm = () => {
       initialValues={initialValues}
       onSubmit={handleSubmit}
     >
-      <Form className={styles.AfWelcomRegForm}>
-        <div className={styles.AfWelcomRegFormNav}>
-          <NavLink to="/auth/register" className={styles.AfWelcomRegFormNavReg}>
-            Registration
-          </NavLink>
-          <NavLink to="/auth/login" className={styles.AfWelcomRegFormNavLog}>
-            Log In
-          </NavLink>
-        </div>
-        <div className={styles.AfWelcomRegFormInCn}>
-          <div className={styles.AfWelcomRegFormWrInp}>
-            <Field
-              className={styles.AfWelcomRegFormInput}
-              type="name"
-              name="name"
-              placeholder="Enter your name"
-            />
+      {({ handleChange, values }) => (
+        <Form className={styles.AfWelcomRegForm}>
+          <div className={styles.AfWelcomRegFormNav}>
+            <NavLink
+              to="/auth/register"
+              className={styles.AfWelcomRegFormNavReg}
+            >
+              Registration
+            </NavLink>
+            <NavLink to="/auth/login" className={styles.AfWelcomRegFormNavLog}>
+              Log In
+            </NavLink>
           </div>
-          <div className={styles.AfWelcomRegFormWrInp}>
-            <Field
-              className={styles.AfWelcomRegFormInput}
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-            />
+          <div className={styles.AfWelcomRegFormInCn}>
+            <div className={styles.AfWelcomRegFormWrInp}>
+              <Field
+                autoFocus
+                className={styles.AfWelcomRegFormInput}
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                onChange={handleChange('name')}
+                value={values.name || ''}
+                required
+              />
+            </div>
+            <div className={styles.AfWelcomRegFormWrInp}>
+              <Field
+                className={styles.AfWelcomRegFormInput}
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                onChange={handleChange('email')}
+                required
+              />
+            </div>
+            <div className={styles.AfWelcomRegFormWrInp}>
+              <Field
+                className={styles.AfWelcomRegFormInput}
+                type="password"
+                name="password"
+                placeholder="Create a password"
+                onChange={handleChange('password')}
+                value={values.password || ''}
+                required
+              />
+            </div>
           </div>
-          <div className={styles.AfWelcomRegFormWrInp}>
-            <Field
-              className={styles.AfWelcomRegFormInput}
-              type="password"
-              name="password"
-              placeholder="Create a password"
-            />
-          </div>
-        </div>
-        <ErrorMessage
-          className={styles.AfWelcomRegFormError}
-          name="password"
-          component="div"
-        />
-        <button type="submit" className={styles.AfWelcomRegFormButton}>
-          Register Now
-        </button>
-      </Form>
+          <ErrorMessage
+            className={styles.AfWelcomRegFormError}
+            name="password"
+            component="div"
+          />
+          <button type="submit" className={styles.AfWelcomRegFormButton}>
+            Register Now
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 };
