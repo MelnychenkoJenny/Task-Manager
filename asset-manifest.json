@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Task-Manager/static/css/main.dd4249d4.css",
-    "main.js": "/Task-Manager/static/js/main.e4071e17.js",
+    "main.css": "/Task-Manager/static/css/main.e8651ee5.css",
+    "main.js": "/Task-Manager/static/js/main.04bb604d.js",
     "static/js/467.085e42a6.chunk.js": "/Task-Manager/static/js/467.085e42a6.chunk.js",
     "static/js/610.1c345f27.chunk.js": "/Task-Manager/static/js/610.1c345f27.chunk.js",
     "static/js/52.929da63a.chunk.js": "/Task-Manager/static/js/52.929da63a.chunk.js",
@@ -22,8 +22,8 @@
     "static/media/sprite.svg": "/Task-Manager/static/media/sprite.280546cf0b3160dccdc972a09f05995e.svg",
     "static/media/welcome-mobile-2x.png": "/Task-Manager/static/media/welcome-mobile-2x.3026aacef4cd658b08db.png",
     "index.html": "/Task-Manager/index.html",
-    "main.dd4249d4.css.map": "/Task-Manager/static/css/main.dd4249d4.css.map",
-    "main.e4071e17.js.map": "/Task-Manager/static/js/main.e4071e17.js.map",
+    "main.e8651ee5.css.map": "/Task-Manager/static/css/main.e8651ee5.css.map",
+    "main.04bb604d.js.map": "/Task-Manager/static/js/main.04bb604d.js.map",
     "467.085e42a6.chunk.js.map": "/Task-Manager/static/js/467.085e42a6.chunk.js.map",
     "610.1c345f27.chunk.js.map": "/Task-Manager/static/js/610.1c345f27.chunk.js.map",
     "52.929da63a.chunk.js.map": "/Task-Manager/static/js/52.929da63a.chunk.js.map",
@@ -32,7 +32,7 @@
     "568.2f1adbc0.chunk.js.map": "/Task-Manager/static/js/568.2f1adbc0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd4249d4.css",
-    "static/js/main.e4071e17.js"
+    "static/css/main.e8651ee5.css",
+    "static/js/main.04bb604d.js"
   ]
 }
