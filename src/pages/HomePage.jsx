@@ -4,21 +4,18 @@ import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 
 const HomePage = () => {
+  const [menuActive, setMenuActive] = useState(false);
 
-    const [menuActive, setMenuActive] = useState(false);
-  
-    const handleClick = () => {
+  const handleClick = () => {
     setMenuActive(!menuActive);
-    }; 
-
-
+  };
 
   return (
     <>
-      <Header click={handleClick}/>
+      <Header click={handleClick} />
       <Home />
-      {menuActive && <Sidebar/>}
+      {menuActive && <Sidebar />}
     </>
-  )
+  );
 };
 export default HomePage;
