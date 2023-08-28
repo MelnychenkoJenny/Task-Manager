@@ -53,7 +53,7 @@ const checkAuth = createAsyncThunk('auth/refresh', async (_, thunkApi) => {
   }
   token.set(persistedToken);
   try {
-    const { data } = await axios.get('/current');
+    const { data } = await axios.get('/users/current');
     return data;
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);

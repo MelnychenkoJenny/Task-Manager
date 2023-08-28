@@ -7,7 +7,7 @@ import AddBoard from './testAddBoard';
 
 const Home = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
@@ -18,7 +18,7 @@ const Home = () => {
     <section className={styles.AfWelcomReg}>
       <div className={styles.AfWelcomRegWr}>
         <h1>Task component</h1>
-        <AddBoard></AddBoard>
+        <AddBoard />
       </div>
     </section>
   );
