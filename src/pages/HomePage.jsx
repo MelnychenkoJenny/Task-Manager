@@ -20,7 +20,5 @@ const HomePage = () => {
       {menuActive && <Sidebar/>}
     </>
   )
-  
-  
 };
 export default HomePage;

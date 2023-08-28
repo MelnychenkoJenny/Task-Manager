@@ -1,6 +1,5 @@
 import styles from 'styles/index.module.scss';
 
-
 const Home = () => {
 
   return (
