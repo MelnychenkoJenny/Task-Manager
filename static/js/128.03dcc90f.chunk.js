@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktask_manager=self.webpackChunktask_manager||[]).push([[128],{9128:function(e,n,s){s.r(n),s.d(n,{default:function(){return t}});var c=s(3418),a=s(184),r=function(){return(0,a.jsx)("section",{className:c.Z.AfWelcomReg,children:(0,a.jsx)("div",{className:c.Z.AfWelcomRegWr,children:(0,a.jsx)("h1",{children:"Task component"})})})},t=function(){return(0,a.jsx)(r,{})}}}]);
-//# sourceMappingURL=128.03dcc90f.chunk.js.map
