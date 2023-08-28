@@ -74,6 +74,7 @@ const RegistrationForm = () => {
                 name="email"
                 placeholder="Enter your email"
                 onChange={handleChange('email')}
+                value={values.email || ''}
                 required
               />
             </div>
