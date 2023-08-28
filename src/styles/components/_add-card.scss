@@ -1,4 +1,4 @@
-.Addcontainer {
+.AddContainer {
   width: 350px;
   height: 522px;
   padding: 24px;
@@ -7,10 +7,11 @@
   margin-right: auto;
   border-radius: 8px;
   background: #fcfcfc;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.Addtitle {
+.AddTitle {
   margin-bottom: 24px;
   color: #161616;
   font-family: Poppins;
@@ -21,7 +22,7 @@
   letter-spacing: -0.36px;
 }
 
-.Addinput {
+.AddInput {
   width: 100%;
   color: #161616;
   font-family: Poppins;
@@ -43,7 +44,7 @@
   }
 }
 
-.Adddescription {
+.AddDescription {
   margin-top: 14px;
   margin-bottom: 20px;
   height: 154px;
@@ -62,72 +63,28 @@
   letter-spacing: -0.24px;
 }
 
-.AddradioGroup {
+.AddRadioGroup {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
   gap: 8px;
   margin-top: 4px;
   margin-bottom: 14px;
 }
 
-.AddradioBtn {
-  margin: 0;
-  width: 14px;
-  cursor: pointer;
+.AddradioBtn { 
+  width: 14px;  // тепер радіокнопки не скачуть при чеку
+  height: 14px;
 }
 
-//   .radiooption {
-//     position: absolute;
-//     opacity: 0; /* Hide visually */
-//   }
+.AddDeadline {
+  // background-color: olive;
+  border-color: red,
+}
 
-//   .radiolabel {
-//     position: relative;
-//     padding-left: 30px; /* Adjust as needed */
-//     cursor: pointer;
-//     background-color: rgb(241, 186, 186);
-//   }
-
-//   .radiolabel:before {
-//     content: '';
-//     position: absolute;
-//     left: 0;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     width: 20px; /* Adjust as needed */
-//     height: 20px; /* Adjust as needed */
-//     border-radius: 50%;
-//     // border: 1px solid #000;
-//     background-color: #70045e; /* Default background color */
-//     // transition: background-color 0.3s ease; /* Add smooth transition */
-//   }
-
-//   .radiooption:checked + .radiolabel:before {
-//     background-color: #ffd000; /* Blue background color when checked */
-//   }
-
-// .lowPriority {
-//     background-color: #8FA1D0;
-// }
-
-// .mediumPriority {
-//     background-color: #E09CB5;
-// }
-
-// .highPriority {
-//     background-color: #E09CB5;
-// }
-
-// .withoutPriority {
-//     background-color: rgba(22, 22, 22, 0.30);
-// }
-
-.AdddeadlineInput {
+.AddDeadlineInput {
   margin-top: 4px;
 }
 
-.AddaddBtn {
+.AddSubmitBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,13 +109,13 @@
   }
 }
 
-.Addicon {
+.AddIcon {
   width: 14px;
   height: 14px;
   stroke: rgb(22, 22, 22, 1);
 }
 
-.AddiconWrapper {
+.AddIconWrapper {
   width: 28px;
   height: 28px;
   display: flex;
