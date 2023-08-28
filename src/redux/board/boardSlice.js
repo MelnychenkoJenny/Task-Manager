@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllBoards } from './boardOperations';
+import { getAllBoards, addBoards, deleteBoards } from './boardOperations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -9,6 +9,22 @@ const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.allBoards = payload;
+};
+
+const handleFulfilledAddBoard = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.allBoards= [payload, ...state.allBoards];
+  // state.allBoards.push(payload);
+};
+
+const handleFulfilledDeleteBoard = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  console.dir(state.allBoards)
+  const index = state.allBoards.findIndex(board => board._id === payload._id);
+
+  state.allBoards.splice(index, 1);
 };
 
 const handleRejected = (state, { payload }) => {
@@ -28,6 +44,8 @@ export const boardsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getAllBoards.fulfilled, handleFulfilled)
+      .addCase(addBoards.fulfilled, handleFulfilledAddBoard)
+      .addCase(deleteBoards.fulfilled, handleFulfilledDeleteBoard)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },

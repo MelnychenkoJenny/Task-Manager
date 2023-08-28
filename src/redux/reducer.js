@@ -12,10 +12,9 @@ const authPersistConfig = {
   const boardPersistConfig = {
     key: 'boards',
     storage,
-    whitelist: ['token'],
   };
 
 export const reducer = {
     auth: persistReducer(authPersistConfig, authReducer),
-    board: persistReducer(boardPersistConfig, boardsReducer),
+    boards: persistReducer(boardPersistConfig, boardsReducer),
   }
