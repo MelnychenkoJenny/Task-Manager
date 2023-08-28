@@ -1,7 +1,7 @@
 import { React } from 'react';
 import 'styles/index.module.scss';
 
-const Sidebar = () => {
+const Sidebar = ({active}) => {
   return (
     <div className="sidebarWrap">
       <div className="sbHeader">
