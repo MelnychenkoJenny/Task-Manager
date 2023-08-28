@@ -1,4 +1,5 @@
 import styles from 'styles/index.module.scss';
+
 const Home = () => {
   return (
     <section className={styles.AfWelcomReg}>
