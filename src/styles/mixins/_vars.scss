@@ -46,6 +46,7 @@ $fonts: (
 $max-width-content: 1218px;
 
 :root {
+  --p: grey;
   --bg-welcome: linear-gradient(
     180deg,
     rgba(196, 196, 196, 0) 25%,
@@ -61,8 +62,9 @@ $max-width-content: 1218px;
 }
 
 // DARK THEME
-html[data-theme='dark'] {
-  --bg-sidebar: #121212;
+[data-theme='dark'] {
+  --p: red;
+  --bgSidebar: #121212;
   --bg-header: #161616;
   --bg-main: #1f1f1f;
   --bg-help: #1f1f1f;
@@ -77,7 +79,8 @@ html[data-theme='dark'] {
 }
 
 // LIGHT THEME
-html[data-theme='light'] {
+[data-theme='light'] {
+  --p: blue;
   --bg-sidebar: #ffffff;
   --bg-header: #fcfcfc;
   --bg-main: #f6f6f7;
@@ -93,7 +96,8 @@ html[data-theme='light'] {
 }
 
 // VIOLET THEME
-html[data-theme='violet'] {
+[data-theme='violet'] {
+  --p: yellow;
   --bg-sidebar: #5255bc;
   --bg-header: #161616;
   --bg-main: #ecedfd;
