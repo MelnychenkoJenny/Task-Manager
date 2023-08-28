@@ -1,4 +1,4 @@
-.AddContainer {
+.OBAddContainer {
   width: 350px;
   height: 522px;
   padding: 24px;
@@ -11,7 +11,7 @@
   margin-bottom: 40px;
 }
 
-.AddTitle {
+.OBAddTitle {
   margin-bottom: 24px;
   color: #161616;
   font-family: Poppins;
@@ -22,7 +22,7 @@
   letter-spacing: -0.36px;
 }
 
-.AddInput {
+.OBAddInput {
   width: 100%;
   color: #161616;
   font-family: Poppins;
@@ -44,14 +44,14 @@
   }
 }
 
-.AddDescription {
+.OBAddDescription {
   margin-top: 14px;
   margin-bottom: 20px;
   height: 154px;
   resize: none;
 }
 
-.Addlabel {
+.OBAddlabel {
   display: flex;
   flex-direction: column;
   color: rgba(22, 22, 22, 0.5);
@@ -63,28 +63,28 @@
   letter-spacing: -0.24px;
 }
 
-.AddRadioGroup {
+.OBAddRadioGroup {
   display: flex;
   gap: 8px;
   margin-top: 4px;
   margin-bottom: 14px;
 }
 
-.AddradioBtn { 
+.OBAddradioBtn { 
   width: 14px;  // тепер радіокнопки не скачуть при чеку
   height: 14px;
 }
 
-.AddDeadline {
+.OBAddDeadline {
   // background-color: olive;
   border-color: red,
 }
 
-.AddDeadlineInput {
+.OBAddDeadlineInput {
   margin-top: 4px;
 }
 
-.AddSubmitBtn {
+.OBAddSubmitBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,13 +109,13 @@
   }
 }
 
-.AddIcon {
+.OBAddIcon {
   width: 14px;
   height: 14px;
   stroke: rgb(22, 22, 22, 1);
 }
 
-.AddIconWrapper {
+.OBAddIconWrapper {
   width: 28px;
   height: 28px;
   display: flex;

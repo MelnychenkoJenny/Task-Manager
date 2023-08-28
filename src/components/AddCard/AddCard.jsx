@@ -16,45 +16,38 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const AddCard = () => {
 
-  const handleFormSubmit = event => {
-    event.preventDefault();
+  const [selectedDate, setSelectedDate] = useState(dayjs()); // dayjs() - currentDate
+  //selectedDate = M {$L: 'en', $u: undefined, $d: Tue Aug 29 2023 08:05:53 GMT+0300 (за східноєвропейським літнім часом), $x: {…}, $y: 2023, …}
+  const [selectedPriority, setSelectedPriority] = useState('without');
 
-    const inputTitle = event.target.elements.title.value.trim();
-    const inputDescription = event.target.elements.description.value.trim();
-    const inputPriority = event.target.elements.priority.value;
-    // const inputDate = event.target.elements.selectedDate.value;
-
-    console.log(`inputTitle: ${inputTitle}, inputDescription: ${inputDescription}, inputPriority: ${inputPriority}`)
-    // console.log(`inputDate: ${inputDate}`)
-    // checkNameClone(inputTitle, inputDescription, inputPriority); // відправка на бек
-    event.target.reset();
-  };
-  
   // const formatDate = (date) => {
   //   const currentDate = dayjs(); 
   //   if (date.isSame(currentDate, 'day')) {
   //     return 'Today'; // Display "Today" for the current date
   //   }
 
-  const [selectedDate, setSelectedDate] = useState(dayjs()); // dayjs() - currentDate
-//selectedDate = M {$L: 'en', $u: undefined, $d: Tue Aug 29 2023 08:05:53 GMT+0300 (за східноєвропейським літнім часом), $x: {…}, $y: 2023, …}
+  const handleFormSubmit = event => {
+    event.preventDefault();
 
+    const inputTitle = event.target.elements.title.value.trim();
+    const inputDescription = event.target.elements.description.value.trim();
+    const inputPriority = event.target.elements.priority.value;
+    const inputDate = dayjs(selectedDate).format('DD/MM/YYYY'); //   29/11/2023
 
-
-  
-
+    console.log(`inputTitle: ${inputTitle}, inputDescription: ${inputDescription}, inputPriority: ${inputPriority}, inputDate: ${inputDate}`)
+    // checkNameClone(inputTitle, inputDescription, inputPriority); // відправка на бек
+    event.target.reset();
+  };
 
   // --------------- ф-ції для пріоритетності ----------------------
-  const [selectedValue, setSelectedValue] = useState('without');
-  
   const handleChange = (event) => {
-      setSelectedValue(event.target.value);
+      setSelectedPriority(event.target.value);
   };
   
   const controlProps = (item) => ({ // low, medium, high, without
       value: item,
       onChange: handleChange,
-      checked: selectedValue === item,
+      checked: selectedPriority === item,
       name: 'priority',
       inputProps: { 'aria-label': item },
   });
@@ -67,8 +60,8 @@ const AddCard = () => {
   };
 
   return (
-    <div className={scss.AddContainer}>
-      <h4 className={scss.AddTitle}>Add card</h4>
+    <div className={scss.OBAddContainer}>
+      <h4 className={scss.OBAddTitle}>Add card</h4>
       <form onSubmit={handleFormSubmit} autoComplete="off">
         <label>
           <input
@@ -77,7 +70,7 @@ const AddCard = () => {
             placeholder="Title"
             autoFocus
             required
-            className={scss.AddInput}
+            className={scss.OBAddInput}
           />
         </label>
         <label>
@@ -85,15 +78,15 @@ const AddCard = () => {
             type="text"
             name="description"
             placeholder="Description"
-            className={`${scss.AddInput} ${scss.AddDescription}`}
+            className={`${scss.OBAddInput} ${scss.OBAddDescription}`}
           />
         </label>
 
-        <div className={scss.Addlabel}> 
+        <div className={scss.OBAddlabel}> 
             Label color 
-          <div className={scss.AddRadioGroup}>  
+          <div className={scss.OBAddRadioGroup}>  
             {Object.keys(priorityStyles).map((priority) => ( //['low', 'medium', 'high', 'without']
-              <Radio className={scss.AddradioBtn}
+              <Radio className={scss.OBAddradioBtn}
                 key={priority}
                 {...controlProps(priority)}
                 sx={{
@@ -118,7 +111,7 @@ const AddCard = () => {
         <div>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
-              className={scss.AddDeadline}
+              className={scss.OBAddDeadline}
               onChange={(date) => setSelectedDate(date)}   //Material UA в date записує обрану з календаря дату 
               value={selectedDate}
               format="dddd, MMMM D"
@@ -151,9 +144,9 @@ const AddCard = () => {
           </LocalizationProvider>
         </div>
 
-        <button className={scss.AddSubmitBtn}>
-          <div className={scss.AddIconWrapper}>
-            <svg className={scss.AddIcon}>
+        <button className={scss.OBAddSubmitBtn}>
+          <div className={scss.OBAddIconWrapper}>
+            <svg className={scss.OBAddIcon}>
               <use href={SvgSprite + '#icon-plus'} />
             </svg>
           </div>
