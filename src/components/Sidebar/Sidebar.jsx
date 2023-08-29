@@ -1,8 +1,23 @@
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { React, useState } from 'react';
+import { Modal } from '../Modal/Modal';
+import authOperations from '../../redux/auth/authOperations';
+
+
+// import Login from 'components/Login/Login';
 
 const Sidebar = () => {
-  return (
+   const dispatch = useDispatch();
+   const [showModal, setShowModal] = useState(false);
+
+   const togleModal = () => {
+      setShowModal(prev => (!showModal));
+   };
+
+   return (
+     <>
     <div className={scss.sidebarWrap}>
       <div className={scss.sidebar}>
         <div className={scss.sbHeader}>
@@ -17,7 +32,9 @@ const Sidebar = () => {
             <span className={scss.sbCreateBoardText}>
               Create a <br></br> new board
             </span>
-            <button className={scss.sbCreateBoardButton}>
+               <button
+               onClick={togleModal}
+               className={scss.sbCreateBoardButton}>
               <svg
                 width="20px"
                 height="20px"
@@ -43,14 +60,33 @@ const Sidebar = () => {
             <span className={scss.sbNeedHelpButtonText}>Need help?</span>
           </button>
         </div>
-        <button className={scss.sbLogoutButton}>
+        <button onClick={() => dispatch(authOperations.logout())} className={scss.sbLogoutButton}>
           <svg width="32px" height="32px" className={scss.sbLogoutSvg}>
             <use href={`${SvgSprite}#icon-logout`}></use>
           </svg>
           <span className={scss.sbLogoutText}>Log out</span>
         </button>
       </div>
-    </div>
+     </div>
+         {showModal && (<Modal onClose={togleModal}>
+             <div className={scss.sbHelp}>
+          <div className={scss.sbHelpPngCactus}></div>
+          <p className={scss.sbHelpText}>
+            If you need help with
+            <span className={scss.cbTaskProSpan}> TaskPro</span>, check out our
+            support resources or reach out to our customer support team.
+          </p>
+          <button className={scss.sbHelpButton}>
+            <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
+              <use href={`${SvgSprite}#icon-help-circle`}></use>
+            </svg>{' '}
+            <span className={scss.sbNeedHelpButtonText}>Need help?</span>
+          </button>
+        </div>
+            {/* <Login/> */}
+   </Modal >)
+   };
+   </>
   );
 };
 
