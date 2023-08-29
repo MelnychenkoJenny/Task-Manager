@@ -5,10 +5,13 @@ import { getAllBoards } from 'redux/board/boardOperations';
 import { selectBoards } from 'redux/board/boardSelectors';
 
 import AddBoard from './testAddBoard';
+
+
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 
 const Home = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
@@ -20,7 +23,6 @@ const Home = () => {
     <section className={styles.AfWelcomReg}>
       <div className={styles.AfWelcomRegWr}>
 
-        <h1>Task component</h1>
         <AddBoard />
         <MainDashboard />
       </div>
