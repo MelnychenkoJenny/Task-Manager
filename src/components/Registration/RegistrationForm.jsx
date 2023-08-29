@@ -1,10 +1,11 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import styles from 'styles/index.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import authOperations from 'redux/auth/authOperations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { registerSchema } from './registerSchema';
+import HandlingBackendErrors from 'utils/HandlingBackendErrors';
 
 const initialValues = {
   name: '',
@@ -16,13 +17,14 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [showError, addShowError] = useState('');
   const handleSubmit = async (values, { resetForm }) => {
-
     const dataRegister = { ...values };
 
     const res = await dispatch(authOperations.userRegistration(dataRegister));
     if (res.error) {
-      console.log(res.payload);
+      const backendErr = HandlingBackendErrors(res.payload);
+      addShowError(backendErr);
     } else {
       navigate('/home');
     }
@@ -49,6 +51,11 @@ const RegistrationForm = () => {
             </NavLink>
           </div>
           <div className={styles.AfWelcomRegFormInCn}>
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="name"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 autoFocus
@@ -61,6 +68,11 @@ const RegistrationForm = () => {
                 required
               />
             </div>
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="email"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 className={styles.AfWelcomRegFormInput}
@@ -72,6 +84,11 @@ const RegistrationForm = () => {
                 required
               />
             </div>
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="password"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 className={styles.AfWelcomRegFormInput}
@@ -84,11 +101,8 @@ const RegistrationForm = () => {
               />
             </div>
           </div>
-          <ErrorMessage
-            className={styles.AfWelcomRegFormError}
-            name="password"
-            component="div"
-          />
+
+          <div className={styles.backendError}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Register Now
           </button>
