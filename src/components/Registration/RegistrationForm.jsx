@@ -1,10 +1,11 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import styles from 'styles/index.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import authOperations from 'redux/auth/authOperations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { registerSchema } from './registerSchema';
+import HandlingBackendErrors from 'utils/HandlingBackendErrors';
 
 const initialValues = {
   name: '',
@@ -16,13 +17,15 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [showError, addShowError] = useState('');
   const handleSubmit = async (values, { resetForm }) => {
 
     const dataRegister = { ...values };
 
     const res = await dispatch(authOperations.userRegistration(dataRegister));
     if (res.error) {
-      console.log(res.payload);
+      const backendErr = HandlingBackendErrors(res.payload);
+      addShowError(backendErr);
     } else {
       navigate('/home');
     }
@@ -89,6 +92,7 @@ const RegistrationForm = () => {
             name="password"
             component="div"
           />
+          <div className={styles.error}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Register Now
           </button>
