@@ -5,7 +5,7 @@ import { getAllBoards } from 'redux/board/boardOperations';
 import { selectBoards } from 'redux/board/boardSelectors';
 import AddBoard from './testAddBoard';
 // import AddBoard from './testAddBoard';
-import { MainDashboard } from 'components/MainDashboard/MainDashboard';
+// import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const Home = () => {
         <AddBoard></AddBoard>
         {/* <h1>Task component</h1> */}
         {/* <AddBoard></AddBoard> */}
-        <MainDashboard />
+        {/* <MainDashboard /> */}
       </div>
     </section>
   );
