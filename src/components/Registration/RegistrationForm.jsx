@@ -29,8 +29,8 @@ const RegistrationForm = () => {
       addShowError(backendErr);
     } else {
       navigate('/home');
+      resetForm();
     }
-    resetForm();
   };
 
   const togglePassword = () => {
@@ -57,12 +57,8 @@ const RegistrationForm = () => {
               Log In
             </NavLink>
           </div>
+          <div className={styles.AfWelcomBacError}>{showError}</div>
           <div className={styles.AfWelcomRegFormInCn}>
-            <ErrorMessage
-              className={styles.AfWelcomRegFormError}
-              name="name"
-              component="div"
-            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <div className={styles.AfWelcomFormWrError}>
                 <ErrorMessage
@@ -83,11 +79,6 @@ const RegistrationForm = () => {
                 required
               />
             </div>
-            <ErrorMessage
-              className={styles.AfWelcomRegFormError}
-              name="email"
-              component="div"
-            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <div className={styles.AfWelcomFormWrError}>
                 <ErrorMessage
@@ -107,11 +98,6 @@ const RegistrationForm = () => {
                 required
               />
             </div>
-            <ErrorMessage
-              className={styles.AfWelcomRegFormError}
-              name="password"
-              component="div"
-            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <div className={styles.AfWelcomFormWrError}>
                 <ErrorMessage
@@ -141,7 +127,6 @@ const RegistrationForm = () => {
             </div>
           </div>
 
-          <div className={styles.backendError}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Register Now
           </button>

@@ -6,6 +6,7 @@ import SvgSprite from 'images/sprite.svg';
 import { loginSchema } from './loginSchema';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
+import HandlingBackendErrors from 'utils/HandlingBackendErrors';
 
 const initialValues = {
   email: '',
@@ -18,10 +19,10 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [showHidePassword, changeShowHidePassword] = useState(false);
+  const [showError, addShowError] = useState('');
 
   const togglePassword = () => {
     changeShowHidePassword(!showHidePassword);
-    console.log(showHidePassword);
   };
 
   const handleSubmit = async ({ email, password }, { resetForm }) => {
@@ -29,11 +30,12 @@ const LoginForm = () => {
 
     const res = await dispatch(authOperations.userLogin(dataLogin));
     if (res.error) {
-      console.log(res.payload);
+      const backendErr = HandlingBackendErrors(res.payload);
+      addShowError(backendErr);
     } else {
       navigate('/home');
+      resetForm();
     }
-    resetForm();
   };
 
   return (
@@ -55,6 +57,8 @@ const LoginForm = () => {
               Log In
             </NavLink>
           </div>
+          <div className={styles.AfWelcomBacError}>{showError}</div>
+
           <div className={styles.AfWelcomRegFormInCn}>
             <div className={styles.AfWelcomRegFormWrInp}>
               <div className={styles.AfWelcomFormWrError}>

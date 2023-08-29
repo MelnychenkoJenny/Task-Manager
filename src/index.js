@@ -6,20 +6,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from 'components/App';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import Loader from 'components/Loader/Loader';
 
 import 'styles/index.module.scss';
-import {
-  store,
-  persistor
-} from './redux/store';
+import { store, persistor } from './redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={<div>Загрузка</div>} persistor={persistor}>
-      <BrowserRouter basename="Task-Manager">
-        <App />
-      </BrowserRouter>
+      <PersistGate loading={<Loader />} persistor={persistor}>
+        <BrowserRouter basename="Task-Manager">
+          <App />
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>

@@ -118,7 +118,7 @@
   }
   &FormError {
     padding: 0 6px;
-    color: #ba0f30;
+    color: red;
     font-size: 12px;
     font-weight: normal;
   }
@@ -137,4 +137,11 @@
     stroke: rgba(255, 255, 255, 0.3);
     transform: translate(-50%, -50%) scale(1);
   }
+}
+.AfWelcomBacError {
+  min-height: 15px;
+  text-align: center;
+  color: red;
+  padding: 0 6px;
+  margin-bottom: 10px;
 }

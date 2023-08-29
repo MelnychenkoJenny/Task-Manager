@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from 'components/Header/Header.jsx';
 import { useState, useEffect } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
+import Loader from 'components/Loader/Loader';
 import styles from 'styles/index.module.scss';
 
 export const SharedLayout = () => {
@@ -61,7 +62,7 @@ export const SharedLayout = () => {
         </aside>
       )}
       <main className={styles.AFNavResWrMain}>
-        <Suspense fallback={<div>...Loader</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>
