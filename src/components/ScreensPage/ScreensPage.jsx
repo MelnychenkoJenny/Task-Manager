@@ -7,6 +7,8 @@ import AddBoard from './testAddBoard';
 
 
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
+import { AddCard } from 'components/AddCard';
+import { Card } from 'components/Card'
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
@@ -21,6 +23,8 @@ const ScreensPage = () => {
 
         <AddBoard />
         <MainDashboard />
+        <AddCard />
+          <Card />
       </div>
     </section>
   );
