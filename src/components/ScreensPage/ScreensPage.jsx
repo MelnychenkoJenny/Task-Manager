@@ -9,7 +9,7 @@ import AddBoard from './testAddBoard';
 
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 
-const Home = () => {
+const ScreensPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Home = () => {
   }, [dispatch]);
 
   const allBoards = useSelector(selectBoards);
-  console.log(allBoards);
+
 
   return (
     <section className={styles.AfWelcomReg}>
@@ -29,4 +29,4 @@ const Home = () => {
     </section>
   );
 };
-export default Home;
+export default ScreensPage;

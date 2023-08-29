@@ -21,16 +21,20 @@ const boardSchema = object({
 const AddBoard = () => {
   const dispatch = useDispatch();
   const { boards } = useSelector(selectBoards);
-  console.log(boards);
 
-  const handleSubmit = async ({ title, icon, background }, { resetForm }) => {
-    const dataBoard = { title, icon, background };
-    console.log(dataBoard);
-    const res = await dispatch(addBoards(dataBoard));
-    if (res.error) {
-      console.log(res.payload);
+
+  const handleSubmit = async (values, { resetForm }) => {
+    const dataBoard = { ...values };
+    console.log(1, dataBoard);
+    if(boards) {
+      const res = await dispatch(addBoards(dataBoard));
+      if (res.error) {
+        console.log(res.payload);
+      }
+      return res
     }
     resetForm();
+    console.log(3)
   };
 
   return (

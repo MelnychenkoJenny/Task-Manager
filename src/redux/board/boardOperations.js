@@ -21,7 +21,7 @@ export const addBoards = createAsyncThunk(
     try {
       const { data } = await axios.post('/boards', board);
       console.log('Add new board success')
-      return data;
+      return data.data;
     } catch (e) {
       return rejectWithValue(e.message);
     }

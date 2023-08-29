@@ -14,15 +14,14 @@ const handleFulfilled = (state, { payload }) => {
 const handleFulfilledAddBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.allBoards= [payload, ...state.allBoards];
+  state.allBoards= [payload.data, ...state.allBoards];
   // state.allBoards.push(payload);
 };
 
 const handleFulfilledDeleteBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  console.dir(state.allBoards)
-  const index = state.allBoards.findIndex(board => board._id === payload._id);
+  const index = state.allBoards.findIndex(board => board._id === payload.data._id);
 
   state.allBoards.splice(index, 1);
 };
