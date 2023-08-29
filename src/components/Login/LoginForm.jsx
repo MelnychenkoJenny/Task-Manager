@@ -92,7 +92,7 @@ const LoginForm = () => {
             name="password"
             component="div"
           />
-          <div className={styles.error}>{showError}</div>
+          <div className={styles.backendError}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Log In Now
           </button>
