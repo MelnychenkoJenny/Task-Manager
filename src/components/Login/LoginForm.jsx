@@ -6,6 +6,7 @@ import SvgSprite from 'images/sprite.svg';
 import { loginSchema } from './loginSchema';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
+import HandlingBackendErrors from 'utils/HandlingBackendErrors';
 
 const initialValues = {
   email: '',
@@ -18,18 +19,19 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [showHidePassword, changeShowHidePassword] = useState(false);
+  const [showError, addShowError] = useState('');
 
   const togglePassword = () => {
     changeShowHidePassword(!showHidePassword);
-    console.log(showHidePassword);
   };
 
-  const handleSubmit = async ({email, password}, { resetForm }) => {
+  const handleSubmit = async ({ email, password }, { resetForm }) => {
     const dataLogin = { email, password };
-    
+
     const res = await dispatch(authOperations.userLogin(dataLogin));
     if (res.error) {
-      console.log(res.payload);
+      const backendErr = HandlingBackendErrors(res.payload);
+      addShowError(backendErr);
     } else {
       navigate('/home');
     }
@@ -56,6 +58,11 @@ const LoginForm = () => {
             </NavLink>
           </div>
           <div className={styles.AfWelcomRegFormInCn}>
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="email"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 className={styles.AfWelcomRegFormInput}
@@ -66,6 +73,12 @@ const LoginForm = () => {
                 required
               />
             </div>
+
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="password"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 className={styles.AfWelcomRegFormInput}
@@ -85,11 +98,8 @@ const LoginForm = () => {
               </svg>
             </div>
           </div>
-          <ErrorMessage
-            className={styles.AfWelcomRegFormError}
-            name="password"
-            component="div"
-          />
+
+          <div className={styles.backendError}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Log In Now
           </button>
