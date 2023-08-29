@@ -1,8 +1,14 @@
 import scss from '../../styles/index.module.scss';
 import sprite from '../../images/sprite.svg';
+import { useState } from 'react';
 
+const Header = ({ click }) => {
+    
+    const [themeActive, setThemeActive] = useState(false);
 
-const Header = ({click}) => {
+      const handleClick = () => {
+    setThemeActive(!themeActive);
+  };
 
     return (
         <div className={scss.headerWrap}>
@@ -12,15 +18,26 @@ const Header = ({click}) => {
                     </svg>
                 </button>
             <div className={scss.headerTextWrap}>
-                <span className={scss.themeWrap}>
-                    <p className={scss.themeText}>Theme</p>
-                    {/* Вставити компонент з темою */}
-                    <span>
-                        <svg className={scss.svgTheme} width="16" height="16">
-                            <use href={`${sprite}#icon-chevron-down`}></use>
-                        </svg>
-                    </span>
-                </span>
+
+                <div className={scss.dropdownThemeWrap}>
+                    <div className={scss.themeHeaderWrap}>
+                        <p className={scss.themeText}>Theme</p>
+                        <button type="button" className={scss.btnThemeOpen} onClick={handleClick}>
+                            <svg className={scss.svgTheme} width="16" height="16">
+                                <use href={`${sprite}#icon-chevron-down`}></use>
+                            </svg>
+                        </button>
+                    </div>
+                    {themeActive && (
+                    <div className={scss.dropdownThemeMenu}>
+                        <ul className={scss.dropdownThemeList}>
+                            <li className={scss.themeMenuItem}>Light</li>
+                            <li className={scss.themeMenuItem}>Dark</li>
+                            <li className={scss.themeMenuItem}>Violet</li>
+                        </ul>
+                    </div>
+                    )}
+                </div>
                 <ul className={scss.headerUserInfoWrap}>
                     <li className={scss.headerUserName}>UserName</li>
                     <li className={scss.headerAvatar}></li>
