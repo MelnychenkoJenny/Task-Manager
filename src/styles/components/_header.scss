@@ -1,91 +1,117 @@
 .headerWrap {
-    padding: 14px 20px;
-    background-color: var(--bg-header);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  padding: 14px 20px;
+  background-color: var(--bg-header);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-    @include minMd() {
-        padding: 18px 32px;
-    }
-
+  @include minMd() {
+    padding: 18px 32px;
+  }
 }
 
 .headerTextWrap {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .headerUserInfoWrap {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .headerUserName {
-    color: var(--bg-header);
-    font-family: map-get($fonts, m);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.28px;
-    margin-right: 8px;
+  color: var(--bg-header);
+  font-family: map-get($fonts, m);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  margin-right: 8px;
 }
 
 .headerAvatar {
-    width: 32px;
-    height: 32px;
-    background-image: url(../../images/user-default-light.png);
-    background-size: cover;
-    border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../images/user-default-light.png);
+  background-size: cover;
+  border-radius: 8px;
 }
 
 .svgTheme {
-    stroke: rgba(22, 22, 22, 0.80);
-    stroke-width: 1.5px;
-    fill: none;
-    margin-left: 4px;
-    margin-right: 14px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  stroke: rgba(22, 22, 22, 0.8);
+  stroke-width: 1.5px;
+  fill: none;
+  margin-left: 4px;
+  margin-right: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .themeWrap {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .svgSideBarOpen {
-    stroke: #161616;
+  stroke: #161616;
 
-    @include minMd() {
-        width: 34px;
-        height: 34px;
-    }
-    @include minXl() {
-        display: none;
-    }
-
+  @include minMd() {
+    width: 34px;
+    height: 34px;
+  }
+  @include minLg() {
+    display: none;
+  }
 }
 
 .btnSideBarOpen {
-    border: none;
-    background: transparent;
+  border: none;
+  background: transparent;
 }
 
 .themeText {
-    color: rgba(22, 22, 22, 0.80);
-    font-family: map-get($fonts, m);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.28px;
+  color: rgba(22, 22, 22, 0.8);
+  font-family: map-get($fonts, m);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
 }
 
+.AFNavResWr {
+  @include minLg() {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+      'sidebar header'
+      'sidebar content';
+  }
+  &Head {
+    @include minLg() {
+      grid-area: header;
+      height: 10vh;
+    }
+  }
+  &Aside {
+    @include minLg() {
+      grid-area: sidebar;
+      height: 100vh;
+    }
+  }
+  &Main {
+    @include minLg() {
+      grid-area: content;
+      width: auto;
+      height: 90vh;
+    }
+  }
+}

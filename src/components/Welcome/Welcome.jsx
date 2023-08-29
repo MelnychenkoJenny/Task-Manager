@@ -40,13 +40,13 @@ const Welcome = () => {
             Task Pro - Don't wait, start achieving your goals now!
           </p>
           <NavLink
-            to="auth/register"
+            to="/auth/register"
             className={styles.AfWelcomWrapperCardBtnReg}
           >
             Registration
           </NavLink>
           <NavLink
-            to="auth/login"
+            to="/auth/login"
             className={styles.AfWelcomWrapperCardBtnLogin}
           >
             Sign in

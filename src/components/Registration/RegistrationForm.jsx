@@ -17,13 +17,7 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
-    // Потрібно ще додадти логіку з неможливістю відправити поле, яке містить пробіли
-    // { name, email, password }
-    // const dataRegister = {
-    //   email: email.trim(),
-    //   name: name.trim(),
-    //   password: password.trim(),
-    // };
+
     const dataRegister = { ...values };
 
     const res = await dispatch(authOperations.userRegistration(dataRegister));

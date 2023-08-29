@@ -84,6 +84,7 @@ const handlePendingRefresh = state => {
 };
 const handleAuthorisationFulfilled = (state, action) => {
   state.user = action.payload.user;
+  console.log(state.token)
   state.token = action.payload.token;
   state.isLoggedIn = true;
   state.isLoading = false;
