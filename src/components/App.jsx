@@ -21,6 +21,7 @@ import SignInPage from 'pages/SignInPage';
 import RegistrationPage from 'pages/RegistrationPage';
 import HomePage from 'pages/HomePage';
 import NotFoundPage from 'pages/NotFoundPage';
+import { AddCard } from './AddCard';
 
 export const App = () => {
   const dispatch = useDispatch();
