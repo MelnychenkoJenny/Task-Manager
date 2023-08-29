@@ -10,6 +10,7 @@ import authOperations from 'redux/auth/authOperations';
 import 'react-toastify/dist/ReactToastify.css';
 import { AddCard } from './AddCard';
 
+
 import WelcomePage from 'pages/WelcomePage';
 import SignInPage from 'pages/SignInPage';
 import RegistrationPage from 'pages/RegistrationPage';
