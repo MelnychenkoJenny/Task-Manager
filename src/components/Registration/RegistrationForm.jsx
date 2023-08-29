@@ -19,7 +19,6 @@ const RegistrationForm = () => {
 
   const [showError, addShowError] = useState('');
   const handleSubmit = async (values, { resetForm }) => {
-
     const dataRegister = { ...values };
 
     const res = await dispatch(authOperations.userRegistration(dataRegister));
@@ -52,6 +51,11 @@ const RegistrationForm = () => {
             </NavLink>
           </div>
           <div className={styles.AfWelcomRegFormInCn}>
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="name"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 autoFocus
@@ -64,6 +68,11 @@ const RegistrationForm = () => {
                 required
               />
             </div>
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="email"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 className={styles.AfWelcomRegFormInput}
@@ -75,6 +84,11 @@ const RegistrationForm = () => {
                 required
               />
             </div>
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="password"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 className={styles.AfWelcomRegFormInput}
@@ -87,11 +101,7 @@ const RegistrationForm = () => {
               />
             </div>
           </div>
-          <ErrorMessage
-            className={styles.AfWelcomRegFormError}
-            name="password"
-            component="div"
-          />
+
           <div className={styles.backendError}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Register Now

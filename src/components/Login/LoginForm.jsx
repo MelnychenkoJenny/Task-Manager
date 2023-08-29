@@ -25,9 +25,9 @@ const LoginForm = () => {
     changeShowHidePassword(!showHidePassword);
   };
 
-  const handleSubmit = async ({email, password}, { resetForm }) => {
+  const handleSubmit = async ({ email, password }, { resetForm }) => {
     const dataLogin = { email, password };
-    
+
     const res = await dispatch(authOperations.userLogin(dataLogin));
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);
@@ -58,6 +58,11 @@ const LoginForm = () => {
             </NavLink>
           </div>
           <div className={styles.AfWelcomRegFormInCn}>
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="email"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 className={styles.AfWelcomRegFormInput}
@@ -68,6 +73,12 @@ const LoginForm = () => {
                 required
               />
             </div>
+
+            <ErrorMessage
+              className={styles.AfWelcomRegFormError}
+              name="password"
+              component="div"
+            />
             <div className={styles.AfWelcomRegFormWrInp}>
               <Field
                 className={styles.AfWelcomRegFormInput}
@@ -87,11 +98,7 @@ const LoginForm = () => {
               </svg>
             </div>
           </div>
-          <ErrorMessage
-            className={styles.AfWelcomRegFormError}
-            name="password"
-            component="div"
-          />
+
           <div className={styles.backendError}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Log In Now
