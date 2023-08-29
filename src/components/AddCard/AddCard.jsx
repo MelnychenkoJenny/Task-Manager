@@ -142,6 +142,9 @@ const AddCard = () => {
               // }
             />
           </LocalizationProvider>
+          {/* <svg className={scss.OBCardIcon}>
+          <use href={SvgSprite + '#icon-chevron-down'} /> // стрілка вниз в календарі
+        </svg> */}
         </div>
 
         <button className={scss.OBAddSubmitBtn}>
@@ -156,4 +159,5 @@ const AddCard = () => {
     </div>
   );
 };
+
 export default AddCard;

@@ -8,12 +8,18 @@ import RestrictedRout from 'components/Route/RestrictedRout';
 import PrivateRoute from 'components/Route/PrivateRoute';
 import authOperations from 'redux/auth/authOperations';
 import 'react-toastify/dist/ReactToastify.css';
-import { AddCard } from './AddCard';
+
+// const WelcomePage = lazy(() => import('pages/WelcomePage'));
+// const SignInPage = lazy(() => import('pages/SignInPage'));
+// const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
+// const HomePage = lazy(() => import('pages/HomePage'));
+// const ScreensPage = lazy(() => import('pages/ScreensPage'));
+// const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 import WelcomePage from 'pages/WelcomePage';
 import SignInPage from 'pages/SignInPage';
 import RegistrationPage from 'pages/RegistrationPage';
-import Home from 'pages/HomePage';
+import HomePage from 'pages/HomePage';
 import NotFoundPage from 'pages/NotFoundPage';
 
 export const App = () => {
@@ -49,7 +55,7 @@ export const App = () => {
               <Route
                 path="home"
                 element={
-                  <PrivateRoute component={Home} redirectTo="/"></PrivateRoute>
+                  <PrivateRoute component={HomePage} redirectTo="/"></PrivateRoute>
                 }
               />
               <Route
