@@ -10,7 +10,7 @@ export const SharedLayout = () => {
 
   useEffect(() => {
     const hendleEscClose = event => {
-      if (event.code === 'Escape' && window.innerWidth <= 1439) {
+      if (event.code === 'Escape' && window.innerWidth <= 1199.99) {
         setMenuActive(false);
       }
     };
@@ -24,7 +24,7 @@ export const SharedLayout = () => {
 
   useEffect(() => {
     const handleMinXlSize = () => {
-      if (window.innerWidth >= 1440) {
+      if (window.innerWidth >= 1199.99) {
         setMenuActive(true);
       } else {
         setMenuActive(false);
@@ -45,7 +45,7 @@ export const SharedLayout = () => {
   };
 
   const hendleBackdropClose = event => {
-    if (event.target === event.currentTarget && window.innerWidth <= 1439) {
+    if (event.target === event.currentTarget && window.innerWidth <= 1199.99) {
       setMenuActive(false);
     }
   };
