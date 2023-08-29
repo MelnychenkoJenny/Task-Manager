@@ -16,13 +16,12 @@ import 'react-toastify/dist/ReactToastify.css';
 // const ScreensPage = lazy(() => import('pages/ScreensPage'));
 // const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
-
 import WelcomePage from 'pages/WelcomePage';
 import SignInPage from 'pages/SignInPage';
 import RegistrationPage from 'pages/RegistrationPage';
 import HomePage from 'pages/HomePage';
 import NotFoundPage from 'pages/NotFoundPage';
-import { AddCard } from './AddCard';
+// import { AddCard } from './AddCard';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -53,7 +52,21 @@ export const App = () => {
                 />
               }
             />
-            <Route path="/home" exact element={<SharedLayout />}>
+            <Route path="/home" element={<SharedLayout />}>
+              <Route
+                index
+                element={
+                  <PrivateRoute redirectTo="/" component={HomePage} />
+                }
+              />
+              <Route
+                path="/home/:boardName"
+                element={
+                  <PrivateRoute redirectTo="/" component={HomePage} />
+                }
+              />
+            </Route>
+            {/* <Route path="/home" exact element={<SharedLayout />}>
               <Route
                 path="home"
                 element={
@@ -69,7 +82,8 @@ export const App = () => {
                   ></PrivateRoute>
                 }
               />
-            </Route>
+            </Route> */}
+
             <Route path="*" exact={true} element={<NotFoundPage />} />
           </Routes>
         </>
