@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from 'styles/index.module.scss';
 import { getAllBoards } from 'redux/board/boardOperations';
-import { selectBoards } from 'redux/board/boardSelectors';
 
 import AddBoard from './testAddBoard';
 
@@ -15,9 +14,6 @@ const ScreensPage = () => {
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
-
-  const allBoards = useSelector(selectBoards);
-
 
   return (
     <section className={styles.AfWelcomReg}>
