@@ -1,6 +1,6 @@
 const { useState } = require("react");
-const { useSelector, useDispatch } = require("react-redux");
-import sprite from '../../images/sprite.svg'
+// const { useSelector, useDispatch } = require("react-redux");
+// import sprite from '../../images/sprite.svg'
 
 const icons = [
     { key: 'project', value: 'icon-project' },
@@ -8,42 +8,42 @@ const icons = [
 
 const NewBoard = () => {
     // потрібно створити селектор selectIsLoadingBoard
-    const isLoadingBoard = useSelector(selectIsLoadingBoard);
+    // const isLoadingBoard = useSelector(selectIsLoadingBoard);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const toggleModal = () => setIsOpenModal(state => !state);
     const [title, setTitle] = useState("");
     const [icon, setIcon] = useState("icon-project");
-    const [background, setBackground] = useState(second)
+    // const [background, setBackground] = useState(second)
 // потрібно створити селектор вибору теми
     // const theme = useSelector(selectTheme)
 
-const dispatch = useDispatch();
+// const dispatch = useDispatch();
 
 const onSubmit = e => {
     e.prevenDefault();
-    dispatch(
-        addBoard({
-            title,
-            icon, 
-            background: background || "default",
-        })
-    ).then(() => {
-        if (!isLoadingBoard) {
-            toggleModal();
-            setTitle("");
-            setIcon("icon-project");
-            setBackground("default")
-        }
-    })
+    // dispatch(
+    //     addBoard({
+    //         title,
+    //         icon, 
+    //         background: background || "default",
+    //     })
+    // ).then(() => {
+    //     if (!isLoadingBoard) {
+    //         toggleModal();
+    //         setTitle("");
+    //         setIcon("icon-project");
+    //         setBackground("default")
+    //     }
+    // })
 };
 
 const changeIcon = newIcon => {
     setIcon(newIcon);
 }
 
-const changeBackground = newBg => {
-    setBackground(newBg)
-}
+// const changeBackground = newBg => {
+//     setBackground(newBg)
+// }
 
 const changeTitle = e => {
     setTitle(e.target.value)
@@ -53,7 +53,7 @@ return (
     <div>
         <button onClick={toggleModal} type="button">
             <svg width={36} height={36}>
-                <use href={sprite + '#icon-plus'}></use>
+                {/* <use href={sprite + '#icon-plus'}></use> */}
             </svg>
         </button>
         {isOpenModal && (
@@ -86,7 +86,7 @@ return (
                                     onClick={() => changeIcon(item.value) }
                                     >
                                     <svg>
-                                        <use href={sprite + `#${item.value}`}></use>
+                                        {/* <use href={sprite + `#${item.value}`}></use> */}
                                     </svg>
                                     </label>
                                 </div>

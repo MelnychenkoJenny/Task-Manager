@@ -29,7 +29,7 @@ export const App = () => {
       {!isRefreshing && (
         <>
           <Routes>
-            <Route path="welcome" exact element={<WelcomePage />} />
+            <Route path="/" exact element={<WelcomePage />} />
             <Route
               path="auth/login"
               element={
