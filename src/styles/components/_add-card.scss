@@ -109,12 +109,6 @@
   }
 }
 
-.OBAddIcon {
-  width: 14px;
-  height: 14px;
-  stroke: rgb(22, 22, 22, 1);
-}
-
 .OBAddIconWrapper {
   width: 28px;
   height: 28px;
@@ -124,4 +118,10 @@
   margin-right: 8px;
   background-color: #fff;
   border-radius: 6px;
+}
+
+.OBAddIcon {
+  width: 14px;
+  height: 14px;
+  stroke: rgb(22, 22, 22, 1);
 }
