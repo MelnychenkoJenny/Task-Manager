@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // const ScreensPage = lazy(() => import('pages/ScreensPage'));
 // const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
+
 import WelcomePage from 'pages/WelcomePage';
 import SignInPage from 'pages/SignInPage';
 import RegistrationPage from 'pages/RegistrationPage';
