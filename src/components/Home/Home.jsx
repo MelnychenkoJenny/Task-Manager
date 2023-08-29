@@ -24,7 +24,8 @@ const Home = () => {
       <div className={styles.AfWelcomRegWr}>
 
         <h1>Task component</h1>
-        <AddBoard></AddBoard>
+
+        <AddBoard />
         <MainDashboard />
       </div>
     </section>
