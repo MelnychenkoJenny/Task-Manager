@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Task-Manager/static/css/main.49362b17.css",
-    "main.js": "/Task-Manager/static/js/main.21f7d6b2.js",
+    "main.css": "/Task-Manager/static/css/main.faf9ddf3.css",
+    "main.js": "/Task-Manager/static/js/main.2d713e0a.js",
     "static/media/Poppins-Regular.ttf": "/Task-Manager/static/media/Poppins-Regular.82a4136eb848dae8b116.ttf",
     "static/media/Poppins-Medium.ttf": "/Task-Manager/static/media/Poppins-Medium.5c0f64feb1225c5f04f9.ttf",
     "static/media/Poppins-SemiBold.ttf": "/Task-Manager/static/media/Poppins-SemiBold.f486b91ddcf2a6c146e1.ttf",
@@ -16,11 +16,11 @@
     "static/media/sprite.svg": "/Task-Manager/static/media/sprite.280546cf0b3160dccdc972a09f05995e.svg",
     "static/media/welcome-mobile-2x.png": "/Task-Manager/static/media/welcome-mobile-2x.3026aacef4cd658b08db.png",
     "index.html": "/Task-Manager/index.html",
-    "main.49362b17.css.map": "/Task-Manager/static/css/main.49362b17.css.map",
-    "main.21f7d6b2.js.map": "/Task-Manager/static/js/main.21f7d6b2.js.map"
+    "main.faf9ddf3.css.map": "/Task-Manager/static/css/main.faf9ddf3.css.map",
+    "main.2d713e0a.js.map": "/Task-Manager/static/js/main.2d713e0a.js.map"
   },
   "entrypoints": [
-    "static/css/main.49362b17.css",
-    "static/js/main.21f7d6b2.js"
+    "static/css/main.faf9ddf3.css",
+    "static/js/main.2d713e0a.js"
   ]
 }
