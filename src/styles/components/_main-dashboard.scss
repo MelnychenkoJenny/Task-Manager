@@ -1,3 +1,106 @@
-.KkTest {
-  color: salmon;
+// outline: 1px solid salmon;
+
+.TestTest {
+  // margin: 10px;
+  margin-top: 10px;
 }
+
+// ================================================== MainDashboard styled
+.KkSectionMainDashboard {
+  // width: 100vw; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // height: 91vh; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: rgb(70, 70, 70);
+  // background-color: #1f1f1f;
+}
+.KkTitle {
+  font-family: map-get($fonts, m), sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  letter-spacing: -0.36px;
+  color: #fff;
+}
+
+// ================================================== Filters styled
+.KkFilters {
+  padding-top: 10px;
+}
+.KkWrapFilters {
+  display: flex;
+  justify-content: space-between;
+}
+.KkBtnFilters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin: 0;
+  padding: 0;
+  // border-radius: 8px;
+  background-color: inherit;
+  & svg {
+    stroke: rgba(255, 255, 255, 0.8);
+    fill: none;
+  }
+  & p {
+    margin-left: 8px;
+
+    margin-left: 8px;
+    font-family: map-get($fonts, m), sans-serif;
+    font-style: normal;
+    font-weight: 500;
+
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+// ================================================== BtnAddColumn styled
+
+.KkBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 79px;
+  border: none;
+  border-radius: 8px;
+  background-color: #121212;
+  & p {
+    margin-left: 8px;
+    font-family: map-get($fonts, m), sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: #fff;
+  }
+}
+
+.KkIconPlus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  & svg {
+    stroke: #161616;
+  }
+}
+
+// .KkBtn {
+//   // margin-top: 10px;
+//   // margin-bottom: 10px;
+//   display: block;
+//   width: 28px;
+//   height: 28px;
+//   border: none;
+//   border-radius: 6px;
+//   background: var(--accent);
+// }
+
+// .KkSvg {
+//   margin-top: 2px;
+//   stroke: #161616;
+// }
