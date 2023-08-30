@@ -75,8 +75,12 @@ $max-width-content: 1218px;
   --btnPlusHover: #9dc888;
   --scroll: #121212;
   --bgScroll: #ffffff;
-  --borderTheme: #bedbb0;
-  --textThemeMenu: rgba(255, 255, 255, 0.5);
+    --borderTheme: #BEDBB0;
+    --textThemeMenu: rgba(255, 255, 255, 0.50);
+    --bgModal: #151515;
+    --modalTitle: #fff;
+    --modalBtnText: #161616;
+    --iconPlus: rgba(255, 255, 255, 1);
 }
 
 // LIGHT THEME
@@ -93,8 +97,12 @@ $max-width-content: 1218px;
   --btnPlusHover: #9dc888;
   --scroll: rgba(22, 22, 22, 0.1);
   --bgScroll: #e8e8e8;
-  --borderTheme: #bedbb0;
-  --textThemeMenu: #161616;
+    --borderTheme: #BEDBB0;
+    --textThemeMenu: #161616;
+    --bgModal: #FCFCFC;
+    --modalTitle: #161616;
+    --modalBtnText: #161616;
+    --iconPlus: rgba(255, 255, 255, 1);
 }
 
 // VIOLET THEME
@@ -113,4 +121,8 @@ $max-width-content: 1218px;
   --bgScroll: #ffffff;
   --borderTheme: #ecedfd;
   --textThemeMenu: #161616;
+  --bgModal: #FCFCFC;
+  --modalTitle: #161616;
+  --modalBtnText: #fff;
+  --iconPlus: rgba(22, 22, 22, 1);
 }
