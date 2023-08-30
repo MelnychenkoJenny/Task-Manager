@@ -7,7 +7,7 @@ import AddBoard from './testAddBoard';
 
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 import { AddCard } from 'components/AddCard';
-import { Card } from 'components/Card'
+import { Card } from 'components/Card';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();

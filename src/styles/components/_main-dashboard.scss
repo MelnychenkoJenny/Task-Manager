@@ -156,6 +156,9 @@
 }
 
 // ================================================== Btn styled
+.KkBtnAddColumn {
+  margin-top: 10px;
+}
 
 .KkBtnColumn {
   display: flex;
@@ -224,6 +227,9 @@
   }
 }
 
+.KkBtnAddCard {
+  margin-top: 10px;
+}
 .KkBtnCard {
   display: flex;
   justify-content: center;
@@ -235,12 +241,21 @@
 
   &.light {
     background-color: #bedbb0;
+    &:hover {
+      background-color: #9dc888;
+    }
   }
   &.dark {
     background-color: #bedbb0;
+    &:hover {
+      background-color: #9dc888;
+    }
   }
   &.violet {
     background-color: #5255bc;
+    &:hover {
+      background-color: #7b7ede;
+    }
   }
 
   & p {
