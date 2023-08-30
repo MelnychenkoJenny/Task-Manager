@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from 'styles/index.module.scss';
+import SvgSprite from 'images/sprite.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
 import authOperations from 'redux/auth/authOperations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -16,6 +17,7 @@ const initialValues = {
 const RegistrationForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showHidePassword, changeShowHidePassword] = useState(false);
 
   const [showError, addShowError] = useState('');
   const handleSubmit = async (values, { resetForm }) => {
@@ -27,8 +29,13 @@ const RegistrationForm = () => {
       addShowError(backendErr);
     } else {
       navigate('/home');
+      resetForm();
     }
-    resetForm();
+  };
+
+  const togglePassword = () => {
+    changeShowHidePassword(!showHidePassword);
+    console.log(showHidePassword);
   };
 
   return (
@@ -50,13 +57,17 @@ const RegistrationForm = () => {
               Log In
             </NavLink>
           </div>
+          <div className={styles.AfWelcomBacError}>{showError}</div>
           <div className={styles.AfWelcomRegFormInCn}>
-            <ErrorMessage
-              className={styles.AfWelcomRegFormError}
-              name="name"
-              component="div"
-            />
             <div className={styles.AfWelcomRegFormWrInp}>
+              <div className={styles.AfWelcomFormWrError}>
+                <ErrorMessage
+                  className={styles.AfWelcomFormError}
+                  name="name"
+                  component="div"
+                />
+              </div>
+
               <Field
                 autoFocus
                 className={styles.AfWelcomRegFormInput}
@@ -68,12 +79,15 @@ const RegistrationForm = () => {
                 required
               />
             </div>
-            <ErrorMessage
-              className={styles.AfWelcomRegFormError}
-              name="email"
-              component="div"
-            />
             <div className={styles.AfWelcomRegFormWrInp}>
+              <div className={styles.AfWelcomFormWrError}>
+                <ErrorMessage
+                  className={styles.AfWelcomFormError}
+                  name="email"
+                  component="div"
+                />
+              </div>
+
               <Field
                 className={styles.AfWelcomRegFormInput}
                 type="email"
@@ -84,25 +98,35 @@ const RegistrationForm = () => {
                 required
               />
             </div>
-            <ErrorMessage
-              className={styles.AfWelcomRegFormError}
-              name="password"
-              component="div"
-            />
             <div className={styles.AfWelcomRegFormWrInp}>
-              <Field
-                className={styles.AfWelcomRegFormInput}
-                type="password"
-                name="password"
-                placeholder="Create a password"
-                onChange={handleChange('password')}
-                value={values.password || ''}
-                required
-              />
+              <div className={styles.AfWelcomFormWrError}>
+                <ErrorMessage
+                  className={styles.AfWelcomFormError}
+                  name="password"
+                  component="div"
+                />
+              </div>
+              <div className={styles.AfWelcomShowPassWr}>
+                <Field
+                  className={styles.AfWelcomRegFormInput}
+                  type={showHidePassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Create a password"
+                  onChange={handleChange('password')}
+                  value={values.password || ''}
+                  required
+                />
+                <svg
+                  className={styles.AfWelcomFormIconShowPass}
+                  alt="watch password icon"
+                  onClick={togglePassword}
+                >
+                  <use href={SvgSprite + '#icon-eye'} />
+                </svg>
+              </div>
             </div>
           </div>
 
-          <div className={styles.backendError}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Register Now
           </button>

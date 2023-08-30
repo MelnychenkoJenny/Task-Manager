@@ -34,8 +34,8 @@ const LoginForm = () => {
       addShowError(backendErr);
     } else {
       navigate('/home');
+      resetForm();
     }
-    resetForm();
   };
 
   return (
@@ -57,13 +57,17 @@ const LoginForm = () => {
               Log In
             </NavLink>
           </div>
+          <div className={styles.AfWelcomBacError}>{showError}</div>
+
           <div className={styles.AfWelcomRegFormInCn}>
-            <ErrorMessage
-              className={styles.AfWelcomRegFormError}
-              name="email"
-              component="div"
-            />
             <div className={styles.AfWelcomRegFormWrInp}>
+              <div className={styles.AfWelcomFormWrError}>
+                <ErrorMessage
+                  className={styles.AfWelcomFormError}
+                  name="email"
+                  component="div"
+                />
+              </div>
               <Field
                 className={styles.AfWelcomRegFormInput}
                 type="email"
@@ -73,33 +77,35 @@ const LoginForm = () => {
                 required
               />
             </div>
-
-            <ErrorMessage
-              className={styles.AfWelcomRegFormError}
-              name="password"
-              component="div"
-            />
             <div className={styles.AfWelcomRegFormWrInp}>
-              <Field
-                className={styles.AfWelcomRegFormInput}
-                id="password"
-                type={showHidePassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Confirm your password"
-                onChange={handleChange('password')}
-                required
-              />
-              <svg
-                className={styles.AfWelcomRegFormIconShowPass}
-                alt="watch password icon"
-                onClick={togglePassword}
-              >
-                <use href={SvgSprite + '#icon-eye'} />
-              </svg>
+              <div className={styles.AfWelcomFormWrError}>
+                <ErrorMessage
+                  className={styles.AfWelcomFormError}
+                  name="password"
+                  component="div"
+                />
+              </div>
+              <div className={styles.AfWelcomShowPassWr}>
+                <Field
+                  className={styles.AfWelcomRegFormInput}
+                  id="password"
+                  type={showHidePassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Confirm your password"
+                  onChange={handleChange('password')}
+                  required
+                />
+                <svg
+                  className={styles.AfWelcomFormIconShowPass}
+                  alt="watch password icon"
+                  onClick={togglePassword}
+                >
+                  <use href={SvgSprite + '#icon-eye'} />
+                </svg>
+              </div>
             </div>
           </div>
 
-          <div className={styles.backendError}>{showError}</div>
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Log In Now
           </button>
