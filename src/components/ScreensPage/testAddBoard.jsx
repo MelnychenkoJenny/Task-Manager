@@ -21,7 +21,7 @@ import { selectBoards } from 'redux/board/boardSelectors';
 const AddBoard = () => {
   const dispatch = useDispatch();
   const  boards  = useSelector(selectBoards);
-
+console.log(boards)
   // const handleSubmit = async (e) => {
     // console.log(e)
     // const dataBoard = { ...values };
@@ -48,6 +48,7 @@ const dataBoard = {title: title.value, icon: icon.value, background: background.
 
   return (
     <div>
+      <input type='file'></input>
       {boards.length !==0 && (
         <ul style={{ display: 'flex', gap: '20px' }}>
           {boards.map(({ title, _id }) => {

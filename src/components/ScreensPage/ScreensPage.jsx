@@ -18,8 +18,8 @@ const ScreensPage = () => {
   }, [dispatch]);
 
   return (
-    <section className={styles.AfWelcomReg}>
-      <div className={styles.AfWelcomRegWr}>
+    <section className={styles.AfWelcomReg} >
+      <div className={styles.AfWelcomRegWr} style={{display: 'flex', flexWrap: 'wrap'}}>
 
         <AddBoard />
         <MainDashboard />

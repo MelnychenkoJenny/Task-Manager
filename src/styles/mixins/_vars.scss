@@ -46,64 +46,64 @@ $fonts: (
 $max-width-content: 1218px;
 
 :root {
-  --bg-welcome: linear-gradient(
+  --bgWelcome: linear-gradient(
     180deg,
     rgba(196, 196, 196, 0) 25%,
     #bedbb0 92.19%
   );
-  --secondary-text: rgba(255, 255, 255, 0.3);
+  --secondaryText: rgba(255, 255, 255, 0.3);
   --accent: #bedbb0;
-  --accent-hover: #9dc888;
-  --bg-welcome-card: #151515;
+  --accentHover: #9dc888;
+  --bgWelcomeCard: #151515;
   --bg-overlay: rgba(21, 21, 21, 0.3);
-  --label-pink: #e09cb5;
-  --label-blue: #8fa1d0;
+  --labelPink: #e09cb5;
+  --labelBlue: #8fa1d0;
 }
 
 // DARK THEME
-html[data-theme='dark'] {
-  --bg-sidebar: #121212;
-  --bg-header: #161616;
-  --bg-main: #1f1f1f;
-  --bg-help: #1f1f1f;
+[data-theme='dark'] {
+  --bgSidebar: #121212;
+  --bgHeader: #161616;
+  --bgMain: #1f1f1f;
+  --bgHelp: #1f1f1f;
   --primary: #ffffff;
   --secondary: rgba(255, 255, 255, 0.3);
   --accent: #bedbb0;
-  --accent-hover: #9dc888;
-  --btn-plus: #bedbb0;
-  --btn-plus-hover: #9dc888;
+  --accentHover: #9dc888;
+  --btnPlus: #bedbb0;
+  --btnPlusHover: #9dc888;
   --scroll: #121212;
-  --bg-scroll: #ffffff;
+  --bgScroll: #ffffff;
 }
 
 // LIGHT THEME
-html[data-theme='light'] {
-  --bg-sidebar: #ffffff;
-  --bg-header: #fcfcfc;
-  --bg-main: #f6f6f7;
-  --bg-help: #f6f6f7;
+[data-theme='light'] {
+  --bgSidebar: #ffffff;
+  --bgHeader: #fcfcfc;
+  --bgMain: #f6f6f7;
+  --bgHelp: #f6f6f7;
   --primary: #161616;
   --secondary: rgba(22, 22, 22, 0.7);
   --accent: #bedbb0;
-  --accent-hover: #9dc888;
-  --btn-plus: #bedbb0;
-  --btn-plus-hover: #9dc888;
+  --accentHover: #9dc888;
+  --btnPlus: #bedbb0;
+  --btnPlusHover: #9dc888;
   --scroll: rgba(22, 22, 22, 0.1);
-  --bg-scroll: #e8e8e8;
+  --bgScroll: #e8e8e8;
 }
 
 // VIOLET THEME
-html[data-theme='violet'] {
-  --bg-sidebar: #5255bc;
-  --bg-header: #161616;
-  --bg-main: #ecedfd;
-  --bg-help: rgba(236, 237, 253, 0.4);
+[data-theme='violet'] {
+  --bgSidebar: #5255bc;
+  --bgHeader: #161616;
+  --bgMain: #ecedfd;
+  --bgHelp: rgba(236, 237, 253, 0.4);
   --primary: #ffffff;
   --secondary: rgba(255, 255, 255, 0.5);
   --accent: #5255bc;
-  --accent-hover: #7b7ede;
-  --btn-plus: #b8bcfd;
-  --btn-plus-hover: #979cea;
+  --accentHover: #7b7ede;
+  --btnPlus: #b8bcfd;
+  --btnPlusHover: #979cea;
   --scroll: #b8bcfd;
-  --bg-scroll: #ffffff;
+  --bgScroll: #ffffff;
 }

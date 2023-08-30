@@ -33,6 +33,7 @@ const handleRejected = (state, { payload }) => {
 
 const boardsInitialState = {
   allBoards: [],
+  boardById: {},
   isLoading: false,
   error: null,
 };

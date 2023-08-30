@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
 axios.defaults.baseURL = 'https://taskpro-backend-jo75.onrender.com';
+
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -9,6 +11,7 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
+
 const userRegistration = createAsyncThunk(
   'auth/registration',
   async (credentials, { rejectWithValue }) => {
@@ -21,11 +24,13 @@ const userRegistration = createAsyncThunk(
     }
   }
 );
+
 const userLogin = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/signin', credentials);
+      console.log(data);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -33,6 +38,23 @@ const userLogin = createAsyncThunk(
     }
   }
 );
+
+// export const userUpdate = createAsyncThunk(
+//   'users/userUpdate',
+//   async (credentials, thunkAPI) => {
+//     try {
+//       const { data } = await axios.put('/users/update', credentials, {
+//         headers: {
+//           'Content-Type': 'multipart/form-data',
+//         },
+//       });
+//       return data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
+
 const logout = createAsyncThunk(
   'auth/logout',
   async (credentials, { rejectWithValue }) => {
@@ -45,6 +67,7 @@ const logout = createAsyncThunk(
     }
   }
 );
+
 const checkAuth = createAsyncThunk('auth/refresh', async (_, thunkApi) => {
   const state = thunkApi.getState();
   const persistedToken = state.auth.token;
@@ -59,6 +82,7 @@ const checkAuth = createAsyncThunk('auth/refresh', async (_, thunkApi) => {
     return thunkApi.rejectWithValue(error.message);
   }
 });
+
 const authOperations = {
   userRegistration,
   userLogin,

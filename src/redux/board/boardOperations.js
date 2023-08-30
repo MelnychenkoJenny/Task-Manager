@@ -7,12 +7,23 @@ export const getAllBoards = createAsyncThunk(
   'boards/getAll',
   async (_, { rejectWithValue }) => {
     try {
-      const {
-        data: {boards},
-      } = await axios.get('/boards');
+      const { data: {boards}} = await axios.get('/boards');
       return boards;
     } catch (e) {
       return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const getBoardById = createAsyncThunk(
+  'boards/getBoardById',
+  async (id, thunkAPI) => {
+    try {
+      const res = await axios.get(`/boards/${id}`);
+      console.log(res)
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
