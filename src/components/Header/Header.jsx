@@ -1,14 +1,20 @@
 import scss from '../../styles/index.module.scss';
 import sprite from '../../images/sprite.svg';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/authSelectors.js';
 
 const Header = ({ click }) => {
     
     const [themeActive, setThemeActive] = useState(false);
 
-      const handleClick = () => {
+    const handleClick = () => {
     setThemeActive(!themeActive);
-  };
+    };
+
+    const user = useSelector(selectUser);
+
+    const [avatarURL, setAvatarURL] = useState('');
 
     return (
         <div className={scss.headerWrap}>
@@ -39,7 +45,7 @@ const Header = ({ click }) => {
                     )}
                 </div>
                 <ul className={scss.headerUserInfoWrap}>
-                    <li className={scss.headerUserName}>UserName</li>
+                    <li className={scss.headerUserName}>{user.name}</li>
                     <li className={scss.headerAvatar}></li>
                 </ul>
                 
