@@ -23,6 +23,12 @@ export const MainDashboard = () => {
           description:
             'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
         },
+        {
+          id: '03',
+          titleCard: 'Hi hi hi',
+          description:
+            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
+        },
       ],
     },
     {
