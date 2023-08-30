@@ -14,7 +14,7 @@ const Header = ({ click }) => {
 
     const user = useSelector(selectUser);
 
-    const [avatarURL, setAvatarURL] = useState('');
+    // const [avatarURL, setAvatarURL] = useState('');
 
     return (
         <div className={scss.headerWrap}>
