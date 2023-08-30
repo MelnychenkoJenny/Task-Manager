@@ -9,6 +9,7 @@ import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 import { AddCard } from 'components/AddCard';
 import { Card } from 'components/Card'
 import NewBoard from 'components/ModalBoard/NewBoard';
+import { PopColumn } from 'components/PopColumn';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const ScreensPage = () => {
         <AddCard />
         <Card />
         <NewBoard />
+        <PopColumn/>
       </div>
     </section>
   );
