@@ -15,6 +15,14 @@
   // background-color: #1f1f1f;
 }
 
+.KkColums {
+  display: flex;
+  gap: 15px;
+}
+.KkBtnAddColumnMain {
+  margin-top: 10px;
+}
+
 // ================================================== Filters styled
 .KkFilters {
   padding-top: 10px;
@@ -230,7 +238,7 @@
 }
 
 .KkBtnAddCard {
-  margin-top: 10px;
+  margin-top: 14px;
 }
 .KkBtnCard {
   display: flex;

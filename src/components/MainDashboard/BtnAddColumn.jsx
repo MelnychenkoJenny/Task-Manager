@@ -3,7 +3,7 @@ import styles from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import clsx from 'clsx';
 
-export const BtnAddColumn = ({ title, className, theme, onClick }) => {
+export const BtnAddColumn = ({ className, title, theme, onClick }) => {
   return (
     <div className={className}>
       <button
