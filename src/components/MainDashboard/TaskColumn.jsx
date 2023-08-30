@@ -1,6 +1,6 @@
 import styles from 'styles/index.module.scss';
 import { Card } from 'components/Card';
-import { BtnAddColumn } from './BtnAddColumn';
+// import { BtnAddColumn } from './BtnAddColumn';
 import { BtnAddCard } from './BtnAddCard';
 import { TitleCards } from './TitleCards';
 import { useState } from 'react';
@@ -8,9 +8,9 @@ import { useState } from 'react';
 export const TaskColumn = ({ className, titleCards, cards }) => {
   const [themeColor] = useState('light');
 
-  const onAddColumn = () => {
-    console.log('Add Column click');
-  };
+  // const onAddColumn = () => {
+  //   console.log('Add Column click');
+  // };
 
   const onAddCard = () => {
     console.log('Add Card click');

@@ -1,5 +1,5 @@
 import styles from 'styles/index.module.scss';
-// import { BtnAddColumn } from './BtnAddColumn';
+import { BtnAddColumn } from './BtnAddColumn';
 import { Filters } from './Filters';
 import { TaskColumn } from './TaskColumn';
 import { useState } from 'react';
