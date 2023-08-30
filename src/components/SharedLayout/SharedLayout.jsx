@@ -10,20 +10,6 @@ export const SharedLayout = () => {
   const [menuActive, setMenuActive] = useState(false);
 
   useEffect(() => {
-    const hendleEscClose = event => {
-      if (event.code === 'Escape' && window.innerWidth <= 1199.99) {
-        setMenuActive(false);
-      }
-    };
-
-    window.addEventListener('keydown', hendleEscClose);
-
-    return () => {
-      window.removeEventListener('keydown', hendleEscClose);
-    };
-  }, [menuActive, setMenuActive]);
-
-  useEffect(() => {
     const handleMinXlSize = () => {
       if (window.innerWidth >= 1199.99) {
         setMenuActive(true);
