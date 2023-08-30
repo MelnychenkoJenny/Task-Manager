@@ -70,7 +70,6 @@ export const MainDashboard = () => {
             console.log('Add column click');
           }}
         />
-        {/* ({ className, title, theme, onClick }) */}
       </ul>
     </section>
   );
