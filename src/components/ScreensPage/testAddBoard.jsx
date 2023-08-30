@@ -123,7 +123,7 @@ const AddBoard = () => {
 
   const handleClickTheme = theme => {
     if (theme === 'light' || theme === 'dark' || theme === 'violet') {
-      if(theme === user.theme) {
+      if(theme === user.theme && !theme) {
         return
       }
       dispatch(updateTheme(theme));
