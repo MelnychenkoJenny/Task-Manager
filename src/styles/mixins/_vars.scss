@@ -75,7 +75,9 @@ $max-width-content: 1218px;
   --scroll: #121212;
   --bgScroll: #ffffff;
     --borderTheme: #BEDBB0;
-    --textThemeMenu: rgba(255, 255, 255, 0.50);;
+    --textThemeMenu: rgba(255, 255, 255, 0.50);
+    --bgModal: #151515;
+    --modalTitle: #fff;
 }
 
 // LIGHT THEME
@@ -94,6 +96,9 @@ $max-width-content: 1218px;
   --bgScroll: #e8e8e8;
     --borderTheme: #BEDBB0;
     --textThemeMenu: #161616;
+    --bgModal: #FCFCFC;
+    --modalTitle: #161616;
+
 }
 
 // VIOLET THEME
@@ -112,4 +117,7 @@ $max-width-content: 1218px;
   --bgScroll: #ffffff;
   --borderTheme: #ecedfd;
   --textThemeMenu: #161616;
+  --bgModal: #FCFCFC;
+  --modalTitle: #161616;
+
 }
