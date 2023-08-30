@@ -15,6 +15,14 @@
   // background-color: #1f1f1f;
 }
 
+.KkColums {
+  display: flex;
+  gap: 15px;
+}
+.KkBtnAddColumnMain {
+  margin-top: 10px;
+}
+
 // ================================================== Filters styled
 .KkFilters {
   padding-top: 10px;
@@ -110,9 +118,11 @@
     &.light,
     &.violet {
       stroke: rgb(22, 22, 22, 0.8);
+      transition: stroke $transition;
     }
     &.dark {
       stroke: rgb(255, 255, 255, 0.8);
+      transition: stroke $transition;
     }
 
     &:hover,
@@ -156,6 +166,9 @@
 }
 
 // ================================================== Btn styled
+.KkBtnAddColumn {
+  margin-top: 10px;
+}
 
 .KkBtnColumn {
   display: flex;
@@ -224,6 +237,9 @@
   }
 }
 
+.KkBtnAddCard {
+  margin-top: 14px;
+}
 .KkBtnCard {
   display: flex;
   justify-content: center;
@@ -235,12 +251,25 @@
 
   &.light {
     background-color: #bedbb0;
+    // transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    transition: background-color $transition;
+    &:hover {
+      background-color: #9dc888;
+    }
   }
   &.dark {
     background-color: #bedbb0;
+    transition: background-color $transition;
+    &:hover {
+      background-color: #9dc888;
+    }
   }
   &.violet {
     background-color: #5255bc;
+    transition: background-color $transition;
+    &:hover {
+      background-color: #7b7ede;
+    }
   }
 
   & p {
