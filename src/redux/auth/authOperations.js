@@ -39,21 +39,32 @@ const userLogin = createAsyncThunk(
   }
 );
 
-// export const userUpdate = createAsyncThunk(
-//   'users/userUpdate',
-//   async (credentials, thunkAPI) => {
-//     try {
-//       const { data } = await axios.put('/users/update', credentials, {
-//         headers: {
-//           'Content-Type': 'multipart/form-data',
-//         },
-//       });
-//       return data;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
+export const updateTheme = createAsyncThunk(
+  'auth/updateTheme',
+  async (theme, { rejectWithValue }) => {
+    try {
+      const {data}= await axios.patch('/users/themes', { theme });
+      console.log('rez', data)
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserProfile = createAsyncThunk(
+  'auth/updateUserProfile',
+  async (formData, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.put(`/users/update`, formData);
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 
 const logout = createAsyncThunk(
   'auth/logout',
@@ -88,5 +99,7 @@ const authOperations = {
   userLogin,
   logout,
   checkAuth,
+  updateTheme,
+  updateUserProfile,
 };
 export default authOperations;

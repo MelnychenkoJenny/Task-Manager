@@ -3,14 +3,17 @@ import { useAuth } from 'hooks';
 
 
 const HomePage = () => {
+  
+  const { user } = useAuth();
 
-const { user } = useAuth();
-console.log(user)
+  
+  // !!!!!!!!!!!!!ЗМІНА ТЕМИ!!!!!!!!!!!!!!!!!
+
 
   return (
-    <>
+    <div data-theme={user.theme}>
       <ScreensPage />
-    </>
+    </div>
   );
 };
 export default HomePage;

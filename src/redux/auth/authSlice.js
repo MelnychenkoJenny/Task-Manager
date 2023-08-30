@@ -84,7 +84,6 @@ const handlePendingRefresh = state => {
 };
 const handleAuthorisationFulfilled = (state, action) => {
   state.user = action.payload.user;
-  console.log(state.token)
   state.token = action.payload.token;
   state.isLoggedIn = true;
   state.isLoading = false;
@@ -107,8 +106,12 @@ const handleRejectedRefresh = state => {
   state.getIsFetchAnswer = false;
 };
 
+const handleFulfilledUpdateTheme = (state, action) => {
+  state.user = { ...state.user, ...action.payload };
+}
+
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, avatarURL: '', theme: 'light' },
   token: null,
   isLoggedIn: false,
   getIsFetchAnswer: false,
@@ -127,6 +130,7 @@ const authSlice = createSlice({
       .addCase(authOperations.checkAuth.pending, handlePendingRefresh)
       .addCase(authOperations.checkAuth.fulfilled, handleFulfilledRefresh)
       .addCase(authOperations.checkAuth.rejected, handleRejectedRefresh)
+      .addCase(authOperations.updateTheme.fulfilled, handleFulfilledUpdateTheme)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(
         action => action.type.endsWith('/rejected'),
