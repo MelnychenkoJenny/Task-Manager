@@ -11,21 +11,30 @@
   // height: 91vh; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
   padding-left: 24px;
   padding-right: 24px;
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(245, 245, 245);
   // background-color: #1f1f1f;
-}
-.KkTitle {
-  font-family: map-get($fonts, m), sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  letter-spacing: -0.36px;
-  color: #fff;
 }
 
 // ================================================== Filters styled
 .KkFilters {
   padding-top: 10px;
 }
+
+.KkTitle {
+  font-family: map-get($fonts, m), sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  letter-spacing: -0.36px;
+
+  &.light,
+  &.violet {
+    color: #161616;
+  }
+  &.dark {
+    color: #ffffff;
+  }
+}
+
 .KkWrapFilters {
   display: flex;
   justify-content: space-between;
@@ -39,10 +48,7 @@
   padding: 0;
   // border-radius: 8px;
   background-color: inherit;
-  & svg {
-    stroke: rgba(255, 255, 255, 0.8);
-    fill: none;
-  }
+
   & p {
     margin-left: 8px;
 
@@ -50,31 +56,211 @@
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
+    &.light,
+    &.violet {
+      color: rgba(22, 22, 22, 0.8);
+    }
+    &.dark {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
 
-    color: rgba(255, 255, 255, 0.8);
+  & svg {
+    &.light,
+    &.violet {
+      stroke: rgba(22, 22, 22, 0.8);
+    }
+    &.dark {
+      stroke: rgba(255, 255, 255, 0.8);
+    }
+
+    fill: none;
   }
 }
 
-// ================================================== BtnAddColumn styled
+// ================================================== TaskColumn styled
 
-.KkBtn {
+.KkTaskColumn {
+  width: 334px;
+  // background-color: salmon;
+}
+
+// ================================================== Title Cards styled
+.TitleCards {
+  margin-top: 10px;
+  margin-bottom: 14px;
+
+  & p {
+    font-family: map-get($fonts, m), sans-serif;
+    font-style: normal;
+    letter-spacing: -0.36px;
+
+    &.light,
+    &.violet {
+      color: #161616;
+    }
+    &.dark {
+      color: #ffffff;
+    }
+  }
+
+  & svg {
+    fill: none;
+
+    &.light,
+    &.violet {
+      stroke: rgb(22, 22, 22, 0.8);
+    }
+    &.dark {
+      stroke: rgb(255, 255, 255, 0.8);
+    }
+
+    &:hover,
+    &:focus {
+      stroke: #bedbb0;
+    }
+  }
+}
+
+.KkWrapTitleCards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 334px;
+  padding: 18px 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+
+  &.light,
+  &.violet {
+    background-color: #ffffff;
+  }
+  &.dark {
+    background-color: #121212;
+  }
+}
+
+.KkSvgTitleCards {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.KkBtnIcons {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 14px 79px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: inherit;
+}
+
+// ================================================== Btn styled
+
+.KkBtnColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 334px;
+  padding: 14px 0;
   border: none;
   border-radius: 8px;
-  background-color: #121212;
+
+  &.light {
+    background-color: #ffffff;
+  }
+  &.dark {
+    background-color: #121212;
+  }
+  &.violet {
+    background-color: #ffffff;
+  }
+
   & p {
     margin-left: 8px;
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
-    color: #fff;
+    &.light {
+      color: #161616;
+    }
+    &.dark {
+      color: #ffffff;
+    }
+    &.violet {
+      color: #161616;
+    }
   }
 }
 
-.KkIconPlus {
+.KkIconPlusColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+
+  &.light {
+    background: #161616;
+  }
+  &.dark {
+    background: #fff;
+  }
+  &.violet {
+    background: #5255bc;
+  }
+  & svg {
+    &.light {
+      stroke: #ffffff;
+    }
+    &.dark {
+      stroke: #121212;
+    }
+    &.violet {
+      stroke: #ffffff;
+    }
+  }
+}
+
+.KkBtnCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 334px;
+  padding: 14px 0;
+  border: none;
+  border-radius: 8px;
+
+  &.light {
+    background-color: #bedbb0;
+  }
+  &.dark {
+    background-color: #bedbb0;
+  }
+  &.violet {
+    background-color: #5255bc;
+  }
+
+  & p {
+    margin-left: 8px;
+    font-family: map-get($fonts, m), sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    &.light {
+      color: #161616;
+    }
+    &.dark {
+      color: #161616;
+    }
+    &.violet {
+      color: #ffffff;
+    }
+  }
+}
+
+.KkIconPlusCard {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,24 +269,22 @@
   height: 28px;
   border: none;
   border-radius: 6px;
-  background: #fff;
+
+  &.light,
+  &.dark {
+    background: #161616;
+  }
+  &.violet {
+    background: #ffffff;
+  }
+
   & svg {
-    stroke: #161616;
+    &.light,
+    &.dark {
+      stroke: #ffffff;
+    }
+    &.violet {
+      stroke: #161616;
+    }
   }
 }
-
-// .KkBtn {
-//   // margin-top: 10px;
-//   // margin-bottom: 10px;
-//   display: block;
-//   width: 28px;
-//   height: 28px;
-//   border: none;
-//   border-radius: 6px;
-//   background: var(--accent);
-// }
-
-// .KkSvg {
-//   margin-top: 2px;
-//   stroke: #161616;
-// }

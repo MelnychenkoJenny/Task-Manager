@@ -5,7 +5,6 @@ import { getAllBoards } from 'redux/board/boardOperations';
 
 import AddBoard from './testAddBoard';
 
-
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 import { AddCard } from 'components/AddCard';
 import { Card } from 'components/Card'
@@ -20,7 +19,6 @@ const ScreensPage = () => {
   return (
     <section className={styles.YMScreenReg} >
       <div className={styles.AfWelcomRegWr} style={{display: 'flex', flexWrap: 'wrap'}}>
-
         <AddBoard />
         <MainDashboard />
         <AddCard />
@@ -28,5 +26,14 @@ const ScreensPage = () => {
       </div>
     </section>
   );
+  // return (
+  //   <section className={styles.AfWelcomReg}>
+  //     <div className={styles.AfWelcomRegWr}>
+
+  //       <AddBoard />
+  //       <MainDashboard />
+  //     </div>
+  //   </section>
+  // );
 };
 export default ScreensPage;
