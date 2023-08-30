@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import styles from 'styles/index.module.scss';
+// import styles from 'styles/index.module.scss';
 import { getAllBoards } from 'redux/board/boardOperations';
 
-import AddBoard from './testAddBoard';
+// import AddBoard from './testAddBoard';
 
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 
@@ -16,11 +16,10 @@ const ScreensPage = () => {
 
   return (
     <section>
-      <div>
-        <MainDashboard />
-      </div>
+      <MainDashboard />
     </section>
   );
+
   // return (
   //   <section className={styles.AfWelcomReg}>
   //     <div className={styles.AfWelcomRegWr}>

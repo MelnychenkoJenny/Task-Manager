@@ -1,5 +1,4 @@
 import styles from 'styles/index.module.scss';
-import { BtnAddColumn } from './BtnAddColumn';
 import { Filters } from './Filters';
 import { TaskColumn } from './TaskColumn';
 
