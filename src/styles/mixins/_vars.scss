@@ -56,7 +56,7 @@ $max-width-content: 1218px;
   --accent: #bedbb0;
   --accentHover: #9dc888;
   --bgWelcomeCard: #151515;
-  --bg-overlay: rgba(21, 21, 21, 0.3);
+  --bgOverlay: rgba(21, 21, 21, 0.3);
   --labelPink: #e09cb5;
   --labelBlue: #8fa1d0;
 }
@@ -75,8 +75,8 @@ $max-width-content: 1218px;
   --btnPlusHover: #9dc888;
   --scroll: #121212;
   --bgScroll: #ffffff;
-    --borderTheme: #BEDBB0;
-    --textThemeMenu: rgba(255, 255, 255, 0.50);;
+  --borderTheme: #bedbb0;
+  --textThemeMenu: rgba(255, 255, 255, 0.5);
 }
 
 // LIGHT THEME
@@ -93,8 +93,8 @@ $max-width-content: 1218px;
   --btnPlusHover: #9dc888;
   --scroll: rgba(22, 22, 22, 0.1);
   --bgScroll: #e8e8e8;
-    --borderTheme: #BEDBB0;
-    --textThemeMenu: #161616;
+  --borderTheme: #bedbb0;
+  --textThemeMenu: #161616;
 }
 
 // VIOLET THEME
