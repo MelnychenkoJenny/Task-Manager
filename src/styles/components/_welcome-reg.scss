@@ -128,7 +128,9 @@
     }
 
     &Error {
-      color: #ba0f30;
+      margin-bottom: 5px;
+
+      color: red;
       font-size: 14px;
       font-weight: normal;
     }
