@@ -6,7 +6,7 @@ import { TitleCards } from './TitleCards';
 import { useState } from 'react';
 
 export const TaskColumn = ({ className }) => {
-  const [themeColor] = useState('light');
+  const [themeColor] = useState('violet');
 
   const onAddColumn = () => {
     console.log('Add Column click');

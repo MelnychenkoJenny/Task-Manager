@@ -110,9 +110,11 @@
     &.light,
     &.violet {
       stroke: rgb(22, 22, 22, 0.8);
+      transition: stroke $transition;
     }
     &.dark {
       stroke: rgb(255, 255, 255, 0.8);
+      transition: stroke $transition;
     }
 
     &:hover,
@@ -241,18 +243,22 @@
 
   &.light {
     background-color: #bedbb0;
+    // transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    transition: background-color $transition;
     &:hover {
       background-color: #9dc888;
     }
   }
   &.dark {
     background-color: #bedbb0;
+    transition: background-color $transition;
     &:hover {
       background-color: #9dc888;
     }
   }
   &.violet {
     background-color: #5255bc;
+    transition: background-color $transition;
     &:hover {
       background-color: #7b7ede;
     }
