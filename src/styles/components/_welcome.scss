@@ -112,4 +112,36 @@
       }
     }
   }
+  &FormWrError {
+    height: 14px;
+    margin: 2px 0;
+  }
+  &FormError {
+    padding: 0 6px;
+    color: red;
+    font-size: 12px;
+    font-weight: normal;
+  }
+  &ShowPassWr {
+    position: relative;
+  }
+  &FormIconShowPass {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 90%;
+
+    fill: #1f1f1f;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.AfWelcomBacError {
+  min-height: 15px;
+  text-align: center;
+  color: red;
+  padding: 0 6px;
+  margin-bottom: 10px;
 }

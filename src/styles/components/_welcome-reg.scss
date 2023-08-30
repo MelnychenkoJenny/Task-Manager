@@ -31,7 +31,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 40px;
+      margin-bottom: 15px;
 
       &Log {
         font-family: map-get($fonts, m);
@@ -90,10 +90,6 @@
     }
     &WrInp {
       position: relative;
-      margin-bottom: 14px;
-      &:last-child {
-        margin-bottom: 0px;
-      }
     }
     &Input {
       padding: 14px 18px;
@@ -114,24 +110,6 @@
       &:focus {
         opacity: 1;
       }
-    }
-    &IconShowPass {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      top: 50%;
-      left: 90%;
-
-      fill: #1f1f1f;
-      cursor: pointer;
-      stroke: rgba(255, 255, 255, 0.3);
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    &Error {
-      color: #ba0f30;
-      font-size: 14px;
-      font-weight: normal;
     }
   }
 }

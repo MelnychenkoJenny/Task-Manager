@@ -115,3 +115,65 @@
     }
   }
 }
+
+
+.btnThemeOpen {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.dropdownThemeWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  
+}
+
+.themeHeaderWrap {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.dropdownThemeMenu {
+  background-color: var(--bg-header);
+  width: 100px;
+  height: 107px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #BEDBB0;
+  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.10);
+  padding: 18px 44px 18px 18px;
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  position: absolute;
+  top: 100%;
+  left: -10%;
+}
+
+
+.dropdownThemeList {
+  cursor: pointer;
+}
+
+.dropdownThemeList:not(:last-child) {
+  padding-bottom: 4px;
+}
+
+.themeMenuItem {
+  color: var(--primary);
+    font-family: map-get($fonts, r);
+    font-size: 14px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.28px;
+}
+
+.themeMenuItem:hover,
+.themeMenuItem:focus {
+  color: #BEDBB0;
+}

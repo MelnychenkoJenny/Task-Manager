@@ -20,7 +20,7 @@ const userRegistration = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.request.status);
     }
   }
 );
@@ -34,7 +34,7 @@ const userLogin = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.request.status);
     }
   }
 );
