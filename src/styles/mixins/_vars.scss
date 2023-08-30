@@ -79,6 +79,8 @@ $max-width-content: 1218px;
     --textThemeMenu: rgba(255, 255, 255, 0.50);
     --bgModal: #151515;
     --modalTitle: #fff;
+    --modalBtnText: #161616;
+    --iconPlus: rgba(255, 255, 255, 1);
 }
 
 // LIGHT THEME
@@ -99,7 +101,8 @@ $max-width-content: 1218px;
     --textThemeMenu: #161616;
     --bgModal: #FCFCFC;
     --modalTitle: #161616;
-
+    --modalBtnText: #161616;
+    --iconPlus: rgba(255, 255, 255, 1);
 }
 
 // VIOLET THEME
@@ -120,5 +123,6 @@ $max-width-content: 1218px;
   --textThemeMenu: #161616;
   --bgModal: #FCFCFC;
   --modalTitle: #161616;
-
+  --modalBtnText: #fff;
+  --iconPlus: rgba(22, 22, 22, 1);
 }

@@ -69,7 +69,7 @@
   width: 100%;
   height: 49px;
   border-radius: 8px;
-  color: #161616;
+  color: var(--modalBtnText);
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -77,10 +77,11 @@
   line-height: normal;
   letter-spacing: -0.28px;
   border-color: transparent;
-  background-color: #bedbb0;
+  background-color: var(--accent);
 }
 
 .IMBtnIconWrapper {
+  // background-color: var(--modalBtnText);
   background-color: #161616;
   border-radius: 8px;
   width: 28px;
@@ -94,5 +95,7 @@
 .INAddIcon {
   width: 14px;
   height: 14px;
-  stroke: #ffffff;
+  // stroke: var(--iconPlus);
+  stroke: #fff;
+
 }
