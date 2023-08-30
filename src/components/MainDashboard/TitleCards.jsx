@@ -1,7 +1,7 @@
 import styles from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import clsx from 'clsx';
-import { cleanDigitSectionValue } from '@mui/x-date-pickers/internals/hooks/useField/useField.utils';
+// import { cleanDigitSectionValue } from '@mui/x-date-pickers/internals/hooks/useField/useField.utils';
 
 export const TitleCards = ({ className, title, theme }) => {
   const onIconPensil = () => {

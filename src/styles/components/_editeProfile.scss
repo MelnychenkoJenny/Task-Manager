@@ -1,5 +1,5 @@
 .titleEditUser {
-    color: var(--bg-header);
+    color: var(--bgHeader);
     font-family: map-get($fonts, m);
     font-size: 18px;
     font-style: normal;
@@ -52,12 +52,12 @@
 
 .formInputEditUser:hover,
 .formInputEditUser:focus {
-    border: 1px solid var(--accent-hover);           
+    border: 1px solid var(--accentHover);           
 }
 
 .formInputEditUser:active,
  .formInputEditUser:focus {
-    border: 1px solid var(--accent-hover);
+    border: 1px solid var(--accentHover);
     outline: none;
     
 }
@@ -84,7 +84,7 @@
 }
 
 .svgCloseEditUser {
-    stroke: #161616;       
+    stroke: var(--bgHeader);       
     margin-top: 14px;  
     margin-right: 14px;
 
@@ -99,7 +99,7 @@
 .btnAddAvatar {
     width: 24px;
     height: 24px;
-    background-color: var(--accent-hover);
+    background-color: var(--accentHover);
     flex-shrink: 0;
     border: none;
     border-radius: 7px;
@@ -114,7 +114,7 @@
 }
 
 .svgPlusEditUser {
-    stroke: #161616;
+    stroke: var(--bgHeader);
 }
 
 .btnSpan {
