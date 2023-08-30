@@ -5,7 +5,6 @@ import { getAllBoards } from 'redux/board/boardOperations';
 
 import AddBoard from './testAddBoard';
 
-
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 
 const ScreensPage = () => {
@@ -16,13 +15,20 @@ const ScreensPage = () => {
   }, [dispatch]);
 
   return (
-    <section className={styles.AfWelcomReg}>
-      <div className={styles.AfWelcomRegWr}>
-
-        <AddBoard />
+    <section>
+      <div>
         <MainDashboard />
       </div>
     </section>
   );
+  // return (
+  //   <section className={styles.AfWelcomReg}>
+  //     <div className={styles.AfWelcomRegWr}>
+
+  //       <AddBoard />
+  //       <MainDashboard />
+  //     </div>
+  //   </section>
+  // );
 };
 export default ScreensPage;
