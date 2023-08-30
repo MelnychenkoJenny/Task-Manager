@@ -24,7 +24,7 @@ const ScreensPage = () => {
         <AddBoard />
         <MainDashboard />
         <AddCard />
-          <Card />
+        <Card />
       </div>
     </section>
   );
