@@ -17,8 +17,9 @@ const ScreensPage = () => {
   }, [dispatch]);
 
   return (
-    <section>
-      <div>
+    <section className={styles.YMScreenReg} >
+      <div className={styles.AfWelcomRegWr} style={{display: 'flex', flexWrap: 'wrap'}}>
+        <AddBoard />
         <MainDashboard />
         <AddCard />
         <Card />
