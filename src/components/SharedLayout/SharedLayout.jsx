@@ -5,9 +5,11 @@ import { useState, useEffect } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 import Loader from 'components/Loader/Loader';
 import styles from 'styles/index.module.scss';
+import { useAuth } from 'hooks';
 
 export const SharedLayout = () => {
   const [menuActive, setMenuActive] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleMinXlSize = () => {
@@ -38,7 +40,7 @@ export const SharedLayout = () => {
   };
 
   return (
-    <div className={styles.AFNavResWr} onClick={hendleBackdropClose}>
+    <div className={styles.AFNavResWr} onClick={hendleBackdropClose} data-theme={user.theme}>
       <header className={styles.AFNavResWrHead}>
         <Header click={handleClick} />
       </header>

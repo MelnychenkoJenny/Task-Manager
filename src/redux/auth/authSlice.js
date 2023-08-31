@@ -83,12 +83,7 @@ const handlePendingRefresh = state => {
   state.getIsFetchAnswer = true;
 };
 const handleAuthorisationFulfilled = (state, action) => {
-  state.user = action.payload;
-  state.token = action.payload.token;
-  state.isLoggedIn = true;
-  state.isLoading = false;
-};
-const handleAuthFulfilled = (state, action) => {
+  console.log('payload', action.payload)
   state.user = action.payload;
   state.token = action.payload.token;
   state.isLoggedIn = true;
@@ -132,7 +127,7 @@ const authSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(authOperations.userRegistration.fulfilled, handleAuthorisationFulfilled)
-      .addCase(authOperations.userLogin.fulfilled, handleAuthFulfilled)
+      .addCase(authOperations.userLogin.fulfilled, handleAuthorisationFulfilled)
       .addCase(authOperations.logout.fulfilled, handleFulfilledLogout)
       .addCase(authOperations.checkAuth.pending, handlePendingRefresh)
       .addCase(authOperations.checkAuth.fulfilled, handleFulfilledRefresh)
