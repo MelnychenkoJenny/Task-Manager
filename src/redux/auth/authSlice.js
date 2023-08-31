@@ -68,9 +68,6 @@
 
 // export default authSlice.reducer;
 
-
-
-
 // Варіант з builder
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './authOperations';
@@ -83,7 +80,7 @@ const handlePendingRefresh = state => {
   state.getIsFetchAnswer = true;
 };
 const handleAuthorisationFulfilled = (state, action) => {
-  console.log('payload', action.payload)
+  console.log('payload', action.payload);
   state.user = action.payload;
   state.token = action.payload.token;
   state.isLoggedIn = true;
@@ -108,9 +105,14 @@ const handleRejectedRefresh = state => {
   state.getIsFetchAnswer = false;
 };
 
-const handleFulfilledUpdateTheme = (state, action) => {
-  state.user = { ...state.user, ...action.payload };
-}
+const handleFulfilledUpdateTheme = (state, { payload }) => {
+  state.user = { ...state.user, ...payload };
+};
+
+const handleFulfilledUpdateUserProfile = (state, { payload }) => {
+  // const {name, email, avatarURL, theme} = payload
+  state.user = { ...state.user, ...payload };
+};
 
 const initialState = {
   user: { name: null, email: null, avatarURL: '', theme: 'light' },
@@ -126,13 +128,20 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(authOperations.userRegistration.fulfilled, handleAuthorisationFulfilled)
+      .addCase(
+        authOperations.userRegistration.fulfilled,
+        handleAuthorisationFulfilled
+      )
       .addCase(authOperations.userLogin.fulfilled, handleAuthorisationFulfilled)
       .addCase(authOperations.logout.fulfilled, handleFulfilledLogout)
       .addCase(authOperations.checkAuth.pending, handlePendingRefresh)
       .addCase(authOperations.checkAuth.fulfilled, handleFulfilledRefresh)
       .addCase(authOperations.checkAuth.rejected, handleRejectedRefresh)
       .addCase(authOperations.updateTheme.fulfilled, handleFulfilledUpdateTheme)
+      .addCase(
+        authOperations.updateUserProfile.fulfilled,
+        handleFulfilledUpdateUserProfile
+      )
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(
         action => action.type.endsWith('/rejected'),
@@ -142,4 +151,3 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 // export const authReducer = authSlice.reducer;
-

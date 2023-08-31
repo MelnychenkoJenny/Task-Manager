@@ -23,7 +23,7 @@ const Header = ({ click }) => {
   };
 
   const { user } = useAuth();
-  console.log(1515, user.name);
+
   // const [avatarURL, setAvatarURL] = useState('');
 
   return (
