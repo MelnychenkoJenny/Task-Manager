@@ -8,10 +8,6 @@ import { useState } from 'react';
 export const TaskColumn = ({ className, titleCards, cards }) => {
   const [themeColor] = useState('light');
 
-  // const onAddColumn = () => {
-  //   console.log('Add Column click');
-  // };
-
   const onAddCard = () => {
     console.log('Add Card click');
   };
@@ -23,11 +19,13 @@ export const TaskColumn = ({ className, titleCards, cards }) => {
         title={titleCards}
         theme={themeColor}
       />
-      {cards.map(({ id, titleCard, description }) => (
-        <ul key={id}>
-          <Card titleCard={titleCard} description={description} />
-        </ul>
-      ))}
+      <ul className={styles.KkCards}>
+        {cards.map(({ id, titleCard, description }) => (
+          <li key={id}>
+            <Card titleCard={titleCard} description={description} />
+          </li>
+        ))}
+      </ul>
       <BtnAddCard
         className={styles.KkBtnAddCard}
         title={'Add another card'}
