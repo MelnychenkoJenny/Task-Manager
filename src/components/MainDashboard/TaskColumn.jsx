@@ -28,11 +28,22 @@ export const TaskColumn = ({ className, titleCards, cards }) => {
         title={titleCards}
         theme={themeColor}
       />
-      {cards.map(({ id, titleCard, description, priority, deadline }) => (
-        <ul key={id}>
-          <Card id={id} cardTitle={titleCard} description={description} priority={priority} deadline={deadline} />
-        </ul>
-      ))}
+// <<<<<<< main-dashboard2
+//       <ul className={styles.KkCards}>
+//         {cards.map(({ id, titleCard, description }) => (
+//           <li key={id}>
+//             <Card titleCard={titleCard} description={description} />
+//           </li>
+//         ))}
+//       </ul>
+// =======
+//            <ul className={styles.KkCards}>
+//       {cards.map(({ id, titleCard, description, priority, deadline }) => (
+//         <ul key={id}>
+//           <Card id={id} cardTitle={titleCard} description={description} priority={priority} deadline={deadline} />
+//         </ul>
+//       ))}
+// >>>>>>> main
       <BtnAddCard
         className={styles.KkBtnAddCard}
         title={'Add another card'}

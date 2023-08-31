@@ -35,6 +35,18 @@ export const MainDashboard = () => {
           priority: 'medium',
           deadline: '02/09/2023',
         },
+        {
+          id: '04',
+          titleCard: 'Hi hi hi',
+          description:
+            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
+        },
+        {
+          id: '05',
+          titleCard: 'Hi hi hi',
+          description:
+            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
+        },
       ],
     },
     {
@@ -59,7 +71,29 @@ export const MainDashboard = () => {
         },
       ],
     },
+    {
+      id: '03',
+      titleCards: 'Title Cards 02',
+      cards: [
+        {
+          id: '01',
+          titleCard: 'Title card 2222',
+          description:
+            'Create visually appealing and functional design prototypes based on the pproved concepts',
+        },
+        {
+          id: '02',
+          titleCard: 'Title cadr 3333',
+          description:
+            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
+        },
+      ],
+    },
   ]);
+
+  const onAddColumn = () => {
+    console.log('Add Column click');
+  };
 
   return (
     <section className={styles.KkSectionMainDashboard}>
@@ -68,6 +102,7 @@ export const MainDashboard = () => {
         titleBoard={'Title Board'}
         theme={'light'}
       />
+
       <ul className={styles.KkColums}>
         {columns.map(({ id, titleCards, cards }) => (
           <li key={id}>
@@ -82,9 +117,7 @@ export const MainDashboard = () => {
           className={styles.KkBtnAddColumnMain}
           title={'Add column'}
           theme={'light'}
-          onClick={() => {
-            console.log('Add column click');
-          }}
+          onClick={onAddColumn}
         />
       </ul>
     </section>

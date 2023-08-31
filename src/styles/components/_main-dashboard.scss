@@ -1,5 +1,11 @@
 // outline: 1px solid salmon;
 
+@include minMd() {
+} // планшет
+
+@include minXl() {
+} // комп
+
 .TestTest {
   // margin: 10px;
   margin-top: 10px;
@@ -7,32 +13,58 @@
 
 // ================================================== MainDashboard styled
 .KkSectionMainDashboard {
-  // width: 100vw; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // height: 91vh; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  padding-left: 24px;
-  padding-right: 24px;
+  width: 100vw;
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: rgb(245, 245, 245);
+
   // background-color: #1f1f1f;
+  @include minMd() {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include minXl() {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 .KkColums {
   display: flex;
   gap: 15px;
+
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
+
 .KkBtnAddColumnMain {
   margin-top: 10px;
 }
 
 // ================================================== Filters styled
 .KkFilters {
-  padding-top: 10px;
+  padding-top: 14px;
+
+  @include minMd() {
+    padding-top: 26px;
+  } // планшет
+
+  @include minXl() {
+    padding-top: 10px;
+  } // комп
 }
 
 .KkTitle {
   font-family: map-get($fonts, m), sans-serif;
-  font-size: 18px;
+  // font-size: 14px;
   font-style: normal;
-  letter-spacing: -0.36px;
+
+  @include minMd() {
+    font-size: 18px;
+    font-style: normal;
+    letter-spacing: -0.36px;
+  } // планшет
 
   &.light,
   &.violet {
@@ -59,11 +91,15 @@
 
   & p {
     margin-left: 8px;
-
-    margin-left: 8px;
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
+
+    @include minMd() {
+      font-size: 18px;
+      letter-spacing: -0.36px;
+    } // планшет
+
     &.light,
     &.violet {
       color: rgba(22, 22, 22, 0.8);
@@ -90,10 +126,11 @@
 
 .KkTaskColumn {
   width: 334px;
+
   // background-color: salmon;
 }
 
-// ================================================== Title Cards styled
+// ================================================== Title Cards styled !!!!!!!!!!!!!!!!
 .TitleCards {
   margin-top: 10px;
   margin-bottom: 14px;
@@ -155,6 +192,14 @@
   align-items: center;
   gap: 8px;
 }
+
+.KkCards {
+  display: block;
+  max-height: calc(100vh * 0.65);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
 .KkBtnIcons {
   display: flex;
   justify-content: center;
