@@ -1,9 +1,11 @@
 .sidebarWrap {
    width: 225px;
    height: 100vh;
-   background-color:var(--bg-sidebar);
-   position: relative;
+   background-color: #fff;
+   // background-color: greenyellow;
+   position: absolute;
    top: 0; 
+   z-index: 1111;
    @include minMd() {
       width:260px;
       }     
@@ -53,7 +55,7 @@
    font-style: normal;
    line-height: normal;
    letter-spacing: -0.24px;
-      margin-bottom: 8px;
+   margin-bottom: 8px;
    }
 
 .sbBoards {
@@ -98,6 +100,10 @@
    border-radius: 6px;
    background: #BEDBB0;
    // flex-shrink: 0;
+         &:hover,
+            &:focus {
+               background-color: #9DC888;
+            }
 }
 
 .sbCreateBoardLogo {
@@ -202,6 +208,10 @@
    stroke: #BEDBB0;
    fill: #fff;
    margin-right: 14px;
+      &:hover,
+         &:focus {
+            stroke: #9DC888;
+         }
 }
 
 .sbHelp::before {
@@ -226,4 +236,103 @@ color: #161616;
    font-size: 14px;
    font-style: normal;
    line-height: normal;
+}
+
+.boardsList {
+width: 221px;
+height: 191px;
+display: flex;
+flex-direction: column;
+gap: 4px;
+overflow-y: scroll;
+}
+
+.boardsListItemWrap {
+   width: 211px;
+   height: 61px;
+   display: flex;
+   cursor: pointer;
+   justify-content: space-between;
+   align-items: center;
+   border-color: transparent;
+      &:focus-within {
+      // opacity: 0.4;
+      background: #F6F6F7;     
+       .boardsListItemTitle {
+         color: #161616;
+      }
+      .boardsListItemTitleSvg {
+         stroke: #161616;
+         }
+      .boardsListItemActive {
+            display: flex;
+      }
+
+}}
+
+.boardsListItem {
+   width: 211px;
+   height: 61px;
+   display: flex;
+}
+ .boardsListItemTitleGroup {
+   display: flex;
+
+ }
+.boardsListItemTitleSvg {
+   stroke: #16161680;
+   fill: transparent;
+   margin-right: 4px;
+
+}
+
+.boardsListItemTitle{
+   display: flex;
+   justify-content:flex-start;
+   color: rgba(22, 22, 22, 0.50);
+   font-family: map-get($fonts, m), sans-serif;
+   font-size: 14px;
+   letter-spacing: -0.28px;
+}
+
+.boardsListItemActive {
+   display: none;
+}
+
+.boardsListItemButtons {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 8px;
+   margin-right: 14px;
+
+}
+.boardsListItemButton {
+   width: 16px;
+   height: 16px;
+   padding: 0;
+   border: none;
+   background-color: transparent;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.boardsListItemSvg {
+   stroke: #16161680;
+   fill: transparent;
+   transition: stroke 250ms linear;      
+         &:hover,
+         &:focus {
+            stroke: #BEDBB0;
+         }
+}
+
+.boardsListActiveFlag {
+   width: 4px;
+      height: 61px;
+      display: flex;
+      flex-shrink: 0;
+      border-radius: 4px 0px 0px 4px;
+         background: #BEDBB0;
 }

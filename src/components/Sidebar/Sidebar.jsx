@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { React, useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import authOperations from '../../redux/auth/authOperations';
+import BoardsList from '../Sidebar/BoardsList';
 
 // import Login from 'components/Login/Login';
 
@@ -42,8 +43,8 @@ const Sidebar = () => {
               </button>
             </div>
           </div>
-          <div>Тут буде елемент зі списком створених дошок</div>
-          <div className={scss.sbHelp}>
+              <BoardsList/>
+              <div className={scss.sbHelp}>
             <div className={scss.sbHelpPngCactus}></div>
             <p className={scss.sbHelpText}>
               If you need help with
@@ -86,8 +87,7 @@ const Sidebar = () => {
           </div>
           {/* <Login/> */}
         </Modal>
-      )}
-      ;
+      )}      
     </>
   );
 };
