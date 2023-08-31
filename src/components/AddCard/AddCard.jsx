@@ -14,21 +14,31 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 
 
-const AddCard = () => {
-
+const AddCard = ({ modalTitle, id, cardTitle, description, priority, deadline, modalBtnTitle }) => {
   // const dispatch = useDispatch();
-  const [selectedPriority, setSelectedPriority] = useState('without');
-  const [selectedDate, setSelectedDate] = useState(dayjs()); // dayjs() - currentDate
-  //selectedDate = M {$L: 'en', $u: undefined, $d: Tue Aug 29 2023 08:05:53 GMT+0300 (за східноєвропейським літнім часом), $x: {…}, $y: 2023, …}
+
+  const [titleValue, setTitleValue] = useState(cardTitle); // для редагування
+  const [descriptionValue, setDescriptionValue] = useState(description); // для редагування
+  const [selectedPriority, setSelectedPriority] = useState(priority ? priority : 'without');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(deadline ? dayjs(deadline, 'DD/MM/YYYY') : dayjs()); // dayjs() - currentDate
+  //selectedDate = M {$L: 'en', $u: undefined, $d: Tue Aug 29 2023 08:05:53 GMT+0300 (за східноєвропейським літнім часом), $x: {…}, $y: 2023, …}
+  // deadline ? dayjs(deadline, 'DD/MM/YYYY').format("dddd, MMMM D") : dayjs()
 
+  // console.log(deadline) //01/09/2023
+  // console.log(dayjs(deadline)) // M {... Mon Jan 09 2023 00:00:00 ...} - міняє день і місяць місцями
+  // console.log(dayjs(deadline, 'DD/MM/YYYY')); // M {... Fri Sep 01 2023 00:00:00 ...} - тепер все Ок
+  // Тепер бібліотека Material UA застосує формат "dddd, MMMM D" і отримаємо те, що треба:
+  // console.log(dayjs(deadline, 'DD/MM/YYYY').format("dddd, MMMM D")); // Thursday, August 31
+  
 
-  const handleFormSubmit = event => {
+  const handleFormSubmit = event => { // відправка даних
     event.preventDefault();
 
     const inputTitle = event.target.elements.title.value.trim();
     const inputDescription = event.target.elements.description.value.trim();
     const inputPriority = event.target.elements.priority.value;
+    // const parsedDate = dayjs(selectedDate, 'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
     const inputDeadline = dayjs(selectedDate).format('DD/MM/YYYY'); //   29/11/2023
 
     const cardData = {
@@ -46,14 +56,11 @@ const AddCard = () => {
     event.target.reset();
   };
 
-  // --------------- ф-ції для пріоритетності ----------------------
-  const handleChange = (event) => {
-      setSelectedPriority(event.target.value);
-  };
+  // --------------- пріоритетність ----------------------
   
   const controlProps = (item) => ({ // low, medium, high, without
       value: item,
-      onChange: handleChange,
+      onChange: (e) => setSelectedPriority(e.target.value),
       checked: selectedPriority === item,
       name: 'priority',
       inputProps: { 'aria-label': item },
@@ -70,7 +77,7 @@ const AddCard = () => {
 
   return (
     <div className={scss.OBAddContainer}>
-      <h4 className={scss.OBAddTitle}>Add card</h4>
+      <h4 className={scss.OBAddTitle}>{modalTitle}</h4>
       <form onSubmit={handleFormSubmit} autoComplete="off">
         <label>
           <input
@@ -80,6 +87,8 @@ const AddCard = () => {
             autoFocus
             required
             className={scss.OBAddInput}
+            defaultValue={titleValue} // для редагування
+            onChange={(e) => setTitleValue(e.target.value)}  // для редагування
           />
         </label>
         <label>
@@ -88,6 +97,8 @@ const AddCard = () => {
             name="description"
             placeholder="Description"
             className={`${scss.OBAddInput} ${scss.OBAddDescription}`}
+            defaultValue={descriptionValue} // для редагування
+            onChange={(e) => setDescriptionValue(e.target.value)}  // для редагування
           />
         </label>
 
@@ -124,6 +135,7 @@ const AddCard = () => {
               onClose={() => setIsCalendarOpen(false)} // закриття календаря
               className={scss.OBAddDeadline}
               onChange={(date) => setSelectedDate(date)}   //Material UA в date записує обрану з календаря дату 
+              // M {$L: 'en', $u: undefined, $d: Fri Sep 01 2023 09:13:29 GMT+0300 (за східноєвропейським літнім часом), $x: {…}, $y: 2023, …}
               value={selectedDate}
               format="dddd, MMMM D"
               disablePast={true}   // минулі дати не обируться
@@ -170,7 +182,7 @@ const AddCard = () => {
               <use href={SvgSprite + '#icon-plus'} />
             </svg>
           </div>
-          Add
+          {modalBtnTitle}
         </button>
       </form>
     </div>

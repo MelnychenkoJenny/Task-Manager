@@ -1,5 +1,7 @@
 import styles from 'styles/index.module.scss';
+import { Modal } from '../Modal/Modal';
 import { Card } from 'components/Card';
+import { AddCard } from 'components/AddCard';
 // import { BtnAddColumn } from './BtnAddColumn';
 import { BtnAddCard } from './BtnAddCard';
 import { TitleCards } from './TitleCards';
@@ -8,13 +10,16 @@ import { useState } from 'react';
 export const TaskColumn = ({ className, titleCards, cards }) => {
   const [themeColor] = useState('light');
 
-  // const onAddColumn = () => {
-  //   console.log('Add Column click');
-  // };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onAddCard = () => {
-    console.log('Add Card click');
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
   };
+
+  const handleCloseModal = () => {
+   setIsModalOpen(false);
+ };
+
 
   return (
     <div className={className}>
@@ -23,17 +28,22 @@ export const TaskColumn = ({ className, titleCards, cards }) => {
         title={titleCards}
         theme={themeColor}
       />
-      {cards.map(({ id, titleCard, description }) => (
+      {cards.map(({ id, titleCard, description, priority, deadline }) => (
         <ul key={id}>
-          <Card titleCard={titleCard} description={description} />
+          <Card id={id} cardTitle={titleCard} description={description} priority={priority} deadline={deadline} />
         </ul>
       ))}
       <BtnAddCard
         className={styles.KkBtnAddCard}
         title={'Add another card'}
-        onClick={onAddCard}
+        onClick={handleOpenModal}
         theme={themeColor}
       />
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+            <AddCard modalTitle={'Add card'} modalBtnTitle={'Add'} /> 
+        </Modal>             
+      )}
     </div>
   );
 };
