@@ -1,3 +1,4 @@
+// 💙💛 Kostiantyn Koshyk
 import styles from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import clsx from 'clsx';

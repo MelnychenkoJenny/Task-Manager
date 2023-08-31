@@ -1,3 +1,4 @@
+// 💙💛 Kostiantyn Koshyk
 import styles from 'styles/index.module.scss';
 import { BtnAddColumn } from './BtnAddColumn';
 import { Filters } from './Filters';
@@ -9,11 +10,11 @@ export const MainDashboard = () => {
   const [columns] = useState([
     {
       id: '01',
-      titleCards: 'Title Cards 01',
+      titleCards: 'Column Title 01',
       cards: [
         {
           id: '01',
-          titleCard: 'Design and Prototyping SoYummy',
+          titleCard: 'Card Title 01',
           description:
             'Create visually appealing and functional design prototypes based on the pproved concepts',
           priority: 'medium',
@@ -21,7 +22,7 @@ export const MainDashboard = () => {
         },
         {
           id: '02',
-          titleCard: 'Research and Analysis',
+          titleCard: 'Card Title 02',
           description:
             'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
           priority: 'without',
@@ -29,7 +30,7 @@ export const MainDashboard = () => {
         },
         {
           id: '03',
-          titleCard: 'Hi hi hi',
+          titleCard: 'Card Title 03',
           description:
             'In this example, the .limited-text class is applied to the <p> element. The max-height is set to the height of two lines of text (you might need to adjust this value based on your font size and line height). The overflow: hidden hides any content that overflows the specified height, and text-overflow: ellipsis adds the three dots (...) to indicate overflow.',
           priority: 'medium',
@@ -37,25 +38,29 @@ export const MainDashboard = () => {
         },
         {
           id: '04',
-          titleCard: 'Hi hi hi',
+          titleCard: 'Card Title 04',
           description:
             'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
+          priority: 'medium',
+          deadline: '02/09/2023',
         },
         {
           id: '05',
-          titleCard: 'Hi hi hi',
+          titleCard: 'Card Title 05',
           description:
             'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
+          priority: 'low',
+          deadline: '31/08/2023',
         },
       ],
     },
     {
       id: '02',
-      titleCards: 'Title Cards 02',
+      titleCards: 'Column Title 02',
       cards: [
         {
           id: '01',
-          titleCard: 'Title card 2222',
+          titleCard: 'Card Title 01',
           description:
             'Create visually appealing and functional design prototypes based on the pproved concepts',
           priority: 'high',
@@ -63,7 +68,7 @@ export const MainDashboard = () => {
         },
         {
           id: '02',
-          titleCard: 'Title cadr 3333',
+          titleCard: 'Card Title 02',
           description:
             'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
           priority: 'low',
@@ -73,19 +78,37 @@ export const MainDashboard = () => {
     },
     {
       id: '03',
-      titleCards: 'Title Cards 02',
+      titleCards: 'Column Title 03',
       cards: [
         {
           id: '01',
-          titleCard: 'Title card 2222',
+          titleCard: 'Card Title 01',
           description:
             'Create visually appealing and functional design prototypes based on the pproved concepts',
+          priority: 'low',
+          deadline: '31/08/2023',
         },
         {
           id: '02',
-          titleCard: 'Title cadr 3333',
+          titleCard: 'Card Title 02',
           description:
             'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
+          priority: 'high',
+          deadline: '01/09/2023',
+        },
+      ],
+    },
+    {
+      id: '04',
+      titleCards: 'Column Title 04',
+      cards: [
+        {
+          id: '01',
+          titleCard: 'Card Title 01',
+          description:
+            'Create visually appealing and functional design prototypes based on the pproved concepts',
+          priority: 'without',
+          deadline: '01/09/2023',
         },
       ],
     },
@@ -99,7 +122,7 @@ export const MainDashboard = () => {
     <section className={styles.KkSectionMainDashboard}>
       <Filters
         className={styles.KkFilters}
-        titleBoard={'Title Board'}
+        titleBoard={'Board Title'}
         theme={'light'}
       />
 
