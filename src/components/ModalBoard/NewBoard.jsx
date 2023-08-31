@@ -174,8 +174,8 @@ const NewBoard = () => {
               onSubmit={onSubmit}
             >
               <div className={styles.IMBtnIconWrapper}>
-                <svg className={styles.INAddIcon}>
-                  <use href={styles + '#icon-plus'} />
+                <svg className={styles.INAddIcon} >
+                  <use href={sprite + '#icon-plus'} />
                 </svg>
               </div>
               Create
