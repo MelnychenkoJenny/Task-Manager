@@ -1,6 +1,6 @@
 .headerWrap {
   padding: 14px 20px;
-  background-color: var(--bg-header);
+  background-color: var(--bgHeader);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,7 +25,7 @@
 }
 
 .headerUserName {
-  color: var(--bg-header);
+  color: var(--bgHeader);
   font-family: map-get($fonts, m);
   font-size: 14px;
   font-style: normal;
@@ -61,7 +61,7 @@
 }
 
 .svgSideBarOpen {
-  stroke: #161616;
+  stroke: var(--primary);
 
   @include minMd() {
     width: 34px;
@@ -139,12 +139,12 @@
 }
 
 .dropdownThemeMenu {
-  background-color: var(--bg-header);
+  background-color: var(--bgHeader);
   width: 100px;
   height: 107px;
   text-align: center;
   border-radius: 8px;
-  border: 1px solid #BEDBB0;
+  border: 1px solid var(--borderTheme);
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.10);
   padding: 18px 44px 18px 18px;
   display: flex;
@@ -165,7 +165,7 @@
 }
 
 .themeMenuItem {
-  color: var(--primary);
+  color: var(--textThemeMenu);
     font-family: map-get($fonts, r);
     font-size: 14px;
     font-style: normal;
@@ -175,5 +175,5 @@
 
 .themeMenuItem:hover,
 .themeMenuItem:focus {
-  color: #BEDBB0;
+  color: var(--accent);
 }

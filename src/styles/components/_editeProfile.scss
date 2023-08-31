@@ -1,5 +1,5 @@
 .titleEditUser {
-    color: var(--bg-header);
+    color: #161616;
     font-family: map-get($fonts, m);
     font-size: 18px;
     font-style: normal;
@@ -37,12 +37,11 @@
     height: 49px;
     align-items: center;
     border-radius: 8px;
-    border: 1px solid var(--accent);
-    color: var(--bg-header);
+    border: 1px solid #BEDBB0;
+    color: #161616;
     font-family: map-get($fonts, r);
     font-size: 14px;
     letter-spacing: -0.28px;
-    border: 1px solid var(--accent);
     opacity: 0.4;
 
     @include minMd() {
@@ -52,13 +51,14 @@
 
 .formInputEditUser:hover,
 .formInputEditUser:focus {
-    border: 1px solid var(--accent-hover);           
+    border: 1px solid #9dc888;
 }
 
 .formInputEditUser:active,
  .formInputEditUser:focus {
-    border: 1px solid var(--accent-hover);
+    border: 1px solid #9dc888;
     outline: none;
+    opacity: 1;
     
 }
 
@@ -84,7 +84,7 @@
 }
 
 .svgCloseEditUser {
-    stroke: #161616;       
+    stroke: #161616;
     margin-top: 14px;  
     margin-right: 14px;
 
@@ -99,7 +99,7 @@
 .btnAddAvatar {
     width: 24px;
     height: 24px;
-    background-color: var(--accent-hover);
+    background-color: var(--accentHover);
     flex-shrink: 0;
     border: none;
     border-radius: 7px;
@@ -135,4 +135,24 @@
     }
 
 
+}
+
+.inputAvatar {
+    display: none;
+}
+.showPassProfileWrap {
+    position: relative;
+}
+
+.showPasswordEditProfile {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 27%;
+    left: 87%;
+    cursor: pointer;
+    stroke: #161616;
+    fill: none;
+    opacity: 0.4;
+    
 }

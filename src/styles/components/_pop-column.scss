@@ -1,0 +1,95 @@
+.AAColumnContainer {
+  width: 350px;
+  height: auto;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(190, 219, 176, 0.5);
+  margin: auto;
+  background-color: color(bg-welcome-card);
+  margin: auto;
+
+  @include maxSm() {
+    width: 335px;
+  }
+}
+
+.AAColumnTitle {
+  margin-bottom: 24px;
+  color: color(welcom-secondary);
+  font-family: map-get($fonts, r);
+  font-size: 18px;
+  line-height: calc(18 / 27);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: -0.36px;
+}
+
+.AAColumnInput {
+  width: 302px;
+  margin: auto;
+  font-family: map-get($fonts, r);
+  font-size: 14px;
+  line-height: calc(14 / 21);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.28px;
+  background-color: #1f1f1f;
+  border: 1px solid color(accent);
+  opacity: 0.4;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  border-radius: 8px;
+  padding-left: 18px;
+  padding-right: 256px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+  &:hover,
+  &:focus {
+    border-color: color(accent-hover);
+    outline: none;
+  }
+
+  @include maxSm() {
+    padding-right: 241px;
+  }
+}
+
+.AAColumnBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 302px;
+  height: 49px;
+  border-radius: 8px;
+  border-color: transparent;
+  background: color(accent);
+
+  color: color(welcom-primary);
+  font-family: map-get($fonts, m);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: calc(14 / 21);
+  letter-spacing: -0.28px;
+  &:hover,
+  &:focus {
+    background-color: color(accent-hover);
+  }
+
+  .AAColumnSvgContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    background-color: color(welcom-primary);
+    border-radius: 6px;
+  }
+
+  .AAColumnSvg {
+    width: 14px;
+    height: 14px;
+    stroke: color(welcom-secondary);
+  }
+}

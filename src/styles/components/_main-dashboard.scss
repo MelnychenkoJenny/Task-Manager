@@ -1,38 +1,56 @@
-// outline: 1px solid salmon;
-
-.TestTest {
-  // margin: 10px;
-  margin-top: 10px;
-}
-
 // ================================================== MainDashboard styled
 .KkSectionMainDashboard {
-  // width: 100vw; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // height: 91vh; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  padding-left: 24px;
-  padding-right: 24px;
-  background-color: rgb(245, 245, 245);
-  // background-color: #1f1f1f;
+  width: 100vw;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: var(--bgMain);
+
+  @include minMd() {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include minXl() {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.KkColums {
+  display: flex;
+  gap: 15px;
+
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.KkBtnAddColumnMain {
+  margin-top: 10px;
 }
 
 // ================================================== Filters styled
 .KkFilters {
-  padding-top: 10px;
+  padding-top: 14px;
+
+  @include minMd() {
+    padding-top: 26px;
+  } // планшет
+
+  @include minXl() {
+    padding-top: 10px;
+  } // комп
 }
 
 .KkTitle {
   font-family: map-get($fonts, m), sans-serif;
-  font-size: 18px;
   font-style: normal;
-  letter-spacing: -0.36px;
+  color: var(--modalTitle);
 
-  &.light,
-  &.violet {
-    color: #161616;
-  }
-  &.dark {
-    color: #ffffff;
-  }
+  @include minMd() {
+    font-size: 18px;
+    font-style: normal;
+    letter-spacing: -0.36px;
+  } // планшет
 }
 
 .KkWrapFilters {
@@ -46,34 +64,23 @@
   border: none;
   margin: 0;
   padding: 0;
-  // border-radius: 8px;
   background-color: inherit;
 
   & p {
     margin-left: 8px;
-
-    margin-left: 8px;
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
-    &.light,
-    &.violet {
-      color: rgba(22, 22, 22, 0.8);
-    }
-    &.dark {
-      color: rgba(255, 255, 255, 0.8);
-    }
+    color: var(--colorFilters);
+
+    @include minMd() {
+      font-size: 18px;
+      letter-spacing: -0.36px;
+    } // планшет
   }
 
   & svg {
-    &.light,
-    &.violet {
-      stroke: rgba(22, 22, 22, 0.8);
-    }
-    &.dark {
-      stroke: rgba(255, 255, 255, 0.8);
-    }
-
+    stroke: var(--colorFilters);
     fill: none;
   }
 }
@@ -82,10 +89,9 @@
 
 .KkTaskColumn {
   width: 334px;
-  // background-color: salmon;
 }
 
-// ================================================== Title Cards styled
+// ================================================== Title Cards styled !!!!!!!!!!!!!!!!
 .TitleCards {
   margin-top: 10px;
   margin-bottom: 14px;
@@ -94,30 +100,17 @@
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     letter-spacing: -0.36px;
-
-    &.light,
-    &.violet {
-      color: #161616;
-    }
-    &.dark {
-      color: #ffffff;
-    }
+    color: var(--modalTitle);
   }
 
   & svg {
     fill: none;
-
-    &.light,
-    &.violet {
-      stroke: rgb(22, 22, 22, 0.8);
-    }
-    &.dark {
-      stroke: rgb(255, 255, 255, 0.8);
-    }
+    stroke: var(--iconsCard);
+    transition: stroke $transition;
 
     &:hover,
     &:focus {
-      stroke: #bedbb0;
+      stroke: var(--accent);
     }
   }
 }
@@ -129,15 +122,7 @@
   width: 334px;
   padding: 18px 20px;
   border-radius: 8px;
-  background-color: #ffffff;
-
-  &.light,
-  &.violet {
-    background-color: #ffffff;
-  }
-  &.dark {
-    background-color: #121212;
-  }
+  background-color: var(--bgCard);
 }
 
 .KkSvgTitleCards {
@@ -145,6 +130,14 @@
   align-items: center;
   gap: 8px;
 }
+
+.KkCards {
+  display: block;
+  max-height: calc(100vh * 0.65);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
 .KkBtnIcons {
   display: flex;
   justify-content: center;
@@ -156,6 +149,9 @@
 }
 
 // ================================================== Btn styled
+.KkBtnAddColumn {
+  margin-top: 10px;
+}
 
 .KkBtnColumn {
   display: flex;
@@ -165,31 +161,14 @@
   padding: 14px 0;
   border: none;
   border-radius: 8px;
-
-  &.light {
-    background-color: #ffffff;
-  }
-  &.dark {
-    background-color: #121212;
-  }
-  &.violet {
-    background-color: #ffffff;
-  }
+  background-color: var(--bgCard);
 
   & p {
     margin-left: 8px;
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
-    &.light {
-      color: #161616;
-    }
-    &.dark {
-      color: #ffffff;
-    }
-    &.violet {
-      color: #161616;
-    }
+    color: var(--modalTitle);
   }
 }
 
@@ -201,29 +180,16 @@
   height: 28px;
   border: none;
   border-radius: 6px;
+  background: var(--bgIconPlus);
 
-  &.light {
-    background: #161616;
-  }
-  &.dark {
-    background: #fff;
-  }
-  &.violet {
-    background: #5255bc;
-  }
   & svg {
-    &.light {
-      stroke: #ffffff;
-    }
-    &.dark {
-      stroke: #121212;
-    }
-    &.violet {
-      stroke: #ffffff;
-    }
+    stroke: var(--bgCard);
   }
 }
 
+.KkBtnAddCard {
+  margin-top: 14px;
+}
 .KkBtnCard {
   display: flex;
   justify-content: center;
@@ -232,15 +198,11 @@
   padding: 14px 0;
   border: none;
   border-radius: 8px;
+  background-color: var(--accent);
+  transition: background-color $transition;
 
-  &.light {
-    background-color: #bedbb0;
-  }
-  &.dark {
-    background-color: #bedbb0;
-  }
-  &.violet {
-    background-color: #5255bc;
+  &:hover {
+    background-color: var(--accentHover);
   }
 
   & p {
@@ -248,15 +210,7 @@
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
-    &.light {
-      color: #161616;
-    }
-    &.dark {
-      color: #161616;
-    }
-    &.violet {
-      color: #ffffff;
-    }
+    color: var(--modalBtnText);
   }
 }
 
@@ -269,22 +223,6 @@
   height: 28px;
   border: none;
   border-radius: 6px;
-
-  &.light,
-  &.dark {
-    background: #161616;
-  }
-  &.violet {
-    background: #ffffff;
-  }
-
-  & svg {
-    &.light,
-    &.dark {
-      stroke: #ffffff;
-    }
-    &.violet {
-      stroke: #161616;
-    }
-  }
+  background: var(--modalBtnText);
+  stroke: var(--bgIconPlusCard);
 }

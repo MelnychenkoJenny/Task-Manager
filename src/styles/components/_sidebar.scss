@@ -1,9 +1,8 @@
 .sidebarWrap {
    width: 225px;
    height: 100vh;
-   background-color: #fff;
-   // background-color: greenyellow;
-   position: absolute;
+   background-color: var(--bgSidebar);
+   position: relative;
    top: 0; 
    z-index: 1111;
    @include minMd() {
