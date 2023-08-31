@@ -4,14 +4,22 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateTheme } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks';
+import { Modal } from '../Modal/Modal';
+import EditProfile from '../EditProfile/EditProfile.jsx';
 
 const Header = ({ click }) => {
+
   const dispatch = useDispatch();
+
   const [themeActive, setThemeActive] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+
 
   const handleClick = () => {
     setThemeActive(!themeActive);
   };
+
 
   const handleClickTheme = theme => {
     if (theme === 'light' || theme === 'dark' || theme === 'violet') {
@@ -22,11 +30,15 @@ const Header = ({ click }) => {
     }
   };
 
+  
+    const togleModal = () => {
+    setShowModal(!showModal);
+  };
+
   const { user } = useAuth();
 
-  // const [avatarURL, setAvatarURL] = useState('');
-
   return (
+    <>
     <div className={scss.headerWrap}>
       <button type="button" onClick={click} className={scss.btnSideBarOpen}>
         <svg className={scss.svgSideBarOpen} width="24" height="24">
@@ -80,11 +92,20 @@ const Header = ({ click }) => {
         </div>
         <ul className={scss.headerUserInfoWrap}>
           <li className={scss.headerUserName}>{user.name}</li>
-          <li className={scss.headerAvatar}></li>
+            <li>
+              <button type='button' onClick={togleModal} className={scss.headerAvatar}></button>
+          </li>
         </ul>
       </div>
     </div>
-  );
+      {showModal && (
+        <Modal onClose={togleModal}>
+          <EditProfile onClose={togleModal}/>
+        </Modal>
+    )}  
+    </>     
+  )
+
 };
 
 export default Header;
