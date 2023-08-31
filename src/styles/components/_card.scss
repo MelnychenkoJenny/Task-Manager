@@ -3,11 +3,8 @@
   // height: 154px;
   margin-left: auto;
   margin-right: auto;
-  // margin-top: 40px;
-  // margin-bottom: 280px;
   margin-bottom: 8px;
-  // border: 1px solid yellowgreen;
-  border-left: 4px solid #8fa1d0;
+  border-left: 4px solid;
   border-radius: 8px;
   padding: 14px 24px;
   background-color: #fff; // добавил
@@ -15,6 +12,14 @@
 
 .OBCardTitle {
   margin-bottom: 8px;
+}
+
+.OBCardDescription {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // обмежує зміст до 2х рядків (працює тільки в зв'язці з спорідненими властивостями)
+  -webkit-box-orient: vertical;
+  overflow: hidden; // щоб текст, який не вмістився, не виліз за рамки картки
+  text-overflow: ellipsis; // проставляє три крапки, інакше текст обрізаний на півбукві
 }
 
 .OBCardSeparator {
@@ -51,8 +56,8 @@ td {
 .OBCardPriorityCircle {
   width: 12px;
   height: 12px;
-  background-color: #8fa1d0;
   border-radius: 50%;
+  // background-color: #8fa1d0;
 }
 
 .OBCardDate {
@@ -71,16 +76,28 @@ td {
   gap: 8px;
 }
 
-.OBCardIcon {
-  stroke: rgba(22, 22, 22, 0.5);
-  fill: transparent;
-  transition: stroke 250ms linear;
-  &:hover,
-  &:focus {
+.OBCardBellIcon {
     stroke: rgba(82, 85, 188, 1);
-  }
-  &:first-child {
-    margin-right: 6px;
-    stroke: rgba(82, 85, 188, 1);
-  }
+    fill: transparent; 
 }
+
+.OBCardBtnIcon {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: none;
+  stroke: rgba(22, 22, 22, 0.5); // колір обводки іконки
+  fill: transparent;  
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover,
+    &:focus {
+      stroke: rgba(82, 85, 188, 1);
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+}
+
+
+  // position: absolute;
+  // top: 20px;
+  // right: 20px;

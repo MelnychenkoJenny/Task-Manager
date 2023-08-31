@@ -30,9 +30,10 @@ const userLogin = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/signin', credentials);
-      console.log(data);
       token.set(data.token);
-      return data;
+      const { data: currentUser } = await axios.get('/users/current');
+      
+      return currentUser;
     } catch (error) {
       return rejectWithValue(error.request.status);
     }

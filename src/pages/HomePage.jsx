@@ -6,14 +6,16 @@ const HomePage = () => {
   
   const { user } = useAuth();
 
-  
+  console.log(222,user)
   // !!!!!!!!!!!!!ЗМІНА ТЕМИ!!!!!!!!!!!!!!!!!
 
 
   return (
-    <div data-theme={user.theme}>
-      <ScreensPage />
-    </div>
+    <>
+      {user && (<div data-theme={user.theme}>
+        <ScreensPage />
+      </div>)}
+    </>
   );
 };
 export default HomePage;
