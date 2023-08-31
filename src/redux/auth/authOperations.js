@@ -31,9 +31,7 @@ const userLogin = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signin', credentials);
       token.set(data.token);
-      const { data: currentUser } = await axios.get('/users/current');
-      
-      return currentUser;
+      return data;
     } catch (error) {
       return rejectWithValue(error.request.status);
     }
@@ -44,8 +42,8 @@ export const updateTheme = createAsyncThunk(
   'auth/updateTheme',
   async (theme, { rejectWithValue }) => {
     try {
-      const {data}= await axios.patch('/users/themes', { theme });
-      console.log('rez', data)
+      const { data } = await axios.patch('/users/themes', { theme });
+      console.log('rez', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -65,7 +63,6 @@ export const updateUserProfile = createAsyncThunk(
     }
   }
 );
-
 
 const logout = createAsyncThunk(
   'auth/logout',
