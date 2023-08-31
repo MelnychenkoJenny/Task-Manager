@@ -56,7 +56,7 @@ export const updateUserProfile = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const { data } = await axios.put(`/users/update`, formData);
-console.log('update data', data)
+      console.log('update data bek', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
