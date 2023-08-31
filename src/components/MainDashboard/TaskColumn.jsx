@@ -2,7 +2,6 @@ import styles from 'styles/index.module.scss';
 import { Modal } from '../Modal/Modal';
 import { Card } from 'components/Card';
 import { AddCard } from 'components/AddCard';
-// import { BtnAddColumn } from './BtnAddColumn';
 import { BtnAddCard } from './BtnAddCard';
 import { TitleCards } from './TitleCards';
 import { useState } from 'react';
@@ -17,9 +16,8 @@ export const TaskColumn = ({ className, titleCards, cards }) => {
   };
 
   const handleCloseModal = () => {
-   setIsModalOpen(false);
- };
-
+    setIsModalOpen(false);
+  };
 
   return (
     <div className={className}>
@@ -28,22 +26,20 @@ export const TaskColumn = ({ className, titleCards, cards }) => {
         title={titleCards}
         theme={themeColor}
       />
-// <<<<<<< main-dashboard2
-//       <ul className={styles.KkCards}>
-//         {cards.map(({ id, titleCard, description }) => (
-//           <li key={id}>
-//             <Card titleCard={titleCard} description={description} />
-//           </li>
-//         ))}
-//       </ul>
-// =======
-//            <ul className={styles.KkCards}>
-//       {cards.map(({ id, titleCard, description, priority, deadline }) => (
-//         <ul key={id}>
-//           <Card id={id} cardTitle={titleCard} description={description} priority={priority} deadline={deadline} />
-//         </ul>
-//       ))}
-// >>>>>>> main
+
+      <ul className={styles.KkCards}>
+        {cards.map(({ id, titleCard, description, priority, deadline }) => (
+          <li key={id}>
+            <Card
+              cardTitle={titleCard}
+              description={description}
+              priority={priority}
+              deadline={deadline}
+            />
+          </li>
+        ))}
+      </ul>
+
       <BtnAddCard
         className={styles.KkBtnAddCard}
         title={'Add another card'}
@@ -52,8 +48,8 @@ export const TaskColumn = ({ className, titleCards, cards }) => {
       />
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-            <AddCard modalTitle={'Add card'} modalBtnTitle={'Add'} /> 
-        </Modal>             
+          <AddCard modalTitle={'Add card'} modalBtnTitle={'Add'} />
+        </Modal>
       )}
     </div>
   );
