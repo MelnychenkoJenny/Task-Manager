@@ -1,3 +1,4 @@
+// 💙💛 Kostiantyn Koshyk
 import styles from 'styles/index.module.scss';
 import { Modal } from '../Modal/Modal';
 import { Card } from 'components/Card';

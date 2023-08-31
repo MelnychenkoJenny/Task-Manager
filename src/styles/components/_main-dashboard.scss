@@ -1,24 +1,10 @@
-// outline: 1px solid salmon;
-
-@include minMd() {
-} // планшет
-
-@include minXl() {
-} // комп
-
-.TestTest {
-  // margin: 10px;
-  margin-top: 10px;
-}
-
 // ================================================== MainDashboard styled
 .KkSectionMainDashboard {
   width: 100vw;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: rgb(245, 245, 245);
+  background-color: var(--bgMain);
 
-  // background-color: #1f1f1f;
   @include minMd() {
     padding-left: 32px;
     padding-right: 32px;
@@ -57,22 +43,14 @@
 
 .KkTitle {
   font-family: map-get($fonts, m), sans-serif;
-  // font-size: 14px;
   font-style: normal;
+  color: var(--modalTitle);
 
   @include minMd() {
     font-size: 18px;
     font-style: normal;
     letter-spacing: -0.36px;
   } // планшет
-
-  &.light,
-  &.violet {
-    color: #161616;
-  }
-  &.dark {
-    color: #ffffff;
-  }
 }
 
 .KkWrapFilters {
@@ -86,7 +64,6 @@
   border: none;
   margin: 0;
   padding: 0;
-  // border-radius: 8px;
   background-color: inherit;
 
   & p {
@@ -94,30 +71,16 @@
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
+    color: var(--colorFilters);
 
     @include minMd() {
       font-size: 18px;
       letter-spacing: -0.36px;
     } // планшет
-
-    &.light,
-    &.violet {
-      color: rgba(22, 22, 22, 0.8);
-    }
-    &.dark {
-      color: rgba(255, 255, 255, 0.8);
-    }
   }
 
   & svg {
-    &.light,
-    &.violet {
-      stroke: rgba(22, 22, 22, 0.8);
-    }
-    &.dark {
-      stroke: rgba(255, 255, 255, 0.8);
-    }
-
+    stroke: var(--colorFilters);
     fill: none;
   }
 }
@@ -126,8 +89,6 @@
 
 .KkTaskColumn {
   width: 334px;
-
-  // background-color: salmon;
 }
 
 // ================================================== Title Cards styled !!!!!!!!!!!!!!!!
@@ -139,32 +100,17 @@
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     letter-spacing: -0.36px;
-
-    &.light,
-    &.violet {
-      color: #161616;
-    }
-    &.dark {
-      color: #ffffff;
-    }
+    color: var(--modalTitle);
   }
 
   & svg {
     fill: none;
-
-    &.light,
-    &.violet {
-      stroke: rgb(22, 22, 22, 0.8);
-      transition: stroke $transition;
-    }
-    &.dark {
-      stroke: rgb(255, 255, 255, 0.8);
-      transition: stroke $transition;
-    }
+    stroke: var(--iconsCard);
+    transition: stroke $transition;
 
     &:hover,
     &:focus {
-      stroke: #bedbb0;
+      stroke: var(--accent);
     }
   }
 }
@@ -176,15 +122,7 @@
   width: 334px;
   padding: 18px 20px;
   border-radius: 8px;
-  background-color: #ffffff;
-
-  &.light,
-  &.violet {
-    background-color: #ffffff;
-  }
-  &.dark {
-    background-color: #121212;
-  }
+  background-color: var(--bgCard);
 }
 
 .KkSvgTitleCards {
@@ -223,31 +161,14 @@
   padding: 14px 0;
   border: none;
   border-radius: 8px;
-
-  &.light {
-    background-color: #ffffff;
-  }
-  &.dark {
-    background-color: #121212;
-  }
-  &.violet {
-    background-color: #ffffff;
-  }
+  background-color: var(--bgCard);
 
   & p {
     margin-left: 8px;
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
-    &.light {
-      color: #161616;
-    }
-    &.dark {
-      color: #ffffff;
-    }
-    &.violet {
-      color: #161616;
-    }
+    color: var(--modalTitle);
   }
 }
 
@@ -259,26 +180,10 @@
   height: 28px;
   border: none;
   border-radius: 6px;
+  background: var(--bgIconPlus);
 
-  &.light {
-    background: #161616;
-  }
-  &.dark {
-    background: #fff;
-  }
-  &.violet {
-    background: #5255bc;
-  }
   & svg {
-    &.light {
-      stroke: #ffffff;
-    }
-    &.dark {
-      stroke: #121212;
-    }
-    &.violet {
-      stroke: #ffffff;
-    }
+    stroke: var(--bgCard);
   }
 }
 
@@ -293,28 +198,11 @@
   padding: 14px 0;
   border: none;
   border-radius: 8px;
+  background-color: var(--accent);
+  transition: background-color $transition;
 
-  &.light {
-    background-color: #bedbb0;
-    // transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-    transition: background-color $transition;
-    &:hover {
-      background-color: #9dc888;
-    }
-  }
-  &.dark {
-    background-color: #bedbb0;
-    transition: background-color $transition;
-    &:hover {
-      background-color: #9dc888;
-    }
-  }
-  &.violet {
-    background-color: #5255bc;
-    transition: background-color $transition;
-    &:hover {
-      background-color: #7b7ede;
-    }
+  &:hover {
+    background-color: var(--accentHover);
   }
 
   & p {
@@ -322,15 +210,7 @@
     font-family: map-get($fonts, m), sans-serif;
     font-style: normal;
     font-weight: 500;
-    &.light {
-      color: #161616;
-    }
-    &.dark {
-      color: #161616;
-    }
-    &.violet {
-      color: #ffffff;
-    }
+    color: var(--modalBtnText);
   }
 }
 
@@ -343,22 +223,6 @@
   height: 28px;
   border: none;
   border-radius: 6px;
-
-  &.light,
-  &.dark {
-    background: #161616;
-  }
-  &.violet {
-    background: #ffffff;
-  }
-
-  & svg {
-    &.light,
-    &.dark {
-      stroke: #ffffff;
-    }
-    &.violet {
-      stroke: #161616;
-    }
-  }
+  background: var(--modalBtnText);
+  stroke: var(--bgIconPlusCard);
 }
