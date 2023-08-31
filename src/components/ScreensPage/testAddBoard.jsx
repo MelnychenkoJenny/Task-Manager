@@ -33,7 +33,7 @@ const AddBoard = () => {
 
   const { allBoards, boardById } = useBoards();
   const { user } = useAuth();
-  console.log('user', user);
+
   const dispatch = useDispatch();
   const [valueInputUpdate, setvalueInputUpdate] = useState({
     title: '',
