@@ -27,7 +27,7 @@ const LoginForm = () => {
 
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     const dataLogin = { email, password };
-
+console.log(999, dataLogin)
     const res = await dispatch(userLogin(dataLogin));
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);
