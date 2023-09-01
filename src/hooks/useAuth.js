@@ -20,4 +20,4 @@ export const useAuth = () => {
   };
 };
 // import { useAuth } from 'hooks';
-// const { isRefreshing, isLoggedIn,user } = useAuth();
+// const { isRefreshing, isLoggedIn, user, token } = useAuth();

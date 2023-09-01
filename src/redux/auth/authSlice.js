@@ -1,74 +1,3 @@
-// import { createSlice } from '@reduxjs/toolkit';
-// import authOperations from './authOperations';
-
-// const initialState = {
-//   user: { name: null, email: null },
-//   token: null,
-//   isLoggedIn: false,
-//   getIsFetchAnswer: false,
-// };
-// const authSlice = createSlice({
-//   name: 'auth',
-//   initialState,
-//   extraReducers: {
-//     [authOperations.userRegistration.pending](state, action) {
-//       state.getIsFetchAnswer = true;
-//     },
-//     [authOperations.userRegistration.fulfilled](state, action) {
-//       state.user = action.payload.user;
-//       state.token = action.payload.token;
-//       state.isLoggedIn = true;
-//       state.getIsFetchAnswer = false;
-//     },
-//     [authOperations.userRegistration.rejected](state, action) {
-//       state.isLoggedIn = false;
-//       state.getIsFetchAnswer = false;
-//     },
-//     //
-//     [authOperations.userLogin.pending](state, action) {
-//       state.getIsFetchAnswer = true;
-//     },
-//     [authOperations.userLogin.fulfilled](state, action) {
-//       state.user = action.payload.user;
-//       state.token = action.payload.token;
-//       state.isLoggedIn = true;
-//       state.getIsFetchAnswer = false;
-//     },
-//     [authOperations.userLogin.rejected](state) {
-//       state.isLoggedIn = false;
-//       state.getIsFetchAnswer = false;
-//     },
-//     //
-//     [authOperations.logout.pending](state) {
-//       state.getIsFetchAnswer = true;
-//     },
-//     [authOperations.logout.fulfilled](state) {
-//       state.user = { name: null, email: null };
-//       state.token = null;
-//       state.isLoggedIn = false;
-//       state.getIsFetchAnswer = false;
-//     },
-//     [authOperations.logout.rejected](state) {
-//       state.getIsFetchAnswer = false;
-//     },
-//     //
-//     [authOperations.checkAuth.pending](state) {
-//       state.getIsFetchAnswer = true;
-//     },
-//     [authOperations.checkAuth.fulfilled](state, action) {
-//       state.user = action.payload;
-//       state.isLoggedIn = true;
-//       state.getIsFetchAnswer = false;
-//     },
-//     [authOperations.checkAuth.rejected](state) {
-//       state.getIsFetchAnswer = false;
-//     },
-//   },
-// });
-
-// export default authSlice.reducer;
-
-// Варіант з builder
 import { createSlice } from '@reduxjs/toolkit';
 import {userRegistration, userLogin, logout, refreshUser, updateTheme, updateUserProfile} from 'redux/auth/authOperations';
 
@@ -79,18 +8,22 @@ const handlePendingRefresh = state => {
   state.isLoading = true;
   state.getIsFetchAnswer = true;
 };
-const handleAuthorisationFulfilled = (state, action) => {
-  console.log('payload454', action);
-  state.user = action.payload;
-  state.token = action.payload.token;
+const handleAuthorisationFulfilled = (state, {payload}) => {
+  console.log('payload454', payload);
+  // console.log('state registration', state.user)
+  state.user = payload;
+  state.token = payload.token;
   state.isLoggedIn = true;
   state.isLoading = false;
 };
 
 const handleLoginFulfilled = (state, {payload}) => {
+  console.log('login payload',payload)
+  // console.log('state login', state.user)
+  const {name, email, avatarURL, theme } = payload;
   state.isLoading = false;
   state.isLoggedIn = true;
-  state.user = payload;
+  state.user = {name, email, avatarURL, theme};
   state.token = payload.token;
   state.refreshToken = payload.refreshToken;
 }
@@ -98,11 +31,13 @@ const handleLoginFulfilled = (state, {payload}) => {
 const handleRejectedAuthorisation = (state, { payload }) => {
   console.log('error', payload)
   state.error = payload;
+  state.loading = false;
 };
 
 const handleFulfilledLogout = state => {
-  state.user = { name: null, email: null };
+  state.user = { name: null, email: null, avatarURL: '', theme: 'light' };
   state.token = null;
+  state.refreshToken = null;
   state.isLoggedIn = false;
 };
 const handleFulfilledRefresh = (state, action) => {
@@ -116,10 +51,9 @@ const handleRejectedRefresh = state => {
 
 const handleFulfilledUpdateTheme = (state, { payload }) => {
   state.user = { ...state.user, ...payload };
-};
+}; 
 
 const handleFulfilledUpdateUserProfile = (state, { payload }) => {
-  // const {name, email, avatarURL, theme} = payload
   state.user = { ...state.user, ...payload };
 };
 

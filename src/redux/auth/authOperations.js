@@ -4,7 +4,6 @@ import axios from 'axios';
 const instance = axios.create({
   baseURL: 'https://taskpro-backend-jo75.onrender.com',
 });
-// axios.defaults.baseURL = 'https://taskpro-backend-jo75.onrender.com';
 
 const token = {
   set(token) {
@@ -15,7 +14,6 @@ const token = {
   },
 };
 
-// !!Вот тут я брала с видео, но возможно еще не досметрала и тут еще что-то должно быть, но проблема в том, что не идет запрос в аксиос, где-то я что-то пропустила
 instance.interceptors.response.use(
   response => response,
   async error => {
@@ -56,10 +54,8 @@ export const userRegistration = createAsyncThunk(
 export const userLogin = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
+    console.log('credential', credentials);
     try {
-
-      // !!!Вот тут выбивает ошибку аксиоса Request failed with status code 500'
-      // !!То есть что-то не так с моим запросом, возможно нужно еще смотреть или записался в стейт токен
       const { data } = await instance.post('/users/signin', credentials);
       console.log('data login', data);
       // console.log('token login', data.token)
@@ -131,15 +127,5 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-
-// const authOperations = {
-//   userRegistration,
-//   userLogin,
-//   logout,
-//   checkAuth,
-//   updateTheme,
-//   updateUserProfile,
-// };
-// export default authOperations;
 
 export default instance;
