@@ -32,7 +32,7 @@ const NewBoard = ({ boardTitle, handleSubmit }) => {
   };
 
   const changeIcon = e => {
-    setIcon(e.target.value);
+    setIcon(`#${e.target.value}`);
   };
 
   const changeBackground = newBg => {
