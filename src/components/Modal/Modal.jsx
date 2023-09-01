@@ -11,6 +11,7 @@ export const Modal = ({onClose, children}) => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
          onClose();
+         document.body.style.overflow = 'visible'; //body почне скролитися після закриття модалки
       };
       };
       
@@ -23,8 +24,11 @@ export const Modal = ({onClose, children}) => {
    const handleBackdropClick = e => {
       if (e.currentTarget === e.target) {
          onClose();
+         document.body.style.overflow = 'visible'; //body почне скролитися після закриття модалки
       };
    };
+
+   document.body.style.overflow = 'hidden';  //щоб body не скролився при відкритій модалці
 
    return (
       createPortal(<div className={scss.overlay} onClick={handleBackdropClick}>

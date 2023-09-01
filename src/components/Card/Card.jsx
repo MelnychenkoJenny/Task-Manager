@@ -80,11 +80,11 @@ const Card = ({ id, cardTitle, description, priority, deadline }) => {
                 <AddCard modalTitle={'Edit card'} id={id} cardTitle={cardTitle} description={description} priority={priority} deadline={deadline} modalBtnTitle={'Edit'} /> 
             </Modal>             
           )}
-          <button type='button' className={scss.OBCardBtnIcon} aria-label='move task to another column'>
+          {/* <button type='button' className={scss.OBCardBtnIcon} aria-label='move task to another column'>
             <svg width="16" height="16">
               <use href={SvgSprite + '#icon-arrow'} />
             </svg>
-          </button >
+          </button > */}
           <button type='button' className={scss.OBCardBtnIcon} aria-label='delete task' /*onClick={() => dispatch(deleteCard(id))}*/ >
             <svg width="16" height="16">
               <use href={SvgSprite + '#icon-trash'} />

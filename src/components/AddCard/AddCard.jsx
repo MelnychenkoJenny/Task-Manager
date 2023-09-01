@@ -32,13 +32,16 @@ const AddCard = ({ modalTitle, id, cardTitle, description, priority, deadline, m
   // console.log(dayjs(deadline, 'DD/MM/YYYY').format("dddd, MMMM D")); // Thursday, August 31
   
 
+  // "Today, September 01" або "Saturday, September 02"
+  const dateFormat = dayjs(selectedDate).format("dddd, MMMM D") === dayjs().format("dddd, MMMM D") ? '[Today,] MMMM D' : "dddd, MMMM D";
+
+
   const handleFormSubmit = event => { // відправка даних
     event.preventDefault();
 
     const inputTitle = event.target.elements.title.value.trim();
     const inputDescription = event.target.elements.description.value.trim();
     const inputPriority = event.target.elements.priority.value;
-    // const parsedDate = dayjs(selectedDate, 'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
     const inputDeadline = dayjs(selectedDate).format('DD/MM/YYYY'); //   29/11/2023
 
     const cardData = {
@@ -73,7 +76,7 @@ const AddCard = ({ modalTitle, id, cardTitle, description, priority, deadline, m
       without: grey[400],
   };
 
-
+  
 
   return (
     <div className={scss.OBAddContainer}>
@@ -129,22 +132,31 @@ const AddCard = ({ modalTitle, id, cardTitle, description, priority, deadline, m
         </div>
 
         <div>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}> 
+          {/* dateAdapter={AdapterDayjs} - вказуємо, що під капотом використовуємо бібліотеку Day.js (її методи) */}
             <DatePicker
               open={isCalendarOpen}
               onClose={() => setIsCalendarOpen(false)} // закриття календаря
-              className={scss.OBAddDeadline}
               onChange={(date) => setSelectedDate(date)}   //Material UA в date записує обрану з календаря дату 
               // M {$L: 'en', $u: undefined, $d: Fri Sep 01 2023 09:13:29 GMT+0300 (за східноєвропейським літнім часом), $x: {…}, $y: 2023, …}
               value={selectedDate}
-              format="dddd, MMMM D"
+              format= {dateFormat} // приймає рядок
               disablePast={true}   // минулі дати не обируться
               outsideCurrentMonth={true} // початок наступного місяця невидимий
               dayOfWeekFormatter={(day) => day.slice(0, 2).toUpperCase()} // видимі перші 2 літери назви дня тижня
+              className={scss.OBAddCalendar}
               slots={{
                 openPickerButton: () => null, // приховуємо дефолтну кнопку-іконку календаря
-               }}
+              }}
               slotProps={{
+                calendarHeader: {
+                  style: {
+                    backgroundColor: 'red',
+                    // '.MuiPickersCalendarHeader-label': {
+                    //   fontSize: '50px',
+                    // }
+                  },
+                },
                 textField: {
                   onClick: () => setIsCalendarOpen(true), // інпут стає клікабельним; по кліку відкривається календар (picker)
                   variant: 'standard',
@@ -152,15 +164,22 @@ const AddCard = ({ modalTitle, id, cardTitle, description, priority, deadline, m
                   InputProps: {
                     disableUnderline: true,  // прибирає дефолтний нижній бордер, встановлений variant: 'standard'
                     'aria-label': 'deadline',
-                    endAdornment: (   // прикраса в кінці інпуту - іконка (є і endAdornment)
+                    style: {
+                      fontSize: '14px', 
+                      fontFamily: 'Poppins, sans-serif',
+                      color: '#5255BC',
+                      fontWeight: 500,
+                      letterSpacing: '-0.28px',                   
+                    },
+                    endAdornment: (   // прикраса в кінці інпуту - іконка (є і startAdornment)
                      <InputAdornment
+                        position="start"
                         sx={{
                           color: "rgba(82, 85, 188, 1)",
                           cursor: 'pointer', 
                         }}
-                        position="start"
                      >
-                        <svg className={scss.OBCardIcon} width='18px'>
+                        <svg className={scss.OBAddIcon} width='18px'>
                             <use 
                               href={SvgSprite + '#icon-chevron-down'} // стрілка вниз в календарі  
                               aria-label="open calendar" 
