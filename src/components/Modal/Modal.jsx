@@ -31,6 +31,7 @@ export const Modal = ({onClose, children}) => {
       createPortal(<div className={scss.overlay} onClick={handleBackdropClick}>
             <div className={scss.modal}>
                <div className={scss.closebtn} onClick={onClose}>
+                  <svg className={scss.icon} width="18" height="18">
                      <use className='icon' href={sprite + '#icon-close'} ></use>
                   </svg>
                </div>
