@@ -3,7 +3,7 @@ import SvgSprite from 'images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { React, useState } from 'react';
 import { Modal } from '../Modal/Modal';
-import authOperations from '../../redux/auth/authOperations';
+import {logout} from '../../redux/auth/authOperations';
 
 // import Login from 'components/Login/Login';
 
@@ -58,7 +58,7 @@ const Sidebar = () => {
             </button>
           </div>
           <button
-            onClick={() => dispatch(authOperations.logout())}
+            onClick={() => dispatch(logout())}
             className={scss.sbLogoutButton}
           >
             <svg width="32px" height="32px" className={scss.sbLogoutSvg}>

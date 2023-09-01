@@ -6,7 +6,7 @@ import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import { useAuth } from 'hooks';
 import RestrictedRout from 'components/Route/RestrictedRout';
 import PrivateRoute from 'components/Route/PrivateRoute';
-import authOperations from 'redux/auth/authOperations';
+import {refreshUser} from 'redux/auth/authOperations';
 import Loader from 'components/Loader/Loader';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -25,7 +25,7 @@ export const App = () => {
   const { isRefreshing, isLoggedIn } = useAuth();
 
   useEffect(() => {
-    dispatch(authOperations.checkAuth());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   useEffect(() => {

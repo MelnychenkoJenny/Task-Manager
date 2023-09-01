@@ -6,7 +6,7 @@ import { boardsReducer } from './board/boardSlice';
 const authPersistConfig = {
     key: 'auth',
     storage,
-    whitelist: ['token'],
+    whitelist: ['token', 'refreshToken'],
   };
   
   const boardPersistConfig = {
