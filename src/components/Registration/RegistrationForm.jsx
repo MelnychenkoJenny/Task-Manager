@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
-import authOperations from 'redux/auth/authOperations';
+import {userRegistration} from 'redux/auth/authOperations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { registerSchema } from './registerSchema';
@@ -22,8 +22,8 @@ const RegistrationForm = () => {
   const [showError, addShowError] = useState('');
   const handleSubmit = async (values, { resetForm }) => {
     const dataRegister = { ...values };
-
-    const res = await dispatch(authOperations.userRegistration(dataRegister));
+console.log('dataRegister', dataRegister)
+    const res = await dispatch(userRegistration(dataRegister));
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);
       addShowError(backendErr);

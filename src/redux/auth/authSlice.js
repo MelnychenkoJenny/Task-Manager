@@ -70,7 +70,7 @@
 
 // Варіант з builder
 import { createSlice } from '@reduxjs/toolkit';
-import authOperations from './authOperations';
+import {userRegistration, userLogin, logout, refreshUser, updateTheme, updateUserProfile} from 'redux/auth/authOperations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -80,14 +80,23 @@ const handlePendingRefresh = state => {
   state.getIsFetchAnswer = true;
 };
 const handleAuthorisationFulfilled = (state, action) => {
-  console.log('payload', action.payload);
+  console.log('payload454', action);
   state.user = action.payload;
   state.token = action.payload.token;
   state.isLoggedIn = true;
   state.isLoading = false;
 };
 
+const handleLoginFulfilled = (state, {payload}) => {
+  state.isLoading = false;
+  state.isLoggedIn = true;
+  state.user = payload;
+  state.token = payload.token;
+  state.refreshToken = payload.refreshToken;
+}
+
 const handleRejectedAuthorisation = (state, { payload }) => {
+  console.log('error', payload)
   state.error = payload;
 };
 
@@ -117,6 +126,7 @@ const handleFulfilledUpdateUserProfile = (state, { payload }) => {
 const initialState = {
   user: { name: null, email: null, avatarURL: '', theme: 'light' },
   token: null,
+  refreshToken: null,
   isLoggedIn: false,
   getIsFetchAnswer: false,
   error: null,
@@ -129,17 +139,17 @@ const authSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(
-        authOperations.userRegistration.fulfilled,
+        userRegistration.fulfilled,
         handleAuthorisationFulfilled
       )
-      .addCase(authOperations.userLogin.fulfilled, handleAuthorisationFulfilled)
-      .addCase(authOperations.logout.fulfilled, handleFulfilledLogout)
-      .addCase(authOperations.checkAuth.pending, handlePendingRefresh)
-      .addCase(authOperations.checkAuth.fulfilled, handleFulfilledRefresh)
-      .addCase(authOperations.checkAuth.rejected, handleRejectedRefresh)
-      .addCase(authOperations.updateTheme.fulfilled, handleFulfilledUpdateTheme)
+      .addCase(userLogin.fulfilled, handleLoginFulfilled)
+      .addCase(logout.fulfilled, handleFulfilledLogout)
+      .addCase(refreshUser.pending, handlePendingRefresh)
+      .addCase(refreshUser.fulfilled, handleFulfilledRefresh)
+      .addCase(refreshUser.rejected, handleRejectedRefresh)
+      .addCase(updateTheme.fulfilled, handleFulfilledUpdateTheme)
       .addCase(
-        authOperations.updateUserProfile.fulfilled,
+        updateUserProfile.fulfilled,
         handleFulfilledUpdateUserProfile
       )
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)

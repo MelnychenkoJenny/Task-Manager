@@ -1,4 +1,5 @@
 import axios from 'axios';
+import instance from 'redux/auth/authOperations'
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://taskpro-backend-jo75.onrender.com';
@@ -9,7 +10,7 @@ export const getAllBoards = createAsyncThunk(
     try {
       const {
         data:  { result },
-      } = await axios.get('/boards');
+      } = await instance.get('/boards');
       return result;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -25,7 +26,7 @@ export const getBoardById = createAsyncThunk(
         data: {
           data: { result },
         },
-      } = await axios.get(`/boards/${id}`);
+      } = await instance.get(`/boards/${id}`);
       console.log('ot beckenda otvet', result);
       return result;
     } catch (error) {
@@ -42,7 +43,7 @@ export const addBoards = createAsyncThunk(
         data: {
           data: { result },
         },
-      } = await axios.post('/boards/', board);
+      } = await instance.post('/boards/', board);
       console.log('Add new board success');
       return result;
     } catch (e) {
@@ -58,7 +59,7 @@ export const updateBoard = createAsyncThunk(
       const {
         data: {
           data: { result },
-        },} = await axios.put(`/boards/${_id}`, {title, icon, background});
+        },} = await instance.put(`/boards/${_id}`, {title, icon, background});
       console.log('rez ot beckenda', result);
       return result;
     } catch (error) {
@@ -73,7 +74,7 @@ export const deleteBoards = createAsyncThunk(
     try {
       const {
         data: { data },
-      } = await axios.delete(`/boards/${boardId}`);
+      } = await instance.delete(`/boards/${boardId}`);
       console.log('Delete board success');
       return data;
     } catch (e) {
