@@ -1,12 +1,19 @@
 .INAddBoardContainer {
-  min-width: 350px;
+  width: 350px;
   height: 433px;
   padding: 24px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
   // background: var(--bgModal);
   background: #ffffff;
+  @include maxSm() {
+    width: 335px;
+  }
 }
 
 .INBoardTitle {
@@ -17,11 +24,11 @@
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
-  margin-bottom: 24px;
 }
 
 .INBoardInput {
   width: 100%;
+  height: 49px;
   color: var(--modalTitle);
   padding: 14px 18px 14px 18px;
   font-family: Poppins;
@@ -35,7 +42,8 @@
     opacity: 100%;
     outline: none;
   }
-  margin-bottom: 24px;
+
+
 }
 
 .INBoardSubtitle {
@@ -52,13 +60,23 @@
 .INBoardIcon {
   width: 18px;
   height: 18px;
-  stroke: rgb(255, 255, 255, 0.5);
+  stroke: #16161680;;
 }
 
 .INIconsGroup {
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
+  align-items: center;
+  padding: 0;
+}
+
+.INRadioBtn {
+  appearance: none;
+  position: absolute;
+  &:checked {
+    transform: scale(3);
+  }
 }
 
 .IMSubmitBtn {
