@@ -85,10 +85,17 @@
 
 .svgCloseEditUser {
     stroke: #161616;
-    margin-top: 14px;  
-    margin-right: 14px;
-
 }
+
+.btnCloseProfile {
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    border: none;
+    margin-top: 14px;
+    margin-right: 14px;
+}
+
 
 .modalEditUserTopWrap {
     display: flex;
@@ -123,9 +130,6 @@
 }
 
 
-
-
-
 .mainModalEditUserWrap {
     width: 335px;
     height: 440px;
@@ -133,8 +137,6 @@
     @include minMd() {
         width: 400px;
     }
-
-
 }
 
 .inputAvatar {
@@ -156,3 +158,4 @@
     opacity: 0.4;
     
 }
+
