@@ -25,7 +25,7 @@
 }
 
 .headerUserName {
-  color: var(--bgHeader);
+  color: #161616;
   font-family: map-get($fonts, m);
   font-size: 14px;
   font-style: normal;
@@ -41,6 +41,7 @@
   background-image: url(../../images/user-default-light.png);
   background-size: cover;
   border-radius: 8px;
+  border: none;
 }
 
 .svgTheme {
@@ -166,11 +167,11 @@
 
 .themeMenuItem {
   color: var(--textThemeMenu);
-    font-family: map-get($fonts, r);
-    font-size: 14px;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: -0.28px;
+  font-family: map-get($fonts, r);
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.28px;
 }
 
 .themeMenuItem:hover,
