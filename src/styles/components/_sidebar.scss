@@ -246,7 +246,15 @@ gap: 4px;
 overflow-y: scroll;
 overflow-x: hidden;
 // z-index: 1212;
+      @include minMd() {
+width: 236px;
+height: 256px;         
 }
+            @include minLg() {
+               height: 126px;
+            }
+            }
+
 
 .boardsListItemWrap {
    width: 211px;
@@ -271,7 +279,12 @@ overflow-x: hidden;
       .boardsListItemActive {
             display: flex;
       }
-}}
+}
+            @include minMd() {
+               width: 236px;
+               height: 61px;
+            }
+}
 
 .boardsListItemFirst {
       background: #F6F6F7;
@@ -292,6 +305,10 @@ overflow-x: hidden;
    width: 211px;
    height: 61px;
    display: flex;
+   @include minMd() {
+      width: 236px;
+      height: 61px;
+            }
 }
  .boardsListItemTitleGroup {
    display: flex;
@@ -301,7 +318,8 @@ overflow-x: hidden;
    stroke: #16161680;
    fill: transparent;
    margin-right: 4px;
-
+   @include minMd() {
+   margin-right: 8px;      }
 }
 
 .boardsListItemTitle{
@@ -329,8 +347,12 @@ overflow-x: hidden;
    align-items: center;
    gap: 8px;
    margin-right: 14px;
+      @include minMd() {
+      margin-right: 20px;
+         }
+      }
 
-}
+
 .boardsListItemButton {
    width: 16px;
    height: 16px;
