@@ -4,11 +4,15 @@ import sprite from 'images/sprite.svg';
 import { Modal } from 'components/Modal/Modal';
 // import { addBoards, deleteBoards, getBoardById, updateBoard } from 'redux/board/boardOperations';
 import { useEffect, useState } from 'react';
+import { useAuth } from 'hooks';
 
-const NewBoard = ({ modalTitle, handleSubmit }) => {
+const NewBoard = ({ modalTitle, handleSubmit, onClose }) => {
   const [title, setTitle] = useState();
   const [icon, setIcon] = useState();
   const [background, setBackground] = useState();
+
+  const { user } = useAuth();
+
 
 
 //   const dispatch = useDispatch();
@@ -45,9 +49,9 @@ const NewBoard = ({ modalTitle, handleSubmit }) => {
 
   
   return (
-    <>
-      <Modal>
-      <form className={styles.INAddBoardContainer}>
+
+      <Modal onClose={onClose}>
+      <form className={styles.INAddBoardContainer} data-theme={user.theme}>
           <h3 className={styles.INBoardTitle}>New board</h3>
             <input
               className={styles.INBoardInput}
@@ -212,7 +216,6 @@ const NewBoard = ({ modalTitle, handleSubmit }) => {
        
         </form>
       </Modal>
-    </>
   );
 };
 
