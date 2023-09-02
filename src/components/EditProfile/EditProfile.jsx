@@ -30,62 +30,62 @@ const EditProfile = ({onClose}) => {
     
     const dispatch = useDispatch();
     
-    const initialValues = {
-        avatarURL: null,
-        name: user.name, 
-        email: user.email,
-        password: user.password,
-    };
 
 
     const [avatarURL, setAvatarURL] = useState('');
     const [currentImage, setCurrentImage] = useState(user.avatarURL);
     const [showPassword, setShowPassword] = useState(false);
 
+    
+    const initialValues = {
+        name: user.name, 
+        email: user.email,
+        password: user.password,
+    };
 
+
+    
     const handleFileChange = (event) => {
         const file = event;
         if (!file) {
         return;
         }
         setAvatarURL(file);
+
         const reader = new FileReader();
 
         reader.onload = function (event) {
         setCurrentImage(event.target.result);
         };
-        reader.readAsDataURL(file);
+
+        reader.readAsDataURL(file);    
+
     }
+
     
-    
+
     const togglePassword = () => {
     setShowPassword(!showPassword);    
     };
 
 
 
-    const handleSubmit = async (values, { setSubmitting }) => {
-        
-        setSubmitting(true);
 
-        console.log(values);
 
-        try {
+    const handleSubmit = async values => {
+
             await dispatch(
                 authOperations.updateUserProfile({
                     name: values.name, 
                     email: values.email,
-                    password: values.password,         
-                }
-            ));
-            
-        } catch (error) {
-            console.log("error")
-        } finally {
-            setSubmitting(false);
-        }
-    }  
+                    password: values.password,
+                    // avatarURL: currentImage,
+                })
+            );  
 
+// console.log(currentImage) - файл, описанный буквами
+    }  
+    
 
     return (
         <>
@@ -94,7 +94,6 @@ const EditProfile = ({onClose}) => {
             initialValues={initialValues}
             onSubmit={handleSubmit}
             >
-                {({ isSubmitting }) => (
                     <Form className={scss.formEditUser} autoComplete="off">
                         <div className={scss.mainModalEditUserWrap}>
                             <div className={scss.modalEditUserTopWrap}>
@@ -106,15 +105,15 @@ const EditProfile = ({onClose}) => {
                                 </button>
                             </div>
                             <div className={scss.addAvatarBtnWrap}>
-                                {avatarURL ? <img src={currentImage || avatarURL} alt="user avatar" className={scss.avatar} /> : <p className={scss.avatar}></p>}
+                                {avatarURL ? <img src={currentImage} alt="user avatar" className={scss.avatar} /> : <p className={scss.avatar}></p>}
                                 <input
                                     className={scss.inputAvatar}
                                     type="file"
                                     name="avatarURL"
                                     id='avatarInput'
-                                    onChange={event => {
-                                        handleFileChange(event.currentTarget.files[0]);
-                                    }}
+                                onChange={event => {
+                                    handleFileChange(event.currentTarget.files[0])
+                                }}
                                     accept="image/*,.png,.jpg,.gif,.web"
                                 ></input>
         
@@ -161,12 +160,11 @@ const EditProfile = ({onClose}) => {
                                     </div>
                                 </label>
                             </div>
-                            <button className={scss.formBtnEditUser}type="submit" disabled={isSubmitting} >
+                            <button className={scss.formBtnEditUser} type="submit">
                                 Send
                             </button>
                         </div>
                     </Form>
-                )}
         </Formik>
 
 
