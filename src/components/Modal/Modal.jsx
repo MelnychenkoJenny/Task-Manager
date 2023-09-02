@@ -1,4 +1,5 @@
 import scss from 'styles/index.module.scss';
+import sprite from 'images/sprite.svg';
 import  { React, useEffect } from "react";
 import { createPortal } from "react-dom";
 
@@ -32,7 +33,14 @@ export const Modal = ({onClose, children}) => {
 
    return (
       createPortal(<div className={scss.overlay} onClick={handleBackdropClick}>
-         <div className={scss.modal}>{children}</div>
+            <div className={scss.modal}>
+               <div className={scss.closebtn} onClick={onClose}>
+                  <svg className={scss.icon} width="18" height="18">
+                     <use className='icon' href={sprite + '#icon-close'} ></use>
+                  </svg>
+               </div>
+               {children}
+            </div>
       </div>, modalRoot)
          
    )
