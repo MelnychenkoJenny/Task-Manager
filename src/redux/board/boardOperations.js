@@ -27,7 +27,7 @@ export const getBoardById = createAsyncThunk(
           data: { result },
         },
       } = await instance.get(`/boards/${id}`);
-      console.log('ot beckenda otvet', result);
+      // console.log('ot beckenda otvet', result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -79,6 +79,21 @@ export const deleteBoards = createAsyncThunk(
       return data;
     } catch (e) {
       return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const addColumn = createAsyncThunk(
+  'boards/addColumn',
+  async (dataColumn, { rejectWithValue }) => {
+    try {
+      const { data: {result } }= await instance.post('/columns', dataColumn);
+
+      console.log(1, result);
+
+      return result;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

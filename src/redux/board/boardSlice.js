@@ -5,6 +5,7 @@ import {
   addBoards,
   updateBoard,
   deleteBoards,
+  addColumn,
 } from './boardOperations';
 
 const handlePending = state => {
@@ -55,8 +56,28 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
     owner: '',
     columnOrder: [],
   };
-  state.columns = [];
+  // state.columns = [];
 };
+
+const handleFulfilledAddColumn = (state, {payload}) => {
+  console.log('addColumn PAYLOAD: ', payload);
+        state.isLoading = false;
+        state.error = null;
+
+        const newColumn = payload;
+
+        // if (!newColumn.tasks) {
+        //   newColumn.tasks = [];
+        // }
+
+        state.columns.push(newColumn);
+
+        state.boardById.columnOrder.push(payload._id);
+        const boardIndex = state.allBoards.findIndex(
+          ({ _id }) => _id === payload.board
+        );
+        state.allBoards[boardIndex].columnOrder.push(payload._id);
+      }
 
 const handleRejected = (state, { payload }) => {
   console.log(state.error)
@@ -82,6 +103,7 @@ export const boardsSlice = createSlice({
       .addCase(addBoards.fulfilled, handleFulfilledAddBoard)
       .addCase(updateBoard.fulfilled, handleFulfilledUpdateBoard)
       .addCase(deleteBoards.fulfilled, handleFulfilledDeleteBoard)
+      .addCase(addColumn.fulfilled, handleFulfilledAddColumn)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },

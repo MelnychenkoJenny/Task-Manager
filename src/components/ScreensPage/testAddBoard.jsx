@@ -1,11 +1,12 @@
 import styles from 'styles/index.module.scss';
 import scss from '../../styles/index.module.scss';
-import sprite from '../../images/sprite.svg';
+// import sprite from '../../images/sprite.svg';
 
 // import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import {
   addBoards,
+  addColumn,
   deleteBoards,
   getBoardById,
   updateBoard,
@@ -14,7 +15,7 @@ import { useBoards } from 'hooks';
 import { useEffect, useState } from 'react';
 // import { object, string } from 'yup';
 import { useAuth } from 'hooks';
-import { updateTheme } from 'redux/auth/authOperations';
+// import { updateTheme } from 'redux/auth/authOperations';
 
 // const initialValues = {
 //   title: '',
@@ -29,17 +30,21 @@ import { updateTheme } from 'redux/auth/authOperations';
 // });
 
 const AddBoard = () => {
-  const [themeActive, setThemeActive] = useState(false);
+  // const [themeActive, setThemeActive] = useState(false);
 
-  const { allBoards, boardById } = useBoards();
+  const { allBoards, boardById, columns } = useBoards();
   const { user } = useAuth();
-
+  // console.log(boardById);
   const dispatch = useDispatch();
   const [valueInputUpdate, setvalueInputUpdate] = useState({
     title: '',
     icon: '',
     background: '',
   });
+
+  // локальний стейт заголовка колонки
+  // const [valueColumn, setvalueColumn] = useState();
+
   const [avatarURL, setAvatarURL] = useState('');
   const [currentImage, setCurrentImage] = useState(user.avatarURL);
 
@@ -51,20 +56,6 @@ const AddBoard = () => {
     });
   }, [boardById]);
 
-  // const handleSubmit = async (e) => {
-  // console.log(e)
-  // const dataBoard = { ...values };
-  // console.log(1, dataBoard);
-  // if (boards) {
-  //   const res = await dispatch(addBoards(dataBoard));
-  //   if (res.error) {
-  //     console.log(res.payload);
-  //   }
-  //   return res;
-  // }
-  // resetForm();
-  // console.log(3);
-  // };
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
@@ -85,6 +76,28 @@ const AddBoard = () => {
       ...prevBoard,
       [name]: value,
     }));
+  };
+
+  //Обрабка заголовка колонки, що вводить користувач і додавання до локального стейту
+  // const handleChangeColumn = event => {
+  //   const { name, value } = event.target;
+  //   setvalueColumn({
+  //     [name]: value,
+  //   });
+  // };
+
+  //сабміт назви колонки (створення колонки) і відправка екшеном в редакс
+  const handleSubmitColumn = event => {
+    event.preventDefault();
+    const form = event.target;
+    const { titleColumn } = event.target.elements;
+    console.dir(titleColumn);
+    const dataColumn = {
+      title: titleColumn.value,
+      board: boardById._id,
+    };
+    dispatch(addColumn(dataColumn));
+    form.reset();
   };
 
   const handleSubmitUpdate = event => {
@@ -117,23 +130,37 @@ const AddBoard = () => {
     reader.readAsDataURL(file);
   }
 
-  const handleClick = () => {
-    setThemeActive(!themeActive);
-  };
+  // const handleClick = () => {
+  //   setThemeActive(!themeActive);
+  // };
 
-  const handleClickTheme = theme => {
-    if (theme === 'light' || theme === 'dark' || theme === 'violet') {
-      if(theme === user.theme && !theme) {
-        return
-      }
-      dispatch(updateTheme(theme));
-    }
-  };
+  // const handleClickTheme = theme => {
+  //   if (theme === 'light' || theme === 'dark' || theme === 'violet') {
+  //     if (theme === user.theme && !theme) {
+  //       return;
+  //     }
+  //     dispatch(updateTheme(theme));
+  //   }
+  // };
 
   return (
     <div>
+      <form onSubmit={handleSubmitColumn}>
+        <h2>Add new colomn</h2>
+        <input
+          className={styles.AfWelcomRegFormInput}
+          type="text"
+          name="titleColumn"
+          placeholder={'TitleColumn'}
+          // onChange={handleChangeColumn}
+          required
+        ></input>
+        <button type="submit" style={{ marginBottom: '20px' }}>
+          Add column
+        </button>
+      </form>
       <div className={scss.dropdownThemeWrap}>
-        <div className={scss.themeHeaderWrap}>
+        {/* <div className={scss.themeHeaderWrap}>
           <p className={scss.themeText}>Theme</p>
           <button
             type="button"
@@ -144,8 +171,8 @@ const AddBoard = () => {
               <use href={`${sprite}#icon-chevron-down`}></use>
             </svg>
           </button>
-        </div>
-        {themeActive && (
+        </div> */}
+        {/* {themeActive && (
           <div
             className={scss.dropdownThemeMenu}
             style={{ position: 'relative' }}
@@ -177,7 +204,7 @@ const AddBoard = () => {
               </li>
             </ul>
           </div>
-        )}
+        )} */}
       </div>
 
       <div>{boardById && <p>Title active board:{boardById.title}</p>}</div>
@@ -215,6 +242,17 @@ const AddBoard = () => {
           })}
         </ul>
       )}
+
+      <ul>
+        {boardById.columnOrder.map((columnId, index) => {
+          const columN = columns.find(item => item._id === columnId);
+          if (!columN) {
+            return console.log('не має колонок')
+          }
+          return <li key={columN._id}>{columN.title}</li>;
+        })}
+      </ul>
+
       <form onSubmit={handleSubmitUpdate} className={styles.AfWelcomRegForm}>
         <h2 style={{ color: 'white' }}>Update board</h2>
         <input

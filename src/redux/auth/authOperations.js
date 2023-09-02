@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+// import { store } from 'redux/store';
+// import { setRefreshToken, setToken } from './authSlice';
 
 const instance = axios.create({
   baseURL: 'https://taskpro-backend-jo75.onrender.com',
@@ -14,25 +16,29 @@ const token = {
   },
 };
 
-instance.interceptors.response.use(
-  response => response,
-  async error => {
-    if (error.response.status === 401 && !error.config._retry) {
-      const refreshToken = localStorage.getItem('refreshToken');
-      try {
-        const { data } = await instance.post('/users/refresh', {
-          refreshToken,
-        });
-        token.set(data.token);
-        localStorage.setItem('refreshToken', data.refreshToken);
-        return instance(error.config);
-      } catch (error) {
-        return Promise.reject(error);
-      }
-    }
-    return Promise.reject(error);
-  }
-);
+// instance.interceptors.response.use(
+//   response => response,
+//   async error => {
+//     if (error.response.status === 401 && !error.config._retry) {
+//       const refreshToken = localStorage.getItem('refreshToken');
+//       try {
+//         const { data } = await instance.post('/users/refresh', {
+//           refreshToken,
+//         });
+//         token.set(data.token);
+//         localStorage.setItem('refreshToken', data.refreshToken);
+//         // store.dispatch(setToken(data.token))
+//         // store.dispatch(setRefreshToken(data.refreshToken));
+//         return instance(error.config);
+//       } catch (error) {
+//         return Promise.reject(error);
+//       }
+//     } else if (error.response.status === 400 || error.response.status === 500 ) {
+//       console.log('Problem 500 or 400');
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 export const userRegistration = createAsyncThunk(
   'auth/registration',
@@ -54,16 +60,13 @@ export const userRegistration = createAsyncThunk(
 export const userLogin = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
-    console.log('credential', credentials);
     try {
       const { data } = await instance.post('/users/signin', credentials);
-      console.log('data login', data);
       // console.log('token login', data.token)
       localStorage.setItem('refreshToken', data.refreshToken);
       token.set(data.token);
       return data;
     } catch (error) {
-      console.log(222, error.request.status);
       console.log(111, error);
       return rejectWithValue(error.request.status);
     }
