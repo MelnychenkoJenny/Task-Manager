@@ -88,21 +88,22 @@ const EditProfile = ({onClose}) => {
     
 
     return (
-        <>
+        <div data-theme={user.theme} >
         <Formik
             validationSchema={updateUserSchema}
             initialValues={initialValues}
-            onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
+                data-theme={user.theme}
             >
                     <Form className={scss.formEditUser} autoComplete="off">
                         <div className={scss.mainModalEditUserWrap}>
                             <div className={scss.modalEditUserTopWrap}>
                                 <p className={scss.titleEditUser}>Edite Profile</p>
-                                <button type='button' onClick={onClose} className={scss.btnCloseProfile}>
+                                {/* <button type='button' onClick={onClose} className={scss.btnCloseProfile}>
                                     <svg className={scss.svgCloseEditUser} width="18" height="18">
                                         <use href={`${sprite}#icon-close`}></use>
                                     </svg>
-                                </button>
+                                </button> */}
                             </div>
                             <div className={scss.addAvatarBtnWrap}>
                                 {avatarURL ? <img src={currentImage} alt="user avatar" className={scss.avatar} /> : <p className={scss.avatar}></p>}
@@ -166,9 +167,7 @@ const EditProfile = ({onClose}) => {
                         </div>
                     </Form>
         </Formik>
-
-
-      </>  
+      </div>  
     )
 }
 
