@@ -1,8 +1,8 @@
 import { useState } from 'react';
 // import { useDispatch } from 'react-redux'
 import dayjs from 'dayjs';
-import { Modal } from '../Modal/Modal.jsx'
-import { AddCard } from 'components/AddCard';
+import { Modal } from '../Modal/Modal'
+import { AddCard } from '../AddCard/AddCard';
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 
