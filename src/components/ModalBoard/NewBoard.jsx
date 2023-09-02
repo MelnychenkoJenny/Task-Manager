@@ -2,7 +2,7 @@ import styles from 'styles/index.module.scss';
 import sprite from 'images/sprite.svg';
 import { useDispatch } from 'react-redux';
 // import { selectBoards } from 'redux/board/boardSelectors';
-import { Modal } from 'components/Modal/Modal';
+// import { Modal } from 'components/Modal/Modal';
 import { addBoards } from 'redux/board/boardOperations';
 
 const NewBoard = () => {
@@ -132,7 +132,7 @@ const NewBoard = () => {
   // )
   return (
     <>
-      <Modal>
+      {/* <Modal> */}
         <div className={styles.INAddBoardContainer}>
           <h3 className={styles.INBoardTitle}>New board</h3>
           <form>
@@ -182,7 +182,7 @@ const NewBoard = () => {
             </button>
           </form>
         </div>
-      </Modal>
+      {/* </Modal> */}
     </>
   );
 };
