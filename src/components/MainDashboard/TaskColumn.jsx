@@ -1,8 +1,8 @@
 // 💙💛 Kostiantyn Koshyk
 import styles from 'styles/index.module.scss';
 import { Modal } from '../Modal/Modal';
-import { Card } from 'components/Card';
-import { AddCard } from 'components/AddCard';
+import { Card } from '../Card';
+import { AddCard } from '../AddCard/AddCard';
 import { BtnAddCard } from './BtnAddCard';
 import { TitleCards } from './TitleCards';
 import { useState } from 'react';
@@ -32,6 +32,7 @@ export const TaskColumn = ({ className, titleCards, cards }) => {
         {cards.map(({ id, titleCard, description, priority, deadline }) => (
           <li key={id}>
             <Card
+              id={id}
               cardTitle={titleCard}
               description={description}
               priority={priority}
