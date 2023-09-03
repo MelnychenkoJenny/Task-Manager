@@ -86,20 +86,20 @@ $max-width-content: 1218px;
   --iconsCard: rgba(255, 255, 255, 0.5);
   --bgIconPlus: #ffffff;
   --bgIconPlusCard: #ffffff;
-  --bgSbTitleBoard: #1F1F1F;
+  --bgSbTitleBoard: #1f1f1f;
   --inputBorder: rgba(190, 219, 176, 0.4);
   --inputBorderAccent: rgba(190, 219, 176, 1);
-  --modalInputBg: #1F1F1F;
-  --sbSubtitle: #FFFFFF80;
-  --sbBorderNew: #FFFFFF1A;
-   --btnAddBoard: #121212;
-   --sbActiveBoard: #1F1F1F;
-      --sbBoardName: rgba(255, 255, 255, 0.50);
-      --sbActiveFlag: #bedbb0;
-      --sbLogoSvg: #1F1F1F;
-      --LogOutSvgHov: #9dc888;
-         --sbBoardSvg: #FFFFFF80;
-
+  --modalInputBg: #1f1f1f;
+  --sbSubtitle: #ffffff80;
+  --sbBorderNew: #ffffff1a;
+  --btnAddBoard: #121212;
+  --sbActiveBoard: #1f1f1f;
+  --sbBoardName: rgba(255, 255, 255, 0.5);
+  --sbActiveFlag: #bedbb0;
+  --sbLogoSvg: #1f1f1f;
+  --LogOutSvgHov: #9dc888;
+  --sbBoardSvg: #ffffff80;
+}
 // LIGHT THEME
 [data-theme='light'] {
   --bgSidebar: #ffffff;
@@ -125,19 +125,19 @@ $max-width-content: 1218px;
   --iconsCard: rgba(22, 22, 22, 0.5);
   --bgIconPlus: #161616;
   --bgIconPlusCard: #ffffff;
-  --bgSbTitleBoard: #F6F6F7;
+  --bgSbTitleBoard: #f6f6f7;
   --inputBorder: rgba(190, 219, 176, 0.4);
   --inputBorderAccent: rgba(190, 219, 176, 1);
-  --modalInputBg: #FCFCFC;
+  --modalInputBg: #fcfcfc;
   --sbSubtitle: #16161680;
-  --sbBorderNew: #1616161A;
+  --sbBorderNew: #1616161a;
   --btnAddBoard: #121212;
---sbActiveBoard:#F6F6F7;
-   --sbBoardName: rgba(22, 22, 22, 0.50);
-         --sbActiveFlag: #bedbb0;
-               --sbLogoSvg: #1F1F1F;
-                  --LogOutSvgHov: #9dc888;
-                     --sbBoardSvg: #16161680;
+  --sbActiveBoard: #f6f6f7;
+  --sbBoardName: rgba(22, 22, 22, 0.5);
+  --sbActiveFlag: #bedbb0;
+  --sbLogoSvg: #1f1f1f;
+  --LogOutSvgHov: #9dc888;
+  --sbBoardSvg: #16161680;
 }
 
 // VIOLET THEME
@@ -165,18 +165,17 @@ $max-width-content: 1218px;
   --iconsCard: rgba(22, 22, 22, 0.5);
   --bgIconPlus: #5255bc;
   --bgIconPlusCard: #161616;
-  --bgSbTitleBoard: rgba(255, 255, 255, 0.50);
+  --bgSbTitleBoard: rgba(255, 255, 255, 0.5);
   --inputBorder: rgba(82, 85, 188, 0.4);
   --inputBorderAccent: rgba(82, 85, 188, 1);
-  --modalInputBg: #FCFCFC;
-  --sbSubtitle: #FFFFFF80;
-   --sbBorderNew: #FFFFFF1A;
-   --btnAddBoard: #ffffff;
-   --sbActiveBoard: rgba(255, 255, 255, 0.50);
-   --sbBoardName: rgba(255, 255, 255, 0.50);
-         --sbActiveFlag: #ffffff;
-               --sbLogoSvg: #5255bc;
-   --LogOutSvgHov: #b8bcfd;
-   --sbBoardSvg: #16161680;
-}
+  --modalInputBg: #fcfcfc;
+  --sbSubtitle: #ffffff80;
+  --sbBorderNew: #ffffff1a;
+  --btnAddBoard: #ffffff;
+  --sbActiveBoard: rgba(255, 255, 255, 0.5);
+  --sbBoardName: rgba(255, 255, 255, 0.5);
+  --sbActiveFlag: #ffffff;
+  --sbLogoSvg: #5255bc;
+  --LogOutSvgHov: #b8bcfd;
+  --sbBoardSvg: #16161680;
 }
