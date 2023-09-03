@@ -9,7 +9,7 @@ import AddBoard from './testAddBoard';
 
 // import { AddCard } from 'components/AddCard';
 // import { Card } from 'components/Card';
-// import NewBoard from 'components/ModalBoard/NewBoard';
+import NewBoard from 'components/ModalBoard/NewBoard';
 // import { PopColumn } from 'components/PopColumn';
 
 const ScreensPage = () => {
@@ -33,7 +33,7 @@ const ScreensPage = () => {
         <AddBoard />
         {/* <AddCard /> */}
         {/* <Card /> */}
-        {/* <NewBoard /> */}
+        <NewBoard />
         {/* <PopColumn /> */}
       </div>
     </section>
