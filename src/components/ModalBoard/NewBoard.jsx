@@ -1,17 +1,24 @@
 import styles from 'styles/index.module.scss';
 import sprite from 'images/sprite.svg';
-// import { useDispatch } from 'react-redux';
-import { Modal } from 'components/Modal/Modal';
-// import { addBoards, deleteBoards, getBoardById, updateBoard } from 'redux/board/boardOperations';
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { selectBoards } from 'redux/board/boardSelectors';
+// import { Modal } from 'components/Modal/Modal';
+import { addBoards, /*deleteBoards, getBoardById, updateBoard*/ } from 'redux/board/boardOperations';
+// import { useState } from 'react';
 
 const NewBoard = ({ boardTitle, handleSubmit }) => {
-  const [title, setTitle] = useState();
-  const [icon, setIcon] = useState();
-  const [background, setBackground] = useState();
+  // потрібно створити селектор selectIsLoadingBoard
+  // const isLoadingBoard = useSelector(selectIsLoadingBoard);
+  // const [isOpenModal, setIsOpenModal] = useState(false);
+  // const toggleModal = () => setIsOpenModal(state => !state);
+  // const [title, setTitle] = useState("");
+  // const [icon, setIcon] = useState("icon-project");
+  // const [background, setBackground] = useState(second)
+  // потрібно створити селектор вибору теми
+  // const theme = useSelector(selectTheme)
 
-
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  // const boards = useSelector(selectBoards)
 
   // const boardSchema = object({
   //       title: string().required('Title is required'),
@@ -42,7 +49,7 @@ const NewBoard = ({ boardTitle, handleSubmit }) => {
   
   return (
     <>
-      <Modal>
+      {/* <Modal> */}
         <div className={styles.INAddBoardContainer}>
           <h3 className={styles.INBoardTitle}>New board</h3>
           <form>
@@ -204,7 +211,7 @@ const NewBoard = ({ boardTitle, handleSubmit }) => {
             </button>
           </form>
         </div>
-      </Modal>
+      {/* </Modal> */}
     </>
   );
 };

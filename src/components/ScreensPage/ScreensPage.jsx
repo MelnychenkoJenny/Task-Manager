@@ -4,8 +4,9 @@ import styles from 'styles/index.module.scss';
 import { getAllBoards } from 'redux/board/boardOperations';
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 // import EditProfile from 'components/EditProfile/EditProfile';
-import { useAuth } from 'hooks';
-import AddBoard from './testAddBoard';
+// import { useAuth } from 'hooks';
+// import AddBoard from './testAddBoard';
+
 // import { AddCard } from 'components/AddCard';
 // import { Card } from 'components/Card';
 // import NewBoard from 'components/ModalBoard/NewBoard';
@@ -13,8 +14,8 @@ import AddBoard from './testAddBoard';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
-  const user = useAuth();
-  console.log(45465151, user)
+//   const { user } = useAuth();
+//   console.log(user)
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);

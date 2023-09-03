@@ -3,13 +3,26 @@ import { Outlet } from 'react-router-dom';
 import Header from 'components/Header/Header.jsx';
 import { useState, useEffect } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
-import Loader from 'components/Loader/Loader';
 import styles from 'styles/index.module.scss';
 import { useAuth } from 'hooks';
 
 export const SharedLayout = () => {
   const [menuActive, setMenuActive] = useState(false);
   const { user } = useAuth();
+
+  useEffect(() => {
+    const hendleEscClose = event => {
+      if (event.code === 'Escape' && window.innerWidth <= 1199.99) {
+        setMenuActive(false);
+      }
+    };
+
+    window.addEventListener('keydown', hendleEscClose);
+
+    return () => {
+      window.removeEventListener('keydown', hendleEscClose);
+    };
+  }, [menuActive, setMenuActive]);
 
   useEffect(() => {
     const handleMinXlSize = () => {
@@ -50,7 +63,7 @@ export const SharedLayout = () => {
         </aside>
       )}
       <main className={styles.AFNavResWrMain}>
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<div>...Loader</div>}>
           <Outlet />
         </Suspense>
       </main>
