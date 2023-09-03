@@ -1,21 +1,24 @@
 import styles from 'styles/index.module.scss';
 import sprite from 'images/sprite.svg';
-// import { useDispatch } from 'react-redux';
-import { Modal } from 'components/Modal/Modal';
-// import { addBoards, deleteBoards, getBoardById, updateBoard } from 'redux/board/boardOperations';
-import { useEffect, useState } from 'react';
-import { useAuth } from 'hooks';
+import { useDispatch } from 'react-redux';
+// import { selectBoards } from 'redux/board/boardSelectors';
+// import { Modal } from 'components/Modal/Modal';
+import { addBoards, /*deleteBoards, getBoardById, updateBoard*/ } from 'redux/board/boardOperations';
+// import { useState } from 'react';
 
 const NewBoard = ({ modalTitle, handleSubmit, onClose }) => {
-  const [title, setTitle] = useState();
-  const [icon, setIcon] = useState();
-  const [background, setBackground] = useState();
+  // потрібно створити селектор selectIsLoadingBoard
+  // const isLoadingBoard = useSelector(selectIsLoadingBoard);
+  // const [isOpenModal, setIsOpenModal] = useState(false);
+  // const toggleModal = () => setIsOpenModal(state => !state);
+  // const [title, setTitle] = useState("");
+  // const [icon, setIcon] = useState("icon-project");
+  // const [background, setBackground] = useState(second)
+  // потрібно створити селектор вибору теми
+  // const theme = useSelector(selectTheme)
 
-  const { user } = useAuth();
-
-
-
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  // const boards = useSelector(selectBoards)
 
   // const boardSchema = object({
   //       title: string().required('Title is required'),
@@ -50,8 +53,13 @@ const NewBoard = ({ modalTitle, handleSubmit, onClose }) => {
   
   return (
 
-      <Modal onClose={onClose}>
-      <form className={styles.INAddBoardContainer} data-theme={user.theme}>
+
+//       <Modal onClose={onClose}>
+//       <form className={styles.INAddBoardContainer} data-theme={user.theme}>
+
+    <>
+      {/* <Modal> */}
+        <div className={styles.INAddBoardContainer}>
           <h3 className={styles.INBoardTitle}>New board</h3>
             <input
               className={styles.INBoardInput}
@@ -213,9 +221,10 @@ const NewBoard = ({ modalTitle, handleSubmit, onClose }) => {
               </div>
               Create
             </button>
-       
-        </form>
-      </Modal>
+          </form>
+        </div>
+      {/* </Modal> */}
+    </>
   );
 };
 
