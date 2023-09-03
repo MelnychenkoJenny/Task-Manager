@@ -6,6 +6,9 @@ import { updateTheme } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks';
 import { Modal } from '../Modal/Modal';
 import EditProfile from '../EditProfile/EditProfile.jsx';
+import userDark from '../../images/user-default-dark.png';
+import userLight from '../../images/user-default-light.png';
+import userViolet from '../../images/user-default-violet.png';
 
 const Header = ({ click }) => {
 
@@ -13,7 +16,6 @@ const Header = ({ click }) => {
 
   const [themeActive, setThemeActive] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
 
 
   const handleClick = () => {
@@ -36,6 +38,18 @@ const Header = ({ click }) => {
   };
 
   const { user } = useAuth();
+  console.log(user.theme)
+
+
+    const setDefaultAvatar = () => {
+    if (user.theme === 'dark') {
+      return userDark;
+    } else if (user.theme === 'light') {
+      return userLight;
+    } else if (user.theme === 'violet') {
+      return userViolet;
+    }
+  };
 
   return (
     <>
@@ -54,7 +68,7 @@ const Header = ({ click }) => {
               className={scss.btnThemeOpen}
               onClick={handleClick}
             >
-              <svg className={scss.svgTheme} width="16" height="16">
+              <svg className={scss.svgThemeOpen} width="16" height="16">
                 <use href={`${sprite}#icon-chevron-down`}></use>
               </svg>
             </button>
@@ -81,8 +95,8 @@ const Header = ({ click }) => {
                 <li
                   className={scss.themeMenuItem}
                   onClick={() => {
-                    handleClickTheme('violet');
-                  }}
+                  handleClickTheme('violet');
+                }}
                 >
                   Violet
                 </li>
@@ -93,7 +107,10 @@ const Header = ({ click }) => {
         <ul className={scss.headerUserInfoWrap}>
           <li className={scss.headerUserName}>{user.name}</li>
             <li>
-              <button type='button' onClick={togleModal} className={scss.headerAvatar}></button>
+              <button type='button' onClick={togleModal} className={scss.headerBtnAvatar}>
+                <img src={setDefaultAvatar()} alt='defaultAvatar' className={scss.headerAvatar}></img>
+
+              </button>
           </li>
         </ul>
       </div>

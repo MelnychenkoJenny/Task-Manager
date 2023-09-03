@@ -1,6 +1,6 @@
 .headerWrap {
   padding: 14px 20px;
-  background-color: var(--bgHeader);
+  background-color: var(--bgHeader); 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,7 +25,7 @@
 }
 
 .headerUserName {
-  color: #161616;
+  color: var(--modalTitle);
   font-family: map-get($fonts, m);
   font-size: 14px;
   font-style: normal;
@@ -38,14 +38,26 @@
 .headerAvatar {
   width: 32px;
   height: 32px;
-  background-image: url(../../images/user-default-light.png);
-  background-size: cover;
+  // background-image: url(../../images/user-default-light.png);
+  // background-size: cover;
   border-radius: 8px;
-  border: none;
+  
 }
 
-.svgTheme {
-  stroke: rgba(22, 22, 22, 0.8);
+.headerBtnAvatar{
+  border: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.svgThemeOpen{
+  stroke: var(--colorFilters);
   stroke-width: 1.5px;
   fill: none;
   margin-left: 4px;
@@ -61,8 +73,14 @@
   align-items: center;
 }
 
+.btnThemeOpen {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
 .svgSideBarOpen {
-  stroke: var(--primary);
+  stroke: var(--modalTitle);
 
   @include minMd() {
     width: 34px;
@@ -79,7 +97,7 @@
 }
 
 .themeText {
-  color: rgba(22, 22, 22, 0.8);
+  color: var(--colorFilters);
   font-family: map-get($fonts, m);
   font-size: 14px;
   font-style: normal;
@@ -118,11 +136,7 @@
 }
 
 
-.btnThemeOpen {
-  border: none;
-  background: transparent;
-  padding: 0;
-}
+
 
 .dropdownThemeWrap {
   display: flex;
@@ -140,7 +154,7 @@
 }
 
 .dropdownThemeMenu {
-  background-color: var(--bgHeader);
+  background-color: var(--bgModal);
   width: 100px;
   height: 107px;
   text-align: center;
