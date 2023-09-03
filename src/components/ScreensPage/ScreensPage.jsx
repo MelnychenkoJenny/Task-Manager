@@ -1,37 +1,35 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import styles from 'styles/index.module.scss';
+import {
+  useDispatch,
+  // useSelector
+} from 'react-redux';
 import { getAllBoards } from 'redux/board/boardOperations';
-// import { MainDashboard } from 'components/MainDashboard/MainDashboard';
+import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 // import EditProfile from 'components/EditProfile/EditProfile';
 // import { useAuth } from 'hooks'; // s
 // import AddBoard from './testAddBoard';
 // import { AddCard } from 'components/AddCard';
 // import { Card } from 'components/Card';
-import ModalBoard from 'components/ModalBoard/ModalBoard';
+// import NewBoard from 'components/ModalBoard/NewBoard';
 // import { PopColumn } from 'components/PopColumn';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
-  // const { user } = useAuth();
-  // console.log(user)
-  const statE = useSelector(state => state);
-  console.log(statE);
+  //   const { user } = useAuth();
+  //   console.log(user)
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
 
   return (
     <section>
-      <div>
-        {/* <MainDashboard /> */}
-        {/* <EditProfile/> */}
-        {/* <AddBoard /> */}
-        {/* <AddCard /> */}
-        {/* <Card /> */}
-        <ModalBoard />
-        {/* <PopColumn /> */}
-      </div>
+      <MainDashboard />
+      {/* <EditProfile/> */}
+      {/* <AddBoard /> */}
+      {/* <AddCard /> */}
+      {/* <Card /> */}
+      {/* <NewBoard /> */}
+      {/* <PopColumn /> */}
     </section>
   );
 };
