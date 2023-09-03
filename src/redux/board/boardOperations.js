@@ -60,7 +60,7 @@ export const updateBoard = createAsyncThunk(
         data: {
           data: { result },
         },} = await instance.put(`/boards/${_id}`, {title, icon, background});
-      console.log('rez ot beckenda', result);
+      // console.log('rez ot beckenda', result);
       return result;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -85,7 +85,7 @@ export const deleteBoards = createAsyncThunk(
 
 export const addColumn = createAsyncThunk(
   'boards/addColumn',
-  async (dataColumn, { rejectWithValue }) => {
+  async (dataColumn, thunkAPI) => {
     try {
       const { data: {result } }= await instance.post('/columns', dataColumn);
 
@@ -93,7 +93,7 @@ export const addColumn = createAsyncThunk(
 
       return result;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

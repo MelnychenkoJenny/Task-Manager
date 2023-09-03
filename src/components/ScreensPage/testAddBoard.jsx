@@ -244,7 +244,7 @@ const AddBoard = () => {
       )}
 
       <ul>
-        {boardById.columnOrder.map((columnId, index) => {
+        {boardById?.columnOrder?.map((columnId, index) => {
           const columN = columns.find(item => item._id === columnId);
           if (!columN) {
             return console.log('не має колонок')
