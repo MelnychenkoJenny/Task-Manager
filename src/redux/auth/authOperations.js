@@ -58,7 +58,7 @@ export const userLogin = createAsyncThunk(
     try {
       const { data } = await instance.post('/users/signin', credentials);
       console.log('data login', data);
-      // console.log('token login', data.token)
+      console.log('token login', data.token)
       localStorage.setItem('refreshToken', data.refreshToken);
       token.set(data.token);
       return data;

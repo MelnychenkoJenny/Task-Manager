@@ -3,11 +3,11 @@ import SvgSprite from 'images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { React, useState } from 'react';
 import { Modal } from '../Modal/Modal';
-import authOperations from '../../redux/auth/authOperations';
+// import authOperations from '../../redux/auth/authOperations';
 import BoardsList from '../Sidebar/BoardsList';
 import NewBoard from '../ModalBoard/NewBoard';
 
-// import {logout} from '../../redux/auth/authOperations';
+import {logout} from '../../redux/auth/authOperations';
 
 // import Login from 'components/Login/Login';
 
