@@ -7,6 +7,7 @@ import { Modal } from '../Modal/Modal';
 import BoardsList from '../Sidebar/BoardsList';
 import NewBoard from '../ModalBoard/NewBoard';
 
+
 import {logout} from '../../redux/auth/authOperations';
 
 // import Login from 'components/Login/Login';
@@ -73,7 +74,7 @@ const Sidebar = () => {
         </div>
       </div>
         {showModal && (<Modal onClose={togleModal}>
-           <NewBoard/>
+           {/* <NewBoard/> */}
             </Modal>)
       }      
     </>

@@ -90,7 +90,15 @@ $max-width-content: 1218px;
   --inputBorder: rgba(190, 219, 176, 0.4);
   --inputBorderAccent: rgba(190, 219, 176, 1);
   --modalInputBg: #1F1F1F;
-}
+  --sbSubtitle: #FFFFFF80;
+  --sbBorderNew: #FFFFFF1A;
+   --btnAddBoard: #121212;
+   --sbActiveBoard: #1F1F1F;
+      --sbBoardName: rgba(255, 255, 255, 0.50);
+      --sbActiveFlag: #bedbb0;
+      --sbLogoSvg: #1F1F1F;
+      --LogOutSvgHov: #9dc888;
+         --sbBoardSvg: #FFFFFF80;
 
 // LIGHT THEME
 [data-theme='light'] {
@@ -121,6 +129,15 @@ $max-width-content: 1218px;
   --inputBorder: rgba(190, 219, 176, 0.4);
   --inputBorderAccent: rgba(190, 219, 176, 1);
   --modalInputBg: #FCFCFC;
+  --sbSubtitle: #16161680;
+  --sbBorderNew: #1616161A;
+  --btnAddBoard: #121212;
+--sbActiveBoard:#F6F6F7;
+   --sbBoardName: rgba(22, 22, 22, 0.50);
+         --sbActiveFlag: #bedbb0;
+               --sbLogoSvg: #1F1F1F;
+                  --LogOutSvgHov: #9dc888;
+                     --sbBoardSvg: #16161680;
 }
 
 // VIOLET THEME
@@ -152,4 +169,14 @@ $max-width-content: 1218px;
   --inputBorder: rgba(82, 85, 188, 0.4);
   --inputBorderAccent: rgba(82, 85, 188, 1);
   --modalInputBg: #FCFCFC;
+  --sbSubtitle: #FFFFFF80;
+   --sbBorderNew: #FFFFFF1A;
+   --btnAddBoard: #ffffff;
+   --sbActiveBoard: rgba(255, 255, 255, 0.50);
+   --sbBoardName: rgba(255, 255, 255, 0.50);
+         --sbActiveFlag: #ffffff;
+               --sbLogoSvg: #5255bc;
+   --LogOutSvgHov: #b8bcfd;
+   --sbBoardSvg: #16161680;
+}
 }
