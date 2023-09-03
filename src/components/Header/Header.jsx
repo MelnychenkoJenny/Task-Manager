@@ -109,6 +109,7 @@ const Header = ({ click }) => {
             <li>
               <button type='button' onClick={togleModal} className={scss.headerBtnAvatar}>
                 <img src={setDefaultAvatar()} alt='defaultAvatar' className={scss.headerAvatar}></img>
+
               </button>
           </li>
         </ul>
