@@ -34,7 +34,6 @@ const onDeleteTask = (state, { payload }) => {
 };
 
 const onRejected = (state, { payload }) => {
-  console.log(state.error);
   state.isLoading = false;
   state.error = payload;
 };

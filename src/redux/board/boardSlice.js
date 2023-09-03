@@ -18,6 +18,7 @@ const handleFulfilled = (state, { payload }) => {
 };
 
 const handleFulfilledAddBoard = (state, { payload }) => {
+  console.log(state.allBoards);
   state.isLoading = false;
   state.error = null;
   state.allBoards = [payload, ...state.allBoards];
@@ -59,7 +60,6 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
 };
 
 const handleRejected = (state, { payload }) => {
-  console.log(state.error)
   state.isLoading = false;
   state.error = payload;
 };
