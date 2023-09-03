@@ -22,13 +22,18 @@ const Header = ({ click }) => {
     setThemeActive(!themeActive);
   };
 
+  const handlecCloseTheme = () => {
+    setThemeActive(false)
+  }
+
 
   const handleClickTheme = theme => {
     if (theme === 'light' || theme === 'dark' || theme === 'violet') {
       if (theme === user.theme && !theme) {
         return;
       }
-      dispatch(updateTheme(theme));
+      dispatch(updateTheme(theme))
+      handlecCloseTheme();
     }
   };
 

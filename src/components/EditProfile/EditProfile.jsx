@@ -81,7 +81,7 @@ const EditProfile = ({onClose}) => {
                     onClose();
                     resetForm();
                 } catch (error) { 
-                    
+                    console.log("error")
                 } 
     } 
 
