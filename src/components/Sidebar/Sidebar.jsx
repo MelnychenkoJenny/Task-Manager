@@ -74,7 +74,7 @@ const Sidebar = () => {
         </div>
       </div>
         {showModal && (<Modal onClose={togleModal}>
-           {/* <NewBoard/> */}
+           <NewBoard/> 
             </Modal>)
       }      
     </>
