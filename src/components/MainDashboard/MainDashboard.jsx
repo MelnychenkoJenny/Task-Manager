@@ -5,34 +5,33 @@ import { Filters } from './Filters';
 import { TaskColumn } from './TaskColumn';
 import { useEffect } from 'react';
 import { useBoards } from 'hooks';
-import { useDispatch, /*useSelector*/ } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
-  /*addBoards,
-  deleteBoards,*/
+  // addBoards,
+  // deleteBoards,
   getAllBoards,
   getBoardById,
- /* updateBoard,*/
+  // updateBoard,
 } from 'redux/board/boardOperations';
 import {
-  /*addColumn,
-  deleteColumn,
-  getColumnById,*/
+  // addColumn,
+  // deleteColumn,
+  // getColumnById,
   getColumns,
- /* updateColumn,*/
+  // updateColumn,
 } from 'redux/column/columnOperations';
 import { useColumns } from 'hooks/useColumns';
 import {
- /* addTask,
-  deleteTask,*/
+  // addTask,
+  // deleteTask,
   getTasks,
-  /*updateTask,*/
+  // updateTask,
 } from 'redux/task/taskOperations';
-// import { colors } from '@mui/material';
 
 export const MainDashboard = () => {
-  const idBoard = '64f3ccb879cb8e4510359091'; // этот id прилетает из сайтбара !!!!!!!!!!!!!
-  const { /*allBoards,*/ boardById } = useBoards();
-  const { allColumns, /*columnById, allTasks*/ } = useColumns();
+  const idBoard = '64f3a3fa79cb8e451035865d'; // этот id прилетает из сайтбара !!!!!!!!!!!!!
+  const { allBoards, boardById } = useBoards();
+  const { allColumns, allTasks } = useColumns();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -110,9 +109,9 @@ export const MainDashboard = () => {
     // dispatch(getTasks('64f3b37f79cb8e4510358ae7'));
   };
 
-  // console.log('allBoards :>>>>>>>>>>>>>>>>>> ', allBoards);
-  // console.log('allColumns :>>>>>>>>>>>>>>>>> ', allColumns);
-  // console.log('allTasks :>>>>>>>>>>>>>>>>> ', allTasks);
+  console.log('allBoards :>>>>>>>>>>>>>>>>>> ', allBoards);
+  console.log('allColumns :>>>>>>>>>>>>>>>>> ', allColumns);
+  console.log('allTasks :>>>>>>>>>>>>>>>>> ', allTasks);
 
   if (!boardById) return;
 
