@@ -28,7 +28,7 @@ const ScreensPage = () => {
       >
         <MainDashboard />
         {/* <EditProfile/> */}
-        <AddBoard />
+        {/* <AddBoard /> */}
         {/* <AddCard /> */}
         {/* <Card /> */}
         {/* <NewBoard /> */}

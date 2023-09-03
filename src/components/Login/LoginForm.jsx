@@ -29,6 +29,9 @@ const LoginForm = () => {
     const dataLogin = { email, password };
 console.log(999, dataLogin)
     const res = await dispatch(userLogin(dataLogin));
+    console.log(15151551)
+    console.log(res, 1651521)
+
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);
       addShowError(backendErr);
