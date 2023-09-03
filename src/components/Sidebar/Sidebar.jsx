@@ -3,6 +3,10 @@ import SvgSprite from 'images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { React, useState } from 'react';
 import { Modal } from '../Modal/Modal';
+// import authOperations from '../../redux/auth/authOperations';
+import BoardsList from '../Sidebar/BoardsList';
+import NewBoard from '../ModalBoard/NewBoard';
+
 import {logout} from '../../redux/auth/authOperations';
 
 // import Login from 'components/Login/Login';
@@ -42,8 +46,8 @@ const Sidebar = () => {
               </button>
             </div>
           </div>
-          <div>Тут буде елемент зі списком створених дошок</div>
-          <div className={scss.sbHelp}>
+              <BoardsList/>
+              <div className={scss.sbHelp}>
             <div className={scss.sbHelpPngCactus}></div>
             <p className={scss.sbHelpText}>
               If you need help with
@@ -68,26 +72,10 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-      {showModal && (
-        <Modal onClose={togleModal}>
-          <div className={scss.sbHelp}>
-            <div className={scss.sbHelpPngCactus}></div>
-            <p className={scss.sbHelpText}>
-              If you need help with
-              <span className={scss.cbTaskProSpan}> TaskPro</span>, check out
-              our support resources or reach out to our customer support team.
-            </p>
-            <button className={scss.sbHelpButton}>
-              <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
-                <use href={`${SvgSprite}#icon-help-circle`}></use>
-              </svg>{' '}
-              <span className={scss.sbNeedHelpButtonText}>Need help?</span>
-            </button>
-          </div>
-          {/* <Login/> */}
-        </Modal>
-      )}
-      ;
+        {showModal && (<Modal onClose={togleModal}>
+           <NewBoard/>
+            </Modal>)
+      }      
     </>
   );
 };

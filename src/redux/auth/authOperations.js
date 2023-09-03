@@ -14,25 +14,25 @@ const token = {
   },
 };
 
-instance.interceptors.response.use(
-  response => response,
-  async error => {
-    if (error.response.status === 401 && !error.config._retry) {
-      const refreshToken = localStorage.getItem('refreshToken');
-      try {
-        const { data } = await instance.post('/users/refresh', {
-          refreshToken,
-        });
-        token.set(data.token);
-        localStorage.setItem('refreshToken', data.refreshToken);
-        return instance(error.config);
-      } catch (error) {
-        return Promise.reject(error);
-      }
-    }
-    return Promise.reject(error);
-  }
-);
+// instance.interceptors.response.use(
+//   response => response,
+//   async error => {
+//     if (error.response.status === 401 && !error.config._retry) {
+//       const refreshToken = localStorage.getItem('refreshToken');
+//       try {
+//         const { data } = await instance.post('/users/refresh', {
+//           refreshToken,
+//         });
+//         token.set(data.token);
+//         localStorage.setItem('refreshToken', data.refreshToken);
+//         return instance(error.config);
+//       } catch (error) {
+//         return Promise.reject(error);
+//       }
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 export const userRegistration = createAsyncThunk(
   'auth/registration',
@@ -42,6 +42,7 @@ export const userRegistration = createAsyncThunk(
 
       // console.log('data registration', res);
       // console.log('token registration', data.token);
+
       token.set(data.token);
       return data;
     } catch (error) {
@@ -54,17 +55,20 @@ export const userRegistration = createAsyncThunk(
 export const userLogin = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
-    console.log('credential', credentials);
     try {
+      console.log(1)
       const { data } = await instance.post('/users/signin', credentials);
-      console.log('data login', data);
+      console.log(2)
+      // console.log('data login', data);
       // console.log('token login', data.token)
-      localStorage.setItem('refreshToken', data.refreshToken);
+      // localStorage.setItem('refreshToken', data.refreshToken);
+
       token.set(data.token);
+      console.log('token login2', data.token)
+      console.log(3)
       return data;
     } catch (error) {
-      console.log(222, error.request.status);
-      console.log(111, error);
+      console.log('error zaprosa na bek', error);
       return rejectWithValue(error.request.status);
     }
   }
