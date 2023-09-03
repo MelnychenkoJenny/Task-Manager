@@ -16,7 +16,7 @@ const BoardsList = () => {
 
    const boards = useSelector(selectBoards);
    console.log(boards);
-   const firstBoardId = boards[0]._id;
+   const firstBoardId = boards[0]?._id;
    const dispatch = useDispatch();
    const [showEditBoardModal, setshowEditBoardModal] = useState(false);
    const [activeBoardId, setActiveBoardId] = useState(firstBoardId);
@@ -50,7 +50,7 @@ const BoardsList = () => {
 
       return (
          <ul className={scss.boardsList}>                  
-            {boards.map(({_id, title, icon}) => (
+            {boards?.map(({_id, title, icon}) => (
              <li className={scss.boardsListItem}
                >
                   <Link
