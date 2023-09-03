@@ -384,15 +384,6 @@ height: 256px;
          background: #BEDBB0;
          // overflow: hidden;
 }
-
-// .deleteBoardConfirm.showDeleteConfirm {
-//    // display: flex;
-//    opacity: 1;
-//    visibility: visible;
-//    transform: translate(38%);
-//    transition: all .3s ease-in-out;
-// }
-
 .deleteBoardConfirm {
    display: flex;
    flex-direction: column;
@@ -405,15 +396,25 @@ height: 256px;
          height: 61px;
    border-radius: 4px;
    background: #BEDBB0;
-   padding: 5px 10px;
+   padding: 3px 10px;
             transform: translate(-45%);
    // z-index: 9999999;
-   &:hover {
-         transform: translate(38%);
-            transition: all .3s ease-in-out;
-               opacity: 1;
-}   
+//    &:hover {
+//          transform: translate(40%);
+//             transition: all .3s ease-in-out;
+//                opacity: 1;
+// }   
 }
+
+.showDeleteConfirm {
+   display: flex;
+   opacity: 1;
+   visibility: visible;
+   transform: translate(40%);
+   transition: all .4s ease-in-out;
+}
+
+
 
 
 .confirmDeleteButton {   
@@ -433,5 +434,5 @@ height: 256px;
    text-align: center;   
    font-family: map-get($fonts, r), sans-serif;
          font-size: 12px;
-         letter-spacing: -0.28px;
+         letter-spacing: 0.28px;
 }

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectBoards } from '../../redux/board/boardSelectors';
 import {
    getAllBoards,
-   // deleteBoards
+   deleteBoards
 } from '../../redux/board/boardOperations';
 import { Modal } from '../Modal/Modal';
 import { Link } from 'react-router-dom';
@@ -20,6 +20,7 @@ const BoardsList = () => {
    const dispatch = useDispatch();
    const [showEditBoardModal, setshowEditBoardModal] = useState(false);
    const [activeBoardId, setActiveBoardId] = useState(firstBoardId);
+   const [deleteConfirm, setDeleteConfirm] = useState(false);
 
    const togleModal = () => {
     setshowEditBoardModal(prev => !showEditBoardModal);
@@ -36,9 +37,9 @@ const BoardsList = () => {
    //    deleteConfirmPopup.classList.remove('showDeleteConfirm');
    // }
 
-   //  const deleteConfirmOpen = () => {
-   //    deleteConfirmPopup.classList.add('showDeleteConfirm');
-   // }
+    const deleteConfirmTogle = () => {
+    setDeleteConfirm(prev => !deleteConfirm);
+   }
 
    useEffect(() => {
       dispatch(getAllBoards())
@@ -82,9 +83,7 @@ const BoardsList = () => {
          <button
             type='button'
             className={scss.boardsListItemButton}
-            // onClick={() => {
-            //   deleteConfirmOpen();
-            // }}
+            onClick={deleteConfirmTogle}
           >
             <svg className={scss.boardsListItemSvg} width="16px" height="16px">
               <use href={`${SvgSprite}#icon-trash`}></use>
@@ -95,22 +94,24 @@ const BoardsList = () => {
 
                         
          <div
-               id='deleteBoardConfirm'
-               className={scss.deleteBoardConfirm}        
+               // id='deleteBoardConfirm'
+            className={`${scss.deleteBoardConfirm} ${deleteConfirm ? scss.showDeleteConfirm : ''} `}
                         >
             <h3 className={scss.confirmDeleteTitle}>Delete this board?</h3>
             <button
                className={scss.confirmDeleteButton}
-               // onClick={() => {
-               //    // deleteBoardFromList(_id);
-               //    deleteConfirmOpen();
-               // }}
+               onClick={() => {
+                  // deleteBoardFromList(_id);
+                  deleteConfirmTogle()
+               }
+                                 
+}
           >
             YES
          </button>
          <button
                className={scss.confirmDeleteButton}
-               onClick = {togleModal}
+               onClick = {deleteConfirmTogle}
           >
                               NO
                            </button>
