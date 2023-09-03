@@ -89,6 +89,7 @@ $max-width-content: 1218px;
   --bgSbTitleBoard: #1F1F1F;
   --inputBorder: rgba(190, 219, 176, 0.4);
   --inputBorderAccent: rgba(190, 219, 176, 1);
+  --modalInputBg: #1F1F1F;
 }
 
 // LIGHT THEME
@@ -119,6 +120,7 @@ $max-width-content: 1218px;
   --bgSbTitleBoard: #F6F6F7;
   --inputBorder: rgba(190, 219, 176, 0.4);
   --inputBorderAccent: rgba(190, 219, 176, 1);
+  --modalInputBg: #FCFCFC;
 }
 
 // VIOLET THEME
@@ -149,4 +151,5 @@ $max-width-content: 1218px;
   --bgSbTitleBoard: rgba(255, 255, 255, 0.50);
   --inputBorder: rgba(82, 85, 188, 0.4);
   --inputBorderAccent: rgba(82, 85, 188, 1);
+  --modalInputBg: #FCFCFC;
 }
