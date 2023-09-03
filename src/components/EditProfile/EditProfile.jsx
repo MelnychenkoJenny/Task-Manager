@@ -6,6 +6,9 @@ import { useState } from 'react';
 import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { updateUserProfile } from '../../redux/auth/authOperations.js';
+import userDark from '../../images/user-default-dark.png';
+import userLight from '../../images/user-default-light.png';
+import userViolet from '../../images/user-default-violet.png';
 
 const updateUserSchema = object({
     name: string()
@@ -81,7 +84,16 @@ const EditProfile = ({onClose}) => {
                     
                 } 
     } 
-    
+
+        const setDefaultAvatar = () => {
+    if (user.theme === 'dark') {
+      return userDark;
+    } else if (user.theme === 'light') {
+      return userLight;
+    } else if (user.theme === 'violet') {
+      return userViolet;
+    }
+  };
 
     return (
         <div data-theme={user.theme} >
@@ -95,14 +107,9 @@ const EditProfile = ({onClose}) => {
                         <div className={scss.mainModalEditUserWrap}>
                             <div className={scss.modalEditUserTopWrap}>
                                 <p className={scss.titleEditUser}>Edite Profile</p>
-                                {/* <button type='button' onClick={onClose} className={scss.btnCloseProfile}>
-                                    <svg className={scss.svgCloseEditUser} width="18" height="18">
-                                        <use href={`${sprite}#icon-close`}></use>
-                                    </svg>
-                                </button> */}
-                            </div>
+                        </div>
                             <div className={scss.addAvatarBtnWrap}>
-                            {currentImage ? <img src={currentImage} alt="user avatar" className={scss.avatar} /> : <p className={scss.avatar}></p>}
+                            {currentImage !== '/' ? <img src={currentImage} alt="user avatar" className={scss.avatar} /> : <img src={setDefaultAvatar()} alt='defaultAvatar' className={scss.avatar}></img>}
                             
                                 <input
                                     className={scss.inputAvatar}

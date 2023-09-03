@@ -108,7 +108,7 @@ const Header = ({ click }) => {
           <li className={scss.headerUserName}>{user.name}</li>
             <li>
               <button type='button' onClick={togleModal} className={scss.headerBtnAvatar}>
-                <img src={setDefaultAvatar()} alt='defaultAvatar' className={scss.headerAvatar}></img>
+                {user.avatarURL !== '/' ? <img src={user.avatarURL} alt='avatarUser'></img> : <img src={setDefaultAvatar()} alt='defaultAvatar' className={scss.headerAvatar}></img>  }
 
               </button>
           </li>
