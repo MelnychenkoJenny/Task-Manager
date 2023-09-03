@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import instance from 'redux/auth/authOperations';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -27,7 +27,7 @@ export const getBoardById = createAsyncThunk(
           data: { result },
         },
       } = await instance.get(`/boards/${id}`);
-      console.log('ot beckenda otvet', result);
+      // console.log('ot beckenda otvet', result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -84,19 +84,3 @@ export const deleteBoards = createAsyncThunk(
     }
   }
 );
-
-export const addColumn = createAsyncThunk(
-  'boards/addColumn',
-  async (dataColumn, thunkAPI) => {
-    try {
-      const { data: {result } }= await instance.post('/columns', dataColumn);
-
-      console.log(1, result);
-
-      return result;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-

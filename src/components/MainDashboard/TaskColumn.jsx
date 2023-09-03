@@ -7,7 +7,7 @@ import { BtnAddCard } from './BtnAddCard';
 import { TitleCards } from './TitleCards';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { /*addTask,*/ getTasks } from 'redux/task/taskOperations';
+import { addTask, getTasks } from 'redux/task/taskOperations';
 import { useColumns } from 'hooks/useColumns';
 
 export const TaskColumn = ({ className, titleCards, idColumn }) => {
