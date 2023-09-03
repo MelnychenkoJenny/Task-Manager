@@ -3,7 +3,6 @@ import {
   useDispatch,
   // useSelector
 } from 'react-redux';
-import styles from 'styles/index.module.scss';
 import { getAllBoards } from 'redux/board/boardOperations';
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 // import EditProfile from 'components/EditProfile/EditProfile';
@@ -23,7 +22,7 @@ const ScreensPage = () => {
   }, [dispatch]);
 
   return (
-    <section className={styles.YMScreenReg}>
+    <section>
       <MainDashboard />
       {/* <EditProfile/> */}
       {/* <AddBoard /> */}

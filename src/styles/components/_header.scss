@@ -1,6 +1,6 @@
 .headerWrap {
   padding: 14px 20px;
-  background-color: var(--bgHeader); 
+  background-color: var(--bgHeader);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -41,10 +41,9 @@
   // background-image: url(../../images/user-default-light.png);
   // background-size: cover;
   border-radius: 8px;
-  
 }
 
-.headerBtnAvatar{
+.headerBtnAvatar {
   border: none;
   outline: none;
   width: 30px;
@@ -56,7 +55,7 @@
   border-radius: 8px;
 }
 
-.svgThemeOpen{
+.svgThemeOpen {
   stroke: var(--colorFilters);
   stroke-width: 1.5px;
   fill: none;
@@ -106,51 +105,17 @@
   letter-spacing: -0.28px;
 }
 
-.AFNavResWr {
-  @include minLg() {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-areas:
-      'sidebar header'
-      'sidebar content';
-  }
-  &Head {
-    @include minLg() {
-      grid-area: header;
-      height: 10vh;
-    }
-  }
-  &Aside {
-    @include minLg() {
-      grid-area: sidebar;
-      height: 100vh;
-    }
-  }
-  &Main {
-    @include minLg() {
-      grid-area: content;
-      width: auto;
-      height: 90vh;
-    }
-  }
-}
-
-
-
-
 .dropdownThemeWrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  
 }
 
 .themeHeaderWrap {
   display: flex;
   flex-direction: row;
-  
 }
 
 .dropdownThemeMenu {
@@ -160,7 +125,7 @@
   text-align: center;
   border-radius: 8px;
   border: 1px solid var(--borderTheme);
-  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.10);
+  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   padding: 18px 44px 18px 18px;
   display: flex;
   justify-content: left;
@@ -169,7 +134,6 @@
   top: 100%;
   left: -10%;
 }
-
 
 .dropdownThemeList {
   cursor: pointer;

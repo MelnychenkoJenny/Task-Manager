@@ -18,7 +18,6 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
   const [icon, setIcon] = useState('icon-project');
   const [background, setBackground] = useState();
   const { user } = useAuth();
-  // потрібно створити селектор вибору теми
   // const theme = useSelector(selectTheme)
 
   // const dispatch = useDispatch();
@@ -83,8 +82,8 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
             </label>
           </li>
 
-          <li>
-            <label>
+          <li className={styles.INListItem}>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -98,7 +97,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
             </label>
           </li>
 
-          <li>
+          <li className={styles.INListItem}>
             <label>
               <input
                 className={styles.INRadioBtn}
@@ -113,7 +112,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
             </label>
           </li>
 
-          <li>
+          <li className={styles.INListItem}>
             <label>
               <input
                 className={styles.INRadioBtn}
@@ -128,7 +127,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
             </label>
           </li>
 
-          <li>
+          <li className={styles.INListItem}>
             <label>
               <input
                 className={styles.INRadioBtn}
@@ -143,7 +142,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
             </label>
           </li>
 
-          <li>
+          <li className={styles.INListItem}>
             <label>
               <input
                 className={styles.INRadioBtn}
@@ -158,7 +157,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
             </label>
           </li>
 
-          <li>
+          <li className={styles.INListItem}>
             <label>
               <input
                 className={styles.INRadioBtn}
@@ -173,7 +172,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
             </label>
           </li>
 
-          <li>
+          <li className={styles.INListItem}>
             <label>
               <input
                 className={styles.INRadioBtn}
