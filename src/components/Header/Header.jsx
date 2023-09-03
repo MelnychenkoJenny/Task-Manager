@@ -93,7 +93,9 @@ const Header = ({ click }) => {
         <ul className={scss.headerUserInfoWrap}>
           <li className={scss.headerUserName}>{user.name}</li>
             <li>
-              <button type='button' onClick={togleModal} className={scss.headerAvatar}></button>
+              <button type='button' onClick={togleModal} className={scss.headerAvatar}>
+                <img src={user.avatarURL} alt='user ava' className={scss.headerAvatar}></img>
+              </button>
           </li>
         </ul>
       </div>

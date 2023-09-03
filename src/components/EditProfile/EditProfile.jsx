@@ -1,11 +1,11 @@
 import scss from '../../styles/index.module.scss';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import sprite from '../../images/sprite.svg';
 import { useState } from 'react';
 import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
-import authOperations from 'redux/auth/authOperations';
+import { updateUserProfile } from '../../redux/auth/authOperations.js';
 
 const updateUserSchema = object({
     name: string()
@@ -30,9 +30,7 @@ const EditProfile = ({onClose}) => {
     
     const dispatch = useDispatch();
     
-
-
-    const [avatarURL, setAvatarURL] = useState('');
+    const [avatarFile, setAvatarFile] = useState('');
     const [currentImage, setCurrentImage] = useState(user.avatarURL);
     const [showPassword, setShowPassword] = useState(false);
 
@@ -40,17 +38,16 @@ const EditProfile = ({onClose}) => {
     const initialValues = {
         name: user.name, 
         email: user.email,
-        password: user.password,
+        password: "",
     };
 
 
-    
     const handleFileChange = (event) => {
         const file = event;
         if (!file) {
         return;
         }
-        setAvatarURL(file);
+        setAvatarFile(file);  
 
         const reader = new FileReader();
 
@@ -70,21 +67,20 @@ const EditProfile = ({onClose}) => {
 
 
 
-
-
-    const handleSubmit = async values => {
-
-            await dispatch(
-                authOperations.updateUserProfile({
-                    name: values.name, 
-                    email: values.email,
-                    password: values.password,
-                    // avatarURL: currentImage,
-                })
-            );  
-
-// console.log(currentImage) - файл, описанный буквами
-    }  
+    const handleSubmit = async (values, { resetForm }) => {
+        let formData = new FormData();
+            formData.set('name', values.name);
+            formData.set('email', values.email);
+            formData.set('password', values.password);
+            if (avatarFile) formData.set('avatar', avatarFile);
+                try {
+                    await dispatch(updateUserProfile(formData));
+                    onClose();
+                    resetForm();
+                } catch (error) { 
+                    
+                } 
+    } 
     
 
     return (
@@ -105,7 +101,8 @@ const EditProfile = ({onClose}) => {
                                 </button>
                             </div>
                             <div className={scss.addAvatarBtnWrap}>
-                                {avatarURL ? <img src={currentImage} alt="user avatar" className={scss.avatar} /> : <p className={scss.avatar}></p>}
+                            {currentImage ? <img src={currentImage} alt="user avatar" className={scss.avatar} /> : <p className={scss.avatar}></p>}
+                            
                                 <input
                                     className={scss.inputAvatar}
                                     type="file"
@@ -134,6 +131,10 @@ const EditProfile = ({onClose}) => {
                                         type="name"
                                         name="name"
                                     />
+                                    <ErrorMessage
+                                    name="name"
+                                    component="div"
+                                    />
                                 </label>
                                 <label className={scss.formLabelEditUser}>
                                     <Field
@@ -141,15 +142,23 @@ const EditProfile = ({onClose}) => {
                                         type="email"
                                         name="email"
                                     />
+                                    <ErrorMessage
+                                    name="email"
+                                    component="div"
+                                    />
                                 </label>
                                 <label className={scss.formLabelEditUser}>
                                     <div className={scss.showPassProfileWrap}>
-                                        <Field
-                                            className={scss.formInputEditUser}
-                                            type={showPassword ? 'text' : 'password'}
-                                            name="password"
-                                            placeholder="Change your password"
-                                        />
+                                    <Field
+                                        className={scss.formInputEditUser}
+                                        type={showPassword ? 'text' : 'password'}
+                                        name="password"
+                                        placeholder="Change your password"
+                                    />
+                                    <ErrorMessage
+                                        name="password"
+                                        component="div"
+                                    />
                                         <svg
                                             className={scss.showPasswordEditProfile}
                                             alt="watch password icon"
