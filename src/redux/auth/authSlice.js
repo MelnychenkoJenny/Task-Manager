@@ -9,8 +9,6 @@ const handlePendingRefresh = state => {
   state.getIsFetchAnswer = true;
 };
 const handleAuthorisationFulfilled = (state, {payload}) => {
-  console.log('payload454', payload);
-  // console.log('state registration', state.user)
   state.user = payload;
   state.token = payload.token;
   state.isLoggedIn = true;
@@ -18,6 +16,7 @@ const handleAuthorisationFulfilled = (state, {payload}) => {
 };
 
 const handleLoginFulfilled = (state, {payload}) => {
+  console.log(4)
   console.log('login payload',payload)
   // console.log('state login', state.user)
   const {name, email, avatarURL, theme } = payload;
@@ -25,7 +24,9 @@ const handleLoginFulfilled = (state, {payload}) => {
   state.isLoggedIn = true;
   state.user = {name, email, avatarURL, theme};
   state.token = payload.token;
-  state.refreshToken = payload.refreshToken;
+
+  // state.refreshToken = payload.refreshToken;
+
 }
 
 const handleRejectedAuthorisation = (state, { payload }) => {
@@ -37,7 +38,7 @@ const handleRejectedAuthorisation = (state, { payload }) => {
 const handleFulfilledLogout = state => {
   state.user = { name: null, email: null, avatarURL: '', theme: 'light' };
   state.token = null;
-  state.refreshToken = null;
+  // state.refreshToken = null;
   state.isLoggedIn = false;
 };
 const handleFulfilledRefresh = (state, action) => {
@@ -60,7 +61,7 @@ const handleFulfilledUpdateUserProfile = (state, { payload }) => {
 const initialState = {
   user: { name: null, email: null, avatarURL: '', theme: 'light' },
   token: null,
-  refreshToken: null,
+  // refreshToken: null,
   isLoggedIn: false,
   getIsFetchAnswer: false,
   error: null,

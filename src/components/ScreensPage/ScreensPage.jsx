@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import styles from 'styles/index.module.scss';
 import { getAllBoards } from 'redux/board/boardOperations';
-import { MainDashboard } from 'components/MainDashboard/MainDashboard';
+// import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 // import EditProfile from 'components/EditProfile/EditProfile';
 // import { useAuth } from 'hooks';
-// import AddBoard from './testAddBoard';
+import AddBoard from './testAddBoard';
 
 // import { AddCard } from 'components/AddCard';
 // import { Card } from 'components/Card';
@@ -14,8 +14,10 @@ import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
-//   const { user } = useAuth();
-//   console.log(user)
+  // const { user } = useAuth();
+  // console.log(user)
+  const statE = useSelector(state=>state)
+  console.log(statE)
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
@@ -26,9 +28,9 @@ const ScreensPage = () => {
       <div
         className={styles.AfWelcomRegWr}
       >
-        <MainDashboard />
+        {/* <MainDashboard /> */}
         {/* <EditProfile/> */}
-        {/* <AddBoard /> */}
+        <AddBoard />
         {/* <AddCard /> */}
         {/* <Card /> */}
         {/* <NewBoard /> */}
