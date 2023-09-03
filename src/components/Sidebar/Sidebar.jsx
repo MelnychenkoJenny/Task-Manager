@@ -7,8 +7,7 @@ import { Modal } from '../Modal/Modal';
 import BoardsList from '../Sidebar/BoardsList';
 import NewBoard from '../ModalBoard/ModalBoard';
 
-
-import {logout} from '../../redux/auth/authOperations';
+import { logout } from '../../redux/auth/authOperations';
 
 // import Login from 'components/Login/Login';
 
@@ -47,8 +46,8 @@ const Sidebar = () => {
               </button>
             </div>
           </div>
-              <BoardsList/>
-              <div className={scss.sbHelp}>
+          <BoardsList />
+          <div className={scss.sbHelp}>
             <div className={scss.sbHelpPngCactus}></div>
             <p className={scss.sbHelpText}>
               If you need help with
@@ -73,10 +72,11 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-        {showModal && (<Modal onClose={togleModal}>
-           {/* <NewBoard/> */}
-            </Modal>)
-      }      
+      {showModal && (
+        <Modal onClose={togleModal}>
+          <NewBoard />
+        </Modal>
+      )}
     </>
   );
 };
