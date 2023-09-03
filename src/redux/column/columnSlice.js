@@ -16,7 +16,6 @@ const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.allColumns = payload;
-  // console.log('object :>> ', payload);
 };
 
 const onAddColumn = (state, { payload }) => {
@@ -55,7 +54,6 @@ const handleFulfilledDeleteColumn = (state, { payload }) => {
 };
 
 const handleRejected = (state, { payload }) => {
-  console.log(state.error);
   state.isLoading = false;
   state.error = payload;
 };

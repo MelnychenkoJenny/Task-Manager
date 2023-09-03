@@ -27,7 +27,6 @@ export const getBoardById = createAsyncThunk(
           data: { result },
         },
       } = await instance.get(`/boards/${id}`);
-      // console.log('ot beckenda otvet', result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -37,6 +36,7 @@ export const getBoardById = createAsyncThunk(
 
 export const addBoards = createAsyncThunk(
   'boards/addBoards',
+
   async (board, { rejectWithValue }) => {
     try {
       const {
@@ -45,7 +45,6 @@ export const addBoards = createAsyncThunk(
         },
       } = await instance.post('/boards', board);
 
-      // console.log('Add new board success');
       return result;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -62,7 +61,6 @@ export const updateBoard = createAsyncThunk(
           data: { result },
         },
       } = await instance.put(`/boards/${_id}`, { title, icon, background });
-      // console.log('rez ot beckenda', result);
       return result;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -77,7 +75,6 @@ export const deleteBoards = createAsyncThunk(
       const {
         data: { data },
       } = await instance.delete(`/boards/${boardId}`);
-      // console.log('Delete board success');
       return data;
     } catch (e) {
       return rejectWithValue(e.message);
