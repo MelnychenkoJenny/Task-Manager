@@ -6,6 +6,7 @@ import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 // import EditProfile from 'components/EditProfile/EditProfile';
 // import { useAuth } from 'hooks';
 // import AddBoard from './testAddBoard';
+
 // import { AddCard } from 'components/AddCard';
 // import { Card } from 'components/Card';
 // import NewBoard from 'components/ModalBoard/NewBoard';
@@ -19,6 +20,7 @@ const ScreensPage = () => {
     dispatch(getAllBoards());
   }, [dispatch]);
 
+
   return (
     <section className={styles.YMScreenReg}>
       <div
@@ -26,7 +28,7 @@ const ScreensPage = () => {
       >
         <MainDashboard />
         {/* <EditProfile/> */}
-        {/* <AddBoard /> */}
+        <AddBoard />
         {/* <AddCard /> */}
         {/* <Card /> */}
         {/* <NewBoard /> */}

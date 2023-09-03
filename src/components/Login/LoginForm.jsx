@@ -5,7 +5,7 @@ import styles from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { loginSchema } from './loginSchema';
 import { useDispatch } from 'react-redux';
-import authOperations from 'redux/auth/authOperations';
+import {userLogin} from 'redux/auth/authOperations';
 import HandlingBackendErrors from 'utils/HandlingBackendErrors';
 
 const initialValues = {
@@ -27,8 +27,8 @@ const LoginForm = () => {
 
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     const dataLogin = { email, password };
-
-    const res = await dispatch(authOperations.userLogin(dataLogin));
+console.log(999, dataLogin)
+    const res = await dispatch(userLogin(dataLogin));
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);
       addShowError(backendErr);

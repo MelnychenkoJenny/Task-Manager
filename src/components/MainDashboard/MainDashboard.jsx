@@ -3,116 +3,120 @@ import styles from 'styles/index.module.scss';
 import { BtnAddColumn } from './BtnAddColumn';
 import { Filters } from './Filters';
 import { TaskColumn } from './TaskColumn';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useBoards } from 'hooks';
+import { useDispatch, /*useSelector*/ } from 'react-redux';
+import {
+  /*addBoards,
+  deleteBoards,*/
+  getAllBoards,
+  getBoardById,
+ /* updateBoard,*/
+} from 'redux/board/boardOperations';
+import {
+  /*addColumn,
+  deleteColumn,
+  getColumnById,*/
+  getColumns,
+ /* updateColumn,*/
+} from 'redux/column/columnOperations';
+import { useColumns } from 'hooks/useColumns';
+import {
+ /* addTask,
+  deleteTask,*/
+  getTasks,
+  /*updateTask,*/
+} from 'redux/task/taskOperations';
+// import { colors } from '@mui/material';
 
 export const MainDashboard = () => {
-  // ниже имитация store (Redux) --------- temp temp
-  const [columns] = useState([
-    {
-      id: '01',
-      titleCards: 'Column Title 01',
-      cards: [
-        {
-          id: '01',
-          titleCard: 'Card Title 01',
-          description:
-            'Create visually appealing and functional design prototypes based on the pproved concepts',
-          priority: 'medium',
-          deadline: '31/08/2023',
-        },
-        {
-          id: '02',
-          titleCard: 'Card Title 02',
-          description:
-            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
-          priority: 'without',
-          deadline: '01/09/2023',
-        },
-        {
-          id: '03',
-          titleCard: 'Card Title 03',
-          description:
-            'In this example, the .limited-text class is applied to the <p> element. The max-height is set to the height of two lines of text (you might need to adjust this value based on your font size and line height). The overflow: hidden hides any content that overflows the specified height, and text-overflow: ellipsis adds the three dots (...) to indicate overflow.',
-          priority: 'medium',
-          deadline: '02/09/2023',
-        },
-        {
-          id: '04',
-          titleCard: 'Card Title 04',
-          description:
-            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
-          priority: 'medium',
-          deadline: '02/09/2023',
-        },
-        {
-          id: '05',
-          titleCard: 'Card Title 05',
-          description:
-            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
-          priority: 'low',
-          deadline: '31/08/2023',
-        },
-      ],
-    },
-    {
-      id: '02',
-      titleCards: 'Column Title 02',
-      cards: [
-        {
-          id: '01',
-          titleCard: 'Card Title 01',
-          description:
-            'Create visually appealing and functional design prototypes based on the pproved concepts',
-          priority: 'high',
-          deadline: '01/09/2023',
-        },
-        {
-          id: '02',
-          titleCard: 'Card Title 02',
-          description:
-            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
-          priority: 'low',
-          deadline: '31/08/2023',
-        },
-      ],
-    },
-    {
-      id: '03',
-      titleCards: 'Column Title 03',
-      cards: [
-        {
-          id: '01',
-          titleCard: 'Card Title 01',
-          description:
-            'Create visually appealing and functional design prototypes based on the pproved concepts',
-          priority: 'low',
-          deadline: '31/08/2023',
-        },
-        {
-          id: '02',
-          titleCard: 'Card Title 02',
-          description:
-            'Conduct in-depth research and analysis on the project topic, gather relevant data, and identify',
-          priority: 'high',
-          deadline: '01/09/2023',
-        },
-      ],
-    },
-    {
-      id: '04',
-      titleCards: 'Column Title 04',
-      cards: [
-        {
-          id: '01',
-          titleCard: 'Card Title 01',
-          description:
-            'Create visually appealing and functional design prototypes based on the pproved concepts',
-          priority: 'without',
-          deadline: '01/09/2023',
-        },
-      ],
-    },
-  ]);
+  const idBoard = '64f3ccb879cb8e4510359091'; // этот id прилетает из сайтбара !!!!!!!!!!!!!
+  const { /*allBoards,*/ boardById } = useBoards();
+  const { allColumns, /*columnById, allTasks*/ } = useColumns();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBoardById(idBoard));
+    dispatch(getColumns(idBoard));
+    dispatch(getAllBoards());
+    dispatch(getTasks('64f3b37f79cb8e4510358ae7'));
+  }, [dispatch]);
+
+  const click = () => {
+    // ======================================================== Board
+    // 1. Создать Board
+    // dispatch(
+    //   addBoards({
+    //     title: 'New Board',
+    //     icon: 'icon-project',
+    //     background: 'background2',
+    //   })
+    // );
+    // // 2. Удалить Board
+    // dispatch(deleteBoards('64f39de379cb8e4510358425'));
+    // 3 Обновить Board
+    // dispatch(
+    //   updateBoard({
+    //     _id: '64f39d8079cb8e45103583f2',
+    //     title: 'Board update',
+    //     icon: 'icon-colors',
+    //     background: 'background1',
+    //   })
+    // );
+    // 4 Получить все Boards
+    // dispatch(getAllBoards());
+    // 5 Получить все Boards
+    // dispatch(getBoardById('64f39de379cb8e4510358425'));
+    // ============================================================= Column
+    // 1. Создать Column
+    // dispatch(
+    //   addColumn({
+    //     title: 'New Column',
+    //     board: '64f3ccb879cb8e4510359091',
+    //   })
+    // );
+    // 2. Удалить Column (передать id колонки)
+    // dispatch(deleteColumn('64f3cd3c79cb8e45103590af'));
+    // 3 Обновить Column
+    // dispatch(
+    //   updateColumn({ id: '64f3a60f79cb8e45103586b0', title: 'New Column 1' })
+    // );
+    // 4 Получить все Column
+    // dispatch(getColumns());
+    // 5 Получить колонку по id
+    // dispatch(getColumnById('64f3a60f79cb8e45103586b0'));
+    // =============================================================== Tasks
+    // 1. Создать Task
+    // dispatch(
+    //   addTask({
+    //     title: 'New Task 1',
+    //     taskOwner: '64f3b37f79cb8e4510358ae7',
+    //     description: 'task description',
+    //   })
+    // );
+    // 2. Удалить Task (передать id колонки)
+    // dispatch(deleteTask('64f3a6ba79cb8e451035877c'));
+    // 3 Обновить Task
+    // dispatch(
+    //   updateTask({
+    //     taskId: '64f237418ad71f5d5364dc4f',
+    //     title: 'Linda',
+    //     description: '',
+    //     priority: '',
+    //     deadLine: '',
+    //   })
+    // );
+    // 4 Получить все Tsks
+    // dispatch(getTasks('64f3b37f79cb8e4510358ae7'));
+  };
+
+  // console.log('allBoards :>>>>>>>>>>>>>>>>>> ', allBoards);
+  // console.log('allColumns :>>>>>>>>>>>>>>>>> ', allColumns);
+  // console.log('allTasks :>>>>>>>>>>>>>>>>> ', allTasks);
+
+  if (!boardById) return;
+
+  const { title } = boardById;
 
   const onAddColumn = () => {
     console.log('Add Column click');
@@ -120,20 +124,18 @@ export const MainDashboard = () => {
 
   return (
     <section className={styles.KkSectionMainDashboard}>
-      <Filters
-        className={styles.KkFilters}
-        titleBoard={'Board Title'}
-        theme={'light'}
-      />
+      <Filters className={styles.KkFilters} titleBoard={title} />
+      <button onClick={click}>click</button>
 
       <ul className={styles.KkColums}>
-        {columns.map(({ id, titleCards, cards }) => (
-          <li key={id}>
+        {allColumns.map(({ _id, title }) => (
+          <li key={_id}>
             <TaskColumn
               className={styles.KkTaskColumn}
-              titleCards={titleCards}
-              cards={cards}
+              titleCards={title}
+              idColumn={_id}
             />
+            <p>id Column: {_id}</p>
           </li>
         ))}
         <BtnAddColumn

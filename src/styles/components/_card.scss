@@ -12,6 +12,10 @@
 
 .OBCardTitle {
   margin-bottom: 8px;
+  font-family: map-get($fonts, b), sans-serif; //= font-family: Poppins; font-weight: 600
+  color: #161616;
+  font-style: normal;
+  // letter-spacing: -0.28px;
 }
 
 .OBCardDescription {
@@ -44,12 +48,10 @@ td {
 }
 
 .OBCardProreties {
+  font-family: map-get($fonts, r), sans-serif; // 400
   color: rgba(22, 22, 22, 0.5);
-  font-family: Poppins;
   font-size: 8px;
   font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.16px;
 }
 
@@ -57,16 +59,12 @@ td {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  // background-color: #8fa1d0;
 }
 
 .OBCardDate {
+  font-family: map-get($fonts, r), sans-serif; // 400
   color: #161616;
-  font-family: Poppins;
   font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.2px;
 }
 
@@ -88,7 +86,7 @@ td {
   border: none;
   stroke: rgba(22, 22, 22, 0.5); // колір обводки іконки
   fill: transparent;  
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: $transition;
     &:hover,
     &:focus {
       stroke: rgba(82, 85, 188, 1);
@@ -96,8 +94,3 @@ td {
       transform: scale(1.1);
     }
 }
-
-
-  // position: absolute;
-  // top: 20px;
-  // right: 20px;

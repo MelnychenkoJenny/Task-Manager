@@ -1,15 +1,16 @@
-import axios from 'axios';
+// import axios from 'axios';
+import instance from 'redux/auth/authOperations';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://taskpro-backend-jo75.onrender.com';
+// axios.defaults.baseURL = 'https://taskpro-backend-jo75.onrender.com';
 
 export const getAllBoards = createAsyncThunk(
   'boards/getAll',
   async (_, { rejectWithValue }) => {
     try {
       const {
-        data:  { result },
-      } = await axios.get('/boards');
+        data: { result },
+      } = await instance.get('/boards');
       return result;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -25,8 +26,8 @@ export const getBoardById = createAsyncThunk(
         data: {
           data: { result },
         },
-      } = await axios.get(`/boards/${id}`);
-      console.log('ot beckenda otvet', result);
+      } = await instance.get(`/boards/${id}`);
+      // console.log('ot beckenda otvet', result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,8 +43,9 @@ export const addBoards = createAsyncThunk(
         data: {
           data: { result },
         },
-      } = await axios.post('/boards/', board);
-      console.log('Add new board success');
+      } = await instance.post('/boards', board);
+
+      // console.log('Add new board success');
       return result;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -53,13 +55,14 @@ export const addBoards = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
-  async ({_id, title, icon, background}, { rejectWithValue }) => {
+  async ({ _id, title, icon, background }, { rejectWithValue }) => {
     try {
       const {
         data: {
           data: { result },
-        },} = await axios.put(`/boards/${_id}`, {title, icon, background});
-      console.log('rez ot beckenda', result);
+        },
+      } = await instance.put(`/boards/${_id}`, { title, icon, background });
+      // console.log('rez ot beckenda', result);
       return result;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -73,8 +76,8 @@ export const deleteBoards = createAsyncThunk(
     try {
       const {
         data: { data },
-      } = await axios.delete(`/boards/${boardId}`);
-      console.log('Delete board success');
+      } = await instance.delete(`/boards/${boardId}`);
+      // console.log('Delete board success');
       return data;
     } catch (e) {
       return rejectWithValue(e.message);

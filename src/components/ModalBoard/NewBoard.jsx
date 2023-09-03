@@ -3,9 +3,10 @@ import sprite from 'images/sprite.svg';
 import { useDispatch } from 'react-redux';
 // import { selectBoards } from 'redux/board/boardSelectors';
 // import { Modal } from 'components/Modal/Modal';
-import { addBoards } from 'redux/board/boardOperations';
+import { addBoards, /*deleteBoards, getBoardById, updateBoard*/ } from 'redux/board/boardOperations';
+// import { useState } from 'react';
 
-const NewBoard = () => {
+const NewBoard = ({ boardTitle, handleSubmit }) => {
   // потрібно створити селектор selectIsLoadingBoard
   // const isLoadingBoard = useSelector(selectIsLoadingBoard);
   // const [isOpenModal, setIsOpenModal] = useState(false);
@@ -27,154 +28,182 @@ const NewBoard = () => {
 
   const onSubmit = e => {
     e.prevenDefault();
-    const form = e.target;
-    const { title, icon, background } = e.target.elements;
 
-    const dataBoard = {
-      title: title.value,
-      icon: icon.value,
-      background: background.value,
-    };
-    dispatch(addBoards(dataBoard));
-    form.reset();
+    const data = { title, icon, background };
+
+    handleSubmit(data, boardTitle);
   };
-  // dispatch(
-  //     addBoard({
-  //         title,
-  //         icon,
-  //         background: background || "default",
-  //     })
-  // ).then(() => {
-  //     if (!isLoadingBoard) {
-  //         toggleModal();
-  //         setTitle("");
-  //         setIcon("icon-project");
-  //         setBackground("default")
-  //     }
-  // })
-  // };
 
-  // const changeIcon = newIcon => {
-  //     setIcon(newIcon);
-  // }
+  const changeTitle = e => {
+    setTitle(e.target.value);
+  };
 
-  // const changeBackground = newBg => {
-  //     setBackground(newBg)
-  // }
+  const changeIcon = e => {
+    setIcon(e.target.value);
+  };
 
-  // const changeTitle = e => {
-  //     setTitle(e.target.value)
-  // }
+  const changeBackground = newBg => {
+    setBackground(newBg);
+  };
 
-  // return (
-  //     <div>
-  //         <button onClick={toggleModal} type="button">
-  //             <svg width={36} height={36}>
-  //                 {/* <use href={sprite + '#icon-plus'}></use> */}
-  //             </svg>
-  //         </button>
-  //         {isOpenModal && (
-  //             <Modal onClose={toggleModal}>
-  //                 <form onSubmit={onSubmit}>
-  //                     <h1>New board</h1>
-
-  //                     <input
-  //                     id="title"
-  //                     type="title"
-  //                     name="title"
-  //                     placeholder={title}
-  //                     value={title}
-  //                     onChange={changeTitle}
-  //                     />
-  //                     <div id="icon-label">
-  //                         Icons
-  //                         <fieldset role='group' aria-labelledby="icon-label">
-  //                             {icons.map(item => (
-  //                                 <div key={item.value}>
-  //                                     <input
-  //                                     id={item.value}
-  //                                     type='radio'
-  //                                     name={item.value}
-  //                                     checked={icon === item.value}
-  //                                     onChange={() => changeIcon(item.value)}
-  //                                     />
-  //                                     <label
-  //                                     htmlFor={item.value}
-  //                                     onClick={() => changeIcon(item.value) }
-  //                                     >
-  //                                     <svg>
-  //                                         {/* <use href={sprite + `#${item.value}`}></use> */}
-  //                                     </svg>
-  //                                     </label>
-  //                                 </div>
-  //                             ))}
-  //                         </fieldset>
-  //                     </div>
-
-  //                     <div id="icon-label">
-  //                         Background
-  //                         <fieldset role='group' aria-labelledby="icon-label">
-
-  //                             {/* описати логіку вибору background */}
-
-  //                         </fieldset>
-  //                     </div>
-
-  //                     <button type='submit' onClick={onSubmit}>
-
-  //                         Create
-  //                     </button>
-
-  //                 </form>
-  //             </Modal>
-  //         )}
-  //     </div>
-  // )
+  
   return (
     <>
       {/* <Modal> */}
         <div className={styles.INAddBoardContainer}>
           <h3 className={styles.INBoardTitle}>New board</h3>
           <form>
-            <input className={styles.INBoardInput} type="text" required />
+            <input
+              className={styles.INBoardInput}
+              type="text"
+              placeholder="Title"
+              name="title"
+              onChange={e => changeTitle}
+              required
+            />
             <h4 className={styles.INBoardSubtitle}>Icons</h4>
-            <div className={styles.INIconsGroup}>
-              {/* /* додати type="radio */}
-              <svg className={styles.INBoardIcon}>
-                <use href={sprite + '#icon-project'} />
-              </svg>
-              <svg className={styles.INBoardIcon}>
-                <use href={sprite + '#icon-star'} />
-              </svg>
-              <svg className={styles.INBoardIcon}>
-                <use href={sprite + '#icon-loading'} />
-              </svg>
-              <svg className={styles.INBoardIcon}>
-                <use href={sprite + '#icon-puzzle'} />
-              </svg>
-              <svg className={styles.INBoardIcon}>
-                <use href={sprite + '#icon-container'} />
-              </svg>
-              <svg className={styles.INBoardIcon}>
-                <use href={sprite + '#icon-lightning'} />
-              </svg>
-              <svg className={styles.INBoardIcon}>
-                <use href={sprite + '#icon-colors'} />
-              </svg>
-              <svg className={styles.INBoardIcon}>
-                <use href={sprite + '#icon-hexagon'} />
-              </svg>
-            </div>
+            <ul className={styles.INIconsGroup}>
+              <li>
+                <label>
+                  <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="icon"
+                    value="icon-project"
+                    onChange={e => changeIcon(e)}
+                  />
+                  <svg className={styles.INBoardIcon}>
+                    <use href={sprite + '#icon-project'} />
+                  </svg>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="icon"
+                    value="icon-star"
+                    onChange={e => changeIcon(e)}
+                  />
+                  <svg className={styles.INBoardIcon}>
+                    <use href={sprite + '#icon-star'} />
+                  </svg>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="icon"
+                    value="icon-loading"
+                    onChange={e => changeIcon(e)}
+                  />
+                  <svg className={styles.INBoardIcon}>
+                    <use href={sprite + '#icon-loading'} />
+                  </svg>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="icon"
+                    value="icon-puzzle"
+                    onChange={e => changeIcon(e)}
+                  />
+                  <svg className={styles.INBoardIcon}>
+                    <use href={sprite + '#icon-puzzle'} />
+                  </svg>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="icon"
+                    value="icon-container"
+                    onChange={e => changeIcon(e)}
+                  />
+                  <svg className={styles.INBoardIcon}>
+                    <use href={sprite + '#icon-container'} />
+                  </svg>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="icon"
+                    value="icon-lightning"
+                    onChange={e => changeIcon(e)}
+                  />
+                  <svg className={styles.INBoardIcon}>
+                    <use href={sprite + '#icon-lightning'} />
+                  </svg>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="icon"
+                    value="icon-colors"
+                    onChange={e => changeIcon(e)}
+                  />
+                  <svg className={styles.INBoardIcon}>
+                    <use href={sprite + '#icon-colors'} />
+                  </svg>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="icon"
+                    value="icon-hexagon"
+                    onChange={e => changeIcon(e)}
+                  />
+                  <svg className={styles.INBoardIcon}>
+                    <use href={sprite + '#icon-hexagon'} />
+                  </svg>
+                </label>
+              </li>
+            </ul>
             <h4 className={styles.INBoardSubtitle}>Background</h4>
             {/* додати перелік іконок для BG type="radio */}
-
+            <ul>
+                <li>
+                    <label>
+                    <input
+                    className={styles.INRadioBtn}
+                    type="radio"
+                    name="bgImage"
+                    onChange={() => changeBackground()}
+                  />
+                    </label>
+                </li>
+            </ul>
             <button
               className={styles.IMSubmitBtn}
               type="submit"
               onSubmit={onSubmit}
             >
               <div className={styles.IMBtnIconWrapper}>
-                <svg className={styles.INAddIcon} >
+                <svg className={styles.INAddIcon}>
                   <use href={sprite + '#icon-plus'} />
                 </svg>
               </div>
