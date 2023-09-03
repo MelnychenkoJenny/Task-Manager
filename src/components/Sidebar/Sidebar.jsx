@@ -5,7 +5,7 @@ import { React, useState } from 'react';
 import { Modal } from '../Modal/Modal';
 // import authOperations from '../../redux/auth/authOperations';
 import BoardsList from '../Sidebar/BoardsList';
-import NewBoard from '../ModalBoard/NewBoard';
+import NewBoard from '../ModalBoard/ModalBoard';
 
 import {logout} from '../../redux/auth/authOperations';
 

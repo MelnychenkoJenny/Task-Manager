@@ -23,7 +23,7 @@
 
 .closebtn {
    position: absolute;
-   top: 50px;
+   top: 14px;
    right: 14px;
    width: 18px;
    height: 18px;
@@ -36,7 +36,7 @@
       background-color: var(--accent);
       border: 1,5px solid var(--accent);
    }
-   
+   z-index: 10;
 }
 
 .icon {

@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import styles from 'styles/index.module.scss';
 import { getAllBoards } from 'redux/board/boardOperations';
-import { MainDashboard } from 'components/MainDashboard/MainDashboard';
+// import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 // import EditProfile from 'components/EditProfile/EditProfile';
 // import { useAuth } from 'hooks'; // s
 // import AddBoard from './testAddBoard';
 // import { AddCard } from 'components/AddCard';
 // import { Card } from 'components/Card';
-// import NewBoard from 'components/ModalBoard/NewBoard';
+import ModalBoard from 'components/ModalBoard/ModalBoard';
 // import { PopColumn } from 'components/PopColumn';
 
 const ScreensPage = () => {
@@ -24,12 +24,12 @@ const ScreensPage = () => {
   return (
     <section>
       <div>
-        <MainDashboard />
+        {/* <MainDashboard /> */}
         {/* <EditProfile/> */}
         {/* <AddBoard /> */}
         {/* <AddCard /> */}
         {/* <Card /> */}
-        {/* <NewBoard /> */}
+        <ModalBoard />
         {/* <PopColumn /> */}
       </div>
     </section>
