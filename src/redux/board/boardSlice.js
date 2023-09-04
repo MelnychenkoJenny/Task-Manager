@@ -56,7 +56,7 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
     owner: '',
     columnOrder: [],
   };
-  state.columns = [];
+  // state.columns = [];
 };
 
 const handleRejected = (state, { payload }) => {

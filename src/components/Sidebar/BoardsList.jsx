@@ -43,10 +43,10 @@ const BoardsList = () => {
   return (
     <ul className={scss.boardsList}>
       {boards?.map(({ _id, title, icon }) => (
-        <li className={scss.boardsListItem}>
+        <li className={scss.boardsListItem}  key={_id}>
           <Link
             to={`/home/${_id}`}
-            key={_id}
+           
             className={`${scss.boardsListItemWrap} ${
               firstBoardId === _id && firstBoardId === activeBoardId
                 ? scss.boardsListItemFirst
@@ -54,7 +54,7 @@ const BoardsList = () => {
             } `}
             onClick={() => clickOnBoardsItemHandle(_id)}
           >
-            <button type="button" className={scss.boardsListItemWrap}>
+            <div type="button" className={scss.boardsListItemWrap}>
               <div className={scss.boardsListItemTitleGroup}>
                 <svg
                   className={scss.boardsListItemTitleSvg}
@@ -122,7 +122,7 @@ const BoardsList = () => {
                   </button>
                 </div>
               </div>
-            </button>
+            </div>
           </Link>
         </li>
       ))}

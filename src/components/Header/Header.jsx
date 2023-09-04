@@ -34,7 +34,6 @@ const Header = ({ click }) => {
   };
 
   const { user } = useAuth();
-  console.log(user.theme);
 
   const setDefaultAvatar = () => {
     if (user.theme === 'dark') {
