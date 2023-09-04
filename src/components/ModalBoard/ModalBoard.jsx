@@ -2,24 +2,47 @@ import styles from 'styles/index.module.scss';
 import sprite from 'images/sprite.svg';
 import { useDispatch } from 'react-redux';
 // import { selectBoards } from 'redux/board/boardSelectors';
-import { addBoards } from 'redux/board/boardOperations';
 import { useAuth } from 'hooks';
 import {
   useState,
   // useEffect
 } from 'react';
 
-const NewBoard = ({ modalTitle, modalBtnTitle }) => {
+const NewBoard = ({
+  modalTitle,
+  modalBtnTitle,
+  onClose,
+  operation,
+  id,
+  infoData,
+}) => {
   // потрібно створити селектор selectIsLoadingBoard
   // const isLoadingBoard = useSelector(selectIsLoadingBoard);
   // const [isOpenModal, setIsOpenModal] = useState(false);
   // const toggleModal = () => setIsOpenModal(state => !state);
-  const [title, setTitle] = useState('');
-  const [icon, setIcon] = useState('icon-project');
-  const [background, setBackground] = useState('background1');
+  // const [title, setTitle] = useState('');
+  // const [icon, setIcon] = useState('icon-project');
+  // const [background, setBackground] = useState('background1');
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  // };
+
+  
   const { user } = useAuth();
   // const theme = useSelector(selectTheme)
   const dispatch = useDispatch();
+
+    //!! Цей стейт, який зберігає дані отримані з форми. Потрібен для Update модалки, щоб був контрольований інпут.
+  const [valueInputUpdate, setvalueInputUpdate] = useState(infoData ? ({
+    title: infoData.title,
+    icon: infoData.icon,
+    background: infoData.background,
+  }) : ({
+    title: '',
+    icon: 'icon-loading',
+    background: 'background1',
+  }));
   // const boards = useSelector(selectBoards)
 
   // const boardSchema = object({
@@ -28,34 +51,36 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
   //       background: string(),
   //     });
 
+  // !!Контролюємо інпут
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setvalueInputUpdate(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // !!Сабміт форми, відправка різних діспатчей, в залежності від пропа operation
   const handleSubmit = e => {
     e.preventDefault();
-    const iconSl = icon.slice(1);
-
-    const data = { title, icon: iconSl, background };
-
-    // handleSubmit(data, modalTitle);
-    // dispatch(
-    //   addBoards({
-    //     title: title,
-    //     icon: icon,
-    //     background: 'background2',
-    //   })
-    // );
-    dispatch(addBoards(data));
+    const dataSubmit = !id
+      ? valueInputUpdate
+      : { ...valueInputUpdate, id };  
+    dispatch(operation(dataSubmit));
+    onClose();
   };
 
-  const changeIcon = e => {
-    setIcon(`#${e.target.value}`);
-  };
+  // const changeIcon = e => {
+  //   setIcon(`#${e.target.value}`);
+  // };
 
-  const changeBackground = newBg => {
-    if (newBg === undefined || !newBg) {
-      setBackground('null');
-    }
+  // const changeBackground = newBg => {
+  //   if (newBg === undefined || !newBg) {
+  //     setBackground('null');
+  //   }
 
-    setBackground(newBg);
-  };
+  //   setBackground(newBg);
+  // };
 
   // useEffect(() => {
   //   setTitle(modalTitle || '');
@@ -73,7 +98,8 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
         type="text"
         placeholder="Title"
         name="title"
-        onChange={e => setTitle(e.target.value)}
+        value={valueInputUpdate.title || ''}
+        onChange={handleChange}
         required
       />
       <div className={styles.INIconsWraper}>
@@ -86,7 +112,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
                 type="radio"
                 name="icon"
                 value="icon-project"
-                onChange={e => changeIcon(e)}
+                onChange={handleChange}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-project'} />
@@ -101,7 +127,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
                 type="radio"
                 name="icon"
                 value="icon-star"
-                onChange={e => changeIcon(e)}
+                onChange={handleChange}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-star'} />
@@ -116,7 +142,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
                 type="radio"
                 name="icon"
                 value="icon-loading"
-                onChange={e => changeIcon(e)}
+                onChange={handleChange}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-loading'} />
@@ -131,7 +157,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
                 type="radio"
                 name="icon"
                 value="icon-puzzle"
-                onChange={e => changeIcon(e)}
+                onChange={handleChange}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-puzzle'} />
@@ -146,7 +172,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
                 type="radio"
                 name="icon"
                 value="icon-container"
-                onChange={e => changeIcon(e)}
+                onChange={handleChange}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-container'} />
@@ -161,7 +187,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
                 type="radio"
                 name="icon"
                 value="icon-lightning"
-                onChange={e => changeIcon(e)}
+                onChange={handleChange}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-lightning'} />
@@ -176,7 +202,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
                 type="radio"
                 name="icon"
                 value="icon-colors"
-                onChange={e => changeIcon(e)}
+                onChange={handleChange}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-colors'} />
@@ -191,7 +217,7 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
                 type="radio"
                 name="icon"
                 value="icon-hexagon"
-                onChange={e => changeIcon(e)}
+                onChange={handleChange}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-hexagon'} />
@@ -206,11 +232,12 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
         <ul>
           <li>
             <label>
-              <input
+              <input style={{width:'15px', height:'17px', background:'lightBlue'}}
                 className={styles.INRadioBtn}
                 type="radio"
-                name="bgImage"
-                onChange={() => changeBackground()}
+                name="background"
+                value="background1"
+                onChange={handleChange}
               />
             </label>
           </li>
@@ -219,7 +246,6 @@ const NewBoard = ({ modalTitle, modalBtnTitle }) => {
       <button
         className={styles.IMSubmitBtn}
         type="submit"
-        onSubmit={handleSubmit}
       >
         <div className={styles.IMBtnIconWrapper}>
           <svg className={styles.INAddIcon}>

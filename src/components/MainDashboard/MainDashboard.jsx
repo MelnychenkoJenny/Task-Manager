@@ -1,11 +1,132 @@
-import { useSelector } from "react-redux";
+import { Filters } from './Filters';
+import styles from 'styles/index.module.scss';
+import { BtnAddColumn } from './BtnAddColumn';
+import { Modal } from '../Modal/Modal';
+import {  useState } from 'react';
+import { PopColumn } from 'components/PopColumn';
+import { addColumn, deleteColumn, editColumn } from 'redux/board/boardOperations';
+import {  useDispatch, /*useSelector*/ } from 'react-redux';
+import { useBoards } from 'hooks';
+// import { useParams } from 'react-router-dom';
+import SvgSprite from 'images/sprite.svg';
 
 export const MainDashboard = () => {
-const st = useSelector(state => state)
-console.log('state :>> ', st);
+  const { columns } = useBoards();
 
+  // const st = useSelector(state => state);
+  // console.log('state :>> ', st);
 
-  return <p>f</p>;
+  const [isModalAddOpen, setIsModalAddOpen] = useState(false);
+  const [isModalEditOpen, setIsModalEditOpen] = useState(false);
+  const [activeColumnId, setActiveColumnId] = useState('');
+  const [titleColumnId, setTitleColumnId] = useState('');
+
+  const dispatch = useDispatch();
+  // const  boardId = useParams();
+
+  const handleOpenAddModal = () => {
+    setIsModalAddOpen(true);
+  };
+  const handleCloseAddModal = () => {
+    setIsModalAddOpen(false);
+  };
+
+  const handleOpenEditModal = () => {
+    setIsModalEditOpen(true);
+  };
+  const handleCloseEditModal = () => {
+    setIsModalEditOpen(false);
+  };
+
+  const clickOnColumnItemHandle = columnId => {
+    setActiveColumnId(columnId);
+  };
+
+  const clickOnColumnTitleHandle = title => {
+    setTitleColumnId(title);
+  };
+
+  return (
+    <>
+      <Filters className={styles.KkFilters} />
+      {/* <button onClick={click}>click</button> */}
+
+      <ul className={styles.KkColums}>
+        {columns &&
+          columns.map(({ _id, title }) => (
+            <li key={_id}>
+              {/* <TaskColumn
+                   className={styles.KkTaskColumn}
+                   titleCards={title}
+                   idColumn={_id}
+                 /> */}
+              <p>title Column: {title}</p>
+              <p>id Column: {_id}</p>
+              <div className={styles.boardsListItemButtons}>
+                <button
+                  type="button"
+                  className={styles.boardsListItemButton}
+                  onClick={() => {
+                    handleOpenEditModal();
+                    clickOnColumnItemHandle(_id);
+                    clickOnColumnTitleHandle(title);
+                  }}
+                >
+                  <svg
+                    className={styles.boardsListItemSvg}
+                    width="16px"
+                    height="16px"
+                  >
+                    <use href={`${SvgSprite}#icon-pencil`}></use>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  className={styles.boardsListItemButton}
+                  onClick={() => dispatch(deleteColumn(_id))}
+                >
+                  <svg
+                    className={styles.boardsListItemSvg}
+                    width="16px"
+                    height="16px"
+                  >
+                    <use href={`${SvgSprite}#icon-trash`}></use>
+                  </svg>
+                </button>
+              </div>
+            </li>
+          ))}
+        <BtnAddColumn
+          className={styles.KkBtnAddColumnMain}
+          title={'Add another column'}
+          theme={'light'}
+          onClick={handleOpenAddModal}
+        />
+      </ul>
+      {isModalAddOpen && (
+        <Modal isOpen={isModalAddOpen} onClose={handleCloseAddModal}>
+          <PopColumn
+            modalTitle={'Add column'}
+            modalBtnTitle={'Add'}
+            onClose={handleCloseAddModal}
+            operation={addColumn}
+          />
+        </Modal>
+      )}
+      {isModalEditOpen && (
+        <Modal isOpen={isModalEditOpen} onClose={handleCloseEditModal}>
+          <PopColumn
+            modalTitle={'Edit column'}
+            modalBtnTitle={'Add'}
+            onClose={handleCloseEditModal}
+            idColumn={activeColumnId}
+            infoData={{title: titleColumnId}}
+            operation={editColumn}
+          />
+        </Modal>
+      )}
+    </>
+  );
 };
 
 // // 💙💛 Kostiantyn Koshyk

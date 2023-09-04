@@ -9,6 +9,7 @@ import helpCactus from 'images/help-cactus.png';
 import helpCactus2 from 'images/help-cactus-2x.png';
 import { logout } from '../../redux/auth/authOperations';
 import { useAuth } from 'hooks';
+import { addBoards } from 'redux/board/boardOperations';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -112,7 +113,7 @@ const Sidebar = () => {
 
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <NewBoard modalTitle={'New Board'} modalBtnTitle={'Create'} />
+          <NewBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
         </Modal>
       )}
     </>
