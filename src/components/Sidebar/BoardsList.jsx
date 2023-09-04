@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 
 const BoardsList = () => {
   const boards = useSelector(selectBoards);
-  console.log(boards);
   const firstBoardId = boards[0]?._id;
   const dispatch = useDispatch();
   const [showEditBoardModal, setshowEditBoardModal] = useState(false);
@@ -24,7 +23,6 @@ const BoardsList = () => {
   };
 
   const deleteConfirmPopup = document.getElementById('deleteBoardConfirm');
-  console.log(deleteConfirmPopup);
 
   // const deleteConfirmClose = () => {
   //   deleteConfirmPopup.classList.remove('showDeleteConfirm');
@@ -56,7 +54,7 @@ const BoardsList = () => {
             } `}
             onClick={() => clickOnBoardsItemHandle(_id)}
           >
-            <button type="button" className={scss.boardsListItemWrap}>
+            <div type="button" className={scss.boardsListItemWrap}>
               <div className={scss.boardsListItemTitleGroup}>
                 <svg
                   className={scss.boardsListItemTitleSvg}
@@ -124,7 +122,7 @@ const BoardsList = () => {
                   </button>
                 </div>
               </div>
-            </button>
+            </div>
           </Link>
         </li>
       ))}

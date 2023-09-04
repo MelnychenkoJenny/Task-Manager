@@ -1,26 +1,25 @@
 import styles from 'styles/index.module.scss';
 import sprite from 'images/sprite.svg';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { selectBoards } from 'redux/board/boardSelectors';
-import // addBoards
-/*deleteBoards, getBoardById, updateBoard*/
-'redux/board/boardOperations';
+import { addBoards } from 'redux/board/boardOperations';
 import { useAuth } from 'hooks';
-import { useState, useEffect } from 'react';
+import {
+  useState,
+  // useEffect
+} from 'react';
 
-const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
-  console.log(modalTitle);
+const NewBoard = ({ modalTitle, modalBtnTitle }) => {
   // потрібно створити селектор selectIsLoadingBoard
   // const isLoadingBoard = useSelector(selectIsLoadingBoard);
   // const [isOpenModal, setIsOpenModal] = useState(false);
   // const toggleModal = () => setIsOpenModal(state => !state);
   const [title, setTitle] = useState('');
   const [icon, setIcon] = useState('icon-project');
-  const [background, setBackground] = useState();
+  const [background, setBackground] = useState('background1');
   const { user } = useAuth();
   // const theme = useSelector(selectTheme)
-
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const boards = useSelector(selectBoards)
 
   // const boardSchema = object({
@@ -29,16 +28,21 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
   //       background: string(),
   //     });
 
-  const onSubmit = e => {
-    e.prevenDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
+    const iconSl = icon.slice(1);
 
-    const data = { title, icon, background };
+    const data = { title, icon: iconSl, background };
 
-    handleSubmit(data, modalTitle);
-  };
-
-  const changeTitle = e => {
-    setTitle(e.target.value);
+    // handleSubmit(data, modalTitle);
+    // dispatch(
+    //   addBoards({
+    //     title: title,
+    //     icon: icon,
+    //     background: 'background2',
+    //   })
+    // );
+    dispatch(addBoards(data));
   };
 
   const changeIcon = e => {
@@ -46,22 +50,30 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
   };
 
   const changeBackground = newBg => {
+    if (newBg === undefined || !newBg) {
+      setBackground('null');
+    }
+
     setBackground(newBg);
   };
 
-  useEffect(() => {
-    setTitle(modalTitle || '');
-  }, [modalTitle]);
+  // useEffect(() => {
+  //   setTitle(modalTitle || '');
+  // }, [modalTitle]);
 
   return (
-    <form className={styles.INAddBoardContainer} data-theme={user.theme}>
+    <form
+      className={styles.INAddBoardContainer}
+      data-theme={user.theme}
+      onSubmit={handleSubmit}
+    >
       <h3 className={styles.INBoardTitle}>{modalTitle}</h3>
       <input
         className={styles.INBoardInput}
         type="text"
         placeholder="Title"
         name="title"
-        onChange={e => changeTitle}
+        onChange={e => setTitle(e.target.value)}
         required
       />
       <div className={styles.INIconsWraper}>
@@ -204,7 +216,11 @@ const NewBoard = ({ modalTitle, modalBtnTitle, handleSubmit }) => {
           </li>
         </ul>
       </div>
-      <button className={styles.IMSubmitBtn} type="submit" onSubmit={onSubmit}>
+      <button
+        className={styles.IMSubmitBtn}
+        type="submit"
+        onSubmit={handleSubmit}
+      >
         <div className={styles.IMBtnIconWrapper}>
           <svg className={styles.INAddIcon}>
             <use href={sprite + '#icon-plus'} />
