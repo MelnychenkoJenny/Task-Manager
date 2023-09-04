@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { addTask, updateTask } from '../../redux/...';
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
@@ -13,13 +13,15 @@ import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { addTasks } from 'redux/board/boardOperations';
+import { useParams } from 'react-router-dom';
 
 
 
-export const AddCard = ({ modalTitle, /*idColumn,*/ id, cardTitle, description, priority, deadline, modalBtnTitle, onClose }) => {
+export const AddCard = ({ modalTitle, idColumn, id, cardTitle, description, priority, deadline, modalBtnTitle, onClose }) => {
   const { user } = useAuth();
-  // const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
+  const {boardName} = useParams()
 
   const [titleValue, setTitleValue] = useState(cardTitle); // для редагування
   const [descriptionValue, setDescriptionValue] = useState(description); // для редагування
@@ -57,13 +59,13 @@ export const AddCard = ({ modalTitle, /*idColumn,*/ id, cardTitle, description, 
       'priority': inputPriority,
       'deadLine': inputDeadline,
     }
-    console.log(cardData);
+    // console.log(5454545, cardData);
     // console.log("in dispatch", { ...cardData, 'taskOwner': idColumn});
     // {title: 'The Watch Spot Design', description: "Create a visually stunning and eye-catching watch dial design that embodies our brand's", priority: 'without', deadline: '11/10/2023', taskOwner: '64f548eb24765a1e4837366e'}
 
 
     // відправка на бекенд, а потім в стор редакса
-    // dispatch(addTask({ ...cardData, 'taskOwner': idColumn})); 
+    dispatch(addTasks({ ...cardData, 'taskOwner': idColumn, boardId: boardName})); 
 
     // dispatch(updateTask({ ...cardData, 'taskId': id })); // властивість 'taskOwner' (id колонки є в Joi-схемі, але він не required)
 
