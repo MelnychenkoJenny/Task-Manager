@@ -4,7 +4,7 @@ import SvgSprite from 'images/sprite.svg';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const PopColumn = ({
+export const PopColumn = ({
   modalTitle,
   modalBtnTitle,
   onClose,
@@ -72,4 +72,4 @@ const PopColumn = ({
   );
 };
 
-export default PopColumn;
+// export default PopColumn;

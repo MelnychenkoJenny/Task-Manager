@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
+// import { addTask, updateTask } from '../../redux/...';
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { useAuth } from 'hooks';
 
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { indigo, pink, lightGreen, grey } from '@mui/material/colors';
 import { Radio, InputAdornment } from '@mui/material';
 
@@ -15,20 +16,15 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 
 
-export const AddCard = ({ modalTitle, id, cardTitle, description, priority, deadline, modalBtnTitle, onClose }) => {
-  // const dispatch = useDispatch();
+export const AddCard = ({ modalTitle, /*idColumn,*/ id, cardTitle, description, priority, deadline, modalBtnTitle, onClose }) => {
   const { user } = useAuth();
-  // import {
-  //   addBoards,
-  //   deleteBoards,
-  //   getBoardById,
-  //   updateBoard,
-  // } from 'redux/board/boardOperations';
+  // const dispatch = useDispatch();
 
 
   const [titleValue, setTitleValue] = useState(cardTitle); // для редагування
   const [descriptionValue, setDescriptionValue] = useState(description); // для редагування
   const [selectedPriority, setSelectedPriority] = useState(priority ? priority : 'without');
+  const [inputWidth, setInputWidth] = useState('auto');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(deadline ? dayjs(deadline, 'DD/MM/YYYY') : dayjs()); // dayjs() - currentDate
   //selectedDate = M {$L: 'en', $u: undefined, $d: Tue Aug 29 2023 08:05:53 GMT+0300 (за східноєвропейським літнім часом), $x: {…}, $y: 2023, …}
@@ -44,6 +40,7 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
   // "Today, September 01" або "Saturday, September 02"
   const dateFormat = dayjs(selectedDate).format("dddd, MMMM D") === dayjs().format("dddd, MMMM D") ? '[Today,] MMMM D' : "dddd, MMMM D";
 
+  //------------------------------------- Submit -------------------------------------------
 
   const handleFormSubmit = event => { // відправка даних
     event.preventDefault();
@@ -54,18 +51,28 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
     const inputDeadline = dayjs(selectedDate).format('DD/MM/YYYY'); //   29/11/2023
 
     const cardData = {
-      'id': id ? id : nanoid(), // якщо id є, то його передамо для редагування - пут-запиту  
+      // 'id': id ? id : nanoid(), // якщо id є, то його передамо для редагування - пут-запиту  
       'title': inputTitle, 
       'description': inputDescription, 
       'priority': inputPriority,
-      'deadline': inputDeadline,
+      'deadLine': inputDeadline,
     }
-
     console.log(cardData);
+    // console.log("in dispatch", { ...cardData, 'taskOwner': idColumn});
+    // {title: 'The Watch Spot Design', description: "Create a visually stunning and eye-catching watch dial design that embodies our brand's", priority: 'without', deadline: '11/10/2023', taskOwner: '64f548eb24765a1e4837366e'}
 
-    // dispatch(addBoards(cardData));  // відправка на бекенд, а потім в стор редакса
+
+    // відправка на бекенд, а потім в стор редакса
+    // dispatch(addTask({ ...cardData, 'taskOwner': idColumn})); 
+
+    // dispatch(updateTask({ ...cardData, 'taskId': id })); // властивість 'taskOwner' (id колонки є в Joi-схемі, але він не required)
 
     event.target.reset();
+
+    if (event.currentTarget === event.target) {
+      onClose();
+      document.body.style.overflow = 'visible'; //body почне скролитися після закриття модалки
+    };
   };
 
   // --------------- пріоритетність ----------------------
@@ -85,7 +92,11 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
       without: grey[400],
   };
 
-  
+  //------------------ Ширина інпута DatePicker---------------------
+  useEffect(() => {
+    const contentWidth = selectedDate.format(dateFormat).length * 9; 
+    setInputWidth(`${contentWidth}px`); 
+  }, [selectedDate, dateFormat]);
 
   return (
     <div className={scss.OBAddContainer} data-theme={user.theme}>
@@ -141,8 +152,7 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
         </div>
 
         <div>
-          <LocalizationProvider dateAdapter={AdapterDayjs}> 
-          {/* dateAdapter={AdapterDayjs} - вказуємо, що під капотом використовуємо бібліотеку Day.js (її методи) */}
+          <LocalizationProvider dateAdapter={AdapterDayjs}> {/* dateAdapter={AdapterDayjs} - вказуємо, що під капотом використовуємо бібліотеку Day.js (її методи) */}
             <DatePicker
               open={isCalendarOpen}
               onClose={() => setIsCalendarOpen(false)} // закриття календаря
@@ -153,15 +163,88 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
               disablePast={true}   // минулі дати не обируться
               outsideCurrentMonth={true} // початок наступного місяця невидимий
               dayOfWeekFormatter={(day) => day.slice(0, 2).toUpperCase()} // видимі перші 2 літери назви дня тижня
-              sx={{
-                // backgroundColor: 'red',
-                display: 'inline', // прибирає нижній паддінг інпута 
-              }}
               slots={{
                 openPickerButton: () => null, // приховуємо дефолтну кнопку-іконку календаря
               }}
               slotProps={{
-                // popper: { '&.MuiPickersPopper-root': {border: '4px solid yellow'}, },
+                popper: { 
+                  placement: 'bottom-start',
+                  sx: {
+                    '.MuiPickersPopper-root': {
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                    },
+                    '.css-71vzt-MuiPaper-root-MuiPickersPopper-paper': { // полотно календаря
+                      // backgroundColor: 'red', // працює
+                      border: '1px solid #5255BC',
+                      borderRadius: '8px',
+                      padding: '18px',
+                      width: '233px',
+                      height: '254px',
+                    },
+                    '.MuiPickersLayout-root.': {
+                      width: '197px',
+                      // hight: '110px',
+                    },
+                    '.MuiDateCalendar-root': { // полотно календаря без зовнішніх падінгів
+                      // backgroundColor: 'orange',
+                      width: '197px',
+                      hight: '166px',
+                    },
+                    '.css-cwhad8-MuiDateCalendar-root': {  // полотно календаря без зовнішніх падінгів
+                      height: '215px',
+                    },
+                    '.MuiPickersLayout-contentWrapper': {
+                      width: '197px',
+                      // hight: '166px',
+                    },
+                    '.MuiPickersCalendarHeader-root': { // місяць і дата
+                      // backgroundColor: 'yellowgreen',
+                      textAlign: 'center',
+                      borderBottom: '1px solid rgba(22, 22, 22, 0.20)',
+                    },
+                    '.MuiPickersCalendarHeader-label': {
+                      margin: 0,
+                    },
+                    '.MuiTypography-root': { // дні тижня
+                      // backgroundColor: 'violet',
+                      marginTop: '14px',
+                      width: '23px',
+                      height: '23px',
+                    },
+                    '.MuiDayCalendar-monthContainer': { // полотно дат
+                      // backgroundColor: 'red',
+                      width: '197px',
+                      hight: '166px',
+                    },
+                    '.MuiDayCalendar-weekContainer': {
+                      // backgroundColor: 'blue',
+                      marginBottom: '3px',
+                    },
+                    '.MuiPickersDay-dayWithMargin': { // дні іншого місяця
+                      width: '23px',
+                      height: '23px',
+                    },
+                    '.MuiButtonBase-root': { // один день
+                       width: '23px',
+                       height: '23px',
+                    },
+                    '.MuiPickersDay-root': { // усі дні
+                      // backgroundColor: 'green',
+                      fontFamily: 'Poppins',
+                      fontSize: '14px',
+                      fontweight: '400',
+                      lineHeight: '18px', 
+                    },
+                    '.MuiPickersDay-root.Mui-selected': { // вибраний день
+                      backgroundColor: user.theme === 'violet' ? '#585bbe' : '#bedfad',
+                      '&:hover': {
+                        backgroundColor: user.theme === 'violet' ? '#8d8fc9' : '#9fd186',
+                      }
+                    },
+                  },
+                },
                 calendarHeader: {
                   sx: {
                     '.MuiPickersCalendarHeader-root': {
@@ -176,38 +259,26 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
                         display: "grid", // тепер місяць і рік центровані
                     },
                     '.MuiPickersCalendarHeader-label': {
-                      // backgroundColor: 'brown',
                       display: 'inline-block',
-                      marginLeft: '50%',
-                      transform: 'translateX(-50%)',
                     },
                     '.MuiPickersCalendarHeader-switchViewButton': {
                         display: 'none', // прибираємо стрілку вниз поряд з місяцем і роком
                     },
-                    // '.MuiPickersArrowSwitcher-root': { // 2 кнопки в календарі: < >
-                        // position: 'absolute',
-                        // top: '10px',
-                    //     display: 'flex',
-                    //     justifyContent: "space-between", // по краям
-                    // },
                     '.MuiIconButton-edgeEnd': { // кнопка <
                       position: 'absolute',
-                      top: '10px',
-                      left: '3px',
+                      top: '17px',
+                      left: '14px',
                     },
                     '.MuiIconButton-edgeStart': { // кнопка >
                       position: 'absolute',
-                      top: '10px',
-                      right: '3px',
+                      top: '17px',
+                      right: '12px',
                     },
                   },
                   style: {
-                    marginTop: '18px',
-                    marginBottom: '14px',
                     display: 'inline',
-                    paddingLeft: '18px',
-                    paddingRight: '18px',
-                    // backgroundColor: 'red', //працює
+                    margin: 0,
+                    padding: 0,
                   },
                 },
 
@@ -223,6 +294,13 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
                   onClick: () => setIsCalendarOpen(true), // інпут стає клікабельним; по кліку відкривається календар (picker)
                   variant: 'standard',
                   size: 'small',
+                  sx: {
+                    width: inputWidth,
+                    minWidth: '130px',        
+                    '.css-nz481w-MuiInputBase-input-MuiInput-input': { // інпут без кнопки
+                      padding: 0, 
+                    },
+                  },
                   InputProps: {
                     disableUnderline: true,  // прибирає дефолтний нижній бордер, встановлений variant: 'standard'
                     'aria-label': 'deadline',
@@ -230,8 +308,7 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
                       fontSize: '14px', 
                       fontFamily: 'Poppins, sans-serif',
                       color: user.theme === 'violet' ? '#5255BC' : '#BEDBB0', // колір тексту
-                      fontWeight: 500,
-                      letterSpacing: '-0.28px',                
+                      fontWeight: 500,              
                     },
                     endAdornment: (   // розташування іконки - в кінці інпуту (є і startAdornment)
                      <InputAdornment position="start" sx={{ cursor: 'pointer'}}>
@@ -252,7 +329,7 @@ export const AddCard = ({ modalTitle, id, cardTitle, description, priority, dead
           </LocalizationProvider>
         </div>
 
-        <button className={scss.OBAddSubmitBtn}>
+        <button type='submit' className={scss.OBAddSubmitBtn}>
           <div className={scss.OBAddIconWrapper}>
             <svg className={scss.OBAddSubmitIcon}>
               <use href={SvgSprite + '#icon-plus'} />
