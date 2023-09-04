@@ -41,7 +41,7 @@ const EditProfile = ({onClose}) => {
     const initialValues = {
         name: user.name, 
         email: user.email,
-        password: "",
+        password: '',
     };
 
 
@@ -69,15 +69,17 @@ const EditProfile = ({onClose}) => {
 
 
     const handleSubmit = async (values, { resetForm }) => {
-        let formData = new FormData();
+        // console.log(values.email, 666)
+        // console.log(values.password, 6466)
+        const formData = new FormData();
             formData.set('name', values.name);
             formData.set('email', values.email);
-
+// console.log('avatarFile :>> ', avatarFile);
             // formData.set('password', values.password);
             if (avatarFile) formData.set('avatar', avatarFile);
             if (values.password) formData.set('password', values.password);
                 try {
-                    console.log(formData, 65155152)
+                    // console.log(formData, 65155152)
                     await dispatch(updateUserProfile(formData));
                     onClose();
                     resetForm();

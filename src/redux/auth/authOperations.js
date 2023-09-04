@@ -55,16 +55,16 @@ export const userLogin = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      console.log(credentials)
+      console.log(credentials);
       const { data } = await instance.post('/users/signin', credentials);
-      console.log(33)
+      console.log(33);
       // console.log('data login', data);
       // console.log('token login', data.token)
       // localStorage.setItem('refreshToken', data.refreshToken);
 
       token.set(data.token);
-      console.log('token login2', data.token)
-      console.log(44)
+      console.log('token login2', data.token);
+      console.log(44);
       return data;
     } catch (error) {
       console.log('error zaprosa na bek', error);
@@ -90,11 +90,11 @@ export const updateUserProfile = createAsyncThunk(
   'auth/updateUserProfile',
   async (formData, { rejectWithValue }) => {
     try {
-      console.log(11)
-      console.log(formData, 'formDataOperations')
-      const  data  = await instance.put(`/users/update`, formData);
-      console.log(222)
-      console.log('update data bek', data);
+      // console.log(11);
+      console.log(formData, 'formDataOperations');
+      const { data } = await instance.put(`/users/update`, formData);
+      // console.log(222);
+      // console.log('update data bek', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
