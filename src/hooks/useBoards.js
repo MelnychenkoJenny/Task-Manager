@@ -5,14 +5,14 @@ import {
   selectColumns,
   selectIsLoading,
   selectError,
-  selectTasks,
+ /* selectTasks,*/
 } from 'redux/board/boardSelectors';
 
 export const useBoards = () => {
   const allBoards = useSelector(selectBoards);
   const boardById = useSelector(selectBoardById);
   const columns = useSelector(selectColumns);
-  const tasks = useSelector(selectTasks);
+  // const tasks = useSelector(selectTasks);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
@@ -22,7 +22,7 @@ export const useBoards = () => {
     columns,
     isLoading,
     error,
-    tasks,
+    // tasks,
   };
 };
 // import { useBoards } from 'hooks';
