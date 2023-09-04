@@ -13,7 +13,6 @@ import { useParams } from 'react-router-dom';
 // import { Card } from 'components/Card';
 // import NewBoard from 'components/ModalBoard/NewBoard';
 // import { PopColumn } from 'components/PopColumn';
-// import { EmptyBoardPage } from '../EmptyBoardPage/EmptyBoardPage';
 
 
 const ScreensPage = () => {
@@ -36,7 +35,6 @@ const ScreensPage = () => {
       {/* <Card /> */}
       {/* <NewBoard /> */}
       {/* <PopColumn /> */}
-      {/* <EmptyBoardPage /> */}
     </section>
   );
 };
