@@ -8,6 +8,7 @@ import {
   addColumn,
   editColumn,
   deleteColumn,
+  addTasks,
 } from './boardOperations';
 
 const handlePending = state => {
@@ -18,6 +19,7 @@ const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.allBoards = payload;
+  state.allBoards.reverse()
 };
 
 const handleFulfilledAddBoard = (state, { payload }) => {
@@ -102,6 +104,19 @@ const handleFulfilledDeleteColumn = (state, { payload }) => {
   state.boardById.columns.splice(columnIndexToDelete, 1);
 };
 
+const handleFulfilledAddTasks = (state, {payload}) => {
+  console.log('payload',payload);
+  state.isLoading = false;
+  state.error = null;
+
+  // state.columns.forEach(column => {
+  //   if (column._id === action.payload.parentColumn) {
+  //     column.tasks.push(action.payload);
+  //     column.taskOrder.push(action.payload._id);
+  //   }
+  // });
+}
+
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
@@ -127,6 +142,7 @@ export const boardsSlice = createSlice({
       .addCase(addColumn.fulfilled, handleFulfilledAddColumn)
       .addCase(editColumn.fulfilled, handleFulfilledEditColumn)
       .addCase(deleteColumn.fulfilled, handleFulfilledDeleteColumn)
+      .addCase(addTasks.fulfilled, handleFulfilledAddTasks)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },

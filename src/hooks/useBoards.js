@@ -5,7 +5,7 @@ import {
   selectColumns,
   selectIsLoading,
   selectError,
- /* selectTasks,*/
+  // selectTasks,
 } from 'redux/board/boardSelectors';
 
 export const useBoards = () => {

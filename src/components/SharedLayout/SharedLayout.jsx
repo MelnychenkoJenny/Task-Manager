@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 import styles from 'styles/index.module.scss';
 import { useAuth } from 'hooks';
+import Loader from 'components/Loader/Loader';
 
 export const SharedLayout = () => {
   const [menuActive, setMenuActive] = useState(false);
@@ -48,7 +49,7 @@ export const SharedLayout = () => {
     setMenuActive(!menuActive);
   };
 
-  
+
 
   const hendleBackdropClose = event => {
     if (event.target === event.currentTarget && window.innerWidth <= 1199.99) {
@@ -67,7 +68,7 @@ export const SharedLayout = () => {
         <div className={styles.AfMainWr}>
           <Header click={handleClick} />
           <main>
-            <Suspense fallback={<div>...Loader</div>}>
+            <Suspense fallback={<Loader />}>
               <Outlet />
             </Suspense>
           </main>

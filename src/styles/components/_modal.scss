@@ -22,32 +22,40 @@
    left: 50%;
    transform: translate(-50%, -50%);
    // background-color: rgba(246, 245, 245, 0.8);
+
 }
 
 .closebtn {
-   position: absolute;
-   top: 14px;
-   right: 14px;
-   width: 18px;
-   height: 18px;
-   cursor: pointer;
-   transition: background-color 250ms ease-in;
-   border-radius: 50%;
-   background-color: transparent;
-      &:hover,
-      :focus {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: background-color 250ms ease-in;
+  border-radius: 50%;
+  background-color: transparent;
+  z-index: 10;
+  &:active {
+    background-color: var(--accent);
+    border: 1, 5px solid var(--accent);
+  }
+  @include minMd() {
+    &:hover,
+    :focus {
       background-color: var(--accent);
-      border: 1,5px solid var(--accent);
-   }
-   z-index: 10;
+      border: 1, 5px solid var(--accent);
+    }
+  }
 }
 
 .icon {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin: auto;
-   stroke: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  stroke: #1f1f1f;
 }
-
-
