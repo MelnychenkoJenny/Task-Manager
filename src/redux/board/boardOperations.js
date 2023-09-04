@@ -11,6 +11,7 @@ export const getAllBoards = createAsyncThunk(
       const {
         data: { result },
       } = await instance.get('/boards');
+
       return result;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -22,14 +23,11 @@ export const getBoardById = createAsyncThunk(
   'boards/getBoardById',
   async (id, thunkAPI) => {
     try {
-      const {
-        data: {
-          data: { result },
-        },
-      } = await instance.get(`/boards/${id}`);
-      // console.log('ot beckenda otvet', result);
-      return result;
+      const { data } = await instance.get(`/boards/${id}`);
+      // console.log('ot beckenda otvet', data);
+      return data;
     } catch (error) {
+      // console.log('error333 :>> ', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -45,7 +43,6 @@ export const addBoards = createAsyncThunk(
         },
       } = await instance.post('/boards', board);
 
-      // console.log('Add new board success');
       return result;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -55,14 +52,17 @@ export const addBoards = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
-  async ({ _id, title, icon, background }, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
       const {
         data: {
           data: { result },
         },
-      } = await instance.put(`/boards/${_id}`, { title, icon, background });
-      // console.log('rez ot beckenda', result);
+      } = await instance.put(`/boards/${data.id}`, {
+        title: data.title,
+        icon: data.icon,
+        background: data.background,
+      });
       return result;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -77,10 +77,56 @@ export const deleteBoards = createAsyncThunk(
       const {
         data: { data },
       } = await instance.delete(`/boards/${boardId}`);
-      // console.log('Delete board success');
       return data;
     } catch (e) {
       return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const addColumn = createAsyncThunk(
+  'boards/addColumn',
+  async (dataColumn, thunkAPI) => {
+    try {
+      console.log(dataColumn, 'datacolumn');
+      const {
+        data: { result },
+      } = await instance.post('/columns', dataColumn);
+      thunkAPI.dispatch(getBoardById(dataColumn.board));
+      console.log(111, result);
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editColumn = createAsyncThunk(
+  'boards/editColumn',
+  async ({ idColumn, title }, { rejectWithValue }) => {
+    try {
+      const {
+        data: { result },
+      } = await instance.put(`/columns/${idColumn}`, { title });
+      return result;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteColumn = createAsyncThunk(
+  'boards/deleteColumn',
+  async (columnId, { rejectWithValue }) => {
+    try {
+      console.log('columnId', columnId);
+      const {
+        data: { result },
+      } = await instance.delete(`/columns/${columnId}`);
+
+      return result;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

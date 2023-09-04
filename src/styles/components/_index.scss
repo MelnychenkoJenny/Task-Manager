@@ -1,4 +1,6 @@
 @import './header';
+@import './shared';
+@import './new-board';
 @import './welcome';
 @import './welcome-reg';
 @import './welcome-login';
@@ -11,6 +13,6 @@
 @import './sidebar';
 @import './modal';
 @import './loader';
-@import './new-board';
+@import './modal-board';
 @import './screen-page';
 @import './pop-column';

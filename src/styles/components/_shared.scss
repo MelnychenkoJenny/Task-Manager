@@ -1,0 +1,12 @@
+.AfBodyWr {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+}
+.AfMainWr {
+  width: 100%;
+  & main {
+    padding: 24px;
+  }
+}

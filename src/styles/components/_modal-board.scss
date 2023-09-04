@@ -1,4 +1,4 @@
-.INAddBoardContainer {
+.INModalBoardContainer {
   position: relative;
   width: 100vw;
   max-width: 350px;
@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  background-color: var(--bgModal);
+  background: var(--bgModal);
   @include maxSm() {
     max-width: 335px;
   }
@@ -42,6 +42,8 @@
     opacity: 100%;
     outline: none;
   }
+
+
 }
 
 .INBoardSubtitle {
@@ -54,14 +56,14 @@
 
 .INIconsWraper {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
+    flex-direction: column;
+    gap: 14px;
 }
 
 .INBoardIcon {
   width: 18px;
   height: 18px;
-  stroke: #898989;
+  stroke: #898989
 }
 
 .INIconsGroup {
@@ -76,17 +78,16 @@
   padding: 0;
   border: none;
   cursor: pointer;
+
 }
-.INListRadioBtn {
-  cursor: pointer;
-}
+
 .INRadioBtn {
   appearance: none;
   width: 10px;
   height: 10px;
   position: absolute;
   &:checked + .INBoardIcon {
-    stroke: var(--modalTitle);
+    stroke: var(--modalTitle)
   }
 }
 
@@ -112,8 +113,9 @@
   cursor: pointer;
   &:hover,
   &:focus {
-    background-color: var(--accentHover);
+   background-color: var(--accentHover);
   }
+
 }
 
 .IMBtnIconWrapper {

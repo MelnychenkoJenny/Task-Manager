@@ -12,9 +12,12 @@
 }
 
 .modal {
+   max-width: 350px;
+   max-height: 522px;
    // max-width: calc(100vw - 48px);
    // max-height: calc(100vh - 24px);
    position: absolute;
+   // padding: 24px;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
@@ -23,7 +26,7 @@
 
 .closebtn {
    position: absolute;
-   top: 50px;
+   top: 14px;
    right: 14px;
    width: 18px;
    height: 18px;
@@ -36,7 +39,7 @@
       background-color: var(--accent);
       border: 1,5px solid var(--accent);
    }
-   
+   z-index: 10;
 }
 
 .icon {

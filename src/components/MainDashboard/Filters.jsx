@@ -1,8 +1,12 @@
 // 💙💛 Kostiantyn Koshyk
 import styles from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
+import { useBoards } from 'hooks';
 
-export const Filters = ({ className, titleBoard }) => {
+export const Filters = ({ className }) => {
+ 
+const {  boardById } = useBoards();
+// console.log(boardById)
   const onFilters = () => {
     console.log('Filters ckick');
   };
@@ -10,7 +14,7 @@ export const Filters = ({ className, titleBoard }) => {
   return (
     <div className={className}>
       <div className={styles.KkWrapFilters}>
-        <h2 className={styles.KkTitle}>{titleBoard}</h2>
+        <h2 className={styles.KkTitle}>{boardById.title}</h2>
 
         <button className={styles.KkBtnFilters} onClick={onFilters}>
           <svg width="16px" height="16px">

@@ -53,20 +53,22 @@ export const SharedLayout = () => {
   };
 
   return (
-    <div className={styles.AFNavResWr} onClick={hendleBackdropClose} data-theme={user.theme}>
-      <header className={styles.AFNavResWrHead}>
-        <Header click={handleClick} />
-      </header>
-      {menuActive && (
-        <aside className={styles.AFNavResWrAside}>
-          <Sidebar />
-        </aside>
-      )}
-      <main className={styles.AFNavResWrMain}>
-        <Suspense fallback={<div>...Loader</div>}>
-          <Outlet />
-        </Suspense>
-      </main>
+    <div
+      className={styles.AFNavResWr}
+      onClick={hendleBackdropClose}
+      data-theme={user.theme}
+    >
+      <div className={styles.AfBodyWr}>
+        {menuActive && <Sidebar />}
+        <div className={styles.AfMainWr}>
+          <Header click={handleClick} />
+          <main>
+            <Suspense fallback={<div>...Loader</div>}>
+              <Outlet />
+            </Suspense>
+          </main>
+        </div>
+      </div>
     </div>
   );
 };
