@@ -1,11 +1,17 @@
-import { useSelector } from "react-redux";
+import {
+  desctopAbstraction,
+  desctopAbstraction2x,
+  desctopBaloonsMore2x,
+} from 'images/image-url';
+import { useSelector } from 'react-redux';
 
 export const MainDashboard = () => {
-const st = useSelector(state => state)
-console.log('state :>> ', st);
+  const st = useSelector(state => state);
+  console.log('state :>> ', st);
 
+  return <img src={desctopBaloonsMore2x}></img>;
 
-  return <p>f</p>;
+  // return <p>f</p>;
 };
 
 // // 💙💛 Kostiantyn Koshyk
