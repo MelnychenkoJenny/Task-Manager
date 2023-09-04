@@ -3,8 +3,9 @@ import {
   useDispatch,
   // useSelector
 } from 'react-redux';
-import { getAllBoards } from 'redux/board/boardOperations';
+import { getAllBoards, getBoardById } from 'redux/board/boardOperations';
 import { MainDashboard } from 'components/MainDashboard/MainDashboard';
+import { useParams } from 'react-router-dom';
 // import EditProfile from 'components/EditProfile/EditProfile';
 // import { useAuth } from 'hooks'; // s
 // import AddBoard from './testAddBoard';
@@ -15,11 +16,14 @@ import { MainDashboard } from 'components/MainDashboard/MainDashboard';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
+  const {boardName} = useParams()
+  // console.log('idBoard :>> ', boardName);
   //   const { user } = useAuth();
   //   console.log(user)
   useEffect(() => {
     dispatch(getAllBoards());
-  }, [dispatch]);
+    dispatch(getBoardById(boardName));
+  }, [boardName, dispatch]);
 
   return (
     <section>
