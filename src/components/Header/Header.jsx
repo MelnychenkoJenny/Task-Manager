@@ -66,7 +66,7 @@ const Header = ({ click }) => {
               type="button"
               className={scss.btnThemeOpen}
               onClick={handleClick}
-              >
+            >
               <p className={scss.themeText}>Theme</p>
               <svg className={scss.svgThemeOpen} width="16" height="16">
                 <use href={`${sprite}#icon-chevron-down`}></use>
@@ -101,10 +101,10 @@ const Header = ({ click }) => {
                   Violet
                 </li>
               </ul>
-              </div>)}
               </div>
-          
-  
+            )}
+            
+              </div>
           <ul className={scss.headerUserInfoWrap}>
             <li className={scss.headerUserName}>{user.name}</li>
             <li>
