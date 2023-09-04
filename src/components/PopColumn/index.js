@@ -1,1 +1,1 @@
-export { default as PopColumn } from './PopColumn';
+// export { default as PopColumn } from './PopColumn';

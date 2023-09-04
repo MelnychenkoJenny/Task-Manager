@@ -3,7 +3,7 @@ import styles from 'styles/index.module.scss';
 import { BtnAddColumn } from './BtnAddColumn';
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
-import { PopColumn } from 'components/PopColumn';
+import { PopColumn } from '../PopColumn/PopColumn';
 import {
   addColumn,
   deleteColumn,
