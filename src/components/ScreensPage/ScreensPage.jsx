@@ -14,6 +14,7 @@ import { useParams } from 'react-router-dom';
 // import NewBoard from 'components/ModalBoard/NewBoard';
 // import { PopColumn } from 'components/PopColumn';
 
+
 const ScreensPage = () => {
   const dispatch = useDispatch();
   const {boardName} = useParams()
