@@ -43,7 +43,9 @@
         }
       }
       &LogoText {
-        font-family: map-get($fonts, b);
+        font-family: map-get($fonts, m);
+        font-style: normal;
+        font-weight: 600;
         color: color(welcom-primary);
         font-size: 28px;
         font-weight: 600;
@@ -74,7 +76,9 @@
         text-align: center;
         width: calc(100% - 40px);
 
-        font-family: map-get($fonts, m);
+        font-family: map-get($fonts, b);
+        font-style: normal;
+        font-weight: 500;
         letter-spacing: -0.28px;
         font-size: 14px;
         border-radius: 8px;
@@ -95,7 +99,9 @@
         text-align: center;
         width: calc(100% - 40px);
 
-        font-family: map-get($fonts, m);
+        font-family: map-get($fonts, b);
+        font-style: normal;
+        font-weight: 500;
         letter-spacing: -0.28px;
         font-size: 14px;
         border-radius: 8px;
@@ -113,7 +119,7 @@
     }
   }
   &FormWrError {
-    height: 14px;
+    min-height: 14px;
     margin: 2px 0;
   }
   &FormError {

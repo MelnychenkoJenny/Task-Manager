@@ -68,8 +68,7 @@
 .boardsListItemTitle {
   max-height: 60px;
   display: -webkit-box;
-  // justify-content:flex-start;
-  color: rgba(22, 22, 22, 0.5);
+  color: var(--primary);
   font-family: map-get($fonts, m), sans-serif;
   font-size: 14px;
   letter-spacing: -0.28px;
@@ -116,7 +115,6 @@
 }
 
 .boardsListActiveFlag {
-  // position: relative;
   width: 4px;
   height: 61px;
   display: flex;
@@ -126,21 +124,11 @@
   // overflow: hidden;
 }
 
-// .deleteBoardConfirm .showDeleteConfirm {
-//    display: flex;
-//    opacity: 1;
-//    visibility: visible;
-//    transform: translate(38%);
-//    transition: all .3s ease-in-out;
-// }
-
 .deleteBoardConfirm {
   display: flex;
   flex-direction: column;
   position: absolute;
   visibility: hidden;
-  // right: -100%;
-  // overflow-x: visible;
   opacity: 0;
   width: 150px;
   height: 61px;
@@ -148,7 +136,6 @@
   background: #bedbb0;
   padding: 5px 10px;
   transform: translate(-45%);
-  // z-index: 9999999;
   &:hover {
     transform: translate(38%);
     transition: all 0.3s ease-in-out;
@@ -253,11 +240,11 @@
         height: 36px;
         width: 40px;
         border-radius: 6px;
-        background: var(--accent);
+        background: var(--btnPlus);
         border: 0;
         transition: opacity 0.3s;
         & svg {
-          stroke: var(--bgSidebar);
+          stroke: var(--btnAddBoard);
         }
         &:active {
           opacity: 0.8;
