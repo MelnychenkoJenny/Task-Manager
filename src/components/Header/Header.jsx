@@ -67,12 +67,13 @@ const Header = ({ click }) => {
       <div className={scss.headerTextWrap}>
         <div className={scss.dropdownThemeWrap}>
           <div className={scss.themeHeaderWrap}>
-            <p className={scss.themeText}>Theme</p>
+            
             <button
               type="button"
               className={scss.btnThemeOpen}
               onClick={handleClick}
-            >
+              >
+              <p className={scss.themeText}>Theme</p>
               <svg className={scss.svgThemeOpen} width="16" height="16">
                 <use href={`${sprite}#icon-chevron-down`}></use>
               </svg>
@@ -113,7 +114,7 @@ const Header = ({ click }) => {
           <li className={scss.headerUserName}>{user.name}</li>
             <li>
               <button type='button' onClick={togleModal} className={scss.headerBtnAvatar}>
-                {user.avatarURL !== '/' ? <img src={user.avatarURL} alt='avatarUser'></img> : <img src={setDefaultAvatar()} alt='defaultAvatar' className={scss.headerAvatar}></img>  }
+                {user.avatarURL !== '/' ? <img src={user.avatarURL} alt='avatarUser' className={scss.headerAvatar}></img> : <img src={setDefaultAvatar()} alt='defaultAvatar' className={scss.headerAvatar}></img>  }
 
               </button>
           </li>
@@ -126,7 +127,7 @@ const Header = ({ click }) => {
         </Modal>
     )}  
     </>     
-  )
+  ) 
 
 };
 

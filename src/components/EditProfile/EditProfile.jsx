@@ -50,8 +50,9 @@ const EditProfile = ({onClose}) => {
         if (!file) {
         return;
         }
-        setAvatarFile(file);  
 
+        setAvatarFile(file); 
+        
         const reader = new FileReader();
 
         reader.onload = function (event) {
@@ -59,23 +60,21 @@ const EditProfile = ({onClose}) => {
         };
 
         reader.readAsDataURL(file);    
-
     }
 
-    
 
     const togglePassword = () => {
     setShowPassword(!showPassword);    
     };
 
 
-
     const handleSubmit = async (values, { resetForm }) => {
         let formData = new FormData();
             formData.set('name', values.name);
             formData.set('email', values.email);
-            formData.set('password', values.password);
+            // formData.set('password', values.password);
             if (avatarFile) formData.set('avatar', avatarFile);
+            if (values.password) formData.set('password', values.password);
                 try {
                     await dispatch(updateUserProfile(formData));
                     onClose();
@@ -84,6 +83,7 @@ const EditProfile = ({onClose}) => {
                     console.log("error")
                 } 
     } 
+
 
         const setDefaultAvatar = () => {
     if (user.theme === 'dark') {
@@ -95,6 +95,7 @@ const EditProfile = ({onClose}) => {
     }
   };
 
+    
     return (
         <div data-theme={user.theme} >
         <Formik

@@ -38,8 +38,6 @@
 .headerAvatar {
   width: 32px;
   height: 32px;
-  // background-image: url(../../images/user-default-light.png);
-  // background-size: cover;
   border-radius: 8px;
   
 }
@@ -67,17 +65,17 @@
   align-items: center;
 }
 
-.themeWrap {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
 
 .btnThemeOpen {
   border: none;
   background: transparent;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .svgSideBarOpen {
   stroke: var(--modalTitle);
@@ -104,6 +102,7 @@
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
+
 }
 
 .AFNavResWr {
@@ -136,15 +135,12 @@
 }
 
 
-
-
 .dropdownThemeWrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  
 }
 
 .themeHeaderWrap {
@@ -168,6 +164,17 @@
   position: absolute;
   top: 100%;
   left: -10%;
+  animation: show 1s cubic-bezier(0, 0.1, 0.2, 1) 1;
+
+}
+
+@keyframes show {
+0% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
 }
 
 
