@@ -49,7 +49,7 @@ const Welcome = () => {
             to="/auth/login"
             className={styles.AfWelcomWrapperCardBtnLogin}
           >
-            Sign in
+            Log In
           </NavLink>
         </div>
       </div>
