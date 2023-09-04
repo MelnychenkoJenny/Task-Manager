@@ -3,8 +3,9 @@ import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useAuth } from 'hooks';
 
-const PopColumn = ({
+export const PopColumn = ({
   modalTitle,
   modalBtnTitle,
   onClose,
@@ -12,6 +13,7 @@ const PopColumn = ({
   idColumn,
   infoData,
 }) => {
+  const { user } = useAuth();
   const boardId = useParams();
   const dispatch = useDispatch();
   const [valueInput, setvalueInput] = useState(
@@ -44,7 +46,7 @@ const PopColumn = ({
   };
 
   return (
-    <div className={scss.AAColumnContainer}>
+    <div className={scss.AAColumnContainer} data-theme={user.theme}>
       <h4 className={scss.AAColumnTitle}>{modalTitle}</h4>
       <form onSubmit={handleSubmit} autoComplete="off">
         <label>
@@ -72,4 +74,4 @@ const PopColumn = ({
   );
 };
 
-export default PopColumn;
+// export default PopColumn;

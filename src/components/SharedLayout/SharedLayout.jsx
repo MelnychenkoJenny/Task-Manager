@@ -5,24 +5,25 @@ import { useState, useEffect } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 import styles from 'styles/index.module.scss';
 import { useAuth } from 'hooks';
+import Loader from 'components/Loader/Loader';
 
 export const SharedLayout = () => {
   const [menuActive, setMenuActive] = useState(false);
   const { user } = useAuth();
 
-  useEffect(() => {
-    const hendleEscClose = event => {
-      if (event.code === 'Escape' && window.innerWidth <= 1199.99) {
-        setMenuActive(false);
-      }
-    };
+  // useEffect(() => {
+  //   const hendleEscClose = event => {
+  //     if (event.code === 'Escape' && window.innerWidth <= 1199.99) {
+  //       setMenuActive(false);
+  //     }
+  //   };
 
-    window.addEventListener('keydown', hendleEscClose);
+  //   window.addEventListener('keydown', hendleEscClose);
 
-    return () => {
-      window.removeEventListener('keydown', hendleEscClose);
-    };
-  }, [menuActive, setMenuActive]);
+  //   return () => {
+  //     window.removeEventListener('keydown', hendleEscClose);
+  //   };
+  // }, [menuActive, setMenuActive]);
 
   useEffect(() => {
     const handleMinXlSize = () => {
@@ -42,9 +43,13 @@ export const SharedLayout = () => {
     };
   }, [setMenuActive]);
 
+
+
   const handleClick = () => {
     setMenuActive(!menuActive);
   };
+
+
 
   const hendleBackdropClose = event => {
     if (event.target === event.currentTarget && window.innerWidth <= 1199.99) {
@@ -63,7 +68,7 @@ export const SharedLayout = () => {
         <div className={styles.AfMainWr}>
           <Header click={handleClick} />
           <main>
-            <Suspense fallback={<div>...Loader</div>}>
+            <Suspense fallback={<Loader />}>
               <Outlet />
             </Suspense>
           </main>

@@ -3,7 +3,7 @@ import styles from 'styles/index.module.scss';
 import { BtnAddColumn } from './BtnAddColumn';
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
-import { PopColumn } from 'components/PopColumn';
+import { PopColumn } from '../PopColumn/PopColumn';
 import {
   addColumn,
   deleteColumn,
@@ -15,11 +15,13 @@ import { useBoards } from 'hooks';
 import SvgSprite from 'images/sprite.svg';
 import { BtnAddCard } from './BtnAddCard';
 import { AddCard } from 'components/AddCard/AddCard';
+import { Card } from 'components/Card';
 
 export const MainDashboard = () => {
-  const { columns /*, tasks */} = useBoards();
-  console.log('columns', columns);
-  // console.log('tasks', tasks);
+  const { columns } = useBoards();
+
+  // console.log('columns', columns);
+  // console.log('tasksyraaa', tasks);
   const st = useSelector(state => state);
   console.log('state :>> ', st);
 
@@ -28,10 +30,9 @@ export const MainDashboard = () => {
   const [isModalAddCardOpen, setIsModalAddCardOpen] = useState(false);
   const [activeColumnId, setActiveColumnId] = useState('');
   const [titleColumnId, setTitleColumnId] = useState('');
-console.log('activeColumnId565 :>> ', activeColumnId);
+  // console.log('activeColumnId565 :>> ', activeColumnId);
   const dispatch = useDispatch();
   // const  boardId = useParams();
-
   //!! Тут на всі відкриття і закриття модалок можна зробити switch, але не стала витрачати на че час
   const handleOpenAddModal = () => {
     setIsModalAddOpen(true);
@@ -69,10 +70,9 @@ console.log('activeColumnId565 :>> ', activeColumnId);
 
       <ul className={styles.KkColums}>
         {columns &&
-          columns.map(({ _id, title }) => (
+          columns.map(({ _id, title, tasks }) => (
             <li key={_id}>
               <p>title Column: {title}</p>
-              <p>id Column: {_id}</p>
               <div className={styles.boardsListItemButtons}>
                 <button
                   type="button"
@@ -105,16 +105,21 @@ console.log('activeColumnId565 :>> ', activeColumnId);
                   </svg>
                 </button>
               </div>
-              <ul>
-                <li>
-                  {/* {console.log('title Column:', title, 'id Column:', _id)} */}
-                  {/* <TaskColumn
-                   className={styles.KkTaskColumn}
-                   titleCards={title}
-                   idColumn={_id}
-                 /> */}
-                </li>
-              </ul>
+              {tasks && (
+                <ul>
+                  {tasks.map(({title: titleCard, description, priority, deadLine} ) => {
+                    return (<li>
+                      <Card
+                        cardTitle={titleCard}
+                        id={_id}
+                        description={description}
+                        priority={priority}
+                        deadline={deadLine}
+                      />
+                    </li>)
+                  })}
+                </ul>
+              )}
               <BtnAddCard
                 className={styles.KkBtnAddColumnMain}
                 title={'Add another card'}
@@ -161,7 +166,7 @@ console.log('activeColumnId565 :>> ', activeColumnId);
             modalTitle={'Add card'}
             modalBtnTitle={'Add'}
             onClose={handleCloseAddCardModal}
-            // idColumn={activeColumnId}
+            idColumn={activeColumnId}
             // infoData={{title: titleColumnId}}
             // operation={editColumn}
           />

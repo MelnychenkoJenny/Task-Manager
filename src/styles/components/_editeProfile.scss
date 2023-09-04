@@ -1,18 +1,15 @@
 .mainModalEditUserWrap {
-    width: 335px;
-    height: 440px;
-    padding: 24px;
-    background-color: var(--bgModal);
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 8px;
-    box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
-    margin-top: 40px;
-    margin-bottom: 40px;
-    
-    @include minMd() {
-        width: 400px;
-    }
+  width: 335px;
+  padding: 24px;
+  background-color: var(--bgModal);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+
+  @include minMd() {
+    width: 400px;
+  }
 }
 
 // .modalEditUserTopWrap {
@@ -35,132 +32,135 @@
 //     margin-right: 14px;
 // }
 
-
 .titleEditUser {
-    color: var(--modalTitle);
-    font-family: map-get($fonts, m);
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.36px;
-    margin-bottom: 24px;
+  color: var(--modalTitle);
+  font-family: map-get($fonts, m);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.36px;
+  margin-bottom: 24px;
 }
 
 .addAvatarBtnWrap {
-    position: relative;
+  position: relative;
 }
 
 .avatar {
-    width: 68px;
-    height: 68px;
-    margin-bottom: 25px;
-    margin-left: 110px;
-    border-radius: 8px;
+  width: 68px;
+  height: 68px;
+  margin-bottom: 25px;
+  margin-left: 110px;
+  border-radius: 8px;
 
-    @include minMd() {
-        margin-left: 142px;
-    }
+  @include minMd() {
+    margin-left: 142px;
+  }
 }
 
 .inputAvatar {
-    display: none;
+  display: none;
 }
 
 .btnAddAvatar {
-    width: 24px;
-    height: 24px;
-    background-color: var(--borderTheme);
-    flex-shrink: 0;
-    border: none;
-    border-radius: 7px;
-    text-align: center;
-    position: absolute;
-    left: 47%;
-    bottom: -17%;
+  width: 24px;
+  height: 24px;
+  background-color: var(--borderTheme);
+  flex-shrink: 0;
+  border: none;
+  border-radius: 7px;
+  text-align: center;
+  position: absolute;
+  left: 47%;
+  bottom: -17%;
 }
 
 .btnSpan {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-
 .svgPlusEditUser {
-    stroke: #161616;
+  stroke: #161616;
 }
 
 .formUserInfoWrap {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .formInputEditUser {
-    margin-bottom: 14px;
-    padding-left: 18px;
-    width: 287px;
-    height: 49px;
-    align-items: center;
-    border-radius: 8px;
-    border: 1px solid var(--accent);
-    color: var(--modalTitle);
-    font-family: map-get($fonts, r);
-    font-size: 14px;
-    letter-spacing: -0.28px;
-    opacity: 0.4;
-    background: var(--bgModal);
+  margin-bottom: 14px;
+  padding-left: 18px;
+  width: 287px;
+  height: 49px;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  color: var(--modalTitle);
+  font-family: map-get($fonts, r);
+  font-size: 14px;
+  letter-spacing: -0.28px;
+  opacity: 0.4;
+  background: var(--bgModal);
 
-    @include minMd() {
-        width: 352px;
-    }
+  @include minMd() {
+    width: 352px;
+  }
 }
 
 .formInputEditUser:hover,
 .formInputEditUser:focus {
-    border: 1px solid var(--accent);
+  border: 1px solid var(--accent);
 }
 
 .formInputEditUser:active,
 .formInputEditUser:focus {
-    border: 1px solid var(--accent);
-    outline: none;
-    opacity: 1;  
+  border: 1px solid var(--accent);
+  outline: none;
+  opacity: 1;
 }
 
 .showPassProfileWrap {
-    position: relative;
+  position: relative;
 }
 
 .showPasswordEditProfile {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    top: 30%;
-    left: 90%;
-    cursor: pointer;
-    stroke: var(--modalTitle);
-    fill: none;
-    opacity: 0.4;
-    
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 90%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  stroke: var(--modalTitle);
+  fill: none;
+  opacity: 0.4;
 }
 
-
 .formBtnEditUser {
-    margin-top: 10px;
-    width: 287px;
-    height: 49px;
-    border-radius: 8px;
-    background: var(--accent);
-    border: none;
-    color: var(--modalBtnText);
-    font-family: map-get($fonts, m);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.28px;
+  margin-top: 10px;
+  width: 287px;
+  height: 49px;
+  border-radius: 8px;
+  background: var(--accent);
+  border: none;
+  color: var(--modalBtnText);
+  font-family: map-get($fonts, m);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
 
-    @include minMd() {
-        width: 352px;
-    }
+  @include minMd() {
+    width: 352px;
+  }
+}
+
+.errorNewInfo {
+  color: var(--accent);
+  font-family: map-get($fonts, m);
+  font-size: 12px;
 }

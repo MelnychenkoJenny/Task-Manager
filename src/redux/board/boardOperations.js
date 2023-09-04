@@ -130,3 +130,19 @@ export const deleteColumn = createAsyncThunk(
     }
   }
 );
+
+export const addTasks = createAsyncThunk(
+  'boards/addTasks',
+  async ({boardId, deadLine, description, priority, taskOwner, title}, thunkAPI) => {
+    try {
+
+      const  {data}  = await instance.post('/tasks', {deadLine, description, priority, taskOwner, title});
+      thunkAPI.dispatch(getBoardById(boardId));
+      console.log('otvet ot beka', data);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

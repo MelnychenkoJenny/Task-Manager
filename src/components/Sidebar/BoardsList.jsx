@@ -14,6 +14,7 @@ import {
 import { useBoards } from 'hooks';
 
 const BoardsList = () => {
+
   const boards = useSelector(selectBoards);
   const firstBoardId = boards[0]?._id;
   const dispatch = useDispatch();
@@ -24,6 +25,11 @@ const BoardsList = () => {
   //       const togleModal = () => {
   //     setshowDeleteBoardModal(!showDeleteBoardModal);
   //  };
+
+
+    useEffect(() => {
+      dispatch(getAllBoards())
+  }, [dispatch]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);

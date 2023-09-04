@@ -15,11 +15,14 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
+
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showHidePassword, changeShowHidePassword] = useState(false);
-
   const [showError, addShowError] = useState('');
+
+
   const handleSubmit = async (values, { resetForm }) => {
     const dataRegister = { ...values };
 console.log('dataRegister', dataRegister)
