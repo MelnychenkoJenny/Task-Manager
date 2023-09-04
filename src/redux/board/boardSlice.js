@@ -18,6 +18,7 @@ const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.allBoards = payload;
+  state.allBoards.reverse()
 };
 
 const handleFulfilledAddBoard = (state, { payload }) => {
