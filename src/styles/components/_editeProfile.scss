@@ -54,9 +54,9 @@
 .avatar {
     width: 68px;
     height: 68px;
-    background-image: url(../../images/user-default-light.png);
     margin-bottom: 25px;
     margin-left: 110px;
+    border-radius: 8px;
 
     @include minMd() {
         margin-left: 142px;
