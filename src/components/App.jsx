@@ -9,6 +9,7 @@ import PrivateRoute from 'components/Route/PrivateRoute';
 import { refreshUser } from 'redux/auth/authOperations';
 import Loader from 'components/Loader/Loader';
 import 'react-toastify/dist/ReactToastify.css';
+import { EmptyBoardPage } from './EmptyBoardPage/EmptyBoardPage';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const SignInPage = lazy(() => import('pages/SignInPage'));
@@ -50,7 +51,7 @@ export const App = () => {
               <Route path="/home" element={<SharedLayout />}>
                 <Route
                   index
-                  element={<PrivateRoute redirectTo="/" component={HomePage} />}
+                  element={<PrivateRoute redirectTo="/" component={EmptyBoardPage} />}
                 />
                 <Route
                   path=":boardName"
