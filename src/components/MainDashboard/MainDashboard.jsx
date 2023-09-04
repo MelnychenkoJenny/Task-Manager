@@ -17,9 +17,9 @@ import { BtnAddCard } from './BtnAddCard';
 import { AddCard } from 'components/AddCard/AddCard';
 
 export const MainDashboard = () => {
-  const { columns, tasks } = useBoards();
+  const { columns /*, tasks */} = useBoards();
   console.log('columns', columns);
-  console.log('tasks', tasks);
+  // console.log('tasks', tasks);
   const st = useSelector(state => state);
   console.log('state :>> ', st);
 
