@@ -15,7 +15,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 
 
-export const AddCard = ({ modalTitle, id, cardTitle, description, priority, deadline, modalBtnTitle }) => {
+export const AddCard = ({ modalTitle, id, cardTitle, description, priority, deadline, modalBtnTitle, onClose }) => {
   // const dispatch = useDispatch();
   const { user } = useAuth();
   // import {
