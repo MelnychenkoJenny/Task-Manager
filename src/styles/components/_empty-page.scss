@@ -2,7 +2,12 @@
     height: 100%;
     width: 1180px;
     background-color: var(--bgMain);
-
+    @mixin minMd() {
+        width: 768px;
+        }
+   @mixin minSm() {
+        width: 375px;
+    }
 }
 
 .AOemptyPageText {
@@ -13,12 +18,22 @@
     
 
     font-family: map-get($fonts, r), sans-serif;
+    font-size: 14px;
     font-style: normal;
     text-align: center;
 
-    color: rgba(255, 255, 255, 0.5);
-    text-shadow: rgba(0, 0, 0, 0.25);
-
+    color: var(--emptyBoardText);
+    box-shadow: inset 0 4 4 rgba(0, 0, 0, 0.25);
+    @mixin minMd() {
+        padding-top: 408px;
+        padding-bottom: 476px;
+        }
+    
+        @mixin minSm() {
+        padding-top: 292px;
+        padding-bottom: 380px;
+        font-size: 12px;
+        }
 
 }
 
@@ -27,6 +42,6 @@ font-family: map-get($fonts, r), sans-serif;
     font-style: normal;
     text-align: center;
 
-    color: var(--accent);
+    color: var(--inputBorderAccent);
     text-shadow: rgba(0, 0, 0, 0.25);
 }
