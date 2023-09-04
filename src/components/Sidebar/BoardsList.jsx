@@ -45,10 +45,10 @@ const BoardsList = () => {
   return (
     <ul className={scss.boardsList}>
       {boards?.map(({ _id, title, icon }) => (
-        <li className={scss.boardsListItem}>
+        <li className={scss.boardsListItem}  key={_id}>
           <Link
             to={`/home/${_id}`}
-            key={_id}
+           
             className={`${scss.boardsListItemWrap} ${
               firstBoardId === _id && firstBoardId === activeBoardId
                 ? scss.boardsListItemFirst

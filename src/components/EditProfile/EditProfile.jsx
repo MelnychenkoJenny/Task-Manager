@@ -72,8 +72,10 @@ const EditProfile = ({onClose}) => {
             formData.set('name', values.name);
             formData.set('email', values.email);
             formData.set('password', values.password);
+
             if (avatarFile) formData.set('avatar', avatarFile);
                 try {
+                    console.log(formData, 65155152)
                     await dispatch(updateUserProfile(formData));
                     onClose();
                     resetForm();

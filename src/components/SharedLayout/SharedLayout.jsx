@@ -58,7 +58,7 @@ export const SharedLayout = () => {
       onClick={hendleBackdropClose}
       data-theme={user.theme}
     >
-      <body className={styles.AfBodyWr}>
+      <div className={styles.AfBodyWr}>
         {menuActive && <Sidebar />}
         <div className={styles.AfMainWr}>
           <Header click={handleClick} />
@@ -68,7 +68,7 @@ export const SharedLayout = () => {
             </Suspense>
           </main>
         </div>
-      </body>
+      </div>
     </div>
   );
 };

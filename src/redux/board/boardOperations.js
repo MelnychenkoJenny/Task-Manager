@@ -11,6 +11,7 @@ export const getAllBoards = createAsyncThunk(
       const {
         data: { result },
       } = await instance.get('/boards');
+      
       return result;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -27,7 +28,7 @@ export const getBoardById = createAsyncThunk(
           data: { result },
         },
       } = await instance.get(`/boards/${id}`);
-      // console.log('ot beckenda otvet', result);
+      console.log('ot beckenda otvet', result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
