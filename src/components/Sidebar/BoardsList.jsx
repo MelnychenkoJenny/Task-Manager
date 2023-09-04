@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectBoards } from '../../redux/board/boardSelectors';
 import { Modal } from '../Modal/Modal';
 import { Link } from 'react-router-dom';
-import NewBoard from 'components/ModalBoard/ModalBoard';
+import ModalBoard from 'components/ModalBoard/ModalBoard';
 import {
   updateBoard,
   getAllBoards,
@@ -144,7 +144,7 @@ const BoardsList = () => {
       </ul>
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <NewBoard
+          <ModalBoard
             modalTitle={'Edit board'}
             modalBtnTitle={'Edit'}
             onClose={handleCloseModal}
