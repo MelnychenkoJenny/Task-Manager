@@ -1,0 +1,32 @@
+.AOemptyPage {
+    height: 100%;
+    width: 1180px;
+    background-color: var(--bgMain);
+
+}
+
+.AOemptyPageText {
+    margin: auto;
+    max-width: 486px;
+    padding-top: 281px;
+    padding-bottom: 349px;
+    
+
+    font-family: map-get($fonts, r), sans-serif;
+    font-style: normal;
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: rgba(0, 0, 0, 0.25);
+
+
+}
+
+.AOcreateBoard{
+font-family: map-get($fonts, r), sans-serif;
+    font-style: normal;
+    text-align: center;
+
+    color: var(--accent);
+    text-shadow: rgba(0, 0, 0, 0.25);
+}
