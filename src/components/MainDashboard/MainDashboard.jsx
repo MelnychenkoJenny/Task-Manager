@@ -2,28 +2,37 @@ import { Filters } from './Filters';
 import styles from 'styles/index.module.scss';
 import { BtnAddColumn } from './BtnAddColumn';
 import { Modal } from '../Modal/Modal';
-import {  useState } from 'react';
+import { useState } from 'react';
 import { PopColumn } from 'components/PopColumn';
-import { addColumn, deleteColumn, editColumn } from 'redux/board/boardOperations';
-import {  useDispatch, /*useSelector*/ } from 'react-redux';
+import {
+  addColumn,
+  deleteColumn,
+  editColumn,
+} from 'redux/board/boardOperations';
+import { useDispatch, useSelector } from 'react-redux';
 import { useBoards } from 'hooks';
 // import { useParams } from 'react-router-dom';
 import SvgSprite from 'images/sprite.svg';
+import { BtnAddCard } from './BtnAddCard';
+import { AddCard } from 'components/AddCard/AddCard';
 
 export const MainDashboard = () => {
-  const { columns } = useBoards();
-
-  // const st = useSelector(state => state);
-  // console.log('state :>> ', st);
+  const { columns, tasks } = useBoards();
+  console.log('columns', columns);
+  console.log('tasks', tasks);
+  const st = useSelector(state => state);
+  console.log('state :>> ', st);
 
   const [isModalAddOpen, setIsModalAddOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
+  const [isModalAddCardOpen, setIsModalAddCardOpen] = useState(false);
   const [activeColumnId, setActiveColumnId] = useState('');
   const [titleColumnId, setTitleColumnId] = useState('');
-
+console.log('activeColumnId565 :>> ', activeColumnId);
   const dispatch = useDispatch();
   // const  boardId = useParams();
 
+  //!! Тут на всі відкриття і закриття модалок можна зробити switch, але не стала витрачати на че час
   const handleOpenAddModal = () => {
     setIsModalAddOpen(true);
   };
@@ -36,6 +45,13 @@ export const MainDashboard = () => {
   };
   const handleCloseEditModal = () => {
     setIsModalEditOpen(false);
+  };
+
+  const handleOpenAddCardModal = () => {
+    setIsModalAddCardOpen(true);
+  };
+  const handleCloseAddCardModal = () => {
+    setIsModalAddCardOpen(false);
   };
 
   const clickOnColumnItemHandle = columnId => {
@@ -55,11 +71,6 @@ export const MainDashboard = () => {
         {columns &&
           columns.map(({ _id, title }) => (
             <li key={_id}>
-              {/* <TaskColumn
-                   className={styles.KkTaskColumn}
-                   titleCards={title}
-                   idColumn={_id}
-                 /> */}
               <p>title Column: {title}</p>
               <p>id Column: {_id}</p>
               <div className={styles.boardsListItemButtons}>
@@ -94,6 +105,25 @@ export const MainDashboard = () => {
                   </svg>
                 </button>
               </div>
+              <ul>
+                <li>
+                  {/* {console.log('title Column:', title, 'id Column:', _id)} */}
+                  {/* <TaskColumn
+                   className={styles.KkTaskColumn}
+                   titleCards={title}
+                   idColumn={_id}
+                 /> */}
+                </li>
+              </ul>
+              <BtnAddCard
+                className={styles.KkBtnAddColumnMain}
+                title={'Add another card'}
+                theme={'light'}
+                onClick={() => {
+                  handleOpenAddCardModal();
+                  clickOnColumnItemHandle(_id);
+                }}
+              />
             </li>
           ))}
         <BtnAddColumn
@@ -120,8 +150,20 @@ export const MainDashboard = () => {
             modalBtnTitle={'Add'}
             onClose={handleCloseEditModal}
             idColumn={activeColumnId}
-            infoData={{title: titleColumnId}}
+            infoData={{ title: titleColumnId }}
             operation={editColumn}
+          />
+        </Modal>
+      )}
+      {isModalAddCardOpen && (
+        <Modal isOpen={isModalAddCardOpen} onClose={handleCloseAddCardModal}>
+          <AddCard
+            modalTitle={'Add card'}
+            modalBtnTitle={'Add'}
+            onClose={handleCloseAddCardModal}
+            // idColumn={activeColumnId}
+            // infoData={{title: titleColumnId}}
+            // operation={editColumn}
           />
         </Modal>
       )}

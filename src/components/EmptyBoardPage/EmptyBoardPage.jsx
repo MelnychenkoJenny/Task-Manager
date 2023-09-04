@@ -1,9 +1,5 @@
-import { useSelector } from "react-redux";
 
 export const EmptyBoardPage = () => {
-
-  const d = useSelector(state => state)
-  console.log('d :>> ', d);
   return (
     <p>
       Before starting your project, it is essential to create a board to
