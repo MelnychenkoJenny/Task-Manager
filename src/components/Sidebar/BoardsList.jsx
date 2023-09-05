@@ -113,8 +113,6 @@ const BoardsList = () => {
                      type='button'
                      className={scss.boardsListItemButton}
                      onClick={togleDeleteModal}
-
-            // onClick={deleteBoardFromList(_id)}
                   >
                      <svg
                         className={scss.boardsListItemSvg}
