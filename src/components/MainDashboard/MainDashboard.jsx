@@ -60,7 +60,7 @@ export const MainDashboard = () => {
   };
 
   return (
-    <section className={styles.KkSectionMainDashboard}>
+    <div className={styles.KkSectionMainDashboard}>
       <Filters className={styles.KkFilters} />
 
       <ul className={styles.KkColums}>
@@ -152,7 +152,7 @@ export const MainDashboard = () => {
           ))}
         <BtnAddColumn
           className={styles.KkBtnAddColumnMain}
-          title={columns.length !== 0 ? 'Add another column' : 'Add column'}
+          title={'Add another column'}
           theme={'light'}
           onClick={handleOpenAddModal}
         />
@@ -190,6 +190,6 @@ export const MainDashboard = () => {
           />
         </Modal>
       )}
-    </section>
+    </div>
   );
 };
