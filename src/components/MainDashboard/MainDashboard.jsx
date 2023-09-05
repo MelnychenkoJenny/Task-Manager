@@ -60,7 +60,7 @@ export const MainDashboard = () => {
   const clickOnColumnTitleHandle = title => {
     setTitleColumnId(title);
   };
-  console.log(windowInnerWidth > 768);
+
   return (
     <div
       className={styles.KkSectionMainDashboard}
