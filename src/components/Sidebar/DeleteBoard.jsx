@@ -1,7 +1,7 @@
 import scss from '../../styles/index.module.scss';
 import { useAuth } from 'hooks';
 
-const DeleteBoard = () => {
+const DeleteBoard = ({ handleDeleteBoard, onClose, activeBoardId}) => {
 
 
 const { user } = useAuth();
@@ -13,10 +13,21 @@ const { user } = useAuth();
             <div className={scss.mainModalDelBoardWr}>
                 <p className={scss.modalDelBoardTitle}>Delete this Board?</p>
                 <div className={scss.modalBtnDeleteBoardWr}>
-                <button type="submit" className={scss.btnDeleteBoard}>
+                <button
+                   type="button"
+                   className={scss.btnDeleteBoard}
+                   onClick={() => {
+                  handleDeleteBoard(activeBoardId);
+                  onClose();
+                   }}
+                >
                     Yes
                 </button>
-                <button type="submit" className={scss.btnDeleteBoard}>
+                <button
+                   type="button"
+                   className={scss.btnDeleteBoard}
+                  onClick={onClose}
+                >
                     No
                 </button>
             </div>

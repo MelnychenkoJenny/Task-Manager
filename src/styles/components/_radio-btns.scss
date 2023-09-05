@@ -1,0 +1,43 @@
+.OBFiltersModalLabel {
+    // для фільтра
+    font-family: map-get($fonts, m), sans-serif; // 400
+    color: var(--modalTitle);
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: -0.28px;
+}
+
+.OBFiltersModalRadioGroupV {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 14px;
+    // background-color: bisque;
+}
+
+.OBFiltersModalRadioGroupH {
+    display: flex;
+    gap: 5px;
+    margin-top: 4px;
+    margin-bottom: 14px;
+    background-color: rgb(218, 132, 28);
+}
+
+.OBFiltersModalRadioLabel {
+    // font-family: map-get($fonts, r), sans-serif; // 400
+    display: flex;
+    gap: 8px;
+    padding-left: 9px;
+    color: var(--cardText);
+
+    // не застосвується
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: normal;
+}
+
+.OBFiltersModalRadioBtn { 
+    width: 14px;  // тепер радіокнопки не скачуть при чеку
+    height: 14px;
+}

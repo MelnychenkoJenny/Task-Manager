@@ -151,9 +151,9 @@ const BoardsList = () => {
       {showDeleteBoardModal && (
         <Modal onClose={togleDeleteModal}>
             <DeleteBoard
-             handleDeleteBoard={deleteBoardFromList}
-             onClose={togleDeleteModal}
-             activeBoardId={activeBoardId}      
+                  handleDeleteBoard={deleteBoardFromList}
+                  onClose={togleDeleteModal}
+                  activeBoardId={activeBoardId}      
           />
         </Modal>           
          )}
