@@ -1,0 +1,105 @@
+.mainModalHelpWrap {
+    width: 335px;
+    padding: 24px;
+    background-color: var(--bgModal);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+    
+    @include minMd() {
+        width: 400px;
+    }
+}
+
+
+
+.titleModalHelp {
+    color: var(--modalTitle);
+    font-family: map-get($fonts, m);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.36px;
+    margin-bottom: 24px;
+}
+
+.formInputHelp {
+    margin-bottom: 14px;
+    padding: 14px 18px;
+    width: 287px;
+    height: 49px;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    color: var(--modalTitle);
+    font-family: map-get($fonts, r);
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    opacity: 0.4;
+    background: var(--bgModal);
+    
+    @include minMd() {
+        width: 352px;
+    }
+}
+
+.formInputHelpComment {
+    margin-bottom: 14px;
+    padding: 14px 18px;
+    width: 287px;
+    height: 120px;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    color: var(--modalTitle);
+    font-family: map-get($fonts, r);
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    opacity: 0.4;
+    background: var(--bgModal);
+    word-break: break-word;
+        resize: none;
+        overflow: auto;
+        scrollbar-width: none;
+    
+    @include minMd() {
+        width: 352px;
+    }
+}
+
+
+
+.formInputHelp:active,
+.formInputHelp:focus {
+    border: 1px solid var(--accent);
+    outline: none;
+    opacity: 1;
+}
+
+.formInputHelpComment:active,
+.formInputHelpComment:focus {
+    border: 1px solid var(--accent);
+    outline: none;
+    opacity: 1;
+}
+
+.formBtnModalHelp {
+    margin-top: 10px;
+    width: 287px;
+    height: 49px;
+    border-radius: 8px;
+    background: var(--accent);
+    border: none;
+    color: var(--modalBtnText);
+    font-family: map-get($fonts, m);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    
+    @include minMd() {
+        width: 352px;
+    }
+}
