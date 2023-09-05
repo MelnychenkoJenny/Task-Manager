@@ -47,6 +47,8 @@
   font-family: map-get($fonts, m), sans-serif;
   font-style: normal;
   color: var(--modalTitle);
+  background-color: var(--bgMain);
+  border-radius: 5px;
 
   @include minMd() {
     font-size: 18px;
