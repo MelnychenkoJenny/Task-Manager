@@ -63,7 +63,7 @@ export const AddCard = ({ modalTitle, idColumn, id, cardTitle, description, prio
     // console.log("in dispatch", { ...cardData, 'taskOwner': idColumn});
     // {title: 'The Watch Spot Design', description: "Create a visually stunning and eye-catching watch dial design that embodies our brand's", priority: 'without', deadline: '11/10/2023', taskOwner: '64f548eb24765a1e4837366e'}
 
-    
+
     // відправка на бекенд, а потім в стор редакса
     dispatch(addTasks({ ...cardData, 'taskOwner': idColumn, boardId: boardName})); 
 
@@ -179,7 +179,7 @@ export const AddCard = ({ modalTitle, idColumn, id, cardTitle, description, prio
                       borderRadius: '8px',
                       padding: '18px',
                       width: '233px',
-                      height: '200px',
+                      height: '254px',
                     },
                     '.MuiPickersLayout-root.': {
                       width: '197px',

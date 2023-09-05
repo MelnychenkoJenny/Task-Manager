@@ -88,7 +88,7 @@ td {
   transition: $transition;
     &:hover,
     &:focus {
-      stroke: rgba(82, 85, 188, 1);
+      stroke: var(--inputBorderAccent);
       cursor: pointer;
       transform: scale(1.1);
     }
