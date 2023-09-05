@@ -180,6 +180,7 @@ export const AddCard = ({
         </div>
 
         <div>
+          <p className={scss.OBAddlabel}>Deadline</p>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             {/* dateAdapter={AdapterDayjs} - вказуємо, що під капотом використовуємо бібліотеку Day.js (її методи) */}
             <DatePicker
