@@ -1,6 +1,6 @@
 // ================================================== MainDashboard styled
 .KkSectionMainDashboard {
-  width: 100vw;
+  // width: 84.5vw;
   height: calc(100vh - 70px);
   padding-left: 20px;
   padding-right: 20px;
@@ -12,6 +12,7 @@
   }
 
   @include minXl() {
+    width: 84.5vw;
     padding-left: 24px;
     padding-right: 24px;
   }
