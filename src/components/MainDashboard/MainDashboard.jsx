@@ -107,8 +107,8 @@ export const MainDashboard = () => {
               </div>
               {tasks && (
                 <ul>
-                  {tasks.map(({title: titleCard, description, priority, deadLine} ) => {
-                    return (<li>
+                  {tasks.map(({title: titleCard, description, priority, deadLine, _id} ) => {
+                    return (<li key={_id}>
                       <Card
                         cardTitle={titleCard}
                         id={_id}
