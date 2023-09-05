@@ -32,10 +32,14 @@ export const App = () => {
         <>
           <Suspense fallback={<Loader />}>
             <Routes>
-            <Route
+              <Route
                 path="/"
                 element={
-                  <RestrictedRout exact component={WelcomePage} redirectTo="/home" />
+                  <RestrictedRout
+                    exact
+                    component={WelcomePage}
+                    redirectTo="/home"
+                  />
                 }
               />
               {/* <Route path="/" exact element={<WelcomePage />} /> */}
@@ -57,7 +61,9 @@ export const App = () => {
               <Route path="/home" element={<SharedLayout />}>
                 <Route
                   index
-                  element={<PrivateRoute redirectTo="/" component={EmptyBoardPage} />}
+                  element={
+                    <PrivateRoute redirectTo="/" component={EmptyBoardPage} />
+                  }
                 />
                 <Route
                   path=":boardName"
