@@ -11,6 +11,8 @@ import {
 import { Modal } from '../Modal/Modal';
 import { Link } from 'react-router-dom';
 import ModalBoard from 'components/ModalBoard/ModalBoard';
+import DeleteBoard from 'components/Sidebar/DeleteBoard';
+
 import { useBoards } from 'hooks';
 // import { useNavigate } from 'react-router-dom';
 
@@ -18,15 +20,15 @@ const BoardsList = () => {
    const boards = useSelector(selectBoards);
    const firstBoardId = boards[0]._id;
    const dispatch = useDispatch();
-   // const [showDeleteBoardModal, setshowDeleteBoardModal] = useState(false);
+   const [showDeleteBoardModal, setshowDeleteBoardModal] = useState(false);
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [activeBoardId, setActiveBoardId] = useState(firstBoardId);
    // const [deleteConfirm, setDeleteConfirm] = useState(false);
    const { boardById } = useBoards();
 
-   // const togleDeleteModal = () => {
-   //    setshowDeleteBoardModal(prev => !showDeleteBoardModal);
-   // };
+   const togleDeleteModal = () => {
+      setshowDeleteBoardModal(prev => !showDeleteBoardModal);
+   };
 
    // const deleteConfirmTogle = () => {
    //    setDeleteConfirm(prev => !deleteConfirm);
@@ -44,10 +46,10 @@ const BoardsList = () => {
       setActiveBoardId(boardId);
    };
 
-   // const deleteBoardFromList = contactId => {
+   const deleteBoardFromList = (activeBoardId) => {
          // navigate(`/home/}`, { replace: true });
-   //       dispatch(deleteBoards(contactId));
-   // };
+         dispatch(deleteBoards(activeBoardId));
+   };
 
    // const refreshBoardsList = () => {
       // setActiveBoardId(firstBoardId);
@@ -110,7 +112,7 @@ const BoardsList = () => {
                   <button
                      type='button'
                      className={scss.boardsListItemButton}
-                     onClick={() => dispatch(deleteBoards(_id))}
+                     onClick={togleDeleteModal}
 
             // onClick={deleteBoardFromList(_id)}
                   >
@@ -145,7 +147,16 @@ const BoardsList = () => {
             }}
           />
         </Modal>           
-      )}
+         )}
+      {showDeleteBoardModal && (
+        <Modal onClose={togleDeleteModal}>
+            <DeleteBoard
+             handleDeleteBoard={deleteBoardFromList}
+             onClose={togleDeleteModal}
+             activeBoardId={activeBoardId}      
+          />
+        </Modal>           
+         )}
 </>
 );
 };
