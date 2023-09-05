@@ -137,33 +137,10 @@ const BoardsList = () => {
               <use href={`${SvgSprite}#icon-trash`}></use>
             </svg>
          </button>
-         </div>
-      </div>             
+            </div>
          <div className={scss.boardsListActiveFlag}></div>
-
-         {/* {(activeBoardId === _id) && (<div        
-          // id='deleteBoardConfirm'
-         className={`${scss.deleteBoardConfirm} ${deleteConfirm ? scss.showDeleteConfirm : ''} `}
-         >
-         <h3 className={scss.confirmDeleteTitle}>Delete this board?</h3>
-         <button
-            className={scss.confirmDeleteButton}
-            onClick={() => {
-               deleteBoardFromList(_id);
-               deleteConfirmTogle();
-               // refreshBoardsList();              
-            }}
-         >
-            YES
-         </button>
-         <button
-            className={scss.confirmDeleteButton}
-            onClick={deleteConfirmTogle}
-         >
-            NO
-            </button>
-            </div>)} */}
-         </div>  
+                        </div>
+                     </div>  
       </Link>
           </li>
         ))}
