@@ -4,9 +4,7 @@ import SvgSprite from 'images/sprite.svg';
 import { useBoards } from 'hooks';
 
 export const Filters = ({ className }) => {
- 
-const {  boardById } = useBoards();
-// console.log(boardById)
+  const { boardById } = useBoards();
   const onFilters = () => {
     console.log('Filters ckick');
   };

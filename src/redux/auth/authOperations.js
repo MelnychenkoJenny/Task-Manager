@@ -39,13 +39,10 @@ export const userRegistration = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await instance.post('/users/signup', credentials);
-      // console.log('data registration', res);
-      // console.log('token registration', data.token);
 
       token.set(data.token);
       return data;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.request.status);
     }
   }
@@ -55,19 +52,10 @@ export const userLogin = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      console.log(credentials);
       const { data } = await instance.post('/users/signin', credentials);
-      console.log(33);
-      // console.log('data login', data);
-      // console.log('token login', data.token)
-      // localStorage.setItem('refreshToken', data.refreshToken);
-
       token.set(data.token);
-      console.log('token login2', data.token);
-      console.log(44);
       return data;
     } catch (error) {
-      console.log('error zaprosa na bek', error);
       return rejectWithValue(error.request.status);
     }
   }
@@ -78,7 +66,6 @@ export const updateTheme = createAsyncThunk(
   async (theme, { rejectWithValue }) => {
     try {
       const { data } = await instance.patch('/users/themes', { theme });
-      console.log('rez', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -90,11 +77,7 @@ export const updateUserProfile = createAsyncThunk(
   'auth/updateUserProfile',
   async (formData, { rejectWithValue }) => {
     try {
-      // console.log(11);
-      console.log(formData, 'formDataOperations');
       const { data } = await instance.put(`/users/update`, formData);
-      // console.log(222);
-      // console.log('update data bek', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -107,7 +90,6 @@ export const logout = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.post('/users/signout');
-      console.log(data, 555);
       token.unset();
       return data;
     } catch (error) {

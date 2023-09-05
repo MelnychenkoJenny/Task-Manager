@@ -27,7 +27,6 @@ export const PopColumn = ({
     }));
   };
 
-  console.log('idColumn :>> ', idColumn);
   const handleSubmit = e => {
     e.preventDefault();
 
