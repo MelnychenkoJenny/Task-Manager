@@ -24,10 +24,8 @@ export const getBoardById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await instance.get(`/boards/${id}`);
-      // console.log('ot beckenda otvet', data);
       return data;
     } catch (error) {
-      // console.log('error333 :>> ', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -88,12 +86,10 @@ export const addColumn = createAsyncThunk(
   'boards/addColumn',
   async (dataColumn, thunkAPI) => {
     try {
-      console.log(dataColumn, 'datacolumn');
       const {
         data: { result },
       } = await instance.post('/columns', dataColumn);
       thunkAPI.dispatch(getBoardById(dataColumn.board));
-      console.log(111, result);
       return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -119,7 +115,6 @@ export const deleteColumn = createAsyncThunk(
   'boards/deleteColumn',
   async (columnId, { rejectWithValue }) => {
     try {
-      console.log('columnId', columnId);
       const {
         data: { result },
       } = await instance.delete(`/columns/${columnId}`);
@@ -133,13 +128,55 @@ export const deleteColumn = createAsyncThunk(
 
 export const addTasks = createAsyncThunk(
   'boards/addTasks',
-  async ({boardId, deadLine, description, priority, taskOwner, title}, thunkAPI) => {
+  async (
+    { boardId, deadLine, description, priority, taskOwner, title },
+    thunkAPI
+  ) => {
     try {
-
-      const  {data}  = await instance.post('/tasks', {deadLine, description, priority, taskOwner, title});
+      const { data } = await instance.post('/tasks', {
+        deadLine,
+        description,
+        priority,
+        taskOwner,
+        title,
+      });
       thunkAPI.dispatch(getBoardById(boardId));
-      console.log('otvet ot beka', data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
+export const updateTasks = createAsyncThunk(
+  'boards/updateTasks',
+  async (
+    { deadLine, description, priority, taskOwner, title, idTask, boardId },
+    thunkAPI
+  ) => {
+    try {
+      const { data } = await instance.patch(`/tasks/${idTask}`, {
+        title,
+        description,
+        priority,
+        deadLine,
+        taskOwner,
+      });
+
+      thunkAPI.dispatch(getBoardById(boardId));
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteTasks = createAsyncThunk(
+  'boards/deleteTasks',
+  async ({ id, boardName }, thunkAPI) => {
+    try {
+      const { data } = await instance.delete(`/tasks/${id}`);
+      thunkAPI.dispatch(getBoardById(boardName));
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
