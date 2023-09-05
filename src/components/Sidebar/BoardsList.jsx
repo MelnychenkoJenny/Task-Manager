@@ -106,6 +106,7 @@ const BoardsList = () => {
                       // onClick={() => {
                       //   deleteConfirmOpen();
                       // }}
+
                       onClick={() => dispatch(deleteBoards(_id))}
                     >
                       <svg
@@ -148,6 +149,7 @@ const BoardsList = () => {
           </li>
         ))}
       </ul>
+      
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <ModalBoard
