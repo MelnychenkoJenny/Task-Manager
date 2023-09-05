@@ -106,6 +106,7 @@ $max-width-content: 1218px;
   --ModalIconClose: rgba(255, 255, 255, 1);
   --cardText: rgba(255, 255, 255, 0.5);
   --cardSeparator: rgba(255, 255, 255, 0.1);
+  --bgScrollModify: rgba(255, 255, 255, 0.08);
 }
 // LIGHT THEME
 [data-theme='light'] {
@@ -152,6 +153,7 @@ $max-width-content: 1218px;
   --popCardInputBgColor: #FFFFFF;
   --ModalIconClose: rgba(22, 22, 22, 1);
   --cardSeparator: rgba(22, 22, 22, 0.1);
+  --bgScrollModify: #e8e8e8;
 }
 
 // VIOLET THEME
@@ -199,4 +201,5 @@ $max-width-content: 1218px;
   --popCardInputBgColor: #FFFFFF;
   --ModalIconClose: rgba(22, 22, 22, 1);
   --cardSeparator: rgba(22, 22, 22, 0.1);
+  --bgScrollModify: #ffffff;
 }
