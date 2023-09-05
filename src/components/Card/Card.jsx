@@ -5,6 +5,7 @@ import { Modal } from '../Modal/Modal'
 import { AddCard } from '../AddCard/AddCard';
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
+import { useAuth } from 'hooks';
 
 
 const getBgColor = priority => {
@@ -24,7 +25,7 @@ const getBgColor = priority => {
 
 
 const Card = ({ id, cardTitle, description, priority, deadline }) => {
-
+  const { user } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
    // const dispatch = useDispatch();
    const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
@@ -38,7 +39,7 @@ const Card = ({ id, cardTitle, description, priority, deadline }) => {
   };
 
   return (
-    <div style={{ borderLeftColor: getBgColor(priority) }} className={scss.OBCardContainer}>
+    <div style={{ borderLeftColor: getBgColor(priority) }} className={scss.OBCardContainer} data-theme={user.theme}>
       <h4 className={scss.OBCardTitle}>{cardTitle}</h4>
       <p className={scss.OBCardDescription}>{description}</p>
 
@@ -66,7 +67,7 @@ const Card = ({ id, cardTitle, description, priority, deadline }) => {
 
         <div className={scss.OBCardIconsWrapper}>
           {deadlineIsToday &&
-            <svg className={scss.OBCardBellIcon} width="16" height="16">
+            <svg className={scss.OBCardBellIcon} width="16" height="16" style={{ stroke: user.theme === 'violet' ? '#585bbe' : '#bedfad' }}>
               <use href={SvgSprite + '#icon-bell'} />
             </svg>            
           }

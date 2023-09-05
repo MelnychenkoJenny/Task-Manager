@@ -57,13 +57,13 @@ export const AddCard = ({ modalTitle, idColumn, id, cardTitle, description, prio
       'title': inputTitle, 
       'description': inputDescription, 
       'priority': inputPriority,
-      'deadLine': inputDeadline,
+      'deadLine': inputDeadline,          
     }
     // console.log(5454545, cardData);
     // console.log("in dispatch", { ...cardData, 'taskOwner': idColumn});
     // {title: 'The Watch Spot Design', description: "Create a visually stunning and eye-catching watch dial design that embodies our brand's", priority: 'without', deadline: '11/10/2023', taskOwner: '64f548eb24765a1e4837366e'}
 
-
+    
     // відправка на бекенд, а потім в стор редакса
     dispatch(addTasks({ ...cardData, 'taskOwner': idColumn, boardId: boardName})); 
 
@@ -172,18 +172,14 @@ export const AddCard = ({ modalTitle, idColumn, id, cardTitle, description, prio
                 popper: { 
                   placement: 'bottom-start',
                   sx: {
-                    '.MuiPickersPopper-root': {
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                    },
                     '.css-71vzt-MuiPaper-root-MuiPickersPopper-paper': { // полотно календаря
                       // backgroundColor: 'red', // працює
-                      border: '1px solid #5255BC',
+                      border: '1px solid',
+                      borderColor: user.theme === 'violet' ? '#585bbe' : '#bedfad',
                       borderRadius: '8px',
                       padding: '18px',
                       width: '233px',
-                      height: '254px',
+                      height: '200px',
                     },
                     '.MuiPickersLayout-root.': {
                       width: '197px',
@@ -194,6 +190,10 @@ export const AddCard = ({ modalTitle, idColumn, id, cardTitle, description, prio
                       width: '197px',
                       hight: '166px',
                     },
+                    // MuiPickersFadeTransitionGroup-root MuiDateCalendar-viewTransitionContainer css-15v8kdh-MuiPickersFadeTransitionGroup-root-MuiDateCalendar-viewTransitionContainer
+                    // '.MuiPickersFadeTransitionGroup-root': {
+                    //   maxHight: '166px',
+                    // },
                     '.css-cwhad8-MuiDateCalendar-root': {  // полотно календаря без зовнішніх падінгів
                       height: '215px',
                     },
@@ -314,13 +314,13 @@ export const AddCard = ({ modalTitle, idColumn, id, cardTitle, description, prio
                     },
                     endAdornment: (   // розташування іконки - в кінці інпуту (є і startAdornment)
                      <InputAdornment position="start" sx={{ cursor: 'pointer'}}>
-                        <svg className={scss.OBAddDateIcon} width='18px'>
-                            <use 
-                              href={SvgSprite + '#icon-chevron-down'} // стрілка вниз в календарі  
-                              aria-label="open calendar" 
-                              edge="start" 
-                            />       
-                        </svg>
+                          <svg className={scss.OBAddDateIcon} width='18px'>
+                              <use 
+                                href={SvgSprite + '#icon-chevron-down'} // стрілка вниз в календарі  
+                                aria-label="open calendar" 
+                                edge="start" 
+                              />       
+                          </svg>
                      </InputAdornment>
                     ),
                   },
