@@ -18,11 +18,14 @@ import { BtnAddCard } from './BtnAddCard';
 import { AddCard } from 'components/AddCard/AddCard';
 import { Card } from 'components/Card';
 import { TitleCards } from './TitleCards';
+import {imagesBg} from 'images/image-url'
 
 export const MainDashboard = () => {
-  const { columns } = useBoards();
+  const { columns, boardById } = useBoards();
   const dispatch = useDispatch();
 
+
+// console.log('boardById :>> ', boardById.background);
   const [isModalAddOpen, setIsModalAddOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [isModalAddCardOpen, setIsModalAddCardOpen] = useState(false);
@@ -59,8 +62,28 @@ export const MainDashboard = () => {
     setTitleColumnId(title);
   };
 
+  const bg= imagesBg?.find(image => image.name === boardById.background)
+  // console.log('bg :>> ', bg?.mobile);
+  const containerStyle = {
+    height: '100vh',
+    maxHeight: '100%',
+    backgroundImage: `url(${bg?.mobile})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    
+  };
+
+  if (window.innerWidth >= 768) {
+    containerStyle.backgroundImage = `url(${bg?.tablet})`;
+  }
+
+  if (window.innerWidth >= 1440) {
+    containerStyle.backgroundImage = `url(${bg?.desktop})`;
+  }
+
   return (
-    <div className={styles.KkSectionMainDashboard}>
+    <div className={styles.KkSectionMainDashboard}  style={containerStyle}>
       <Filters className={styles.KkFilters} />
 
       <ul className={styles.KkColums}>
