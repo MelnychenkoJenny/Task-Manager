@@ -60,18 +60,17 @@ export const MainDashboard = () => {
   const clickOnColumnTitleHandle = title => {
     setTitleColumnId(title);
   };
-
-  console.log(windowInnerHeight - 60);
+  console.log(windowInnerWidth > 768);
   return (
     <div
       className={styles.KkSectionMainDashboard}
       style={{
         width:
-          windowInnerWidth > 1440
-            ? `calc(${windowInnerWidth}px - ${280}px)`
+          windowInnerWidth > 1200
+            ? `calc(${windowInnerWidth}px - ${270}px)`
             : `${windowInnerWidth}px`,
         height:
-          windowInnerHeight > 768
+          windowInnerWidth > 768
             ? `calc(${windowInnerHeight}px - ${68}px)`
             : `calc(${windowInnerHeight}px - ${60}px)`,
       }}
