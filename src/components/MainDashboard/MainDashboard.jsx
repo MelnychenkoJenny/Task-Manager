@@ -152,7 +152,7 @@ export const MainDashboard = () => {
           ))}
         <BtnAddColumn
           className={styles.KkBtnAddColumnMain}
-          title={'Add another column'}
+          title={columns.length !== 0 ? 'Add another column' : 'Add column'}
           theme={'light'}
           onClick={handleOpenAddModal}
         />
