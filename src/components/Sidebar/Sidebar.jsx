@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { React, useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import BoardsList from '../Sidebar/BoardsList';
-import NewBoard from '../ModalBoard/ModalBoard';
+import ModalBoard from '../ModalBoard/ModalBoard';
 import helpCactus from 'images/help-cactus.png';
 import helpCactus2 from 'images/help-cactus-2x.png';
 import { logout } from '../../redux/auth/authOperations';
@@ -113,7 +113,7 @@ const Sidebar = () => {
 
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <NewBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
+          <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
         </Modal>
       )}
     </>
