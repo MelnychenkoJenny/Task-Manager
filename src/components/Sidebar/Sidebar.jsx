@@ -9,13 +9,14 @@ import { addBoards } from 'redux/board/boardOperations';
 import { selectBoards } from '../../redux/board/boardSelectors';
 import {logout} from '../../redux/auth/authOperations';
 import { useAuth } from 'hooks';
+import NeedHelp from '../Sidebar/NeedHelp';
 
 
 const Sidebar = () => {
    const dispatch = useDispatch();
    const { user } = useAuth();
    const boards = useSelector(selectBoards);
-   // const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
+   const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
    const [iconStyle, seticonStyle] = useState('');
    console.log(user.theme);
@@ -39,9 +40,9 @@ const Sidebar = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-   //    const togleNeedHelpModal = () => {
-   //    setshowNeedHelpModal(prev => !showNeedHelpModal);
-   // };
+      const togleNeedHelpModal = () => {
+      setshowNeedHelpModal(prev => !showNeedHelpModal);
+   };
 
    const clickBackDrop = e => {
       if (e.target === e.currentTarget) {
@@ -92,7 +93,7 @@ const Sidebar = () => {
                         <button
                            type='button'
                            className={scss.sbHelpButton}
-                           // onClick={togleNeedHelpModal}
+                           onClick={togleNeedHelpModal}
                         >
                            <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
                               <use href={`${SvgSprite}#icon-help-circle`}></use>
@@ -120,10 +121,11 @@ const Sidebar = () => {
                   <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
                </Modal>
             )}
-            {/* {showNeedHelpModal && (<Modal onClose={togleNeedHelpModal}>                  
-         <div style={{width:'100px', height:'100px', backgroundColor:'greenyellow'}}></div>
+            { showNeedHelpModal &&
+               (<Modal onClose={togleNeedHelpModal}>                  
+         <NeedHelp onClose={togleNeedHelpModal}/>
         </Modal>
-               )} */}                
+               )}               
          </>
       );
    };
