@@ -1,3 +1,13 @@
+.sidebarContainer {
+   @include maxLg() {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(21, 21, 21, 0.5);
+   }
+}
 .sidebarWrap {
    width: 225px;
    height: 100vh;
@@ -32,7 +42,6 @@
 }
 
 .sbLogo {
-   fill: var(--sbLogoSvg);
    margin-right: 8px;
 }
 
@@ -43,7 +52,6 @@
    font-family: map-get($fonts, b), sans-serif;
    font-size: 16px;
    font-style: normal;
-   // font-weight: 600;
    line-height: normal;
    letter-spacing: -0.64px;
 
@@ -65,7 +73,6 @@
 .sbBoards {
    display: flex;
    align-items: center;
-   // justify-content: center;
 }
 
 .sbCreateBoardBlock {
@@ -90,7 +97,6 @@
    font-family: map-get($fonts, m), sans-serif;
    font-size: 14px;
    font-style: normal;
-   // font-weight: 500;
    line-height: normal;
    letter-spacing: -0.28px;
    margin-right: 77px;
@@ -108,7 +114,6 @@
    border-radius: 6px;
    background: var(--btnPlus);
    transition: opacity 0.3s;
-   // flex-shrink: 0;
    &:hover,
    &:focus {
       background-color: var(--btnPlusHover);
@@ -268,7 +273,10 @@
    overflow-y: scroll;
    overflow-x: hidden;
 
-   // z-index: 1212;
+   // direction: ltr;
+   // scrollbar-color: #E8E8E8 #1616161A;
+   // scrollbar-width: thin;
+
    @include minMd() {
       width: 236px;
       height: 256px;
@@ -277,8 +285,26 @@
    @include minLg() {
       height: 126px;
    }
+       @include minMd(){
+         
+       }
 }
 
+.boardsList::-webkit-scrollbar {
+   width: 0px;
+}
+// .boardsList::-webkit-scrollbar-track {
+//    background-color: #E8E8E8;
+//    border-radius: 100px;
+// }
+
+// .boardsList::-webkit-scrollbar-thumb {
+//    border-radius: 100px;
+//    border: 6px solid rgba(0, 0, 0, 0.18);
+//    border-left: 0;
+//    border-right: 0;
+//    background-color: #1616161A;
+// }
 .boardsListItemWrap {
    width: 211px;
    height: 61px;
@@ -335,8 +361,6 @@
    height: 61px;
    display: flex;
 
-   // position: relative;
-
    @include minMd() {
       width: 236px;
       height: 61px;
@@ -371,16 +395,6 @@
    -webkit-box-orient: vertical;
    overflow: hidden;
    text-overflow: ellipsis;
-//   max-height: 60px;
-//   display: -webkit-box;
-//   color: var(--primary);
-//   font-family: map-get($fonts, m), sans-serif;
-//   font-size: 14px;
-//   letter-spacing: -0.28px;
-//   -webkit-line-clamp: 2;
-//   -webkit-box-orient: vertical;
-//   overflow: hidden;
-//   text-overflow: ellipsis;
 }
 
 .boardsListItemActive {
@@ -398,7 +412,6 @@
       margin-right: 20px;
    }
 }
-
 
 .boardsListItemButton {
    width: 16px;
@@ -423,14 +436,12 @@
 }
 
 .boardsListActiveFlag {
-   // position: relative;
    width: 4px;
    height: 61px;
    display: flex;
    flex-shrink: 0;
    border-radius: 4px 0px 0px 4px;
    background: var(--sbActiveFlag);
-   // overflow: hidden;
 }
 
 .deleteBoardConfirm {
