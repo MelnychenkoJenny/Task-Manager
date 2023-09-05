@@ -72,7 +72,7 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
 
         <div className={scss.OBCardIconsWrapper}>
           {deadlineIsToday &&
-            <svg className={scss.OBCardBellIcon} width="16" height="16" style={{ stroke: user.theme === 'violet' ? '#585bbe' : '#bedfad' }}>
+            (<svg className={scss.OBCardBellIcon} width="16" height="16" style={{ stroke: user.theme === 'violet' ? '#585bbe' : '#bedfad' }}>
 
               <use href={SvgSprite + '#icon-bell'} />
             </svg>
