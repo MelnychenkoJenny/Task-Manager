@@ -6,7 +6,7 @@ import scss from 'styles/index.module.scss';
 
 export const EmptyBoardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [iconStyle, seticonStyle] = useState('');
+  // const [iconStyle, seticonStyle] = useState('');
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
