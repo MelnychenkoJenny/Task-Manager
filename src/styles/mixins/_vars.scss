@@ -100,12 +100,12 @@ $max-width-content: 1218px;
   --LogOutSvgHov: #9dc888;
   --sbBoardSvg: #ffffff80;
   --popCardBorderColor: rgba(190, 219, 176, 0.5);
-  --cardText: 255, 255, 255, 0.50;
   --popCardInputTextColor: rgba(255, 255, 255, 1);
   --popCardPlaceHolder: rgba(255, 255, 255, 0.4);
   --popCardInputBgColor: #1F1F1F;
   --ModalIconClose: rgba(255, 255, 255, 1);
-
+  --cardText: rgba(255, 255, 255, 0.5);
+  --cardSeparator: rgba(255, 255, 255, 0.1);
 }
 // LIGHT THEME
 [data-theme='light'] {
@@ -146,11 +146,12 @@ $max-width-content: 1218px;
   --LogOutSvgHov: #9dc888;
   --sbBoardSvg: #16161680;
   --popCardBorderColor: none;
-  --cardText: rgba(22, 22, 22, 0.70);
+ --cardText: rgba(22, 22, 22, 0.7);
   --popCardInputTextColor: rgba(22, 22, 22, 1);
   --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
   --popCardInputBgColor: #FFFFFF;
   --ModalIconClose: rgba(22, 22, 22, 1);
+  --cardSeparator: rgba(22, 22, 22, 0.1);
 }
 
 // VIOLET THEME
@@ -192,9 +193,10 @@ $max-width-content: 1218px;
   --LogOutSvgHov: #b8bcfd;
   --sbBoardSvg: #16161680;
   --popCardBorderColor: none;
-  --cardText: rgba(22, 22, 22, 0.70);
+   --cardText: rgba(22, 22, 22, 0.7);
   --popCardInputTextColor: rgba(22, 22, 22, 1);
   --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
   --popCardInputBgColor: #FFFFFF;
   --ModalIconClose: rgba(22, 22, 22, 1);
+  --cardSeparator: rgba(22, 22, 22, 0.1);
 }
