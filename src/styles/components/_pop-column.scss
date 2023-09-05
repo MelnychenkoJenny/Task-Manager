@@ -33,15 +33,16 @@
   font-weight: 400;
   font-style: normal;
   letter-spacing: -0.28px;
-  background-color: var(--inputBgColor);
+  color: var(--popCardInputTextColor);
+  background-color: var(--popCardInputBgColor);
   border: 1px solid var(--accent);
-  opacity: 0.4;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   border-radius: 8px;
   padding: 14px 18px;
   margin-bottom: 24px;
+  transition: transform 0.3s ease;
   &::placeholder {
-    color: var(--modalTitle);
+    color: var(--popCardPlaceHolder);
   }
   &:hover,
   &:focus {
@@ -71,6 +72,8 @@
   font-weight: 500;
   line-height: calc(14 / 21);
   letter-spacing: -0.28px;
+  transition: transform 0.3s ease;
+
   &:hover,
   &:focus {
     background-color: var(--accentHover);
