@@ -10,13 +10,7 @@ import {
 } from '../../redux/board/boardOperations';
 import { Modal } from '../Modal/Modal';
 import { Link } from 'react-router-dom';
-import NewBoard from 'components/ModalBoard/ModalBoard';
 import ModalBoard from 'components/ModalBoard/ModalBoard';
-import {
-  updateBoard,
-  getAllBoards,
-  deleteBoards,
-} from 'redux/board/boardOperations';
 import { useBoards } from 'hooks';
 // import { useNavigate } from 'react-router-dom';
 
@@ -24,17 +18,18 @@ const BoardsList = () => {
    const boards = useSelector(selectBoards);
    const firstBoardId = boards[0]._id;
    const dispatch = useDispatch();
-   const [showEditBoardModal, setshowEditBoardModal] = useState(false);
+   // const [showEditBoardModal, setshowEditBoardModal] = useState(false);
    // const [showDeleteBoardModal, setshowDeleteBoardModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
    const [activeBoardId, setActiveBoardId] = useState(firstBoardId);
    // const [deleteConfirm, setDeleteConfirm] = useState(false);
    const { boardById } = useBoards();
 
 
-   const togleModal = () => {
-      setshowEditBoardModal(prev => !showEditBoardModal);
-   };
+   // const togleModal = () => {
+   //    setshowEditBoardModal(prev => !showEditBoardModal);
+   // };
    // const togleDeleteModal = () => {
    //    setshowDeleteBoardModal(prev => !showDeleteBoardModal);
    // };
@@ -43,6 +38,12 @@ const BoardsList = () => {
    //    setDeleteConfirm(prev => !deleteConfirm);
    // }
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
 
    const clickOnBoardsItemHandle = boardId => {
@@ -57,10 +58,10 @@ const BoardsList = () => {
    // }
 
 
-   const deleteBoardFromList = contactId => {
-         // navigate(`/home/}`, { replace: true });
-         dispatch(deleteBoards(contactId));
-   };
+   // const deleteBoardFromList = contactId => {
+   //       // navigate(`/home/}`, { replace: true });
+   //       dispatch(deleteBoards(contactId));
+   // };
 
    // const refreshBoardsList = () => {
       // setActiveBoardId(firstBoardId);
@@ -75,7 +76,7 @@ const BoardsList = () => {
    //    setActiveBoardId(firstBoardId);
    // }, []); 
 
-   console.log('ACTIVE!!!', activeBoardId);      
+   // console.log('ACTIVE!!!', activeBoardId);      
 
    return (
          <>
@@ -111,7 +112,7 @@ const BoardsList = () => {
          <button
             type='button'
             className={scss.boardsListItemButton}
-            onClick = {togleModal}
+            onClick = {handleOpenModal}
           >
             <svg
                className={scss.boardsListItemSvg}
@@ -124,7 +125,9 @@ const BoardsList = () => {
          <button
             type='button'
             className={scss.boardsListItemButton}
-            onClick={deleteBoardFromList(_id)}
+            onClick={() => dispatch(deleteBoards(_id))}
+
+            // onClick={deleteBoardFromList(_id)}
           >
             <svg
                className={scss.boardsListItemSvg}
@@ -133,6 +136,7 @@ const BoardsList = () => {
             >
               <use href={`${SvgSprite}#icon-trash`}></use>
             </svg>
+         </button>
          </div>
       </div>             
          <div className={scss.boardsListActiveFlag}></div>
@@ -160,17 +164,16 @@ const BoardsList = () => {
             </button>
             </div>)} */}
          </div>  
-         </button>
       </Link>
-   </li>   
-))}            
-</ul> 
-         {showEditBoardModal && (
-            <Modal onClose={togleModal}>
+          </li>
+        ))}
+      </ul>
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <ModalBoard
             modalTitle={'Edit board'}
             modalBtnTitle={'Edit'}
-            onClose={togleModal}
+            onClose={handleCloseModal}
             operation={updateBoard}
             id={boardById._id}
             infoData={{
@@ -179,7 +182,7 @@ const BoardsList = () => {
               background: boardById.background,
             }}
           />
-        </Modal >            
+        </Modal>           
          )}
         </>
    );

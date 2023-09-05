@@ -12,19 +12,27 @@ import {logout} from '../../redux/auth/authOperations';
 
 const Sidebar = () => {
    const dispatch = useDispatch();
-   const [showModal, setShowModal] = useState(false);
+   // const [showModal, setShowModal] = useState(false);
    const boards = useSelector(selectBoards);
-   const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
+   // const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
    // console.log(boards.length);
 
 
-   const togleModal = () => {
-      setShowModal(prev => !showModal);
-   };
-      const togleNeedHelpModal = () => {
-      setshowNeedHelpModal(prev => !showNeedHelpModal);
-   };
+   // const togleModal = () => {
+   //    setShowModal(prev => !showModal);
+   // };
+
+   const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+   //    const togleNeedHelpModal = () => {
+   //    setshowNeedHelpModal(prev => !showNeedHelpModal);
+   // };
 
    const clickBackDrop = e => {
       if (e.target === e.currentTarget) {
@@ -52,7 +60,7 @@ const Sidebar = () => {
                            <span className={scss.sbCreateBoardText}>
                               Create a <br></br> new board
                            </span>
-                           <button onClick={togleModal} className={scss.sbCreateBoardButton}>
+                           <button onClick={handleOpenModal} className={scss.sbCreateBoardButton}>
                               <svg
                                  width="20px"
                                  height="20px"
@@ -75,7 +83,7 @@ const Sidebar = () => {
                         <button
                            type='button'
                            className={scss.sbHelpButton}
-                           onClick={togleNeedHelpModal}
+                           // onClick={togleNeedHelpModal}
                         >
                            <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
                               <use href={`${SvgSprite}#icon-help-circle`}></use>
@@ -97,15 +105,21 @@ const Sidebar = () => {
                      </button>
                   </div>
                </div>
-               {showModal && (<Modal onClose={togleModal}>                  
+            </aside>
+               {/* {showModal && (<Modal onClose={togleModal}>                  
           <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={togleModal} operation={addBoards}/>
         </Modal>
-               )}
-            {showNeedHelpModal && (<Modal onClose={togleNeedHelpModal}>                  
+               )} */}
+                {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+          <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
+        </Modal>
+      )}
+            {/* {showNeedHelpModal && (<Modal onClose={togleNeedHelpModal}>                  
          <div style={{width:'100px', height:'100px', backgroundColor:'greenyellow'}}></div>
         </Modal>
-               )}
-            </aside>     
+               )} */}
+                
          </>
       );
    };
