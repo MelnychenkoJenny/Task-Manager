@@ -18,18 +18,12 @@ const BoardsList = () => {
    const boards = useSelector(selectBoards);
    const firstBoardId = boards[0]._id;
    const dispatch = useDispatch();
-   // const [showEditBoardModal, setshowEditBoardModal] = useState(false);
    // const [showDeleteBoardModal, setshowDeleteBoardModal] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+   const [isModalOpen, setIsModalOpen] = useState(false);
    const [activeBoardId, setActiveBoardId] = useState(firstBoardId);
    // const [deleteConfirm, setDeleteConfirm] = useState(false);
    const { boardById } = useBoards();
 
-
-   // const togleModal = () => {
-   //    setshowEditBoardModal(prev => !showEditBoardModal);
-   // };
    // const togleDeleteModal = () => {
    //    setshowDeleteBoardModal(prev => !showDeleteBoardModal);
    // };
@@ -50,16 +44,8 @@ const BoardsList = () => {
       setActiveBoardId(boardId);
    };
 
-   // const deleteConfirmPopup = document.getElementById('deleteBoardConfirm')
-   // console.log(deleteConfirmPopup)
-
-   // const deleteConfirmClose = () => {
-   //    deleteConfirmPopup.classList.remove('showDeleteConfirm');
-   // }
-
-
    // const deleteBoardFromList = contactId => {
-   //       // navigate(`/home/}`, { replace: true });
+         // navigate(`/home/}`, { replace: true });
    //       dispatch(deleteBoards(contactId));
    // };
 
@@ -79,72 +65,71 @@ const BoardsList = () => {
    // console.log('ACTIVE!!!', activeBoardId);      
 
    return (
-         <>
-         <ul className={scss.boardsList}>                  
-            {boards.map(({_id, title, icon}) => (
-               <li
-                  className={scss.boardsListItem}
-                  key={_id}
-               >
-                  <Link
-                  to={`/home/${_id}`}
-                     className={`${scss.boardsListItemWrap} ${(firstBoardId === _id && firstBoardId === activeBoardId)
-                        ? scss.boardsListItemFirst
-                        : ''
-                        } `}
-                      onClick={() => clickOnBoardsItemHandle(_id)}
-                  >
-                     
-            <div type='button' className={scss.boardsListItemWrap}>
+<>
+      <ul className={scss.boardsList}>                  
+         {boards.map(({_id, title, icon}) => (
+         <li
+            className={scss.boardsListItem}
+            key={_id}
+         >
+            <Link
+               to={`/home/${_id}`}
+                  className={`${scss.boardsListItemWrap} ${(firstBoardId === _id && firstBoardId === activeBoardId)
+                  ? scss.boardsListItemFirst
+                  : ''
+                  } `}
+                  onClick={() => clickOnBoardsItemHandle(_id)}
+            >                     
+         <div type='button' className={scss.boardsListItemWrap}>
             <div className={scss.boardsListItemTitleGroup}>
                <svg
                   className={scss.boardsListItemTitleSvg}
                   width="18px"
                   height="18px">
-              <use href={`${SvgSprite}#${icon}`}></use>
-            </svg>
+                     <use href={`${SvgSprite}#${icon}`}></use>
+               </svg>
             <p className={scss.boardsListItemTitle}>
                             {title}
             </p>
             </div>
             <div className={scss.boardsListItemActive}>
                <div className={scss.boardsListItemButtons}>
-         <button
-            type='button'
-            className={scss.boardsListItemButton}
-            onClick = {handleOpenModal}
-          >
-            <svg
-               className={scss.boardsListItemSvg}
-               width="16px"
-               height="16px"
-            >
-              <use href={`${SvgSprite}#icon-pencil`}></use>
-            </svg>
-         </button>
-         <button
-            type='button'
-            className={scss.boardsListItemButton}
-            onClick={() => dispatch(deleteBoards(_id))}
+                  <button
+                     type='button'
+                     className={scss.boardsListItemButton}
+                     onClick = {handleOpenModal}
+                   >
+                     <svg
+                        className={scss.boardsListItemSvg}
+                        width="16px"
+                        height="16px"
+                     >
+                        <use href={`${SvgSprite}#icon-pencil`}></use>
+                     </svg>
+                  </button>
+                  <button
+                     type='button'
+                     className={scss.boardsListItemButton}
+                     onClick={() => dispatch(deleteBoards(_id))}
 
             // onClick={deleteBoardFromList(_id)}
-          >
-            <svg
-               className={scss.boardsListItemSvg}
-               width="16px"
-               height="16px"
-            >
-              <use href={`${SvgSprite}#icon-trash`}></use>
-            </svg>
-         </button>
+                  >
+                     <svg
+                        className={scss.boardsListItemSvg}
+                        width="16px"
+                        height="16px"
+                     >
+                        <use href={`${SvgSprite}#icon-trash`}></use>
+                     </svg>
+                  </button>
+               </div>
+               <div className={scss.boardsListActiveFlag}></div>
             </div>
-         <div className={scss.boardsListActiveFlag}></div>
-                        </div>
-                     </div>  
+         </div>  
       </Link>
-          </li>
-        ))}
-      </ul>
+   </li>
+   ))}
+</ul>
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <ModalBoard
@@ -160,9 +145,9 @@ const BoardsList = () => {
             }}
           />
         </Modal>           
-         )}
-        </>
-   );
+      )}
+</>
+);
 };
 
 export default BoardsList;

@@ -13,16 +13,13 @@ import { useAuth } from 'hooks';
 
 const Sidebar = () => {
    const dispatch = useDispatch();
-     const { user } = useAuth();
-
-   // const [showModal, setShowModal] = useState(false);
+   const { user } = useAuth();
    const boards = useSelector(selectBoards);
    // const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
    const [iconStyle, seticonStyle] = useState('');
    console.log(user.theme);
 
-// violet light dark
    // const togleModal = () => {
    //    setShowModal(prev => !showModal);
    // };
@@ -118,20 +115,15 @@ const Sidebar = () => {
                   </div>
                </div>
             </aside>
-               {/* {showModal && (<Modal onClose={togleModal}>                  
-          <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={togleModal} operation={addBoards}/>
-        </Modal>
-               )} */}
-                {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
-        </Modal>
-      )}
+            {isModalOpen && (
+               <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                  <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
+               </Modal>
+            )}
             {/* {showNeedHelpModal && (<Modal onClose={togleNeedHelpModal}>                  
          <div style={{width:'100px', height:'100px', backgroundColor:'greenyellow'}}></div>
         </Modal>
-               )} */}
-                
+               )} */}                
          </>
       );
    };
