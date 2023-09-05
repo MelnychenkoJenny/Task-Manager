@@ -6,6 +6,7 @@ import Sidebar from 'components/Sidebar/Sidebar';
 import styles from 'styles/index.module.scss';
 import { useAuth } from 'hooks';
 
+
 export const SharedLayout = () => {
   const [menuActive, setMenuActive] = useState(false);
   const { user } = useAuth();
@@ -59,7 +60,9 @@ export const SharedLayout = () => {
       data-theme={user.theme}
     >
       <div className={styles.AfBodyWr}>
-        {menuActive && <Sidebar />}
+           {menuActive &&
+              <Sidebar />
+           }
         <div className={styles.AfMainWr}>
           <Header click={handleClick} />
           <main>

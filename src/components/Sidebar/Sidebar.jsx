@@ -1,123 +1,115 @@
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { React, useState } from 'react';
 import { Modal } from '../Modal/Modal';
-import BoardsList from '../Sidebar/BoardsList';
+import BoardsList from './BoardsList';
 import NewBoard from '../ModalBoard/ModalBoard';
-import helpCactus from 'images/help-cactus.png';
-import helpCactus2 from 'images/help-cactus-2x.png';
-import { logout } from '../../redux/auth/authOperations';
-import { useAuth } from 'hooks';
 import { addBoards } from 'redux/board/boardOperations';
+import { selectBoards } from '../../redux/board/boardSelectors';
+import {logout} from '../../redux/auth/authOperations';
+
 
 const Sidebar = () => {
-  const dispatch = useDispatch();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { user } = useAuth();
+   const dispatch = useDispatch();
+   const [showModal, setShowModal] = useState(false);
+   const boards = useSelector(selectBoards);
+   const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-  const clickBackDrop = e => {
-    if (e.target === e.currentTarget) {
-      e.currentTarget.style.display = 'none';
-    }
-  };
-  return (
-    <>
-      <aside
-        className={scss.sidebarContainer}
-        onClick={clickBackDrop}
-        data-theme={user.theme}
-      >
-        <nav className={scss.sidebar} data-theme={user.theme}>
-          <div className={scss.sidebarHeaderWr} data-theme={user.theme}>
-            <div className={scss.sidebarHeaderLogo} data-theme={user.theme}>
-              <svg
-                width="32px"
-                height="32px"
-                className={scss.sidebarHeaderLogoIcon}
-                data-theme={user.theme}
-              >
-                <use href={`${SvgSprite}#icon-logo`}></use>
-              </svg>
-              <h2
-                className={scss.sidebarHeaderLogoText}
-                data-theme={user.theme}
-              >
-                Task Pro
-              </h2>
-            </div>
-            <h3 className={scss.sidebarHeaderSubT} data-theme={user.theme}>
-              My boards
-            </h3>
-            <div className={scss.sidebarHeaderNewBordWrapper}>
-              <span className={scss.sidebarHeaderNewBordText}>
-                Create a new board
-              </span>
-              <button
-                onClick={handleOpenModal}
-                className={scss.sidebarHeaderNewBordButton}
-              >
-                <svg width="20px" height="20px">
-                  <use href={`${SvgSprite}#icon-plus`}></use>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div className={scss.sidebarBoardListWr}>
-            <BoardsList />
-          </div>
-          <div className={scss.sidebarBoardHelpWr}>
-            <div className={scss.sidebarBoardHelpImg}>
-              <picture>
-                <source srcSet={`${helpCactus} 1x,${helpCactus2} 2x`} />
-                <img
-                  src={helpCactus}
-                  width="54px"
-                  height="78px"
-                  alt="help cactus"
-                />
-              </picture>
-            </div>
-            <p className={scss.sidebarBoardHelpText}>
-              If you need help with<br></br>
-              <span className={scss.sidebarBoardHelpTextAccent}> TaskPro</span>,
-              check out our <br></br> support resources or reach <br></br> out
-              to our customer support team.
-            </p>
-            <button className={scss.sidebarBoardHelpButton}>
-              <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
-                <use href={`${SvgSprite}#icon-help-circle`}></use>
-              </svg>
-              <span>Need help?</span>
-            </button>
-          </div>
-          <div className={scss.sidebarBtnLogoutWr}>
-            <button
-              className={scss.sidebarBtnLogout}
-              onClick={() => dispatch(logout())}
+   // console.log(boards.length);
+
+
+   const togleModal = () => {
+      setShowModal(prev => !showModal);
+   };
+      const togleNeedHelpModal = () => {
+      setshowNeedHelpModal(prev => !showNeedHelpModal);
+   };
+
+   const clickBackDrop = e => {
+      if (e.target === e.currentTarget) {
+         e.currentTarget.style.display = 'none';
+      }
+   };
+
+      return (
+         <>
+            <aside
+               className={scss.sidebarContainer}
+               onClick={clickBackDrop}
             >
-              <svg width="32px" height="32px">
-                <use href={`${SvgSprite}#icon-logout`}></use>
-              </svg>
-              <span>Log out</span>
-            </button>
-          </div>
-        </nav>
-      </aside>
+               <div className={scss.sidebarWrap}>
+                  <div className={scss.sidebar}>
+                     <div className={scss.sbHeader}>
+                        <svg width="32px" height="32px" className={scss.sbLogo}>
+                           <use href={`${SvgSprite}#icon-logo`}></use>
+                        </svg>
+                        <h2 className={scss.sbTitle}>Task Pro</h2>
+                     </div>
+                     <h3 className={scss.sbSubtitle}>My boards</h3>
+                     <div className={scss.sbBoards}>
+                        <div className={scss.sbCreateBoardBlock}>
+                           <span className={scss.sbCreateBoardText}>
+                              Create a <br></br> new board
+                           </span>
+                           <button onClick={togleModal} className={scss.sbCreateBoardButton}>
+                              <svg
+                                 width="20px"
+                                 height="20px"
+                                 className={scss.sbCreateBoardLogo}
+                              >
+                                 <use href={`${SvgSprite}#icon-plus`}></use>
+                              </svg>
+                           </button>
+                        </div>
+                     </div>
+                     { (boards.length !== 0 &&
+                        <BoardsList />)}
+                     <div className={scss.sbHelp}>
+                        <div className={scss.sbHelpPngCactus}></div>
+                        <p className={scss.sbHelpText}>
+                           If you need help with
+                           <span className={scss.cbTaskProSpan}> TaskPro</span>, check out
+                           our support resources or reach out to our customer support team.
+                        </p>
+                        <button
+                           type='button'
+                           className={scss.sbHelpButton}
+                           onClick={togleNeedHelpModal}
 
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <NewBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
+                        >
+                           <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
+                              <use href={`${SvgSprite}#icon-help-circle`}></use>
+                           </svg>{' '}
+                           <span className={scss.sbNeedHelpButtonText}>Need help?</span>
+                        </button>
+                     </div>
+                     <button
+                        onClick={() => dispatch(logout())}
+                        className={scss.sbLogoutButton}
+                     >
+                        <svg
+                           width="32px"
+                           height="32px"
+                           className={scss.sbLogoutSvg}>
+                           <use href={`${SvgSprite}#icon-logout`}></use>
+                        </svg>
+                        <span className={scss.sbLogoutText}>Log out</span>
+                     </button>
+                  </div>
+               </div>
+               {showModal && (<Modal onClose={togleModal}>                  
+          <NewBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={togleModal} operation={addBoards}/>
         </Modal>
-      )}
-    </>
-  );
-};
+               )}
+            {showNeedHelpModal && (<Modal onClose={togleNeedHelpModal}>                  
+         <div style={{width:'100px', height:'100px', backgroundColor:'greenyellow'}}></div>
+        </Modal>
+               )}
+            </aside>     
+         </>
+      );
+   };
 
-export default Sidebar;
+        export default Sidebar;
+
