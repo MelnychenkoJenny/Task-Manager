@@ -23,15 +23,25 @@
 }
 
 .OBCardDescription {
+  cursor: pointer;
+  color: var(--cardText);  
+  font-family: map-get($fonts, r), sans-serif; 
+  font-size: 12px;
+  line-height: 16px; 
+}
+
+.OBCardDescriptionShort {
   display: -webkit-box;
   -webkit-line-clamp: 2; // обмежує зміст до 2х рядків (працює тільки в зв'язці з спорідненими властивостями)
   -webkit-box-orient: vertical;
   overflow: hidden; // щоб текст, який не вмістився, не виліз за рамки картки
   text-overflow: ellipsis; // проставляє три крапки, інакше текст обрізаний на півбукві
-  color: var(--cardText);  
-  font-family: map-get($fonts, r), sans-serif; 
-  font-size: 12px;
-  line-height: 16px; /* 133.333% */
+}
+
+.OBCardDescriptionFull {
+  overflow: visible;
+  text-overflow: inherit;
+  white-space: normal;
 }
 
 .OBCardSeparator {
