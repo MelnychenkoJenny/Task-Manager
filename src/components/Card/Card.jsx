@@ -7,23 +7,25 @@ import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { deleteTasks, updateTasks } from 'redux/board/boardOperations';
 import { useParams } from 'react-router-dom';
-
+import { useAuth } from 'hooks';
 const getBgColor = priority => {
   switch (priority) {
-    case 'low':
-      return '#8FA1D0';
-    case 'medium':
-      return 'rgba(224, 156, 181, 1)';
-    case 'high':
-      return '#BEDBB0';
-    case 'without':
-      return 'rgba(22, 22, 22, 0.30)';
-    default:
-      break;
-  }
-};
+   case 'low':
+     return '#8FA1D0';
+   case 'medium':
+     return 'rgba(224, 156, 181, 1)';
+   case 'high':
+     return '#BEDBB0';
+   case 'without':
+     return 'rgba(22, 22, 22, 0.30)';
+   default:
+    break;
+  }    
+ }
+
 
 const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
+  const { user } = useAuth();
   const { boardName } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -38,10 +40,8 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
   };
 
   return (
-    <div
-      style={{ borderLeftColor: getBgColor(priority) }}
-      className={scss.OBCardContainer}
-    >
+    <div style={{ borderLeftColor: getBgColor(priority) }} className={scss.OBCardContainer} data-theme={user.theme}>
+
       <h4 className={scss.OBCardTitle}>{cardTitle}</h4>
       <p className={scss.OBCardDescription}>{description}</p>
 
@@ -71,8 +71,9 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
         {/* --------------------------- іконки --------------------------- */}
 
         <div className={scss.OBCardIconsWrapper}>
-          {deadlineIsToday && (
-            <svg className={scss.OBCardBellIcon} width="16" height="16">
+          {deadlineIsToday &&
+            <svg className={scss.OBCardBellIcon} width="16" height="16" style={{ stroke: user.theme === 'violet' ? '#585bbe' : '#bedfad' }}>
+
               <use href={SvgSprite + '#icon-bell'} />
             </svg>
           )}

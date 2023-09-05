@@ -66,6 +66,7 @@ export const AddCard = ({
     const inputDeadline = dayjs(selectedDate).format('DD/MM/YYYY'); //   29/11/2023
 
     const cardData = {
+
       title: inputTitle,
       description: inputDescription,
       priority: inputPriority,
@@ -198,15 +199,10 @@ export const AddCard = ({
                 popper: {
                   placement: 'bottom-start',
                   sx: {
-                    '.MuiPickersPopper-root': {
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                    },
-                    '.css-71vzt-MuiPaper-root-MuiPickersPopper-paper': {
-                      // полотно календаря
+                    '.css-71vzt-MuiPaper-root-MuiPickersPopper-paper': { // полотно календаря
                       // backgroundColor: 'red', // працює
-                      border: '1px solid #5255BC',
+                      border: '1px solid',
+                      borderColor: user.theme === 'violet' ? '#585bbe' : '#bedfad',
                       borderRadius: '8px',
                       padding: '18px',
                       width: '233px',
@@ -222,8 +218,9 @@ export const AddCard = ({
                       width: '197px',
                       hight: '166px',
                     },
-                    '.css-cwhad8-MuiDateCalendar-root': {
-                      // полотно календаря без зовнішніх падінгів
+
+                    '.css-cwhad8-MuiDateCalendar-root': {  // полотно календаря без зовнішніх падінгів
+
                       height: '215px',
                     },
                     '.MuiPickersLayout-contentWrapper': {

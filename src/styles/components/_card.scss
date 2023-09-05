@@ -7,15 +7,14 @@
   border-left: 4px solid;
   border-radius: 8px;
   padding: 14px 24px;
-  background-color: #fff; // добавил
+  background-color: var(--bgCard);
 }
 
 .OBCardTitle {
   margin-bottom: 8px;
   font-family: map-get($fonts, b), sans-serif; //= font-family: Poppins; font-weight: 600
-  color: #161616;
+  color: var(--modalTitle); 
   font-style: normal;
-  // letter-spacing: -0.28px;
 }
 
 .OBCardDescription {
@@ -24,6 +23,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden; // щоб текст, який не вмістився, не виліз за рамки картки
   text-overflow: ellipsis; // проставляє три крапки, інакше текст обрізаний на півбукві
+  color: var(--cardText);  
 }
 
 .OBCardSeparator {
@@ -49,7 +49,7 @@ td {
 
 .OBCardProreties {
   font-family: map-get($fonts, r), sans-serif; // 400
-  color: rgba(22, 22, 22, 0.5);
+  color: var(--cardText);  
   font-size: 8px;
   font-style: normal;
   letter-spacing: -0.16px;
@@ -63,7 +63,7 @@ td {
 
 .OBCardDate {
   font-family: map-get($fonts, r), sans-serif; // 400
-  color: #161616;
+  color: var(--modalTitle);
   font-size: 10px;
   letter-spacing: -0.2px;
 }
@@ -75,7 +75,6 @@ td {
 }
 
 .OBCardBellIcon {
-    stroke: rgba(82, 85, 188, 1);
     fill: transparent; 
 }
 
@@ -84,12 +83,12 @@ td {
   height: 16px;
   background-color: transparent;
   border: none;
-  stroke: rgba(22, 22, 22, 0.5); // колір обводки іконки
+  stroke: var(--iconsCard); // колір обводки іконки 
   fill: transparent;  
   transition: $transition;
     &:hover,
     &:focus {
-      stroke: rgba(82, 85, 188, 1);
+      stroke: var(--inputBorderAccent);
       cursor: pointer;
       transform: scale(1.1);
     }
