@@ -11,16 +11,19 @@ import {
 import { Modal } from '../Modal/Modal';
 import { Link } from 'react-router-dom';
 import NewBoard from 'components/ModalBoard/ModalBoard';
+import ModalBoard from 'components/ModalBoard/ModalBoard';
+import {
+  updateBoard,
+  getAllBoards,
+  deleteBoards,
+} from 'redux/board/boardOperations';
 import { useBoards } from 'hooks';
 // import { useNavigate } from 'react-router-dom';
 
 const BoardsList = () => {
-
    const boards = useSelector(selectBoards);
-   // console.log(boards);
    const firstBoardId = boards[0]._id;
    const dispatch = useDispatch();
-   // const navigate = useNavigate();
    const [showEditBoardModal, setshowEditBoardModal] = useState(false);
    // const [showDeleteBoardModal, setshowDeleteBoardModal] = useState(false);
 
@@ -91,7 +94,7 @@ const BoardsList = () => {
                       onClick={() => clickOnBoardsItemHandle(_id)}
                   >
                      
-            <button type='button' className={scss.boardsListItemWrap}>
+            <div type='button' className={scss.boardsListItemWrap}>
             <div className={scss.boardsListItemTitleGroup}>
                <svg
                   className={scss.boardsListItemTitleSvg}
@@ -130,7 +133,7 @@ const BoardsList = () => {
             >
               <use href={`${SvgSprite}#icon-trash`}></use>
             </svg>
-         </button>
+         </div>
       </div>             
          <div className={scss.boardsListActiveFlag}></div>
 
@@ -164,7 +167,7 @@ const BoardsList = () => {
 </ul> 
          {showEditBoardModal && (
             <Modal onClose={togleModal}>
-         <NewBoard
+          <ModalBoard
             modalTitle={'Edit board'}
             modalBtnTitle={'Edit'}
             onClose={togleModal}

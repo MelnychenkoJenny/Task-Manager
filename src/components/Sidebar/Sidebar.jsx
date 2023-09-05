@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { React, useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import BoardsList from './BoardsList';
-import NewBoard from '../ModalBoard/ModalBoard';
+import ModalBoard from '../ModalBoard/ModalBoard';
 import { addBoards } from 'redux/board/boardOperations';
 import { selectBoards } from '../../redux/board/boardSelectors';
 import {logout} from '../../redux/auth/authOperations';
@@ -76,7 +76,6 @@ const Sidebar = () => {
                            type='button'
                            className={scss.sbHelpButton}
                            onClick={togleNeedHelpModal}
-
                         >
                            <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
                               <use href={`${SvgSprite}#icon-help-circle`}></use>
@@ -99,7 +98,7 @@ const Sidebar = () => {
                   </div>
                </div>
                {showModal && (<Modal onClose={togleModal}>                  
-          <NewBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={togleModal} operation={addBoards}/>
+          <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={togleModal} operation={addBoards}/>
         </Modal>
                )}
             {showNeedHelpModal && (<Modal onClose={togleNeedHelpModal}>                  

@@ -1,12 +1,13 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
-import { Modal } from '../Modal/Modal'
+import { Modal } from '../Modal/Modal';
 import { AddCard } from '../AddCard/AddCard';
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
-
-
+import { deleteTasks, updateTasks } from 'redux/board/boardOperations';
+import { useParams } from 'react-router-dom';
+import { useAuth } from 'hooks';
 const getBgColor = priority => {
   switch (priority) {
    case 'low':
@@ -23,22 +24,24 @@ const getBgColor = priority => {
  }
 
 
-const Card = ({ id, cardTitle, description, priority, deadline }) => {
-
+const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
+  const { user } = useAuth();
+  const { boardName } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
-   // const dispatch = useDispatch();
-   const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
-   
-   const handleOpenModal = () => {
-     setIsModalOpen(true);
-   };
+  const dispatch = useDispatch();
+  const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
 
-   const handleCloseModal = () => {
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
   return (
-    <div style={{ borderLeftColor: getBgColor(priority) }} className={scss.OBCardContainer}>
+    <div style={{ borderLeftColor: getBgColor(priority) }} className={scss.OBCardContainer} data-theme={user.theme}>
+
       <h4 className={scss.OBCardTitle}>{cardTitle}</h4>
       <p className={scss.OBCardDescription}>{description}</p>
 
@@ -55,7 +58,10 @@ const Card = ({ id, cardTitle, description, priority, deadline }) => {
           <tbody>
             <tr>
               <td>
-                <div style={{ backgroundColor: getBgColor(priority) }} className={scss.OBCardPriorityCircle}></div>
+                <div
+                  style={{ backgroundColor: getBgColor(priority) }}
+                  className={scss.OBCardPriorityCircle}
+                ></div>
               </td>
               <td className={scss.OBCardDate}>{deadline}</td>
             </tr>
@@ -66,26 +72,48 @@ const Card = ({ id, cardTitle, description, priority, deadline }) => {
 
         <div className={scss.OBCardIconsWrapper}>
           {deadlineIsToday &&
-            <svg className={scss.OBCardBellIcon} width="16" height="16">
+            (<svg className={scss.OBCardBellIcon} width="16" height="16" style={{ stroke: user.theme === 'violet' ? '#585bbe' : '#bedfad' }}>
+
               <use href={SvgSprite + '#icon-bell'} />
-            </svg>            
-          }
-          <button type='button' className={scss.OBCardBtnIcon} aria-label='edit task' onClick={handleOpenModal}>
-            <svg width="16" height="16"> 
+            </svg>
+          )}
+          <button
+            type="button"
+            className={scss.OBCardBtnIcon}
+            aria-label="edit task"
+            onClick={handleOpenModal}
+          >
+            <svg width="16" height="16">
               <use href={SvgSprite + '#icon-pencil'} />
-            </svg>            
+            </svg>
           </button>
           {isModalOpen && (
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                <AddCard modalTitle={'Edit card'} id={id} cardTitle={cardTitle} description={description} priority={priority} deadline={deadline} modalBtnTitle={'Edit'} /> 
-            </Modal>             
+              <AddCard
+                idColumn={idColumn}
+                modalTitle={'Edit card'}
+                id={id}
+                cardTitle={cardTitle}
+                description={description}
+                priority={priority}
+                deadline={deadline}
+                modalBtnTitle={'Edit'}
+                operation={updateTasks}
+                onClose={handleCloseModal}
+              />
+            </Modal>
           )}
           {/* <button type='button' className={scss.OBCardBtnIcon} aria-label='move task to another column'>
             <svg width="16" height="16">
               <use href={SvgSprite + '#icon-arrow'} />
             </svg>
           </button > */}
-          <button type='button' className={scss.OBCardBtnIcon} aria-label='delete task' /*onClick={() => dispatch(deleteCard(id))}*/ >
+          <button
+            type="button"
+            className={scss.OBCardBtnIcon}
+            aria-label="delete task"
+            onClick={() => dispatch(deleteTasks({ id, boardName }))}
+          >
             <svg width="16" height="16">
               <use href={SvgSprite + '#icon-trash'} />
             </svg>

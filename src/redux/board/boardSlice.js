@@ -8,6 +8,9 @@ import {
   addColumn,
   editColumn,
   deleteColumn,
+  addTasks,
+  updateTasks,
+  deleteTasks,
 } from './boardOperations';
 
 const handlePending = state => {
@@ -18,6 +21,7 @@ const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.allBoards = payload;
+  state.allBoards.reverse();
 };
 
 const handleFulfilledAddBoard = (state, { payload }) => {
@@ -28,18 +32,13 @@ const handleFulfilledAddBoard = (state, { payload }) => {
 };
 
 const handleFulfilledgetBoardById = (state, { payload }) => {
-  // console.log('payload22 :>> ', payload);
   state.isLoading = false;
   state.error = null;
   state.boardById = payload.result;
   state.boardById.columns = payload.columns;
-
-  // state.columns = action.payload.columns;
-  // state.bgrURL = action.payload.bgrURL;
 };
 
 const handleFulfilledUpdateBoard = (state, { payload }) => {
-  console.log('payload update board', payload)
   state.isLoading = false;
   state.error = null;
   state.boardById.icon = payload.icon;
@@ -63,11 +62,9 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
     owner: '',
     columnOrder: [],
   };
-  // state.columns = [];
 };
 
 const handleFulfilledAddColumn = (state, { payload }) => {
-  console.log('addColumn PAYLOAD: ', payload);
   state.isLoading = false;
   state.error = null;
 
@@ -102,6 +99,21 @@ const handleFulfilledDeleteColumn = (state, { payload }) => {
   state.boardById.columns.splice(columnIndexToDelete, 1);
 };
 
+const handleFulfilledAddTasks = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+};
+
+const handleFulfilledUpdateTasks = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+};
+
+const handleFulfilledDeleteTasks = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+};
+
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
@@ -127,6 +139,9 @@ export const boardsSlice = createSlice({
       .addCase(addColumn.fulfilled, handleFulfilledAddColumn)
       .addCase(editColumn.fulfilled, handleFulfilledEditColumn)
       .addCase(deleteColumn.fulfilled, handleFulfilledDeleteColumn)
+      .addCase(addTasks.fulfilled, handleFulfilledAddTasks)
+      .addCase(updateTasks.fulfilled, handleFulfilledUpdateTasks)
+      .addCase(deleteTasks.fulfilled, handleFulfilledDeleteTasks)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },

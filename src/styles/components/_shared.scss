@@ -7,6 +7,12 @@
 .AfMainWr {
   width: 100%;
   & main {
-    padding: 24px;
+    height: calc(100% - 58px);
+    @include minMd() {
+      height: calc(100% - 75.5px);
+    }
+    @include minLg() {
+      height: calc(100% - 66px);
+    }
   }
 }

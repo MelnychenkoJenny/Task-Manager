@@ -32,7 +32,13 @@ export const App = () => {
         <>
           <Suspense fallback={<Loader />}>
             <Routes>
-              <Route path="/" exact element={<WelcomePage />} />
+            <Route
+                path="/"
+                element={
+                  <RestrictedRout exact component={WelcomePage} redirectTo="/home" />
+                }
+              />
+              {/* <Route path="/" exact element={<WelcomePage />} /> */}
               <Route
                 path="auth/login"
                 element={

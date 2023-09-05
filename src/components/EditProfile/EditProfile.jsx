@@ -69,17 +69,12 @@ const EditProfile = ({onClose}) => {
 
 
     const handleSubmit = async (values, { resetForm }) => {
-        // console.log(values.email, 666)
-        // console.log(values.password, 6466)
         const formData = new FormData();
             formData.set('name', values.name);
             formData.set('email', values.email);
-// console.log('avatarFile :>> ', avatarFile);
-            // formData.set('password', values.password);
             if (avatarFile) formData.set('avatar', avatarFile);
             if (values.password) formData.set('password', values.password);
                 try {
-                    // console.log(formData, 65155152)
                     await dispatch(updateUserProfile(formData));
                     onClose();
                     resetForm();
@@ -138,39 +133,43 @@ const EditProfile = ({onClose}) => {
                                 </button>
                             </div>
                             <div className={scss.formUserInfoWrap}>
-                                <label className={scss.formLabelEditUser}>
+                            <label className={scss.formLabelEditUser}>
+                                    <ErrorMessage
+                                    name="name"
+                                    component="div"
+                                    className={scss.errorNewInfo}
+                                    />
                                     <Field
                                         className={scss.formInputEditUser}
                                         type="name"
                                         name="name"
                                     />
-                                    <ErrorMessage
-                                    name="name"
-                                    component="div"
-                                    />
                                 </label>
                                 <label className={scss.formLabelEditUser}>
+                                    <ErrorMessage
+                                    name="email"
+                                    component="div"
+                                    className={scss.errorNewInfo}
+                                    />
                                     <Field
                                         className={scss.formInputEditUser}
                                         type="email"
                                         name="email"
                                     />
-                                    <ErrorMessage
-                                    name="email"
-                                    component="div"
-                                    />
+
                                 </label>
                                 <label className={scss.formLabelEditUser}>
-                                    <div className={scss.showPassProfileWrap}>
+                                <div className={scss.showPassProfileWrap}>
+                                    <ErrorMessage
+                                        name="password"
+                                        component="div"
+                                        className={scss.errorNewInfo}
+                                    />
                                     <Field
                                         className={scss.formInputEditUser}
                                         type={showPassword ? 'text' : 'password'}
                                         name="password"
                                         placeholder="Change your password"
-                                    />
-                                    <ErrorMessage
-                                        name="password"
-                                        component="div"
                                     />
                                         <svg
                                             className={scss.showPasswordEditProfile}
