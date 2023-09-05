@@ -1,28 +1,37 @@
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Modal } from '../Modal/Modal';
 import BoardsList from './BoardsList';
 import ModalBoard from '../ModalBoard/ModalBoard';
 import { addBoards } from 'redux/board/boardOperations';
 import { selectBoards } from '../../redux/board/boardSelectors';
 import {logout} from '../../redux/auth/authOperations';
+import { useAuth } from 'hooks';
 
 
 const Sidebar = () => {
    const dispatch = useDispatch();
-   // const [showModal, setShowModal] = useState(false);
+   const { user } = useAuth();
    const boards = useSelector(selectBoards);
    // const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-   // console.log(boards.length);
-
+   const [iconStyle, seticonStyle] = useState('');
+   console.log(user.theme);
 
    // const togleModal = () => {
    //    setShowModal(prev => !showModal);
    // };
+
+    useEffect(() => {
+    if (!user.theme) return;
+    if (user.theme.toLowerCase() === 'violet') {
+      seticonStyle('icon-logo-violet');
+      return;
+    }
+    seticonStyle('icon-logo-black');
+  }, [user.theme]);
 
    const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -50,7 +59,7 @@ const Sidebar = () => {
                   <div className={scss.sidebar}>
                      <div className={scss.sbHeader}>
                         <svg width="32px" height="32px" className={scss.sbLogo}>
-                           <use href={`${SvgSprite}#icon-logo`}></use>
+                           <use href={`${SvgSprite}#${iconStyle}`}></use>
                         </svg>
                         <h2 className={scss.sbTitle}>Task Pro</h2>
                      </div>
@@ -106,20 +115,15 @@ const Sidebar = () => {
                   </div>
                </div>
             </aside>
-               {/* {showModal && (<Modal onClose={togleModal}>                  
-          <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={togleModal} operation={addBoards}/>
-        </Modal>
-               )} */}
-                {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
-        </Modal>
-      )}
+            {isModalOpen && (
+               <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                  <ModalBoard modalTitle={'New Board'} modalBtnTitle={'Create'} onClose={handleCloseModal} operation={addBoards}/>
+               </Modal>
+            )}
             {/* {showNeedHelpModal && (<Modal onClose={togleNeedHelpModal}>                  
          <div style={{width:'100px', height:'100px', backgroundColor:'greenyellow'}}></div>
         </Modal>
-               )} */}
-                
+               )} */}                
          </>
       );
    };
