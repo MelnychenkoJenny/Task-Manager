@@ -54,7 +54,6 @@ const ModalBoard = ({
       data-theme={user.theme}
       onSubmit={handleSubmit}
     >
-
       <h3 className={styles.INBoardTitle}>{modalTitle}</h3>
 
       <input
@@ -240,7 +239,6 @@ const ModalBoard = ({
         </div>
         {modalBtnTitle && modalBtnTitle}
       </button>
-
     </form>
   );
 };

@@ -13,10 +13,11 @@ import {
 } from 'redux/board/boardOperations';
 import { useDispatch } from 'react-redux';
 import { useBoards } from 'hooks';
-import SvgSprite from 'images/sprite.svg';
+// import SvgSprite from 'images/sprite.svg';
 import { BtnAddCard } from './BtnAddCard';
 import { AddCard } from 'components/AddCard/AddCard';
 import { Card } from 'components/Card';
+import { TitleCards } from './TitleCards';
 
 export const MainDashboard = () => {
   const { columns } = useBoards();
@@ -59,15 +60,26 @@ export const MainDashboard = () => {
   };
 
   return (
-    <>
+    <div className={styles.KkSectionMainDashboard}>
       <Filters className={styles.KkFilters} />
 
       <ul className={styles.KkColums}>
         {columns &&
           columns.map(({ _id, title, tasks }) => (
             <li key={_id}>
-              <p>title Column: {title}</p>
-              <div className={styles.boardsListItemButtons}>
+              {/* <p>title Column: {title}</p> */}
+              <TitleCards
+                className={styles.TitleCards}
+                title={title}
+                onEdit={() => {
+                  handleOpenEditModal();
+                  clickOnColumnItemHandle(_id);
+                  clickOnColumnTitleHandle(title);
+                }}
+                onTrash={() => dispatch(deleteColumn(_id))}
+              />
+
+              {/* <div className={styles.boardsListItemButtons}>
                 <button
                   type="button"
                   className={styles.boardsListItemButton}
@@ -98,9 +110,10 @@ export const MainDashboard = () => {
                     <use href={`${SvgSprite}#icon-trash`}></use>
                   </svg>
                 </button>
-              </div>
+              </div> */}
+
               {tasks && (
-                <ul>
+                <ul className={styles.KkCards}>
                   {tasks.map(
                     ({
                       title: titleCard,
@@ -126,7 +139,8 @@ export const MainDashboard = () => {
                 </ul>
               )}
               <BtnAddCard
-                className={styles.KkBtnAddColumnMain}
+                // className={styles.KkBtnAddColumnMain}
+                className={styles.KkBtnAddCard}
                 title={'Add another card'}
                 theme={'light'}
                 onClick={() => {
@@ -176,6 +190,6 @@ export const MainDashboard = () => {
           />
         </Modal>
       )}
-    </>
+    </div>
   );
 };

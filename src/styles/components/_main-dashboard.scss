@@ -1,6 +1,7 @@
 // ================================================== MainDashboard styled
 .KkSectionMainDashboard {
-  width: 100vw;
+  // width: 84.5vw;
+  height: calc(100vh - 70px);
   padding-left: 20px;
   padding-right: 20px;
   background-color: var(--bgMain);
@@ -11,9 +12,29 @@
   }
 
   @include minXl() {
+    width: 84.5vw;
     padding-left: 24px;
     padding-right: 24px;
   }
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 12px;
+    // background: rgba(255, 255, 255, 0.08);
+    background: var(--bgScrollModify);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scroll); /* Колір пальця скрола (перетягуючої частини) */
+    border-radius: 12px; /* Закруглені кути пальця скрола */
+  }
+
+  // ::-webkit-scrollbar-thumb:hover {
+  //   background: #555; /* Колір пальця скрола при наведенні */
+  //   background: blue;
+  // }
 }
 
 .KkColums {
@@ -22,6 +43,26 @@
 
   overflow-y: auto;
   scroll-behavior: smooth;
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 142px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 12px;
+    // background: rgba(255, 255, 255, 0.08);
+    background: var(--bgScrollModify);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scroll); /* Колір пальця скрола (перетягуючої частини) */
+    border-radius: 12px; /* Закруглені кути пальця скрола */
+  }
+
+  // ::-webkit-scrollbar-thumb:hover {
+  //   background: #555; /* Колір пальця скрола при наведенні */
+  //   background: blue;
+  // }
 }
 
 .KkBtnAddColumnMain {
@@ -45,6 +86,8 @@
   font-family: map-get($fonts, m), sans-serif;
   font-style: normal;
   color: var(--modalTitle);
+  background-color: var(--bgMain);
+  border-radius: 5px;
 
   @include minMd() {
     font-size: 18px;

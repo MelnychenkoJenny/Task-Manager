@@ -11,9 +11,6 @@ export const Filters = ({ className }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { boardById } = useBoards();
 
-  // const onFilters = () => {
-  //   console.log('Filters ckick');
-  // };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -26,7 +23,13 @@ export const Filters = ({ className }) => {
   return (
     <div className={className}>
       <div className={styles.KkWrapFilters}>
-        <h2 className={styles.KkTitle}>{boardById.title}</h2>
+        <h2
+          className={styles.KkTitle}
+          style={{ padding: !boardById.background && '4px' }}
+        >
+          {boardById.title}
+        </h2>
+        {/* <h2 className={styles.KkTitle}>{boardById.title}</h2> */}
 
         <button className={styles.KkBtnFilters} onClick={handleOpenModal}>
           <svg width="16px" height="16px">
