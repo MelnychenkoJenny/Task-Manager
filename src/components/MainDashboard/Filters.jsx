@@ -5,14 +5,23 @@ import { useBoards } from 'hooks';
 
 export const Filters = ({ className }) => {
   const { boardById } = useBoards();
+
   const onFilters = () => {
-    console.log('Filters ckick');
+    console.log(
+      'Filters ckick меня кликнули в компоненте Filters.jsx 10 строка'
+    );
   };
 
   return (
     <div className={className}>
       <div className={styles.KkWrapFilters}>
-        <h2 className={styles.KkTitle}>{boardById.title}</h2>
+        <h2
+          className={styles.KkTitle}
+          style={{ padding: !boardById.background && '4px' }}
+        >
+          {boardById.title}
+        </h2>
+        {/* <h2 className={styles.KkTitle}>{boardById.title}</h2> */}
 
         <button className={styles.KkBtnFilters} onClick={onFilters}>
           <svg width="16px" height="16px">
