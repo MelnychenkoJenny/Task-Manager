@@ -6,6 +6,7 @@ import {
   selectIsLoading,
   selectError,
 } from 'redux/board/boardSelectors';
+import { selectPriorityFilter } from 'redux/filter/filterSelectors';
 
 export const useBoards = () => {
   const allBoards = useSelector(selectBoards);
@@ -13,6 +14,7 @@ export const useBoards = () => {
   const columns = useSelector(selectColumns);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const filter = useSelector(selectPriorityFilter)
 
   return {
     allBoards,
@@ -20,7 +22,8 @@ export const useBoards = () => {
     columns,
     isLoading,
     error,
+    filter,
   };
 };
 // import { useBoards } from 'hooks';
-// const { allBoards, boardById, columns,isLoading,error, tasks } = useBoards();
+// const { allBoards, boardById, columns,isLoading,error, filter } = useBoards();
