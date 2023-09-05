@@ -8,7 +8,8 @@ import SvgSprite from 'images/sprite.svg';
 import { deleteTasks, updateTasks } from 'redux/board/boardOperations';
 import { useParams } from 'react-router-dom';
 import { useAuth } from 'hooks';
-const getBgColor = priority => {
+
+const getBgColor = (priority, color) => {
   switch (priority) {
    case 'low':
      return '#8FA1D0';
@@ -17,7 +18,7 @@ const getBgColor = priority => {
    case 'high':
      return '#BEDBB0';
    case 'without':
-     return 'rgba(22, 22, 22, 0.30)';
+     return color; //'rgba(22, 22, 22, 0.30)'; //rgba(255, 255, 255, 0.30)
    default:
     break;
   }    
@@ -28,8 +29,10 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
   const { user } = useAuth();
   const { boardName } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOverflowVisible, setOverflowVisible] = useState(false); // управління станом відкриття тексту
   const dispatch = useDispatch();
   const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
+
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -39,11 +42,15 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
     setIsModalOpen(false);
   };
 
+  const handleDescClick = () => {
+    setOverflowVisible(!isOverflowVisible);
+  };
+
   return (
-    <div style={{ borderLeftColor: getBgColor(priority) }} className={scss.OBCardContainer} data-theme={user.theme}>
+    <div style={{ borderLeftColor: getBgColor(priority, user.theme === 'dark' ? 'rgba(255, 255, 255, 0.30)' : 'rgba(22, 22, 22, 0.30)') }} className={scss.OBCardContainer} data-theme={user.theme}>
 
       <h4 className={scss.OBCardTitle}>{cardTitle}</h4>
-      <p className={scss.OBCardDescription}>{description}</p>
+      <p className={`${scss.OBCardDescription}  ${isOverflowVisible ? scss.OBCardDescriptionFull : scss.OBCardDescriptionShort}`} onClick={handleDescClick}>{description}</p>
 
       <hr className={scss.OBCardSeparator} />
 
@@ -59,7 +66,7 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
             <tr>
               <td>
                 <div
-                  style={{ backgroundColor: getBgColor(priority) }}
+                  style={{ backgroundColor: getBgColor(priority, user.theme === 'dark' ? 'rgba(255, 255, 255, 0.30)' : 'rgba(22, 22, 22, 0.30)') }}
                   className={scss.OBCardPriorityCircle}
                 ></div>
               </td>
@@ -103,11 +110,11 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
               />
             </Modal>
           )}
-          {/* <button type='button' className={scss.OBCardBtnIcon} aria-label='move task to another column'>
+          <button type='button' className={scss.OBCardBtnIcon} aria-label='move task to another column'>
             <svg width="16" height="16">
               <use href={SvgSprite + '#icon-arrow'} />
             </svg>
-          </button > */}
+          </button >
           <button
             type="button"
             className={scss.OBCardBtnIcon}
