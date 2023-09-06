@@ -11,7 +11,6 @@ const {  filter: priority } = useBoards();
     : tasks.filter(task => {
         return task?.priority === priority;
       });
-
     return (<ul className={styles.KkCards}>
         {filteredTasks.map(
           ({
@@ -20,7 +19,9 @@ const {  filter: priority } = useBoards();
             priority,
             deadLine,
             _id: idCard,
+            taskOwner
           }) => {
+            
             return (
               <li key={idCard}>
                 <Card
@@ -30,6 +31,7 @@ const {  filter: priority } = useBoards();
                   priority={priority}
                   deadline={deadLine}
                   idColumn={_id}
+                  taskOwner={taskOwner}
                 />
               </li>
             );

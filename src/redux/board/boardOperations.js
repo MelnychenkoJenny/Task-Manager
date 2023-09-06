@@ -156,6 +156,7 @@ export const updateTasks = createAsyncThunk(
     thunkAPI
   ) => {
     try {
+      console.log(1, deadLine, description, priority, taskOwner, title, idTask, boardId)
       const { data } = await instance.patch(`/tasks/${idTask}`, {
         title,
         description,
@@ -163,7 +164,7 @@ export const updateTasks = createAsyncThunk(
         deadLine,
         taskOwner,
       });
-
+console.log(2, data)
       thunkAPI.dispatch(getBoardById(boardId));
       return data;
     } catch (error) {

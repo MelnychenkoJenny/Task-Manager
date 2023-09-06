@@ -25,7 +25,7 @@ const getBgColor = (priority, color) => {
  }
 
 
-const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
+const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOwner }) => {
   const { user } = useAuth();
   const { columns } = useBoards();
   const { boardName } = useParams();
@@ -34,6 +34,7 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
   const dispatch = useDispatch();
   const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
   const [isPopupVisible, setisPopupVisible] = useState(false);
+  
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -65,8 +66,8 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isPopupVisible]);
 
-  const onColumnChange = () => {
-    console.log('Here we change a column')
+  const onColumnChange = (_id, title, description, priority, deadline, id) => {
+    dispatch(updateTasks({taskOwner: _id, title, description, priority, deadLine: deadline, idTask: id, boardId: boardName}))
     onClosePopup();
 
   }; 
@@ -144,23 +145,25 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
               <div className={scss.OBCardPopupContainer}>
                   <ul className={scss.OBCardPopupList}>
                     {columns &&
-                        columns.map(({ _id, title }) => (
-                          <li key={_id} className={scss.OBCardPopupItem}>
-                            <p className={scss.OBCardPopupText}>{title}</p>
-                            <button
-                                type="button"
-                                className={scss.OBCardBtnIcon}
-
-                                aria-label="change column"
-                                onClick={onColumnChange}
-                            >
-                                <svg width="16" height="16">
-                                  <use href={SvgSprite + '#icon-arrow'} />
-
-                                </svg>
-                            </button>
-                          </li>
-                        ))
+                        columns.map(({ _id, title }) => {
+                          return (
+                            <li key={_id} className={taskOwner===_id ? `${scss.OBCardPopupItem} ${scss.disabledTransfer}` : scss.OBCardPopupItem}>
+                             <p className={scss.OBCardPopupText}>{title}</p>
+                              <button
+                                  type="button"
+                                  className={scss.OBCardBtnIcon}
+  
+                                  aria-label="change column"
+                                  onClick={()=>onColumnChange(_id, title, description, priority, deadline, id)}
+                              >
+                                  <svg width="16" height="16">
+                                    <use href={SvgSprite + '#icon-arrow'} />
+  
+                                  </svg>
+                              </button>
+                            </li>
+                          )
+                        })
                       }
                   </ul>
               </div>
