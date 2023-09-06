@@ -35,7 +35,7 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOw
   const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
   const [isPopupVisible, setisPopupVisible] = useState(false);
   
-
+// console.log('isPopupVisible :>> ', isPopupVisible);
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -48,7 +48,8 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOw
     setOverflowVisible(!isOverflowVisible);
   };
 
-  const onOpenPopup = () => {
+  const onOpenPopup = (e) => {
+    e.stopPropagation()
     setisPopupVisible(true);
   };
 
@@ -63,7 +64,19 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOw
      };
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const handleClickOutside = (e) => {
+      const popupContainer = document.querySelector(`.${scss.OBCardPopupContainer}`);
+      if (popupContainer && !popupContainer?.contains(e.target)) {
+        setisPopupVisible(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('click', handleClickOutside);
+  
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('click', handleClickOutside);
+    };
   }, [isPopupVisible]);
 
   const onColumnChange = (_id, title, description, priority, deadline, id) => {
@@ -71,6 +84,7 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOw
     onClosePopup();
 
   }; 
+
 
   return (
     <div style={{ borderLeftColor: getBgColor(priority, user.theme === 'dark' ? 'rgba(255, 255, 255, 0.30)' : 'rgba(22, 22, 22, 0.30)') }} className={scss.OBCardContainer} data-theme={user.theme}>
@@ -141,9 +155,9 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOw
               <use href={SvgSprite + '#icon-arrow'} />
             </svg>
           </button >
-          {isPopupVisible && (
+          {isPopupVisible &&  (
               <div className={scss.OBCardPopupContainer}>
-                  <ul className={scss.OBCardPopupList}>
+                  {columns.length<=1 ? <p>Add columns</p> : (<ul className={scss.OBCardPopupList}>
                     {columns &&
                         columns.map(({ _id, title }) => {
                           return (
@@ -165,7 +179,7 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOw
                           )
                         })
                       }
-                  </ul>
+                  </ul>)}
               </div>
           )}
           <button
