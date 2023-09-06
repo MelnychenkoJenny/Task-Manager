@@ -47,6 +47,7 @@ const BoardsList = () => {
    };
 
    const deleteBoardFromList = activeBoardId => {
+         setActiveBoardId(firstBoardId);
          navigate(`/home/${firstBoardId}`, { replace: false });
          dispatch(deleteBoards(activeBoardId));
    };
