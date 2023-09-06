@@ -35,6 +35,7 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
   const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
   const [isPopupVisible, setisPopupVisible] = useState(false);
 
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -50,9 +51,9 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
   const onOpenPopup = () => {
     setisPopupVisible(true);
   };
-  // const onClosePopup = () => {
-  //   setisPopupVisible(false);
-  // }; 
+  const onClosePopup = () => {
+    setisPopupVisible(false);
+  }; 
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -66,6 +67,7 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
 
   const onColumnChange = () => {
     console.log('Here we change a column')
+    onClosePopup();
   }; 
 
   return (
@@ -139,19 +141,19 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
           </button >
           {isPopupVisible && (
               <div className={scss.OBCardPopupContainer}>
-                  <ul>
+                  <ul className={scss.OBCardPopupList}>
                     {columns &&
                         columns.map(({ _id, title }) => (
-                          <li key={_id}>
-                            <p>{title}</p>
+                          <li key={_id} className={scss.OBCardPopupItem}>
+                            <p className={scss.OBCardPopupText}>{title}</p>
                             <button
                                 type="button"
-                                // className={scss.OBCardBtnIcon}
+                                className={scss.OBCardBtnIcon}
                                 aria-label="change column"
                                 onClick={onColumnChange}
                             >
                                 <svg width="16" height="16">
-                                  <use href={SvgSprite + '#icon-pencil'} />
+                                  <use href={SvgSprite + '#icon-arrow'} />
                                 </svg>
                             </button>
                           </li>

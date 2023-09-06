@@ -116,15 +116,24 @@ td {
 
 .OBCardPopupContainer {
   position: absolute;
-  bottom: -50px;
-  right: 0;
-  min-width: 135px;
+  bottom: 4px;
+  right: 4px;
+  min-width: 70px;
   min-height: 57px;
-  background-color: rgb(71, 255, 255);
+  max-width: 250px;
+  max-height: 120px;
+  padding: 18px;
+  background-color: var(--bgCard);
   border-radius: 8px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   animation: show 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;
+  border: 1px solid var(--accent);
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 @keyframes show {
@@ -134,4 +143,28 @@ td {
   100% {
     opacity: 1;
   }
+}
+
+.OBCardPopupItem {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  color: var(--textThemeMenu);
+  // font-family: map-get($fonts, r), sans-serif;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;  
+  &:not(:last-child) {
+    margin-bottom: 8px;    
+  }
+    // &:hover,
+    // &:focus {
+    //   color: var(--accent);
+    // }
+}
+
+.scss.OBCardPopupText {
+  max-width: 214px;
 }

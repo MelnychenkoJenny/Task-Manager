@@ -63,12 +63,15 @@ export const AddCard = ({
     event.preventDefault();
 
     const inputTitle = event.target.elements.title.value.trim();
-    const inputDescription = event.target.elements.description.value.trim();
+    let inputDescription = event.target.elements.description.value.trim();
     const inputPriority = event.target.elements.priority.value;
     const inputDeadline = dayjs(selectedDate).format('DD/MM/YYYY'); //   29/11/2023
 
-    const cardData = {
+    if (inputDescription === '') {
+      inputDescription = ' ';
+    }
 
+    const cardData = {
       title: inputTitle,
       description: inputDescription,
       priority: inputPriority,
