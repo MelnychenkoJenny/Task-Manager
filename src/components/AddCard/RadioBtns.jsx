@@ -1,16 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import scss from 'styles/index.module.scss';
 import { indigo, pink, lightGreen, grey } from '@mui/material/colors';
 import { FormControlLabel, Typography, Radio } from '@mui/material';
 import { useAuth } from 'hooks';
+import { useBoards } from 'hooks';
+import { useDispatch } from 'react-redux';
+import { setPriorityFilter } from 'redux/filter/filterSlice';
 
 export const RadioBtns = ({ parentComponent, priority }) => {  // встановлена раніше та передана сюди пріоритетність для дефолтного стану (у подальшому підлягає редагуванню)
+   const dispatch = useDispatch();
+  const { filter } = useBoards();
+    const { user } = useAuth();
+    const [selectedPriorityFilter, setSelectedPriorityFilter] = useState(filter);
   const [selectedPriority, setSelectedPriority] = useState(
-    parentComponent === 'FiltersModal' ? 'low' : (priority ? priority : 'without')
-  );    
-  const { user } = useAuth();
-  // console.log('selectedPriority:', selectedPriority);
+    parentComponent === 'FiltersModal'
+      ? 'none'
+      : priority
+      ? priority
+      : 'without'
+  );  
 
+  // console.log('selectedPriority:', selectedPriority);
+  
+useEffect(() => {
+    dispatch(setPriorityFilter(selectedPriorityFilter));
+  }, [dispatch, selectedPriorityFilter]);
 
   // if (id) {
   //   dispatch(
@@ -27,10 +41,17 @@ export const RadioBtns = ({ parentComponent, priority }) => {  // встанов
   //   );
   // }
 
-  const controlProps = item => ({  // low, medium, high, without
+  const controlProps = item => ({
+    // low, medium, high, without
     value: item,
-    onChange: e => setSelectedPriority(e.target.value),
-    checked: selectedPriority === item,
+    onChange:
+      parentComponent === 'FiltersModal'
+        ? e => setSelectedPriorityFilter(e.target.value)
+        : e => setSelectedPriority(e.target.value),
+    checked:
+      parentComponent === 'FiltersModal'
+        ? selectedPriorityFilter === item
+        : selectedPriority === item,
     name: 'priority',
     inputProps: { 'aria-label': item },
   });
