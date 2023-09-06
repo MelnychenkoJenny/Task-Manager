@@ -115,5 +115,16 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+export const needHelp = createAsyncThunk(
+  'auth/help',
+  async (formData, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.post(`/help`, formData);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 export default instance;

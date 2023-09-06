@@ -6,6 +6,7 @@ import {
   refreshUser,
   updateTheme,
   updateUserProfile,
+  needHelp,
 } from 'redux/auth/authOperations';
 
 const handlePending = state => {
@@ -60,6 +61,12 @@ const handleFulfilledUpdateUserProfile = (state, { payload }) => {
   state.user = { ...state.user, ...payload };
 };
 
+const handleFulfilledNeedHelp = (state, { payload }) => {
+  state.needHelpMessage = payload.message;
+};
+const handleRejectedNeedHelp = (state, { payload }) => {
+  state.needHelpMessage = payload;
+};
 const initialState = {
   user: { name: null, email: null, avatarURL: '', theme: 'light' },
   token: null,
@@ -68,6 +75,7 @@ const initialState = {
   getIsFetchAnswer: false,
   error: null,
   isLoading: false,
+  needHelpMessage: '',
 };
 
 const authSlice = createSlice({
@@ -83,6 +91,8 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, handleRejectedRefresh)
       .addCase(updateTheme.fulfilled, handleFulfilledUpdateTheme)
       .addCase(updateUserProfile.fulfilled, handleFulfilledUpdateUserProfile)
+      .addCase(needHelp.fulfilled, handleFulfilledNeedHelp)
+      .addCase(needHelp.rejected, handleRejectedNeedHelp)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(
         action => action.type.endsWith('/rejected'),
