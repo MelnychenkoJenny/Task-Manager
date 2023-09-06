@@ -16,9 +16,10 @@ import { useBoards } from 'hooks';
 // import SvgSprite from 'images/sprite.svg';
 import { BtnAddCard } from './BtnAddCard';
 import { AddCard } from 'components/AddCard/AddCard';
-import { Card } from 'components/Card';
+
 import { TitleCards } from './TitleCards';
 import {imagesBg} from 'images/image-url'
+import { TasksList } from './TasksList';
 
 export const MainDashboard = () => {
   const { columns, boardById } = useBoards();
@@ -146,31 +147,8 @@ export const MainDashboard = () => {
               </div> */}
 
               {tasks && (
-                <ul className={styles.KkCards}>
-                  {tasks.map(
-                    ({
-                      title: titleCard,
-                      description,
-                      priority,
-                      deadLine,
-                      _id: idCard,
-                    }) => {
-                      return (
-                        <li key={idCard}>
-                          <Card
-                            cardTitle={titleCard}
-                            id={idCard}
-                            description={description}
-                            priority={priority}
-                            deadline={deadLine}
-                            idColumn={_id}
-                          />
-                        </li>
-                      );
-                    }
-                  )}
-                </ul>
-              )}
+                <TasksList allTasks={tasks} idColumn={_id}/>
+                )}
               <BtnAddCard
                 // className={styles.KkBtnAddColumnMain}
                 className={styles.KkBtnAddCard}
