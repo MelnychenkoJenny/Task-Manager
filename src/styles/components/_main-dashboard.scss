@@ -241,6 +241,13 @@
 
 .KkBtnAddCard {
   margin-top: 14px;
+  margin-bottom: 24px;
+  @include minSm() {
+    margin-bottom: 52px;
+  }
+  @include minXl() {
+    margin-bottom: 16px;
+  }
 }
 .KkBtnCard {
   display: flex;

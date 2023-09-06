@@ -10,6 +10,7 @@ import { selectBoards } from '../../redux/board/boardSelectors';
 import { logout } from '../../redux/auth/authOperations';
 import { useAuth } from 'hooks';
 import NeedHelp from '../Sidebar/NeedHelp';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Sidebar = () => {
   const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [iconStyle, seticonStyle] = useState('');
+   const navigate = useNavigate();
 
   // const togleModal = () => {
   //    setShowModal(prev => !showModal);
@@ -40,8 +42,14 @@ const Sidebar = () => {
   };
   const togleNeedHelpModal = () => {
     setshowNeedHelpModal(prev => !showNeedHelpModal);
-  };
-
+   };
+   /* eslint-disable */
+useEffect(() => {
+    if (boards.length === 0) {
+      navigate(`/home`, { replace: false });
+    }
+}, [boards]);
+   /* eslint-enable */
   const clickBackDrop = e => {
     if (e.target === e.currentTarget) {
       e.currentTarget.style.display = 'none';
