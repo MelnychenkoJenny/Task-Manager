@@ -14,7 +14,11 @@ export const RadioBtns = ({ parentComponent, priority }) => {
   const { user } = useAuth();
   const [selectedPriorityFilter, setSelectedPriorityFilter] = useState(filter);
   const [selectedPriority, setSelectedPriority] = useState(
-    parentComponent === 'FiltersModal' ? 'none' :  priority ? priority : 'without'
+    parentComponent === 'FiltersModal'
+      ? 'none'
+      : priority
+      ? priority
+      : 'without'
   );
 
   useEffect(() => {
@@ -39,12 +43,14 @@ export const RadioBtns = ({ parentComponent, priority }) => {
   const controlProps = item => ({
     // low, medium, high, without
     value: item,
-    onChange: 
+    onChange:
       parentComponent === 'FiltersModal'
         ? e => setSelectedPriorityFilter(e.target.value)
-        : e => setSelectedPriority(e.target.value)
-    ,
-    checked: selectedPriority === item,
+        : e => setSelectedPriority(e.target.value),
+    checked:
+      parentComponent === 'FiltersModal'
+        ? selectedPriorityFilter === item
+        : selectedPriority === item,
     name: 'priority',
     inputProps: { 'aria-label': item },
   });
