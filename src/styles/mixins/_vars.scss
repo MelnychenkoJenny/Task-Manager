@@ -107,6 +107,7 @@ $max-width-content: 1218px;
   --cardText: rgba(255, 255, 255, 0.5);
   --cardSeparator: rgba(255, 255, 255, 0.1);
   --bgScrollModify: rgba(255, 255, 255, 0.08);
+  --bgUserName: #97c77f;
 }
 // LIGHT THEME
 [data-theme='light'] {
@@ -154,6 +155,7 @@ $max-width-content: 1218px;
   --ModalIconClose: rgba(22, 22, 22, 1);
   --cardSeparator: rgba(22, 22, 22, 0.1);
   --bgScrollModify: #e8e8e8;
+  --bgUserName: #97c77f;
 }
 
 // VIOLET THEME
@@ -202,4 +204,5 @@ $max-width-content: 1218px;
   --ModalIconClose: rgba(22, 22, 22, 1);
   --cardSeparator: rgba(22, 22, 22, 0.1);
   --bgScrollModify: #ffffff;
+  --bgUserName: #8b8ee3;
 }

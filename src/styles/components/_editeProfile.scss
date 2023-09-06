@@ -75,6 +75,14 @@
   position: absolute;
   left: 47%;
   bottom: -17%;
+  scale: 1;
+    transition: scale 350ms;
+}
+
+.btnAddAvatar:hover,
+.btnAddAvatar:focus {
+  scale: 1.07;
+  transition: scale 350ms;
 }
 
 .btnSpan {
@@ -131,7 +139,7 @@
   position: absolute;
   width: 18px;
   height: 18px;
-  top: 50%;
+  top: 40%;
   left: 90%;
   transform: translateY(-50%);
   cursor: pointer;
