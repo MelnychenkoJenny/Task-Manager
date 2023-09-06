@@ -87,6 +87,7 @@
   font-family: map-get($fonts, m), sans-serif;
   font-style: normal;
   color: var(--modalTitle);
+  padding: 5px;
   background-color: var(--bgMain);
   border-radius: 5px;
 
@@ -111,7 +112,9 @@
   border: none;
   margin: 0;
   padding: 0;
-  background-color: inherit;
+  background-color: var(--bgMain);
+  padding: 5px;
+  border-radius: 5px;
 
   & p {
     margin-left: 8px;
