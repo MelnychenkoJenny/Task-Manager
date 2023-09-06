@@ -6,14 +6,18 @@ import { useBoards } from 'hooks';
 import { RadioBtns } from '../AddCard/RadioBtns';
 import { useAuth } from 'hooks';
 
+import { useDispatch } from 'react-redux';
+import { setPriorityFilter } from 'redux/filter/filterSlice';
+
 export const Filters = ({ className }) => {
+  const dispatch = useDispatch();
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const { boardById } = useBoards();
   const { user } = useAuth();
 
   
   const handleShowAll = () => {
-    console.log('Filtered tasks are shown')
+    dispatch(setPriorityFilter('all'));
   }
 
   const onOpenFilter = () => {

@@ -16,15 +16,19 @@ import { useBoards } from 'hooks';
 // import SvgSprite from 'images/sprite.svg';
 import { BtnAddCard } from './BtnAddCard';
 import { AddCard } from 'components/AddCard/AddCard';
-import { Card } from 'components/Card';
+
 import { TitleCards } from './TitleCards';
+import {imagesBg} from 'images/image-url'
+import { TasksList } from 'components/TasksList';
 
 export const MainDashboard = () => {
+  const { columns, boardById } = useBoards();
   const windowInnerWidth = window.innerWidth;
   const windowInnerHeight = window.innerHeight;
-  const { columns } = useBoards();
   const dispatch = useDispatch();
 
+
+// console.log('boardById :>> ', boardById.background);
   const [isModalAddOpen, setIsModalAddOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [isModalAddCardOpen, setIsModalAddCardOpen] = useState(false);
@@ -61,11 +65,16 @@ export const MainDashboard = () => {
     setTitleColumnId(title);
   };
 
-  return (
-    <div
-      className={styles.KkSectionMainDashboard}
-      style={{
-        width:
+  const bg= imagesBg?.find(image => image.name === boardById.background)
+  // console.log('bg :>> ', bg?.mobile);
+  const containerStyle = {
+    // height: '100vh',
+    maxHeight: '100%',
+    backgroundImage: `url(${bg?.mobile})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    width:
           windowInnerWidth > 1200
             ? `calc(${windowInnerWidth}px - ${270}px)`
             : `${windowInnerWidth}px`,
@@ -73,8 +82,19 @@ export const MainDashboard = () => {
           windowInnerWidth > 768
             ? `calc(${windowInnerHeight}px - ${68}px)`
             : `calc(${windowInnerHeight}px - ${60}px)`,
-      }}
-    >
+    
+  };
+
+  if (window.innerWidth >= 768) {
+    containerStyle.backgroundImage = `url(${bg?.tablet})`;
+  }
+
+  if (window.innerWidth >= 1440) {
+    containerStyle.backgroundImage = `url(${bg?.desktop})`;
+  }
+
+  return (
+    <div className={styles.KkSectionMainDashboard} style={containerStyle} >
       <Filters className={styles.KkFilters} />
 
       <ul className={styles.KkColums}>
@@ -127,31 +147,8 @@ export const MainDashboard = () => {
               </div> */}
 
               {tasks && (
-                <ul className={styles.KkCards}>
-                  {tasks.map(
-                    ({
-                      title: titleCard,
-                      description,
-                      priority,
-                      deadLine,
-                      _id: idCard,
-                    }) => {
-                      return (
-                        <li key={idCard}>
-                          <Card
-                            cardTitle={titleCard}
-                            id={idCard}
-                            description={description}
-                            priority={priority}
-                            deadline={deadLine}
-                            idColumn={_id}
-                          />
-                        </li>
-                      );
-                    }
-                  )}
-                </ul>
-              )}
+                <TasksList allTasks={tasks} idColumn={_id}/>
+                )}
               <BtnAddCard
                 // className={styles.KkBtnAddColumnMain}
                 className={styles.KkBtnAddCard}
