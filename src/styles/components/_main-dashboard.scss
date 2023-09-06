@@ -103,7 +103,6 @@
   position: relative;
 }
 
-
 .KkBtnFilters {
   display: flex;
   justify-content: center;
@@ -112,6 +111,9 @@
   margin: 0;
   padding: 0;
   background-color: inherit;
+
+  background-color: var(--bgMain);
+  border-radius: 5px;
 
   & p {
     margin-left: 8px;
@@ -279,7 +281,7 @@
   position: absolute;
   top: 10px;
   right: 0;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   animation: show 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;
 
@@ -317,8 +319,8 @@
 }
 
 .OBFiltersModalShow {
-  color: var(--cardText); 
-  text-decoration: underline;  
+  color: var(--cardText);
+  text-decoration: underline;
   // font-family: map-get($fonts, r), sans-serif; // 500
   font-family: Poppins, sans-serif;
   font-size: 12px;
@@ -327,7 +329,7 @@
   cursor: pointer;
   &:hover,
   &:focus {
-      color: var(--inputBorderAccent);
+    color: var(--inputBorderAccent);
   }
 }
 
@@ -345,13 +347,13 @@
   height: 18px;
   background-color: transparent;
   border: none;
-  stroke: var(--iconsCard); // колір обводки іконки 
-  fill: transparent;  
+  stroke: var(--iconsCard); // колір обводки іконки
+  fill: transparent;
   transition: $transition;
-    &:hover,
-    &:focus {
-      stroke: var(--inputBorderAccent);
-      cursor: pointer;
-      transform: scale(1.1);
-    }
+  &:hover,
+  &:focus {
+    stroke: var(--inputBorderAccent);
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 }
