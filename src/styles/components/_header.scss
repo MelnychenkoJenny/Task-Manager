@@ -38,7 +38,9 @@
 .headerAvatar {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: 8px;  
+  scale: 1;
+  transition: scale 350ms;
 }
 
 .headerBtnAvatar {
@@ -51,7 +53,18 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+  filter: drop-shadow(0px 0px 5px var(--accent));
+  margin-left: 5px;
+
 }
+
+.headerAvatar:hover,
+.headerAvatar:focus {
+  scale: 1.07;
+  transition: scale 350ms;
+}
+
+
 
 .svgThemeOpen {
   stroke: var(--colorFilters);
@@ -162,6 +175,7 @@
   position: absolute;
   top: 100%;
   left: -10%;
+  z-index: 999999;
   animation: show 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;
 
 }

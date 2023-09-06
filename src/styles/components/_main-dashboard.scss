@@ -1,8 +1,8 @@
 // ================================================== MainDashboard styled
 .KkSectionMainDashboard {
   // width: 84.5vw;
-  // width: calc(100vw - 280px);
-  // height: calc(100vh - 70px);
+  width: 100vw;
+  height: 100vh;
   padding-left: 20px;
   padding-right: 20px;
   background-color: var(--bgMain);
@@ -16,6 +16,8 @@
     // width: 84.5vw;
     padding-left: 24px;
     padding-right: 24px;
+    width: calc(100vw - 280px);
+    height: calc(100vh - 70px);
   }
   ::-webkit-scrollbar {
     width: 12px;
