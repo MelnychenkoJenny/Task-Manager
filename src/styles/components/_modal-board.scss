@@ -84,8 +84,17 @@
   height: 10px;
   position: absolute;
   cursor: pointer;
+  transition: $transition;
   &:checked + .INBoardIcon {
     stroke: var(--modalTitle);
+  }
+  &:hover + .INBoardIcon {
+    stroke: var(--modalTitle);
+    transform: scale(1.1);
+  }
+  &:focus + .INBoardIcon {
+    stroke: var(--modalTitle);
+    transform: scale(1.1);
   }
 }
 
@@ -109,6 +118,16 @@
   height: 20px;
   position: absolute;
   cursor: pointer;
+  transition: $transition;
+  &:checked + .INBgImage {
+    transform: scale(1.1);
+  }
+  &:hover + .INBgImage {
+    transform: scale(1.1);
+  }
+  &:focus + .INBgImage {
+    transform: scale(1.1);
+  }
 }
 
 .IMSubmitBtn {

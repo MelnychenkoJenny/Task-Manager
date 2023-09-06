@@ -3,7 +3,7 @@ import sprite from 'images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
 import { useState } from 'react';
-import { imagesBg, iconModalBgDefaultLight } from 'images/image-url';
+import { imagesBg, iconModalBgDefaultLight, iconModalBgDefaultDark, iconModalBgDefaultViolet } from 'images/image-url';
 
 const ModalBoard = ({
   modalTitle,
@@ -26,10 +26,11 @@ const ModalBoard = ({
         }
       : {
           title: '',
-          icon: 'icon-loading',
-          background: 'background1',
+          icon: 'icon-project',
+          background: 'background0',
         }
   );
+ 
 
   // !!Контролюємо інпут
   const handleChange = event => {
@@ -45,8 +46,16 @@ const ModalBoard = ({
     e.preventDefault();
     const dataSubmit = !id ? valueInputUpdate : { ...valueInputUpdate, id };
     dispatch(operation(dataSubmit));
+    console.log('infoData :>> ', infoData);
     onClose();
   };
+
+  const defaultBgImage =
+  user.theme === 'dark'
+    ? iconModalBgDefaultDark
+    : user.theme === 'violet'
+    ? iconModalBgDefaultViolet
+    : iconModalBgDefaultLight;
 
   return (
     <form
@@ -70,13 +79,14 @@ const ModalBoard = ({
         <h4 className={styles.INBoardSubtitle}>Icons</h4>
         <ul className={styles.INIconsGroup}>
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
                 name="icon"
                 value="icon-project"
                 onChange={handleChange}
+                checked={valueInputUpdate.icon === 'icon-project'}
               />
               <svg className={styles.INBoardIcon}>
                 <use href={sprite + '#icon-project'} />
@@ -100,7 +110,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -115,7 +125,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -130,7 +140,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -145,7 +155,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -160,7 +170,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -175,7 +185,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -196,18 +206,19 @@ const ModalBoard = ({
         <ul className={styles.INBgGroup}>
           {/* потрібно додати логіку вибору дефолтної картинки в залежності від кольору */}
           <li>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INBGBtn}
                 type="radio"
                 name="background"
-                value="background1"
+                value="background0"
                 onChange={handleChange}
+                checked={valueInputUpdate.background === 'background0'}
               />
               <img
                 className={styles.INBgImage}
-                src={iconModalBgDefaultLight}
-                alt="background"
+                src={defaultBgImage}
+                alt="background0"
               />
             </label>
           </li>
@@ -215,7 +226,7 @@ const ModalBoard = ({
           {imagesBg.map(({ name, min }) => {
             return (
               <li key={name}>
-                <label>
+                <label className={styles.INListItem}>
                   <input
                     className={styles.INBGBtn}
                     type="radio"

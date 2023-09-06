@@ -50,7 +50,7 @@ export const addBoards = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
-  async (data, { rejectWithValue }) => {
+  async (data, thunkAPI) => {
     try {
       const {
         data: {
@@ -61,9 +61,10 @@ export const updateBoard = createAsyncThunk(
         icon: data.icon,
         background: data.background,
       });
+      thunkAPI.dispatch(getBoardById(data.id));
       return result;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

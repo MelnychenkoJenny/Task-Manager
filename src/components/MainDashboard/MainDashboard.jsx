@@ -22,6 +22,8 @@ import {imagesBg} from 'images/image-url'
 
 export const MainDashboard = () => {
   const { columns, boardById } = useBoards();
+  const windowInnerWidth = window.innerWidth;
+  const windowInnerHeight = window.innerHeight;
   const dispatch = useDispatch();
 
 
@@ -65,12 +67,20 @@ export const MainDashboard = () => {
   const bg= imagesBg?.find(image => image.name === boardById.background)
   // console.log('bg :>> ', bg?.mobile);
   const containerStyle = {
-    height: '100vh',
+    // height: '100vh',
     maxHeight: '100%',
     backgroundImage: `url(${bg?.mobile})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    width:
+          windowInnerWidth > 1200
+            ? `calc(${windowInnerWidth}px - ${270}px)`
+            : `${windowInnerWidth}px`,
+        height:
+          windowInnerWidth > 768
+            ? `calc(${windowInnerHeight}px - ${68}px)`
+            : `calc(${windowInnerHeight}px - ${60}px)`,
     
   };
 
@@ -83,7 +93,7 @@ export const MainDashboard = () => {
   }
 
   return (
-    <div className={styles.KkSectionMainDashboard}  style={containerStyle}>
+    <div className={styles.KkSectionMainDashboard} style={containerStyle} >
       <Filters className={styles.KkFilters} />
 
       <ul className={styles.KkColums}>
