@@ -70,7 +70,7 @@ const ModalBoard = ({
         <h4 className={styles.INBoardSubtitle}>Icons</h4>
         <ul className={styles.INIconsGroup}>
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -100,7 +100,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -115,7 +115,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -130,7 +130,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -145,7 +145,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -160,7 +160,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -175,7 +175,7 @@ const ModalBoard = ({
           </li>
 
           <li className={styles.INListItem}>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INRadioBtn}
                 type="radio"
@@ -196,7 +196,7 @@ const ModalBoard = ({
         <ul className={styles.INBgGroup}>
           {/* потрібно додати логіку вибору дефолтної картинки в залежності від кольору */}
           <li>
-            <label>
+            <label className={styles.INListItem}>
               <input
                 className={styles.INBGBtn}
                 type="radio"
@@ -215,7 +215,7 @@ const ModalBoard = ({
           {imagesBg.map(({ name, min }) => {
             return (
               <li key={name}>
-                <label>
+                <label className={styles.INListItem}>
                   <input
                     className={styles.INBGBtn}
                     type="radio"
