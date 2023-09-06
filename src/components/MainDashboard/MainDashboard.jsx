@@ -20,6 +20,8 @@ import { Card } from 'components/Card';
 import { TitleCards } from './TitleCards';
 
 export const MainDashboard = () => {
+  const windowInnerWidth = window.innerWidth;
+  const windowInnerHeight = window.innerHeight;
   const { columns } = useBoards();
   const dispatch = useDispatch();
 
@@ -60,7 +62,19 @@ export const MainDashboard = () => {
   };
 
   return (
-    <div className={styles.KkSectionMainDashboard}>
+    <div
+      className={styles.KkSectionMainDashboard}
+      style={{
+        width:
+          windowInnerWidth > 1200
+            ? `calc(${windowInnerWidth}px - ${270}px)`
+            : `${windowInnerWidth}px`,
+        height:
+          windowInnerWidth > 768
+            ? `calc(${windowInnerHeight}px - ${68}px)`
+            : `calc(${windowInnerHeight}px - ${60}px)`,
+      }}
+    >
       <Filters className={styles.KkFilters} />
 
       <ul className={styles.KkColums}>
