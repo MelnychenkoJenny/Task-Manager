@@ -19,7 +19,7 @@ import { AddCard } from 'components/AddCard/AddCard';
 
 import { TitleCards } from './TitleCards';
 import {imagesBg} from 'images/image-url'
-import { TasksList } from './TasksList';
+import { TasksList } from 'components/TasksList';
 
 export const MainDashboard = () => {
   const { columns, boardById } = useBoards();
