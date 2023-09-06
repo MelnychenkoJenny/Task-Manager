@@ -23,8 +23,8 @@ import { TasksList } from 'components/TasksList';
 
 export const MainDashboard = () => {
   const { columns, boardById } = useBoards();
-  const windowInnerWidth = window.innerWidth;
-  const windowInnerHeight = window.innerHeight;
+  // const windowInnerWidth = window.innerWidth;
+  // const windowInnerHeight = window.innerHeight;
   const dispatch = useDispatch();
 
 
