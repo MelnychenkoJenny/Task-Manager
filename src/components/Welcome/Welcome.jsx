@@ -31,7 +31,7 @@ const Welcome = () => {
 
           <div className={styles.AfWelcomWrapperCardLogo}>
             <svg className={styles.AfWelcomWrapperCardLogoImg}>
-              <use href={spriteSvg + '#icon-logo'} />
+            <use href={spriteSvg + '#icon-logo-black'} />
             </svg>
             <h1 className={styles.AfWelcomWrapperCardLogoText}>Task Pro</h1>
           </div>
