@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import scss from 'styles/index.module.scss';
 import { indigo, pink, lightGreen, grey } from '@mui/material/colors';
-import { FormControlLabel, Radio } from '@mui/material';
+import { FormControlLabel, Typography, Radio } from '@mui/material';
+import { useAuth } from 'hooks';
 
+export const RadioBtns = ({ parentComponent, priority }) => {  // встановлена раніше та передана сюди пріоритетність для дефолтного стану (у подальшому підлягає редагуванню)
+  const [selectedPriority, setSelectedPriority] = useState(
+    parentComponent === 'FiltersModal' ? 'low' : (priority ? priority : 'without')
+  );    
+  const { user } = useAuth();
+  // console.log('selectedPriority:', selectedPriority);
 
-export const RadioBtns = ({ parentComponent }) => {
-  const [selectedPriority, setSelectedPriority] = useState('low');    // priority ? priority : 'without'
-
-  console.log(selectedPriority);
 
   // if (id) {
   //   dispatch(
@@ -32,28 +35,54 @@ export const RadioBtns = ({ parentComponent }) => {
     inputProps: { 'aria-label': item },
   });
 
-  const priorityStyles = {
-    low: indigo[200],
-    medium: pink[200],
-    high: lightGreen[200],
-    without: grey[400],
-  };
- 
+  const priorityStyles = 
+    parentComponent === 'FiltersModal' 
+    ? {
+        without: grey[400],  
+        low: indigo[200],
+        medium: pink[200],
+        high: lightGreen[200],    
+      }
+    :
+      {
+        low: indigo[200],
+        medium: pink[200],
+        high: lightGreen[200],
+        without: grey[400],      
+      }
+
   function capitalizeFirstLetter(priority) {
     return priority.charAt(0).toUpperCase() + priority.slice(1);
   }
 
   return (
     <div>
-      <p className={scss.OBFiltersModalLabel}>Label color</p>
+      <h3 className={scss.OBFiltersModalLabel}>Label color</h3>
       <div className={ `${parentComponent === 'FiltersModal' ? scss.OBFiltersModalRadioGroupV : scss.OBFiltersModalRadioGroupH }`}>
         {Object.keys(priorityStyles).map((priority) => (       //['low', 'medium', 'high', 'without'])
           <FormControlLabel
             key={priority}
-            label={priority === 'without' ? 'Without priority' : capitalizeFirstLetter(priority)}
-            labelPlacement="end"
-            className={scss.OBFiltersModalRadioLabel}
-
+            label={ parentComponent === 'FiltersModal' 
+              ? (
+                  <Typography 
+                    style={{
+                      fontSize: '12px', 
+                      fontFamily: 'Poppins, sans-serif', 
+                      color: user.theme === 'dark' ? 'rgba(255, 255, 255, 0.50)' : 'rgba(22, 22, 22, 0.50)',
+                    }}
+                    sx={{
+                      '&.Mui-checked': {
+                        color: priorityStyles[priority], // Change label text color when checked
+                      },
+                    }}
+                  >
+                    {priority === 'without' ? 'Without priority' : capitalizeFirstLetter(priority)}
+                  </Typography>
+              ) 
+              : null
+            }
+            // labelPlacement={ parentComponent === 'FiltersModal' ? "end" : null }
+            className={ parentComponent === 'FiltersModal' ? scss.OBFiltersModalRadioLabelV : scss.OBFiltersModalRadioLabelH}
             control={
               <Radio 
                 className={scss.OBFiltersModalRadioBtn}
