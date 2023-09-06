@@ -166,6 +166,12 @@ td {
     // }
 }
 
+.OBCardPopupItem.disabledTransfer {
+display: none;
+}
+
+
+
 .scss.OBCardPopupText {
   max-width: 214px;
 }
