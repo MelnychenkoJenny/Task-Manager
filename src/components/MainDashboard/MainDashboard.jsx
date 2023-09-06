@@ -74,14 +74,14 @@ export const MainDashboard = () => {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    width:
-          windowInnerWidth > 1200
-            ? `calc(${windowInnerWidth}px - ${270}px)`
-            : `${windowInnerWidth}px`,
-        height:
-          windowInnerWidth > 768
-            ? `calc(${windowInnerHeight}px - ${68}px)`
-            : `calc(${windowInnerHeight}px - ${60}px)`,
+    // width:
+    //       windowInnerWidth > 1200
+    //         ? `calc(${windowInnerWidth}px - ${270}px)`
+    //         : `${windowInnerWidth}px`,
+    //     height:
+    //       windowInnerWidth > 768
+    //         ? `calc(${windowInnerHeight}px - ${68}px)`
+    //         : `calc(${windowInnerHeight}px - ${60}px)`,
     
   };
 
