@@ -3,13 +3,15 @@ import { useDispatch } from 'react-redux';
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { useAuth } from 'hooks';
-import { indigo, pink, lightGreen, grey } from '@mui/material/colors';
-import { Radio, InputAdornment } from '@mui/material';
+// import { indigo, pink, lightGreen, grey } from '@mui/material/colors';
+import { /*Radio,*/ InputAdornment } from '@mui/material';
 import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useParams } from 'react-router-dom';
+import { RadioBtns } from './RadioBtns';
+
 
 export const AddCard = ({
   modalTitle,
@@ -29,9 +31,9 @@ export const AddCard = ({
 
   const [titleValue, setTitleValue] = useState(cardTitle); // для редагування
   const [descriptionValue, setDescriptionValue] = useState(description); // для редагування
-  const [selectedPriority, setSelectedPriority] = useState(
-    priority ? priority : 'without'
-  );
+  // const [selectedPriority, setSelectedPriority] = useState(
+  //   priority ? priority : 'without'
+  // );
   const [inputWidth, setInputWidth] = useState('auto');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(
@@ -99,27 +101,28 @@ export const AddCard = ({
 
   // --------------- пріоритетність ----------------------
 
-  const controlProps = item => ({
-    // low, medium, high, without
-    value: item,
-    onChange: e => setSelectedPriority(e.target.value),
-    checked: selectedPriority === item,
-    name: 'priority',
-    inputProps: { 'aria-label': item },
-  });
+  // const controlProps = item => ({
+  //   // low, medium, high, without
+  //   value: item,
+  //   onChange: e => setSelectedPriority(e.target.value),
+  //   checked: selectedPriority === item,
+  //   name: 'priority',
+  //   inputProps: { 'aria-label': item },
+  // });
 
-  const priorityStyles = {
-    low: indigo[200],
-    medium: pink[200],
-    high: lightGreen[200],
-    without: grey[400],
-  };
+  // const priorityStyles = {
+  //   low: indigo[200],
+  //   medium: pink[200],
+  //   high: lightGreen[200],
+  //   without: grey[400],
+  // };
 
   //------------------ Ширина інпута DatePicker---------------------
   useEffect(() => {
     const contentWidth = selectedDate.format(dateFormat).length * 9;
     setInputWidth(`${contentWidth}px`);
   }, [selectedDate, dateFormat]);
+
 
   return (
     <div className={scss.OBAddContainer} data-theme={user.theme}>
@@ -148,7 +151,9 @@ export const AddCard = ({
           />
         </label>
 
-        <div className={scss.OBAddlabel}>
+        <RadioBtns parentComponent={'AddCard'} priority={priority} />
+
+        {/* <div className={scss.OBAddlabel}>
           Label color
           <div className={scss.OBAddRadioGroup}>
             {Object.keys(priorityStyles).map(
@@ -177,7 +182,7 @@ export const AddCard = ({
               )
             )}
           </div>
-        </div>
+        </div> */}
 
         <div>
           <p className={scss.OBAddlabel}>Deadline</p>

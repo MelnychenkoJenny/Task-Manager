@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
 import { Modal } from '../Modal/Modal';
@@ -7,7 +7,7 @@ import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { deleteTasks, updateTasks } from 'redux/board/boardOperations';
 import { useParams } from 'react-router-dom';
-import { useAuth } from 'hooks';
+import { useAuth, useBoards } from 'hooks';
 
 const getBgColor = (priority, color) => {
   switch (priority) {
@@ -27,12 +27,13 @@ const getBgColor = (priority, color) => {
 
 const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
   const { user } = useAuth();
+  const { columns } = useBoards();
   const { boardName } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOverflowVisible, setOverflowVisible] = useState(false); // управління станом відкриття тексту
   const dispatch = useDispatch();
   const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
-
+  const [isPopupVisible, setisPopupVisible] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -45,6 +46,27 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
   const handleDescClick = () => {
     setOverflowVisible(!isOverflowVisible);
   };
+
+  const onOpenPopup = () => {
+    setisPopupVisible(true);
+  };
+  // const onClosePopup = () => {
+  //   setisPopupVisible(false);
+  // }; 
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        setisPopupVisible(false);
+     };
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isPopupVisible]);
+
+  const onColumnChange = () => {
+    console.log('Here we change a column')
+  }; 
 
   return (
     <div style={{ borderLeftColor: getBgColor(priority, user.theme === 'dark' ? 'rgba(255, 255, 255, 0.30)' : 'rgba(22, 22, 22, 0.30)') }} className={scss.OBCardContainer} data-theme={user.theme}>
@@ -110,11 +132,34 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn }) => {
               />
             </Modal>
           )}
-          <button type='button' className={scss.OBCardBtnIcon} aria-label='move task to another column'>
+          <button type='button' className={scss.OBCardBtnIcon} onClick={onOpenPopup} aria-label='move task to another column'>
             <svg width="16" height="16">
               <use href={SvgSprite + '#icon-arrow'} />
             </svg>
           </button >
+          {isPopupVisible && (
+              <div className={scss.OBCardPopupContainer}>
+                  <ul>
+                    {columns &&
+                        columns.map(({ _id, title }) => (
+                          <li key={_id}>
+                            <p>{title}</p>
+                            <button
+                                type="button"
+                                // className={scss.OBCardBtnIcon}
+                                aria-label="change column"
+                                onClick={onColumnChange}
+                            >
+                                <svg width="16" height="16">
+                                  <use href={SvgSprite + '#icon-pencil'} />
+                                </svg>
+                            </button>
+                          </li>
+                        ))
+                      }
+                  </ul>
+              </div>
+          )}
           <button
             type="button"
             className={scss.OBCardBtnIcon}

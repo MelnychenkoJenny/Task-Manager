@@ -100,7 +100,10 @@
 .KkWrapFilters {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
+
+
 .KkBtnFilters {
   display: flex;
   justify-content: center;
@@ -269,4 +272,86 @@
   border-radius: 6px;
   background: var(--modalBtnText);
   stroke: var(--bgIconPlusCard);
+}
+//-----------------------------Випадаюче меню-----------------------------
+
+.OBFiltersModalContainer {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  animation: show 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;
+
+  width: 300px;
+  height: 234px;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: var(--bgCard);
+  margin-top: 20px;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.OBFiltersModalTitle {
+  // font-family: map-get($fonts, m), sans-serif; // 500
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  color: var(--modalTitle);
+  font-size: 18px;
+  line-height: normal;
+  letter-spacing: -0.36px;
+}
+
+.OBFiltersModalContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.OBFiltersModalShow {
+  color: var(--cardText); 
+  text-decoration: underline;  
+  // font-family: map-get($fonts, r), sans-serif; // 500
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+      color: var(--inputBorderAccent);
+  }
+}
+
+.OBFiltersModalSeparator {
+  border-color: var(--cardSeparator);
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.OBFilterBtnIcon {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: none;
+  stroke: var(--iconsCard); // колір обводки іконки 
+  fill: transparent;  
+  transition: $transition;
+    &:hover,
+    &:focus {
+      stroke: var(--inputBorderAccent);
+      cursor: pointer;
+      transform: scale(1.1);
+    }
 }
