@@ -62,17 +62,17 @@
   letter-spacing: -0.24px;
 }
 
-.OBAddRadioGroup {
-  display: flex;
-  gap: 8px;
-  margin-top: 4px;
-  margin-bottom: 14px;
-}
+// .OBAddRadioGroup {
+//   display: flex;
+//   gap: 8px;
+//   margin-top: 4px;
+//   margin-bottom: 14px;
+// }
 
-.OBAddradioBtn { 
-  width: 14px;  // тепер радіокнопки не скачуть при чеку
-  height: 14px;
-}
+// .OBAddradioBtn { 
+//   width: 14px;  // тепер радіокнопки не скачуть при чеку
+//   height: 14px;
+// }
 
 .OBAddDateIcon {
   stroke: var(--accent);
@@ -113,4 +113,3 @@
   height: 14px;
   stroke: var(--iconPlus);
 }
-
