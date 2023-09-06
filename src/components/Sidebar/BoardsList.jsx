@@ -14,7 +14,7 @@ import ModalBoard from 'components/ModalBoard/ModalBoard';
 import DeleteBoard from 'components/Sidebar/DeleteBoard';
 
 import { useBoards } from 'hooks';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const BoardsList = () => {
    const boards = useSelector(selectBoards);
@@ -25,7 +25,7 @@ const BoardsList = () => {
    const [activeBoardId, setActiveBoardId] = useState(firstBoardId);
    // const [deleteConfirm, setDeleteConfirm] = useState(false);
    const { boardById } = useBoards();
-
+   const navigate = useNavigate();
    const togleDeleteModal = () => {
       setshowDeleteBoardModal(prev => !showDeleteBoardModal);
    };
@@ -46,8 +46,8 @@ const BoardsList = () => {
       setActiveBoardId(boardId);
    };
 
-   const deleteBoardFromList = (activeBoardId) => {
-         // navigate(`/home/}`, { replace: true });
+   const deleteBoardFromList = activeBoardId => {
+         navigate(`/home/${firstBoardId}`, { replace: false });
          dispatch(deleteBoards(activeBoardId));
    };
 
@@ -59,12 +59,13 @@ const BoardsList = () => {
    useEffect(() => {
       dispatch(getAllBoards());
    }, [dispatch]); 
+   /* eslint-disable */
 
-   // useEffect(() => {
-   //    setActiveBoardId(firstBoardId);
-   // }, []); 
-
-   // console.log('ACTIVE!!!', activeBoardId);      
+   useEffect(() => {
+      setActiveBoardId(firstBoardId);
+      navigate(`/home/${firstBoardId}`, { replace: false });
+   }, [firstBoardId]); 
+   /* eslint-enable */
 
    return (
 <>
