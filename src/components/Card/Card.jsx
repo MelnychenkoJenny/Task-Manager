@@ -88,7 +88,6 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOw
 
   return (
     <div style={{ borderLeftColor: getBgColor(priority, user.theme === 'dark' ? 'rgba(255, 255, 255, 0.30)' : 'rgba(22, 22, 22, 0.30)') }} className={scss.OBCardContainer} data-theme={user.theme}>
-
       <h4 className={scss.OBCardTitle}>{cardTitle}</h4>
       <p className={`${scss.OBCardDescription}  ${isOverflowVisible ? scss.OBCardDescriptionFull : scss.OBCardDescriptionShort}`} onClick={handleDescClick}>{description}</p>
 
