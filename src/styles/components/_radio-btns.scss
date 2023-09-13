@@ -1,12 +1,11 @@
-.OBFiltersModalLabel {
-    // для фільтра
-    // font-family: map-get($fonts, m), sans-serif; // 400
-    color: var(--modalTitle);
-    font-size: 14px;
-    line-height: normal;
-    letter-spacing: -0.28px;
+.OBFiltersModalLabel { // для фільтра
     font-family: Poppins, sans-serif;
-    font-weight: 500;
+    font-size: 12px;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    font-weight: 400;
+    color: var( --iconsCard); 
+
 }
 
 .OBFiltersModalRadioGroupV {

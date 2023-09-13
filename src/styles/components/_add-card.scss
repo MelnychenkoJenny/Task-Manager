@@ -12,11 +12,13 @@
 }
 
 .OBAddTitle {
-  margin-bottom: 24px;
-  font-family: map-get($fonts, m), sans-serif; //= font-family: Poppins; font-weight: 500
-  color: var(--modalTitle);
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
   font-size: 18px;
   letter-spacing: -0.36px;
+  line-height: normal;    
+  color: var(--modalTitle);
+  margin-bottom: 24px;
 }
 
 .OBAddInput {
@@ -61,18 +63,6 @@
   font-size: 12px;
   letter-spacing: -0.24px;
 }
-
-// .OBAddRadioGroup {
-//   display: flex;
-//   gap: 8px;
-//   margin-top: 4px;
-//   margin-bottom: 14px;
-// }
-
-// .OBAddradioBtn { 
-//   width: 14px;  // тепер радіокнопки не скачуть при чеку
-//   height: 14px;
-// }
 
 .OBAddDateIcon {
   stroke: var(--accent);
