@@ -19,8 +19,10 @@ const handlePendingRefresh = state => {
 const handleAuthorisationFulfilled = (state, { payload }) => {
   state.user = payload;
   state.token = payload.token;
+  state.refreshToken = payload.refreshToken;
   state.isLoggedIn = true;
   state.isLoading = false;
+  state.error = null;
 };
 
 const handleLoginFulfilled = (state, { payload }) => {
@@ -29,8 +31,8 @@ const handleLoginFulfilled = (state, { payload }) => {
   state.isLoggedIn = true;
   state.user = { name, email, avatarURL, theme };
   state.token = payload.token;
-
-  // state.refreshToken = payload.refreshToken;
+  state.refreshToken = payload.refreshToken;
+  state.error = null;
 };
 
 const handleRejectedAuthorisation = (state, { payload }) => {
@@ -41,7 +43,7 @@ const handleRejectedAuthorisation = (state, { payload }) => {
 const handleFulfilledLogout = state => {
   state.user = { name: null, email: null, avatarURL: '', theme: 'light' };
   state.token = null;
-  // state.refreshToken = null;
+  state.refreshToken = null;
   state.isLoggedIn = false;
 };
 const handleFulfilledRefresh = (state, action) => {
@@ -51,6 +53,8 @@ const handleFulfilledRefresh = (state, action) => {
 };
 const handleRejectedRefresh = state => {
   state.getIsFetchAnswer = false;
+  state.isLoggedIn = false;
+  state.token = null;
 };
 
 const handleFulfilledUpdateTheme = (state, { payload }) => {
@@ -67,10 +71,11 @@ const handleFulfilledNeedHelp = (state, { payload }) => {
 const handleRejectedNeedHelp = (state, { payload }) => {
   state.needHelpMessage = payload;
 };
+
 const initialState = {
   user: { name: null, email: null, avatarURL: '', theme: 'light' },
   token: null,
-  // refreshToken: null,
+  refreshToken: null,
   isLoggedIn: false,
   getIsFetchAnswer: false,
   error: null,
@@ -81,6 +86,14 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setRefreshToken(state, action) {
+      state.refreshToken = action.payload;
+    },
+    setToken(state, action) {
+      state.token = action.payload;
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(userRegistration.fulfilled, handleAuthorisationFulfilled)
@@ -100,5 +113,6 @@ const authSlice = createSlice({
       ),
 });
 
-export default authSlice.reducer;
-// export const authReducer = authSlice.reducer;
+// export default authSlice.reducer;
+export const { setRefreshToken, setToken } = authSlice.actions;
+export const authReducer = authSlice.reducer;

@@ -11,7 +11,7 @@ import {
   deleteColumn,
   editColumn,
 } from 'redux/board/boardOperations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useBoards } from 'hooks';
 // import SvgSprite from 'images/sprite.svg';
 import { BtnAddCard } from './BtnAddCard';
@@ -34,7 +34,8 @@ export const MainDashboard = () => {
   const [isModalAddCardOpen, setIsModalAddCardOpen] = useState(false);
   const [activeColumnId, setActiveColumnId] = useState('');
   const [titleColumnId, setTitleColumnId] = useState('');
-
+  const pol = useSelector(state => state)
+console.log(pol)
   //!! Тут на всі відкриття і закриття модалок можна зробити switch
   const handleOpenAddModal = () => {
     setIsModalAddOpen(true);

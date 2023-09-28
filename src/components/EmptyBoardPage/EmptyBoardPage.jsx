@@ -1,13 +1,20 @@
 import { Modal } from 'components/Modal/Modal';
 import ModalBoard from 'components/ModalBoard/ModalBoard';
-import { useState } from 'react';
+import { useBoards } from 'hooks';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { addBoards } from 'redux/board/boardOperations';
 import scss from 'styles/index.module.scss';
 
 export const EmptyBoardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [iconStyle, seticonStyle] = useState('');
-
+  const { allBoards } = useBoards();
+  const firstBoardId = allBoards[0]?._id;
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (firstBoardId) navigate(`/home/${firstBoardId}`, { replace: false });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firstBoardId]);
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };

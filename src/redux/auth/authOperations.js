@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { store } from 'redux/store';
+import { setToken, setRefreshToken } from './authSlice';
 
 const instance = axios.create({
   baseURL: 'https://taskpro-backend-jo75.onrender.com',
@@ -14,25 +16,31 @@ const token = {
   },
 };
 
-// instance.interceptors.response.use(
-//   response => response,
-//   async error => {
-//     if (error.response.status === 401 && !error.config._retry) {
-//       const refreshToken = localStorage.getItem('refreshToken');
-//       try {
-//         const { data } = await instance.post('/users/refresh', {
-//           refreshToken,
-//         });
-//         token.set(data.token);
-//         localStorage.setItem('refreshToken', data.refreshToken);
-//         return instance(error.config);
-//       } catch (error) {
-//         return Promise.reject(error);
-//       }
-//     }
-//     return Promise.reject(error);
-//   }
-// );
+instance.interceptors.response.use(
+  response => response,
+  async error => {
+    console.log(555)
+    if (error.response.status === 401) {
+      const refreshToken = store.getState().auth.refreshToken;      
+      try {
+        const { data } = await instance.post('/users/refresh', {
+          refreshToken,
+        });
+        console.log('refresh instance', data)
+        token.set(data.token);
+        store.dispatch(setToken(data.token));
+        store.dispatch(setRefreshToken(data.refreshToken));
+        error.config.headers.Authorization = `Bearer ${data.token}`;
+        return instance(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    } else if (error.response.status === 500 || error.response.status === 400) {
+      console.log('Some problem 400 or 500');
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const userRegistration = createAsyncThunk(
   'auth/registration',
@@ -107,8 +115,10 @@ export const refreshUser = createAsyncThunk(
       return thunkApi.rejectWithValue('No valid token');
     }
     token.set(persistedToken);
+    console.log(999)
     try {
       const { data } = await instance.get('/users/current');
+      console.log('user', data)
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
