@@ -37,7 +37,7 @@ const handleLoginFulfilled = (state, { payload }) => {
 
 const handleRejectedAuthorisation = (state, { payload }) => {
   state.error = payload;
-  state.loading = false;
+  state.isLoading = false;
 };
 
 const handleFulfilledLogout = state => {
@@ -45,31 +45,38 @@ const handleFulfilledLogout = state => {
   state.token = null;
   state.refreshToken = null;
   state.isLoggedIn = false;
+  state.isLoading = false;
 };
 const handleFulfilledRefresh = (state, action) => {
   state.user = action.payload;
   state.isLoggedIn = true;
   state.getIsFetchAnswer = false;
+  state.isLoading = false;
 };
 const handleRejectedRefresh = state => {
   state.getIsFetchAnswer = false;
   state.isLoggedIn = false;
   state.token = null;
+  state.isLoading = false;
 };
 
 const handleFulfilledUpdateTheme = (state, { payload }) => {
   state.user = { ...state.user, ...payload };
+  state.isLoading = false;
 };
 
 const handleFulfilledUpdateUserProfile = (state, { payload }) => {
   state.user = { ...state.user, ...payload };
+  state.isLoading = false;
 };
 
 const handleFulfilledNeedHelp = (state, { payload }) => {
   state.needHelpMessage = payload.message;
+  state.isLoading = false;
 };
 const handleRejectedNeedHelp = (state, { payload }) => {
   state.needHelpMessage = payload;
+  state.isLoading = false;
 };
 
 const initialState = {

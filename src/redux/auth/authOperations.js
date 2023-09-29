@@ -19,14 +19,13 @@ const token = {
 instance.interceptors.response.use(
   response => response,
   async error => {
-    console.log(555)
     if (error.response.status === 401) {
       const refreshToken = store.getState().auth.refreshToken;      
       try {
         const { data } = await instance.post('/users/refresh', {
           refreshToken,
         });
-        console.log('refresh instance', data)
+        // console.log('refresh instance', data)
         token.set(data.token);
         store.dispatch(setToken(data.token));
         store.dispatch(setRefreshToken(data.refreshToken));
@@ -115,10 +114,9 @@ export const refreshUser = createAsyncThunk(
       return thunkApi.rejectWithValue('No valid token');
     }
     token.set(persistedToken);
-    console.log(999)
     try {
       const { data } = await instance.get('/users/current');
-      console.log('user', data)
+      // console.log('user', data)
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

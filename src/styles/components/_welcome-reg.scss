@@ -1,3 +1,12 @@
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .AfWelcomReg {
   height: 100vh;
   background: linear-gradient(
@@ -66,6 +75,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 15px;
       height: 49px;
       padding: 14px;
       border: none;
@@ -86,6 +96,15 @@
       cursor: pointer;
       &:hover {
         opacity: 0.9;
+      }
+
+      &Load {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 4px solid #78a860;
+        border-color: #78a860 transparent #78a860 transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
       }
     }
     &InCn {

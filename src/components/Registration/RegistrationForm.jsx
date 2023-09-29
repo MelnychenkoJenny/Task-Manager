@@ -2,11 +2,12 @@ import { useState } from 'react';
 import styles from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {userRegistration} from 'redux/auth/authOperations';
+import { userRegistration } from 'redux/auth/authOperations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { registerSchema } from './registerSchema';
 import HandlingBackendErrors from 'utils/HandlingBackendErrors';
+import { useAuth } from 'hooks';
 
 const initialValues = {
   name: '',
@@ -15,17 +16,15 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
-
-
+  const { loading } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showHidePassword, changeShowHidePassword] = useState(false);
   const [showError, addShowError] = useState('');
 
-
   const handleSubmit = async (values, { resetForm }) => {
     const dataRegister = { ...values };
-console.log('dataRegister', dataRegister)
+    console.log('dataRegister', dataRegister);
     const res = await dispatch(userRegistration(dataRegister));
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);
@@ -132,6 +131,9 @@ console.log('dataRegister', dataRegister)
 
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Register Now
+            {loading && (
+              <div className={styles.AfWelcomRegFormButtonLoad}></div>
+            )}
           </button>
         </Form>
       )}
