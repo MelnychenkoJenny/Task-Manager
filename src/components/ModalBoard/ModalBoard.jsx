@@ -46,7 +46,6 @@ const ModalBoard = ({
     e.preventDefault();
     const dataSubmit = !id ? valueInputUpdate : { ...valueInputUpdate, id };
     dispatch(operation(dataSubmit));
-    console.log('infoData :>> ', infoData);
     onClose();
   };
 

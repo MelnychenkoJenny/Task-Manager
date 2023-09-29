@@ -5,16 +5,18 @@ import styles from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
 import { loginSchema } from './loginSchema';
 import { useDispatch } from 'react-redux';
-import {userLogin} from 'redux/auth/authOperations';
+import { userLogin } from 'redux/auth/authOperations';
 import HandlingBackendErrors from 'utils/HandlingBackendErrors';
+import { useAuth } from 'hooks';
+
 const initialValues = {
   email: '',
   password: '',
   show: false,
 };
 
-
 const LoginForm = () => {
+  const { loading } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -28,7 +30,6 @@ const LoginForm = () => {
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     const dataLogin = { email, password };
     const res = await dispatch(userLogin(dataLogin));
-
 
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);
@@ -109,6 +110,9 @@ const LoginForm = () => {
 
           <button type="submit" className={styles.AfWelcomRegFormButton}>
             Log In Now
+            {loading && (
+              <div className={styles.AfWelcomRegFormButtonLoad}></div>
+            )}
           </button>
         </Form>
       )}

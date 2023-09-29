@@ -28,7 +28,7 @@ export const App = () => {
 
   return (
     <>
-      {!isRefreshing && (
+      {!isRefreshing ? (
         <>
           <Suspense fallback={<Loader />}>
             <Routes>
@@ -42,7 +42,6 @@ export const App = () => {
                   />
                 }
               />
-              {/* <Route path="/" exact element={<WelcomePage />} /> */}
               <Route
                 path="auth/login"
                 element={
@@ -70,11 +69,12 @@ export const App = () => {
                   element={<PrivateRoute component={HomePage} />}
                 />
               </Route>
-
               <Route path="*" exact={true} element={<NotFoundPage />} />
             </Routes>
           </Suspense>
         </>
+      ) : (
+        <Loader />
       )}
     </>
   );

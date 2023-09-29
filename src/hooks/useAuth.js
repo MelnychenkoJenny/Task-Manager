@@ -5,6 +5,7 @@ import {
   selectIsRefreshing,
   selectIsToken,
   selectNeedHelpMessage,
+  selectIsLoading,
 } from 'redux/auth/authSelectors';
 
 export const useAuth = () => {
@@ -13,6 +14,7 @@ export const useAuth = () => {
   const user = useSelector(selectUser);
   const token = useSelector(selectIsToken);
   const needHelpMessage = useSelector(selectNeedHelpMessage);
+  const loading = useSelector(selectIsLoading)
 
   return {
     isLoggedIn,
@@ -20,7 +22,8 @@ export const useAuth = () => {
     user,
     token,
     needHelpMessage,
+    loading,
   };
 };
 // import { useAuth } from 'hooks';
-// const { isRefreshing, isLoggedIn, user, token } = useAuth();
+// const { isRefreshing, isLoggedIn, user, token, loading } = useAuth();
