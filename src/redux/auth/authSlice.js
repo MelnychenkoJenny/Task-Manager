@@ -11,6 +11,7 @@ import {
 
 const handlePending = state => {
   state.isLoading = true;
+
 };
 const handlePendingRefresh = state => {
   state.isLoading = true;
@@ -61,8 +62,8 @@ const handleRejectedRefresh = state => {
 };
 
 const handleFulfilledUpdateTheme = (state, { payload }) => {
-  state.user = { ...state.user, ...payload };
   state.isLoading = false;
+  state.user = { ...state.user, ...payload };
 };
 
 const handleFulfilledUpdateUserProfile = (state, { payload }) => {

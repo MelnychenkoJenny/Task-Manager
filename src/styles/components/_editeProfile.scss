@@ -76,7 +76,7 @@
   left: 47%;
   bottom: -17%;
   scale: 1;
-    transition: scale 350ms;
+  transition: scale 350ms;
 }
 
 .btnAddAvatar:hover,
@@ -149,6 +149,10 @@
 }
 
 .formBtnEditUser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
   margin-top: 10px;
   width: 287px;
   height: 49px;
@@ -173,5 +177,3 @@
   font-family: map-get($fonts, m);
   font-size: 12px;
 }
-
-

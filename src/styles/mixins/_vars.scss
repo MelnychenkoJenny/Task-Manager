@@ -108,6 +108,7 @@ $max-width-content: 1218px;
   --cardSeparator: rgba(255, 255, 255, 0.1);
   --bgScrollModify: rgba(255, 255, 255, 0.08);
   --bgUserName: #97c77f;
+  --loaderMini: #78a860;
 }
 // LIGHT THEME
 [data-theme='light'] {
@@ -156,6 +157,7 @@ $max-width-content: 1218px;
   --cardSeparator: rgba(22, 22, 22, 0.1);
   --bgScrollModify: #e8e8e8;
   --bgUserName: #97c77f;
+  --loaderMini: #78a860;
 }
 
 // VIOLET THEME
@@ -205,4 +207,5 @@ $max-width-content: 1218px;
   --cardSeparator: rgba(22, 22, 22, 0.1);
   --bgScrollModify: #ffffff;
   --bgUserName: #8b8ee3;
+  --loaderMini: #b8bcfd;
 }

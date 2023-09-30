@@ -24,7 +24,6 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
     const dataRegister = { ...values };
-    console.log('dataRegister', dataRegister);
     const res = await dispatch(userRegistration(dataRegister));
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);

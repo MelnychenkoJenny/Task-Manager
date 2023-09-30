@@ -12,7 +12,6 @@ import userViolet from '../../images/user-default-violet.png';
 
 const Header = ({ click }) => {
   const dispatch = useDispatch();
-
   const [themeActive, setThemeActive] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
