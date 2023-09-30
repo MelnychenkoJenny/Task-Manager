@@ -12,18 +12,19 @@ import {
   editColumn,
 } from 'redux/board/boardOperations';
 import { useDispatch } from 'react-redux';
-import { useBoards } from 'hooks';
+import { useAuth, useBoards } from 'hooks';
 import { BtnAddCard } from './BtnAddCard';
 import { AddCard } from 'components/AddCard/AddCard';
 
 import { TitleCards } from './TitleCards';
 import { imagesBg } from 'images/image-url';
 import { TasksList } from 'components/TasksList';
+import Loader from 'components/Loader/Loader';
 
 export const MainDashboard = () => {
-  const { columns, boardById } = useBoards();
+  const { columns, boardById, isLoading } = useBoards();
+  const { loading } = useAuth();
   const dispatch = useDispatch();
-
   const [isModalAddOpen, setIsModalAddOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
   const [isModalAddCardOpen, setIsModalAddCardOpen] = useState(false);
@@ -80,6 +81,7 @@ export const MainDashboard = () => {
 
   return (
     <div className={styles.KkSectionMainDashboard} style={containerStyle}>
+      {isLoading && loading && <Loader />}
       <Filters className={styles.KkFilters} />
 
       <ul className={styles.KkColums}>
