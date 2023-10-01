@@ -1,3 +1,12 @@
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .mainModalEditUserWrap {
   width: 335px;
   padding: 24px;
@@ -169,6 +178,15 @@
 
   @include minMd() {
     width: 352px;
+  }
+
+  &Load {
+    width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 4px solid var(--loaderMini);
+        border-color: var(--loaderMini) transparent var(--loaderMini) transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
   }
 }
 
