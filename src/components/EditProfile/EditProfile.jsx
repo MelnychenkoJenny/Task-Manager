@@ -188,7 +188,7 @@ const EditProfile = ({ onClose }) => {
             <button className={scss.formBtnEditUser} type="submit">
               Send
               {loading && isLoading && (
-                <div className={scss.AfWelcomRegFormButtonLoad}></div>
+                <div className={scss.formBtnEditUserLoad}></div>
               )}
             </button>
           </div>
