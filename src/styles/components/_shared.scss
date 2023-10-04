@@ -1,18 +1,35 @@
 .AfBodyWr {
   display: flex;
-  height: 100vh;
-  position: relative;
-  width: 100vw;
+  // flex-direction: column;
+  // height: 100vh;
+  // max-height: 100vh;
+  // @include minLg() {
+  //   display: grid;
+  //   grid-template-columns: 260px 1fr;
+  // }
+  // position: relative;
+  // width: 100vw;
 }
 .AfMainWr {
+  // position: relative;
+  // z-index: 99;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  & main {
-    height: calc(100% - 58px);
-    @include minMd() {
-      height: calc(100% - 75.5px);
-    }
-    @include minLg() {
-      height: calc(100% - 66px);
-    }
-  }
+  overflow: hidden;
+  flex-grow: 1;
+    height: 100svh;
+    max-height: 100svh;
+    // display: flex;
+    // flex-direction: column;
+  // width: 100%;
+  // & main {
+  //   height: calc(100% - 58px);
+  //   @include minMd() {
+  //     height: calc(100% - 75.5px);
+  //   }
+  //   @include minLg() {
+  //     height: calc(100% - 66px);
+  //   }
+  // }
 }
