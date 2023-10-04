@@ -1,24 +1,34 @@
 // ================================================== MainDashboard styled
 .KkSectionMainDashboard {
+  // flex-grow: 1;
+  // max-width: 100%;
   // width: 84.5vw;
-  width: 100vw;
+  // width: 100vw;
+  // height: 100vh;
   height: 100vh;
+  max-height: calc(100vh - 60px);
   padding-left: 20px;
   padding-right: 20px;
   background-color: var(--bgMain);
 
   @include minMd() {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  @include minXl() {
-    // width: 84.5vw;
+    // max-width: 720px;
     padding-left: 24px;
     padding-right: 24px;
-    width: calc(100vw - 280px);
-    height: calc(100vh - 70px);
   }
+
+  @include  minLg() {
+    // max-width: 100%;
+
+  }
+
+  // @include minXl() {
+    // width: 84.5vw;
+    // padding-left: 24px;
+    // padding-right: 24px;
+    // width: calc(100vw - 280px);
+    // height: calc(100vh - 70px);
+  // }
   ::-webkit-scrollbar {
     width: 12px;
   }
@@ -34,38 +44,23 @@
     border-radius: 12px; /* Закруглені кути пальця скрола */
   }
 
-  // ::-webkit-scrollbar-thumb:hover {
-  //   background: #555; /* Колір пальця скрола при наведенні */
-  //   background: blue;
-  // }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Колір пальця скрола при наведенні */
+    background: var(--accentHover);
+  }
 }
 
 .KkColums {
   display: flex;
   gap: 15px;
+  height: 81vh;
 
   overflow-y: auto;
   scroll-behavior: smooth;
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 142px;
+  @include minLg() {
+    height: 90%;
+    // max-width: 170vh;
   }
-
-  ::-webkit-scrollbar-track {
-    border-radius: 12px;
-    // background: rgba(255, 255, 255, 0.08);
-    background: var(--bgScrollModify);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--scroll); /* Колір пальця скрола (перетягуючої частини) */
-    border-radius: 12px; /* Закруглені кути пальця скрола */
-  }
-
-  // ::-webkit-scrollbar-thumb:hover {
-  //   background: #555; /* Колір пальця скрола при наведенні */
-  //   background: blue;
-  // }
 }
 
 .KkBtnAddColumnMain {
@@ -74,15 +69,15 @@
 
 // ================================================== Filters styled
 .KkFilters {
-  padding-top: 14px;
+  padding-top: 10px;
 
-  @include minMd() {
-    padding-top: 26px;
-  } // планшет
+  // @include minMd() {
+  //   padding-top: 26px;
+  // } // планшет
 
-  @include minXl() {
-    padding-top: 10px;
-  } // комп
+  // @include minXl() {
+  //   padding-top: 10px;
+  // } // комп
 }
 
 .KkTitle {
@@ -100,11 +95,11 @@
   } // планшет
 }
 
-.KkWrapFilters {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
+// .KkWrapFilters {
+//   display: flex;
+//   justify-content: space-between;
+//   // position: relative;
+// }
 
 
 .KkBtnFilters {
@@ -185,9 +180,10 @@
 
 .KkCards {
   display: block;
-  max-height: calc(100vh * 0.65);
-  overflow-y: auto;
+  max-height: calc(100vh - 340px);
+  overflow-y: auto; 
   scroll-behavior: smooth;
+
 }
 
 .KkBtnIcons {
@@ -241,12 +237,12 @@
 
 .KkBtnAddCard {
   margin-top: 14px;
-  margin-bottom: 24px;
+  // margin-bottom: 24px;
   @include minSm() {
-    margin-bottom: 52px;
+    // margin-bottom: 52px;
   }
   @include minXl() {
-    margin-bottom: 16px;
+    // margin-bottom: 16px;
   }
 }
 .KkBtnCard {

@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 export const BtnAddColumn = ({ className, title, theme, onClick }) => {
   return (
-    <div className={className}>
+    <li className={className}>
       <button
         className={clsx(styles.KkBtnColumn, styles[theme])}
         onClick={onClick}
@@ -17,6 +17,6 @@ export const BtnAddColumn = ({ className, title, theme, onClick }) => {
         </div>
         <p className={clsx(styles[theme])}>{title}</p>
       </button>
-    </div>
+    </li>
   );
 };

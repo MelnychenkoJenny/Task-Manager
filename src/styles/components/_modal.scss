@@ -21,6 +21,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2200;
+
   // background-color: rgba(246, 245, 245, 0.8);
 }
 
@@ -37,7 +39,7 @@
   transition: background-color 250ms ease-in;
   border-radius: 50%;
   background-color: transparent;
-  z-index: 10;
+  z-index: 1000;
   &:active {
     background-color: var(--accent);
     border: 1, 5px solid var(--accent);

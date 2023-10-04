@@ -1,26 +1,29 @@
 import scss from 'styles/index.module.scss';
 import SvgSprite from 'images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { React, useState, useEffect } from 'react';
 import { Modal } from '../Modal/Modal';
 import BoardsList from './BoardsList';
 import ModalBoard from '../ModalBoard/ModalBoard';
 import { addBoards } from 'redux/board/boardOperations';
-import { selectBoards } from '../../redux/board/boardSelectors';
+// import { selectBoards } from '../../redux/board/boardSelectors';
+import { useBoards } from 'hooks';
 import { logout } from '../../redux/auth/authOperations';
 import { useAuth } from 'hooks';
 import NeedHelp from '../Sidebar/NeedHelp';
 import { useNavigate } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = ({click}) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  const boards = useSelector(selectBoards);
+
+const { allBoards: boards } = useBoards();
+
+  // const boards = useSelector(selectBoards);
   const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [iconStyle, seticonStyle] = useState('');
    const navigate = useNavigate();
-
   // const togleModal = () => {
   //    setShowModal(prev => !showModal);
   // };
@@ -50,71 +53,76 @@ useEffect(() => {
     }
 }, [boards]);
    /* eslint-enable */
-  const clickBackDrop = e => {
-    if (e.target === e.currentTarget) {
-      e.currentTarget.style.display = 'none';
-    }
-  };
+  // const clickBackDrop = e => {
+  //   if (e.target === e.currentTarget) {
+  //     e.currentTarget.style.display = 'none';
+  //   }
+  // };
 
   return (
     <>
-      <aside className={scss.sidebarContainer} onClick={clickBackDrop}>
+      <aside className={scss.sidebarContainer} onClick={click}>
+
         <div className={scss.sidebarWrap}>
           <div className={scss.sidebar}>
-            <div className={scss.sbHeader}>
-              <svg width="32px" height="32px" className={scss.sbLogo}>
-                <use href={`${SvgSprite}#${iconStyle}`}></use>
-              </svg>
-              <h2 className={scss.sbTitle}>Task Pro</h2>
-            </div>
-            <h3 className={scss.sbSubtitle}>My boards</h3>
-            <div className={scss.sbBoards}>
-              <div className={scss.sbCreateBoardBlock}>
-                <span className={scss.sbCreateBoardText}>
-                  Create a <br></br> new board
-                </span>
-                <button
-                  onClick={handleOpenModal}
-                  className={scss.sbCreateBoardButton}
-                >
-                  <svg
-                    width="20px"
-                    height="20px"
-                    className={scss.sbCreateBoardLogo}
-                  >
-                    <use href={`${SvgSprite}#icon-plus`}></use>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            {boards.length !== 0 && <BoardsList />}
-            <div className={scss.sbHelp}>
-              <div className={scss.sbHelpPngCactus}></div>
-              <p className={scss.sbHelpText}>
-                If you need help with
-                <span className={scss.cbTaskProSpan}> TaskPro</span>, check out
-                our support resources or reach out to our customer support team.
-              </p>
-              <button
-                type="button"
-                className={scss.sbHelpButton}
-                onClick={togleNeedHelpModal}
-              >
-                <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
-                  <use href={`${SvgSprite}#icon-help-circle`}></use>
+            <div>
+              <div className={scss.sbHeader}>
+                <svg width="32px" height="32px" className={scss.sbLogo}>
+                  <use href={`${SvgSprite}#${iconStyle}`}></use>
                 </svg>
-                <span className={scss.sbNeedHelpButtonText}>Need help?</span>
-              </button>
+                <h2 className={scss.sbTitle}>Task Pro</h2>
+              </div>
+              <h3 className={scss.sbSubtitle}>My boards</h3>
+              <div className={scss.sbBoards}>
+                <div className={scss.sbCreateBoardBlock}>
+                  <span className={scss.sbCreateBoardText}>
+                    Create a <br></br> new board
+                  </span>
+                  <button
+                    onClick={handleOpenModal}
+                    className={scss.sbCreateBoardButton}
+                  >
+                    <svg
+                      width="20px"
+                      height="20px"
+                      className={scss.sbCreateBoardLogo}
+                    >
+                      <use href={`${SvgSprite}#icon-plus`}></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              {boards.length !== 0 && <BoardsList />}
             </div>
-            <button
-              onClick={() => dispatch(logout())}
-              className={scss.sbLogoutButton}
-            >
-              <svg width="32px" height="32px" className={scss.sbLogoutSvg}>
-                <use href={`${SvgSprite}#icon-logout`}></use>
-              </svg>
-              <span className={scss.sbLogoutText}>Log out</span>
-            </button>
+           <div>
+              <div className={scss.sbHelp} style={{marginTop: '8px'}}>
+              <div className={scss.sbHelpPngCactus}></div>
+                <p className={scss.sbHelpText}>
+                  If you need help with
+                  <span className={scss.cbTaskProSpan}> TaskPro</span>, check out
+                  our support resources or reach out to our customer support team.
+                </p>
+                  <button
+                    type="button"
+                    className={scss.sbHelpButton}
+                    onClick={togleNeedHelpModal}
+                  >
+                    <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
+                      <use href={`${SvgSprite}#icon-help-circle`}></use>
+                    </svg>
+                    <span className={scss.sbNeedHelpButtonText}>Need help?</span>
+                  </button>
+              </div>
+              <button
+                onClick={() => dispatch(logout())}
+                className={scss.sbLogoutButton}
+              >
+                <svg width="32px" height="32px" className={scss.sbLogoutSvg}>
+                  <use href={`${SvgSprite}#icon-logout`}></use>
+                </svg>
+                <span className={scss.sbLogoutText}>Log out</span>
+              </button>
+           </div>
           </div>
         </div>
       </aside>
@@ -129,7 +137,7 @@ useEffect(() => {
         </Modal>
       )}
       {showNeedHelpModal && (
-        <Modal onClose={togleNeedHelpModal}>
+        <Modal  onClose={togleNeedHelpModal}>
           <NeedHelp onClose={togleNeedHelpModal} />
         </Modal>
       )}

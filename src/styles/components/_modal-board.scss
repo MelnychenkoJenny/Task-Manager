@@ -10,6 +10,7 @@
   flex-direction: column;
   gap: 24px;
   background: var(--bgModal);
+  z-index: 33;
   @include maxSm() {
     width: 335px;
   }

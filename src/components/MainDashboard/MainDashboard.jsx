@@ -64,7 +64,8 @@ export const MainDashboard = () => {
   const bg = imagesBg?.find(image => image.name === boardById.background);
 
   const containerStyle = {
-    maxHeight: '100%',
+    // display: 'flex',
+    // flexDirection: 'column',
     backgroundImage: `url(${bg?.mobile})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -83,40 +84,42 @@ export const MainDashboard = () => {
     <div className={styles.KkSectionMainDashboard} style={containerStyle}>
       {isLoading && loading && <Loader />}
       <Filters className={styles.KkFilters} />
-
-      <ul className={styles.KkColums}>
-        {columns &&
-          columns.map(({ _id, title, tasks }) => (
-            <li key={_id}>
-              <TitleCards
-                className={styles.TitleCards}
-                title={title}
-                onEdit={() => {
-                  handleOpenEditModal();
-                  clickOnColumnItemHandle(_id);
-                  clickOnColumnTitleHandle(title);
-                }}
-                onTrash={() => dispatch(deleteColumn(_id))}
-              />
-              {tasks && <TasksList allTasks={tasks} idColumn={_id} />}
-              <BtnAddCard
-                className={styles.KkBtnAddCard}
-                title={'Add another card'}
-                theme={'light'}
-                onClick={() => {
-                  handleOpenAddCardModal();
-                  clickOnColumnItemHandle(_id);
-                }}
-              />
-            </li>
-          ))}
-        <BtnAddColumn
+      {/* <div style={{ maxWidth: '100vh', overflowY: 'hidden', display: 'flex', overflowX: 'auto'}}> */}
+        <ul className={styles.KkColums}>
+          {columns &&
+            columns.map(({ _id, title, tasks }) => (
+              <li key={_id}>
+                <TitleCards
+                  className={styles.TitleCards}
+                  title={title}
+                  onEdit={() => {
+                    handleOpenEditModal();
+                    clickOnColumnItemHandle(_id);
+                    clickOnColumnTitleHandle(title);
+                  }}
+                  onTrash={() => dispatch(deleteColumn(_id))}
+                />
+                {tasks && <TasksList allTasks={tasks} idColumn={_id} />}
+                <BtnAddCard
+                  className={styles.KkBtnAddCard}
+                  title={'Add another card'}
+                  theme={'light'}
+                  onClick={() => {
+                    handleOpenAddCardModal();
+                    clickOnColumnItemHandle(_id);
+                  }}
+                />
+              </li>
+            ))}
+             <BtnAddColumn
           className={styles.KkBtnAddColumnMain}
           title={'Add another column'}
           theme={'light'}
           onClick={handleOpenAddModal}
         />
-      </ul>
+        </ul>
+       
+      {/* </div> */}
       {isModalAddOpen && (
         <Modal isOpen={isModalAddOpen} onClose={handleCloseAddModal}>
           <PopColumn
