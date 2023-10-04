@@ -40,7 +40,7 @@ export const Filters = ({ className }) => {
     <div
       className={`${className} ${styles.OBFilterModalContainer}`}
       data-theme={user.theme}
-      style={{ display: 'flex', justifyContent: 'space-between' }}
+      style={{ display: 'flex', justifyContent: 'space-between', position: 'relative'}}
     >
       {/* <div className={styles.KkWrapFilters}> */}
       <h2
