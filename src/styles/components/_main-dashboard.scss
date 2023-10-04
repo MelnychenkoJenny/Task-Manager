@@ -53,7 +53,7 @@
 .KkColums {
   display: flex;
   gap: 15px;
-  height: 81vh;
+  height: calc(100vh - 120px);
 
   overflow-y: auto;
   scroll-behavior: smooth;
