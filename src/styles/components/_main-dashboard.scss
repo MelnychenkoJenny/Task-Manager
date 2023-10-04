@@ -7,20 +7,23 @@
   // height: 100vh;
   height: 100vh;
   max-height: calc(100vh - 60px);
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
   background-color: var(--bgMain);
 
   @include minMd() {
     // max-width: 720px;
     padding-left: 24px;
     padding-right: 24px;
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
   }
 
-  @include  minLg() {
+  // @include  minLg() {
     // max-width: 100%;
 
-  }
+  // }
 
   // @include minXl() {
     // width: 84.5vw;
@@ -30,7 +33,7 @@
     // height: calc(100vh - 70px);
   // }
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {
@@ -53,7 +56,7 @@
 .KkColums {
   display: flex;
   gap: 15px;
-  height: calc(100vh - 120px);
+  height: calc(100svh - 125px);
 
   overflow-y: auto;
   scroll-behavior: smooth;
