@@ -12,7 +12,7 @@ import userViolet from '../../images/user-default-violet.png';
 
 const updateUserSchema = object({
   name: string()
-    .matches(/^[0-9a-zA-Z!@#$%^&*]{2,32}$/, 'Type in correct name')
+    .matches(/^[0-9a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ!@#$%^&*]{2,32}$/, 'Type in correct name')
     .trim(),
 
   email: string().matches(
