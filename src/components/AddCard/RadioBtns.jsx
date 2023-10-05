@@ -19,27 +19,11 @@ export const RadioBtns = ({ parentComponent, priority }) => {  // встанов
       ? priority
       : 'without'
   );  
-
-  // console.log('selectedPriority:', selectedPriority);
   
 useEffect(() => {
     dispatch(setPriorityFilter(selectedPriorityFilter));
   }, [dispatch, selectedPriorityFilter]);
 
-  // if (id) {
-  //   dispatch(
-  //     operation({
-  //       selectedPriority,
-  //       taskOwner: idColumn,
-  //       idTask: id,
-  //       boardId: boardName,
-  //     })
-  //   );
-  // } else {
-  //   dispatch(
-  //     operation({ selectedPriority, taskOwner: idColumn, boardId: boardName })
-  //   );
-  // }
 
   const controlProps = item => ({
     // low, medium, high, without

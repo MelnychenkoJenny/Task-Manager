@@ -14,7 +14,7 @@ export const useAuth = () => {
   const user = useSelector(selectUser);
   const token = useSelector(selectIsToken);
   const needHelpMessage = useSelector(selectNeedHelpMessage);
-  const loading = useSelector(selectIsLoading)
+  const loading = useSelector(selectIsLoading);
 
   return {
     isLoggedIn,

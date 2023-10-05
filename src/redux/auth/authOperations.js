@@ -20,12 +20,11 @@ instance.interceptors.response.use(
   response => response,
   async error => {
     if (error.response.status === 401) {
-      const refreshToken = store.getState().auth.refreshToken;      
+      const refreshToken = store.getState().auth.refreshToken;
       try {
         const { data } = await instance.post('/users/refresh', {
           refreshToken,
         });
-        // console.log('refresh instance', data)
         token.set(data.token);
         store.dispatch(setToken(data.token));
         store.dispatch(setRefreshToken(data.refreshToken));
@@ -35,7 +34,7 @@ instance.interceptors.response.use(
         return Promise.reject(error);
       }
     } else if (error.response.status === 500 || error.response.status === 400) {
-      console.log('Some problem 400 or 500');
+      console.log(555, error.response.status);
     }
     return Promise.reject(error);
   }
@@ -116,7 +115,6 @@ export const refreshUser = createAsyncThunk(
     token.set(persistedToken);
     try {
       const { data } = await instance.get('/users/current');
-      // console.log('user', data)
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

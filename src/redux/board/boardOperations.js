@@ -1,8 +1,5 @@
-// import axios from 'axios';
 import instance from 'redux/auth/authOperations';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-// axios.defaults.baseURL = 'https://taskpro-backend-jo75.onrender.com';
 
 export const getAllBoards = createAsyncThunk(
   'boards/getAll',

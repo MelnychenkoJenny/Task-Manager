@@ -13,20 +13,16 @@ import { useAuth } from 'hooks';
 import NeedHelp from '../Sidebar/NeedHelp';
 import { useNavigate } from 'react-router-dom';
 
-const Sidebar = ({click}) => {
+const Sidebar = ({ click }) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
-const { allBoards: boards } = useBoards();
+  const { allBoards: boards } = useBoards();
 
-  // const boards = useSelector(selectBoards);
   const [showNeedHelpModal, setshowNeedHelpModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [iconStyle, seticonStyle] = useState('');
-   const navigate = useNavigate();
-  // const togleModal = () => {
-  //    setShowModal(prev => !showModal);
-  // };
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user.theme) return;
@@ -45,24 +41,18 @@ const { allBoards: boards } = useBoards();
   };
   const togleNeedHelpModal = () => {
     setshowNeedHelpModal(prev => !showNeedHelpModal);
-   };
-   /* eslint-disable */
-useEffect(() => {
+  };
+  /* eslint-disable */
+  useEffect(() => {
     if (boards.length === 0) {
       navigate(`/home`, { replace: false });
     }
-}, [boards]);
-   /* eslint-enable */
-  // const clickBackDrop = e => {
-  //   if (e.target === e.currentTarget) {
-  //     e.currentTarget.style.display = 'none';
-  //   }
-  // };
+  }, [boards]);
+  /* eslint-enable */
 
   return (
     <>
       <aside className={scss.sidebarContainer} onClick={click}>
-
         <div className={scss.sidebarWrap}>
           <div className={scss.sidebar}>
             <div>
@@ -94,24 +84,29 @@ useEffect(() => {
               </div>
               {boards.length !== 0 && <BoardsList />}
             </div>
-           <div>
-              <div className={scss.sbHelp} style={{marginTop: '8px'}}>
-              <div className={scss.sbHelpPngCactus}></div>
+            <div>
+              <div className={scss.sbHelp} style={{ marginTop: '8px' }}>
+                <div className={scss.sbHelpPngCactus}></div>
                 <p className={scss.sbHelpText}>
                   If you need help with
-                  <span className={scss.cbTaskProSpan}> TaskPro</span>, check out
-                  our support resources or reach out to our customer support team.
+                  <span className={scss.cbTaskProSpan}> TaskPro</span>, check
+                  out our support resources or reach out to our customer support
+                  team.
                 </p>
-                  <button
-                    type="button"
-                    className={scss.sbHelpButton}
-                    onClick={togleNeedHelpModal}
+                <button
+                  type="button"
+                  className={scss.sbHelpButton}
+                  onClick={togleNeedHelpModal}
+                >
+                  <svg
+                    width="20px"
+                    height="20px"
+                    className={scss.sbNeedhelpSvg}
                   >
-                    <svg width="20px" height="20px" className={scss.sbNeedhelpSvg}>
-                      <use href={`${SvgSprite}#icon-help-circle`}></use>
-                    </svg>
-                    <span className={scss.sbNeedHelpButtonText}>Need help?</span>
-                  </button>
+                    <use href={`${SvgSprite}#icon-help-circle`}></use>
+                  </svg>
+                  <span className={scss.sbNeedHelpButtonText}>Need help?</span>
+                </button>
               </div>
               <button
                 onClick={() => dispatch(logout())}
@@ -122,7 +117,7 @@ useEffect(() => {
                 </svg>
                 <span className={scss.sbLogoutText}>Log out</span>
               </button>
-           </div>
+            </div>
           </div>
         </div>
       </aside>
@@ -137,7 +132,7 @@ useEffect(() => {
         </Modal>
       )}
       {showNeedHelpModal && (
-        <Modal  onClose={togleNeedHelpModal}>
+        <Modal isOpen={showNeedHelpModal} onClose={togleNeedHelpModal}>
           <NeedHelp onClose={togleNeedHelpModal} />
         </Modal>
       )}

@@ -10,15 +10,15 @@ import { useDispatch } from 'react-redux';
 import { getAllBoards, getBoardById } from 'redux/board/boardOperations';
 
 export const SharedLayout = () => {
-  const [menuActive, setMenuActive] = useState(true);
+  const [menuActive, setMenuActive] = useState(false);
   const { user } = useAuth();
   const dispatch = useDispatch();
   const { boardName } = useParams();
 
   useEffect(() => {
-    dispatch(getAllBoards())
+    dispatch(getAllBoards());
     dispatch(getBoardById(boardName));
-  }, [boardName, dispatch])
+  }, [boardName, dispatch]);
 
   useEffect(() => {
     const hendleEscClose = event => {
@@ -38,8 +38,6 @@ export const SharedLayout = () => {
     const handleMinXlSize = () => {
       if (window.innerWidth >= 1199.99) {
         setMenuActive(true);
-      } else {
-        // setMenuActive(false);
       }
     };
 
@@ -66,17 +64,17 @@ export const SharedLayout = () => {
     //   // onClick={hendleBackdropClose}
     //   data-theme={user.theme}
     // >
-      <div className={styles.AfBodyWr}  data-theme={user.theme}>
-        {menuActive && <Sidebar click={hendleBackdropClose} />}
-        <div className={styles.AfMainWr}>
-          <Header click={handleClick} />
-          <main>
-            <Suspense fallback={<Loader />}>
-              <Outlet />
-            </Suspense>
-          </main>
-        </div>
+    <div className={styles.AfBodyWr} data-theme={user.theme}>
+      {menuActive && <Sidebar click={hendleBackdropClose} />}
+      <div className={styles.AfMainWr}>
+        <Header click={handleClick} />
+        <main>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </main>
       </div>
+    </div>
     // </div>
   );
 };

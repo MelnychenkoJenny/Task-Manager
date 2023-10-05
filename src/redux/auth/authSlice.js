@@ -11,7 +11,6 @@ import {
 
 const handlePending = state => {
   state.isLoading = true;
-
 };
 const handlePendingRefresh = state => {
   state.isLoading = true;
@@ -121,6 +120,5 @@ const authSlice = createSlice({
       ),
 });
 
-// export default authSlice.reducer;
 export const { setRefreshToken, setToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;
