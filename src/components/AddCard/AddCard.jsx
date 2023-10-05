@@ -53,8 +53,7 @@ export const AddCard = ({
       priority: inputPriority,
       deadLine: inputDeadline,
     };
-    // {title: 'The Watch Spot Design', description: "Create a visually stunning and eye-catching watch dial design that embodies our brand's", priority: 'without', deadline: '11/10/2023', taskOwner: '64f548eb24765a1e4837366e'}
-    // відправка на бекенд, а потім в стор редакса
+
     if (id) {
       dispatch(
         operation({

@@ -35,7 +35,6 @@ const Card = ({ id, cardTitle, description, priority, deadline, idColumn, taskOw
   const deadlineIsToday = dayjs().format('DD/MM/YYYY') === deadline; // dayjs().format('DD/MM/YYYY') - сьогоднішня дата у визначеному форматі
   const [isPopupVisible, setisPopupVisible] = useState(false);
   
-// console.log('isPopupVisible :>> ', isPopupVisible);
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };

@@ -64,8 +64,6 @@ export const MainDashboard = () => {
   const bg = imagesBg?.find(image => image.name === boardById.background);
 
   const containerStyle = {
-    // display: 'flex',
-    // flexDirection: 'column',
     backgroundImage: `url(${bg?.mobile})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -84,7 +82,6 @@ export const MainDashboard = () => {
     <div className={styles.KkSectionMainDashboard} style={containerStyle}>
       {isLoading && loading && <Loader />}
       <Filters className={styles.KkFilters} />
-      {/* <div style={{ maxWidth: '100vh', overflowY: 'hidden', display: 'flex', overflowX: 'auto'}}> */}
         <ul className={styles.KkColums}>
           {columns &&
             columns.map(({ _id, title, tasks }) => (
@@ -117,9 +114,7 @@ export const MainDashboard = () => {
           theme={'light'}
           onClick={handleOpenAddModal}
         />
-        </ul>
-       
-      {/* </div> */}
+        </ul>       
       {isModalAddOpen && (
         <Modal isOpen={isModalAddOpen} onClose={handleCloseAddModal}>
           <PopColumn

@@ -117,7 +117,7 @@ const Header = ({ click }) => {
 
 
       {showModal && (
-        <Modal onClose={togleModal}>
+        <Modal isOpen={showModal} onClose={togleModal}>
           <EditProfile onClose={togleModal} />
         </Modal>
     )}  

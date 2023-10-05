@@ -6,7 +6,7 @@ import { useAuth } from 'hooks';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const Modal = ({ onClose, children }) => {
+export const Modal = ({ isOpen, onClose, children }) => {
    const { user } = useAuth();
 
    useEffect(() => {
@@ -35,7 +35,7 @@ export const Modal = ({ onClose, children }) => {
 
    return (
       createPortal(<div className={scss.overlay} onClick={handleBackdropClick}>
-            <div className={scss.modal}>
+            <div className={scss.modal} style={{opacity: isOpen ? 1 : 0}}>
                <div className={scss.closebtn} onClick={onClose} data-theme={user.theme} >
                   <svg className={scss.icon} width="18" height="18">
                      <use className='icon' href={sprite + '#icon-close'} ></use>

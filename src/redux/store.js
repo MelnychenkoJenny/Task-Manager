@@ -1,7 +1,7 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { reducer } from './reducer';
 import {
   persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,26 +9,9 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/authSlice';
-import { boardsReducer } from './board/boardSlice';
-import { filterReducer } from './filter/filterSlice';
-
-const rootReducer = combineReducers({
-  auth: authReducer,
-  boards: boardsReducer,
-  filter: filterReducer,
-})
-
-const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['auth'],
-};
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

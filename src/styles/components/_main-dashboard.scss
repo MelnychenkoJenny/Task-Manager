@@ -85,7 +85,7 @@
 
 .KkTitle {
   font-family: map-get($fonts, m), sans-serif;
-  font-style: normal;
+  font-size: 14px;
   color: var(--modalTitle);
   padding: 5px;
   background-color: var(--bgMain);
@@ -97,13 +97,6 @@
     letter-spacing: -0.36px;
   } // планшет
 }
-
-// .KkWrapFilters {
-//   display: flex;
-//   justify-content: space-between;
-//   // position: relative;
-// }
-
 
 .KkBtnFilters {
   display: flex;

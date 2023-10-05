@@ -1,21 +1,28 @@
 @charset "UTF-8";
 @font-face {
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-style: normal;
   font-weight: normal;
-  src: url("../../fonts/Poppins-Regular/Poppins-Regular.woff2") format("woff2"), url("../../fonts/Poppins-Regular/Poppins-Regular.woff") format("woff"), url("../../fonts/Poppins-Regular/Poppins-Regular.ttf") format("truetype");
+  src: url('../../fonts/Poppins-Regular/Poppins-Regular.woff2') format('woff2'),
+    url('../../fonts/Poppins-Regular/Poppins-Regular.woff') format('woff'),
+    url('../../fonts/Poppins-Regular/Poppins-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-style: normal;
   font-weight: normal;
-  src: url("../../fonts/Poppins-Medium/Poppins-Medium.woff2") format("woff2"), url("../../fonts/Poppins-Medium/Poppins-Medium.woff") format("woff"), url("../../fonts/Poppins-Medium/Poppins-Medium.ttf") format("truetype");
+  src: url('../../fonts/Poppins-Medium/Poppins-Medium.woff2') format('woff2'),
+    url('../../fonts/Poppins-Medium/Poppins-Medium.woff') format('woff'),
+    url('../../fonts/Poppins-Medium/Poppins-Medium.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Poppins-SemiBold";
+  font-family: 'Poppins-SemiBold';
   font-style: normal;
   font-weight: normal;
-  src: url("../../fonts/Poppins-SemiBold/Poppins-SemiBold.woff2") format("woff2"), url("../../fonts/Poppins-SemiBold/Poppins-SemiBold.woff") format("woff"), url("../../fonts/Poppins-SemiBold/Poppins-SemiBold.ttf") format("truetype");
+  src: url('../../fonts/Poppins-SemiBold/Poppins-SemiBold.woff2')
+      format('woff2'),
+    url('../../fonts/Poppins-SemiBold/Poppins-SemiBold.woff') format('woff'),
+    url('../../fonts/Poppins-SemiBold/Poppins-SemiBold.ttf') format('truetype');
 }
 :root {
   --bgWelcome: linear-gradient(
@@ -32,7 +39,7 @@
   --labelBlue: #8fa1d0;
 }
 
-[data-theme=dark] {
+[data-theme='dark'] {
   --bgSidebar: #121212;
   --bgHeader: #161616;
   --bgMain: #1f1f1f;
@@ -72,14 +79,14 @@
   --popCardBorderColor: rgba(190, 219, 176, 0.5);
   --popCardInputTextColor: rgba(255, 255, 255, 1);
   --popCardPlaceHolder: rgba(255, 255, 255, 0.4);
-  --popCardInputBgColor: #1F1F1F;
+  --popCardInputBgColor: #1f1f1f;
   --ModalIconClose: rgba(255, 255, 255, 1);
   --cardText: rgba(255, 255, 255, 0.5);
   --cardSeparator: rgba(255, 255, 255, 0.1);
   --bgScrollModify: rgba(255, 255, 255, 0.08);
 }
 
-[data-theme=light] {
+[data-theme='light'] {
   --bgSidebar: #ffffff;
   --bgHeader: #fcfcfc;
   --bgMain: #f6f6f7;
@@ -120,13 +127,13 @@
   --cardText: rgba(22, 22, 22, 0.7);
   --popCardInputTextColor: rgba(22, 22, 22, 1);
   --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
-  --popCardInputBgColor: #FFFFFF;
+  --popCardInputBgColor: #ffffff;
   --ModalIconClose: rgba(22, 22, 22, 1);
   --cardSeparator: rgba(22, 22, 22, 0.1);
   --bgScrollModify: #e8e8e8;
 }
 
-[data-theme=violet] {
+[data-theme='violet'] {
   --bgSidebar: #5255bc;
   --bgHeader: #ffffff;
   --bgMain: #ecedfd;
@@ -167,29 +174,36 @@
   --cardText: rgba(22, 22, 22, 0.7);
   --popCardInputTextColor: rgba(22, 22, 22, 1);
   --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
-  --popCardInputBgColor: #FFFFFF;
+  --popCardInputBgColor: #ffffff;
   --ModalIconClose: rgba(22, 22, 22, 1);
   --cardSeparator: rgba(22, 22, 22, 0.1);
   --bgScrollModify: #ffffff;
 }
 
 @font-face {
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-style: normal;
   font-weight: normal;
-  src: url("../../fonts/Poppins-Regular/Poppins-Regular.woff2") format("woff2"), url("../../fonts/Poppins-Regular/Poppins-Regular.woff") format("woff"), url("../../fonts/Poppins-Regular/Poppins-Regular.ttf") format("truetype");
+  src: url('../../fonts/Poppins-Regular/Poppins-Regular.woff2') format('woff2'),
+    url('../../fonts/Poppins-Regular/Poppins-Regular.woff') format('woff'),
+    url('../../fonts/Poppins-Regular/Poppins-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-style: normal;
   font-weight: normal;
-  src: url("../../fonts/Poppins-Medium/Poppins-Medium.woff2") format("woff2"), url("../../fonts/Poppins-Medium/Poppins-Medium.woff") format("woff"), url("../../fonts/Poppins-Medium/Poppins-Medium.ttf") format("truetype");
+  src: url('../../fonts/Poppins-Medium/Poppins-Medium.woff2') format('woff2'),
+    url('../../fonts/Poppins-Medium/Poppins-Medium.woff') format('woff'),
+    url('../../fonts/Poppins-Medium/Poppins-Medium.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Poppins-SemiBold";
+  font-family: 'Poppins-SemiBold';
   font-style: normal;
   font-weight: normal;
-  src: url("../../fonts/Poppins-SemiBold/Poppins-SemiBold.woff2") format("woff2"), url("../../fonts/Poppins-SemiBold/Poppins-SemiBold.woff") format("woff"), url("../../fonts/Poppins-SemiBold/Poppins-SemiBold.ttf") format("truetype");
+  src: url('../../fonts/Poppins-SemiBold/Poppins-SemiBold.woff2')
+      format('woff2'),
+    url('../../fonts/Poppins-SemiBold/Poppins-SemiBold.woff') format('woff'),
+    url('../../fonts/Poppins-SemiBold/Poppins-SemiBold.ttf') format('truetype');
 }
 :root {
   --bgWelcome: linear-gradient(
@@ -206,7 +220,7 @@
   --labelBlue: #8fa1d0;
 }
 
-[data-theme=dark] {
+[data-theme='dark'] {
   --bgSidebar: #121212;
   --bgHeader: #161616;
   --bgMain: #1f1f1f;
@@ -246,14 +260,14 @@
   --popCardBorderColor: rgba(190, 219, 176, 0.5);
   --popCardInputTextColor: rgba(255, 255, 255, 1);
   --popCardPlaceHolder: rgba(255, 255, 255, 0.4);
-  --popCardInputBgColor: #1F1F1F;
+  --popCardInputBgColor: #1f1f1f;
   --ModalIconClose: rgba(255, 255, 255, 1);
   --cardText: rgba(255, 255, 255, 0.5);
   --cardSeparator: rgba(255, 255, 255, 0.1);
   --bgScrollModify: rgba(255, 255, 255, 0.08);
 }
 
-[data-theme=light] {
+[data-theme='light'] {
   --bgSidebar: #ffffff;
   --bgHeader: #fcfcfc;
   --bgMain: #f6f6f7;
@@ -294,13 +308,13 @@
   --cardText: rgba(22, 22, 22, 0.7);
   --popCardInputTextColor: rgba(22, 22, 22, 1);
   --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
-  --popCardInputBgColor: #FFFFFF;
+  --popCardInputBgColor: #ffffff;
   --ModalIconClose: rgba(22, 22, 22, 1);
   --cardSeparator: rgba(22, 22, 22, 0.1);
   --bgScrollModify: #e8e8e8;
 }
 
-[data-theme=violet] {
+[data-theme='violet'] {
   --bgSidebar: #5255bc;
   --bgHeader: #ffffff;
   --bgMain: #ecedfd;
@@ -341,7 +355,7 @@
   --cardText: rgba(22, 22, 22, 0.7);
   --popCardInputTextColor: rgba(22, 22, 22, 1);
   --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
-  --popCardInputBgColor: #FFFFFF;
+  --popCardInputBgColor: #ffffff;
   --ModalIconClose: rgba(22, 22, 22, 1);
   --cardSeparator: rgba(22, 22, 22, 0.1);
   --bgScrollModify: #ffffff;
@@ -356,7 +370,9 @@
 body {
   background-repeat: no-repeat;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Poppins", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Poppins', 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
@@ -366,7 +382,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 h1,
@@ -429,7 +446,7 @@ img {
 
 .headerUserName {
   color: var(--modalTitle);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -499,7 +516,7 @@ img {
 
 .themeText {
   color: var(--colorFilters);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -556,7 +573,7 @@ img {
 
 .themeMenuItem {
   color: var(--textThemeMenu);
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-size: 14px;
   font-style: normal;
   line-height: normal;
@@ -594,7 +611,11 @@ img {
 
 .AfWelcom {
   height: 100vh;
-  background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #bedbb0 92.19%);
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
 }
 .AfWelcomWrapper {
   display: flex;
@@ -642,7 +663,7 @@ img {
   }
 }
 .AfWelcomWrapperCardLogoText {
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-style: normal;
   font-weight: 600;
   color: #161616;
@@ -659,7 +680,7 @@ img {
 .AfWelcomWrapperCardText {
   margin-top: 24px;
   margin-bottom: 48px;
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   color: #161616;
   text-align: center;
   font-size: 14px;
@@ -673,7 +694,7 @@ img {
   color: #fff;
   text-align: center;
   width: calc(100% - 40px);
-  font-family: "Poppins-SemiBold";
+  font-family: 'Poppins-SemiBold';
   font-style: normal;
   font-weight: 500;
   letter-spacing: -0.28px;
@@ -697,7 +718,7 @@ img {
   color: #161616;
   text-align: center;
   width: calc(100% - 40px);
-  font-family: "Poppins-SemiBold";
+  font-family: 'Poppins-SemiBold';
   font-style: normal;
   font-weight: 500;
   letter-spacing: -0.28px;
@@ -751,7 +772,11 @@ img {
 
 .AfWelcomReg {
   height: 100vh;
-  background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #bedbb0 92.19%);
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
 }
 .AfWelcomRegWr {
   display: flex;
@@ -784,7 +809,7 @@ img {
   margin-bottom: 15px;
 }
 .AfWelcomRegFormNavLog {
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 18px;
   letter-spacing: -0.36px;
   text-decoration: none;
@@ -797,7 +822,7 @@ img {
   color: #fff;
 }
 .AfWelcomRegFormNavReg {
-  font-family: "Poppins-SemiBold";
+  font-family: 'Poppins-SemiBold';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -822,7 +847,7 @@ img {
   background: rgb(190, 219, 176);
   border-radius: 8px;
   width: 100%;
-  font-family: "Poppins-SemiBold";
+  font-family: 'Poppins-SemiBold';
   font-size: 14px;
   line-height: 21px;
   font-style: normal;
@@ -846,7 +871,7 @@ img {
   padding: 14px 18px;
   width: 100%;
   height: 49px;
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-size: 14px;
   letter-spacing: -0.28px;
   color: rgb(255, 255, 255);
@@ -863,7 +888,7 @@ img {
 }
 
 .AfWelcomLogFormNavReg {
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 18px;
   letter-spacing: -0.36px;
   text-decoration: none;
@@ -877,7 +902,7 @@ img {
 }
 
 .AfWelcomLogFormNavLog {
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 18px;
   letter-spacing: -0.36px;
   text-decoration: none;
@@ -957,7 +982,7 @@ img {
 }
 
 .KkTitle {
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-style: normal;
   color: var(--modalTitle);
   background-color: var(--bgMain);
@@ -988,7 +1013,7 @@ img {
 }
 padding .KkBtnFilters p {
   margin-left: 8px;
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-style: normal;
   font-weight: 500;
   color: var(--colorFilters);
@@ -1013,7 +1038,7 @@ padding .KkBtnFilters p {
   margin-bottom: 14px;
 }
 .TitleCards p {
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-style: normal;
   letter-spacing: -0.36px;
   color: var(--modalTitle);
@@ -1023,7 +1048,8 @@ padding .KkBtnFilters p {
   stroke: var(--iconsCard);
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
-.TitleCards svg:hover, .TitleCards svg:focus {
+.TitleCards svg:hover,
+.TitleCards svg:focus {
   stroke: var(--accent);
 }
 
@@ -1076,7 +1102,7 @@ padding .KkBtnFilters p {
 }
 .KkBtnColumn p {
   margin-left: 8px;
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-style: normal;
   font-weight: 500;
   color: var(--modalTitle);
@@ -1116,7 +1142,7 @@ padding .KkBtnFilters p {
 }
 .KkBtnCard p {
   margin-left: 8px;
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-style: normal;
   font-weight: 500;
   color: var(--modalBtnText);
@@ -1181,7 +1207,8 @@ padding .KkBtnFilters p {
   line-height: normal;
   cursor: pointer;
 }
-.OBFiltersModalShow:hover, .OBFiltersModalShow:focus {
+.OBFiltersModalShow:hover,
+.OBFiltersModalShow:focus {
   color: var(--inputBorderAccent);
 }
 
@@ -1203,7 +1230,8 @@ padding .KkBtnFilters p {
   fill: transparent;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
-.OBFilterBtnIcon:hover, .OBFilterBtnIcon:focus {
+.OBFilterBtnIcon:hover,
+.OBFilterBtnIcon:focus {
   stroke: var(--inputBorderAccent);
   cursor: pointer;
   transform: scale(1.1);
@@ -1226,7 +1254,7 @@ padding .KkBtnFilters p {
 
 .OBAddTitle {
   margin-bottom: 24px;
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   color: var(--modalTitle);
   font-size: 18px;
   letter-spacing: -0.36px;
@@ -1234,7 +1262,7 @@ padding .KkBtnFilters p {
 
 .OBAddInput {
   width: 100%;
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   color: var(--modalTitle);
   background: var(--modalInputBg);
   line-height: 18px; /* 128.571% */
@@ -1250,21 +1278,22 @@ padding .KkBtnFilters p {
 .OBAddInput::placeholder {
   color: var(--iconsCard);
 }
-.OBAddInput:hover, .OBAddInput:focus {
+.OBAddInput:hover,
+.OBAddInput:focus {
   border: 1px solid var(--inputBorderAccent);
   outline: none;
 }
 .OBAddInput:not(:-moz-placeholder-shown):valid {
-  border-color: #BEDBB0;
+  border-color: #bedbb0;
 }
 .OBAddInput:not(:placeholder-shown):valid {
-  border-color: #BEDBB0;
+  border-color: #bedbb0;
 }
 .OBAddInput:not(:focus):-moz-placeholder-shown:not(:valid) {
-  border-color: #E09CB5;
+  border-color: #e09cb5;
 }
 .OBAddInput:not(:focus):placeholder-shown:not(:valid) {
-  border-color: #E09CB5;
+  border-color: #e09cb5;
 }
 
 .OBAddDescription {
@@ -1277,7 +1306,7 @@ padding .KkBtnFilters p {
 .OBAddlabel {
   display: flex;
   flex-direction: column;
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   color: var(--iconsCard);
   font-size: 12px;
   letter-spacing: -0.24px;
@@ -1298,10 +1327,11 @@ padding .KkBtnFilters p {
   background-color: var(--accent);
   border-color: transparent;
   color: var(--modalBtnText);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-style: normal;
 }
-.OBAddSubmitBtn:hover, .OBAddSubmitBtn:focus {
+.OBAddSubmitBtn:hover,
+.OBAddSubmitBtn:focus {
   background-color: var(--accentHover);
 }
 
@@ -1348,7 +1378,7 @@ padding .KkBtnFilters p {
 .OBCardDescription {
   cursor: pointer;
   color: var(--cardText);
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   font-size: 12px;
   line-height: 16px;
 }
@@ -1402,7 +1432,7 @@ td {
 }
 
 .OBCardDate {
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   color: var(--modalTitle);
   font-size: 10px;
   letter-spacing: -0.2px;
@@ -1427,7 +1457,8 @@ td {
   fill: transparent;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
-.OBCardBtnIcon:hover, .OBCardBtnIcon:focus {
+.OBCardBtnIcon:hover,
+.OBCardBtnIcon:focus {
   stroke: var(--inputBorderAccent);
   cursor: pointer;
   transform: scale(1.1);
@@ -1472,7 +1503,7 @@ td {
   align-items: center;
 }
 .AfErrorSWrTitle span {
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 42px;
   letter-spacing: -0.36px;
 }
@@ -1507,7 +1538,7 @@ td {
 
 .titleEditUser {
   color: var(--modalTitle);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -1573,7 +1604,7 @@ td {
   border-radius: 8px;
   border: 1px solid var(--accent);
   color: var(--modalTitle);
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-size: 14px;
   letter-spacing: -0.28px;
   opacity: 0.4;
@@ -1622,7 +1653,7 @@ td {
   background: var(--accent);
   border: none;
   color: var(--modalBtnText);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -1637,7 +1668,7 @@ td {
 
 .errorNewInfo {
   color: var(--accent);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 12px;
 }
 
@@ -1695,7 +1726,7 @@ td {
 .sbTitle {
   display: flex;
   color: var(--primary);
-  font-family: "Poppins-SemiBold", sans-serif;
+  font-family: 'Poppins-SemiBold', sans-serif;
   font-size: 16px;
   font-style: normal;
   line-height: normal;
@@ -1709,7 +1740,7 @@ td {
 
 .sbSubtitle {
   color: var(--sbSubtitle);
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   font-size: 12px;
   font-style: normal;
   line-height: normal;
@@ -1742,7 +1773,7 @@ td {
   height: 42px;
   display: flex;
   color: var(--primary);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-size: 14px;
   font-style: normal;
   line-height: normal;
@@ -1764,7 +1795,8 @@ td {
   background: var(--btnPlus);
   transition: opacity 0.3s;
 }
-.sbCreateBoardButton:hover, .sbCreateBoardButton:focus {
+.sbCreateBoardButton:hover,
+.sbCreateBoardButton:focus {
   background-color: var(--btnPlusHover);
   opacity: 0.8;
 }
@@ -1803,7 +1835,7 @@ td {
   height: 80px;
   flex-shrink: 0;
   color: var(--primary);
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   font-size: 12px;
   font-style: normal;
   line-height: 16px;
@@ -1850,7 +1882,7 @@ td {
 
 .sbNeedHelpButtonText {
   color: var(--primary);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-size: 12px;
   font-style: normal;
   line-height: normal;
@@ -1882,13 +1914,14 @@ td {
   margin-right: 14px;
   transition: opacity 0.3s;
 }
-.sbLogoutSvg:hover, .sbLogoutSvg:focus {
+.sbLogoutSvg:hover,
+.sbLogoutSvg:focus {
   stroke: var(--LogOutSvgHov);
   opacity: 0.8;
 }
 
 .sbHelp::before {
-  content: "";
+  content: '';
   overflow: hidden;
   display: block;
 }
@@ -1908,7 +1941,7 @@ td {
 
 .sbLogoutText {
   color: var(--primary);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-size: 14px;
   font-style: normal;
   line-height: normal;
@@ -2019,7 +2052,7 @@ td {
   max-width: 115px;
   display: -webkit-box;
   color: var(--sbBoardName);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-size: 14px;
   letter-spacing: -0.28px;
   -webkit-line-clamp: 2;
@@ -2061,7 +2094,8 @@ td {
   fill: transparent;
   transition: stroke 250ms linear;
 }
-.boardsListItemSvg:hover, .boardsListItemSvg:focus {
+.boardsListItemSvg:hover,
+.boardsListItemSvg:focus {
   stroke: var(--accent);
 }
 
@@ -2178,7 +2212,7 @@ td {
 .INBoardTitle {
   color: var(--modalTitle);
   font-size: 18px;
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-style: normal;
   line-height: 24px;
   letter-spacing: -0.36px;
@@ -2197,7 +2231,8 @@ td {
   background: var(--modalInputBg);
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
-.INBoardInput:hover, .INBoardInput:focus {
+.INBoardInput:hover,
+.INBoardInput:focus {
   opacity: 100%;
   outline: none;
 }
@@ -2205,7 +2240,7 @@ td {
 .INBoardSubtitle {
   color: var(--modalTitle);
   font-size: 14px;
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   line-height: normal;
   letter-spacing: 0.28px;
 }
@@ -2238,8 +2273,8 @@ td {
 
 .INRadioBtn {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 10px;
   height: 10px;
   position: absolute;
@@ -2274,8 +2309,8 @@ td {
 
 .INBGBtn {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 20px;
   height: 20px;
   position: absolute;
@@ -2303,7 +2338,7 @@ td {
   color: var(--modalBtnText);
   font-size: 14px;
   font-style: normal;
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
@@ -2312,7 +2347,8 @@ td {
   cursor: pointer;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
-.IMSubmitBtn:hover, .IMSubmitBtn:focus {
+.IMSubmitBtn:hover,
+.IMSubmitBtn:focus {
   background-color: var(--accentHover);
 }
 
@@ -2356,7 +2392,7 @@ td {
 .AAColumnTitle {
   margin-bottom: 24px;
   color: var(--modalTitle);
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-size: 18px;
   line-height: 0.6666666667;
   font-weight: 500;
@@ -2367,7 +2403,7 @@ td {
 .AAColumnInput {
   width: 302px;
   margin: auto;
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-size: 14px;
   line-height: 0.6666666667;
   font-weight: 400;
@@ -2388,7 +2424,8 @@ td {
 .AAColumnInput::placeholder {
   color: var(--popCardPlaceHolder);
 }
-.AAColumnInput:hover, .AAColumnInput:focus {
+.AAColumnInput:hover,
+.AAColumnInput:focus {
   border-color: var(--accentHover);
   outline: none;
 }
@@ -2408,7 +2445,7 @@ td {
   border-color: transparent;
   background: var(--accent);
   color: var(--modalBtnText);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -2416,7 +2453,8 @@ td {
   letter-spacing: -0.28px;
   transition: transform 0.3s ease;
 }
-.AAColumnBtn:hover, .AAColumnBtn:focus {
+.AAColumnBtn:hover,
+.AAColumnBtn:focus {
   background-color: var(--accentHover);
 }
 .AAColumnBtn .AAColumnSvgContainer {
@@ -2489,7 +2527,7 @@ td {
 .sbTitle {
   display: flex;
   color: var(--primary);
-  font-family: "Poppins-SemiBold", sans-serif;
+  font-family: 'Poppins-SemiBold', sans-serif;
   font-size: 16px;
   font-style: normal;
   line-height: normal;
@@ -2503,7 +2541,7 @@ td {
 
 .sbSubtitle {
   color: var(--sbSubtitle);
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   font-size: 12px;
   font-style: normal;
   line-height: normal;
@@ -2536,7 +2574,7 @@ td {
   height: 42px;
   display: flex;
   color: var(--primary);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-size: 14px;
   font-style: normal;
   line-height: normal;
@@ -2558,7 +2596,8 @@ td {
   background: var(--btnPlus);
   transition: opacity 0.3s;
 }
-.sbCreateBoardButton:hover, .sbCreateBoardButton:focus {
+.sbCreateBoardButton:hover,
+.sbCreateBoardButton:focus {
   background-color: var(--btnPlusHover);
   opacity: 0.8;
 }
@@ -2597,7 +2636,7 @@ td {
   height: 80px;
   flex-shrink: 0;
   color: var(--primary);
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   font-size: 12px;
   font-style: normal;
   line-height: 16px;
@@ -2644,7 +2683,7 @@ td {
 
 .sbNeedHelpButtonText {
   color: var(--primary);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-size: 12px;
   font-style: normal;
   line-height: normal;
@@ -2676,13 +2715,14 @@ td {
   margin-right: 14px;
   transition: opacity 0.3s;
 }
-.sbLogoutSvg:hover, .sbLogoutSvg:focus {
+.sbLogoutSvg:hover,
+.sbLogoutSvg:focus {
   stroke: var(--LogOutSvgHov);
   opacity: 0.8;
 }
 
 .sbHelp::before {
-  content: "";
+  content: '';
   overflow: hidden;
   display: block;
 }
@@ -2702,7 +2742,7 @@ td {
 
 .sbLogoutText {
   color: var(--primary);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-size: 14px;
   font-style: normal;
   line-height: normal;
@@ -2813,7 +2853,7 @@ td {
   max-width: 115px;
   display: -webkit-box;
   color: var(--sbBoardName);
-  font-family: "Poppins-Medium", sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-size: 14px;
   letter-spacing: -0.28px;
   -webkit-line-clamp: 2;
@@ -2855,7 +2895,8 @@ td {
   fill: transparent;
   transition: stroke 250ms linear;
 }
-.boardsListItemSvg:hover, .boardsListItemSvg:focus {
+.boardsListItemSvg:hover,
+.boardsListItemSvg:focus {
   stroke: var(--accent);
 }
 
@@ -2878,7 +2919,7 @@ td {
 .AOemptyPageText {
   margin: auto;
   max-width: 486px;
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   font-style: normal;
   text-align: center;
   color: var(--iconsCard);
@@ -2886,7 +2927,7 @@ td {
 }
 
 .AOcreateBoard {
-  font-family: "Poppins-Regular", sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   font-style: normal;
   text-align: center;
   cursor: pointer;
@@ -2949,7 +2990,7 @@ td {
 
 .titleModalHelp {
   color: var(--modalTitle);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -2967,7 +3008,7 @@ td {
   border-radius: 8px;
   border: 1px solid var(--accent);
   color: var(--modalTitle);
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-size: 14px;
   letter-spacing: -0.28px;
   opacity: 0.4;
@@ -2987,7 +3028,7 @@ td {
   border-radius: 8px;
   border: 1px solid var(--accent);
   color: var(--modalTitle);
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   font-size: 14px;
   letter-spacing: -0.28px;
   opacity: 0.4;
@@ -3025,7 +3066,7 @@ td {
   background: var(--accent);
   border: none;
   color: var(--modalBtnText);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -3056,7 +3097,7 @@ td {
 
 .modalDelBoardTitle {
   color: var(--modalTitle);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 22px;
   font-style: normal;
   font-weight: 500;
@@ -3074,7 +3115,7 @@ td {
   background: var(--accent);
   border: none;
   color: var(--modalBtnText);
-  font-family: "Poppins-Medium";
+  font-family: 'Poppins-Medium';
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -3096,4 +3137,4 @@ td {
   justify-content: center;
   gap: 35px;
   margin-bottom: 24px;
-}/*# sourceMappingURL=index.module.css.map */
+} /*# sourceMappingURL=index.module.css.map */

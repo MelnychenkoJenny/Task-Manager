@@ -2,7 +2,7 @@ import { object, string } from 'yup';
 
 export const registerSchema = object({
   name: string()
-    .matches(/^[0-9a-zA-Z!@#$%^&*]{2,32}$/, 'Type in correct name')
+    .matches(/^[0-9a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ!@#$%^&*]{2,32}$/, 'Type in correct name')
     .trim()
     .required('Name is required'),
   email: string()
