@@ -71,27 +71,52 @@
 - Відображається при відкритті додатка.
 - Містить кнопки для переходу на AuthPage (Registration та LogIn).
 
+![Welcome Page](./assets/welcome.jpg)
+
 ## AuthPage
 
 - Динамічний роут, який може бути "/auth/login" або "/auth/register".
 - Складається з компонентів LoginForm та RegisterForm.
 - Поля в формах провалідовані використовуючи `yup` та `formik`.
 
+<div style="display: flex; gap: 15px; margin-bottom: 20px">
+  <img src="./assets/register.jpg" alt="Register Page" style="flex: 1; max-height: 300px;">
+  <img src="./assets/login.jpg" alt="Login Page" style="flex: 1; max-height: 300px;">
+</div>
+
 ## HomePage
 
 - Складається з компонентів Header, Sidebar, та ScreensPage.
 
+![Home Page Dark](./assets/homepageDark.jpg)
+![Home Page Light](./assets/homepageLight.jpg)
+![Home Page Violet](./assets/homepageViolet.jpg)
+
 ### Header
 
-Шапка головної сторінки, яка містить:
+Компонент складається з:
 
-- Назву проєкту (змінюється в залежності від вибраної дошки).
-- Компонент Filters - кнопка для зміни фону дошки та фільтрації по
-  пріоритетності завдань.
+- селекту за допомогою якого можна змінювати тему в застосунку. (на вибір три теми Light, Violet, Dark).
+- Компонент UserInfo з особистою інформацією про юзера. Складається з Фото та ім'я юзера. 
+
+<div style="display: flex; gap: 15px; margin-bottom: 20px">
+  <img src="./assets/filter.jpg" alt="Register Page" style="max-width: 100%; width: 100%; height: auto;">
+  <img src="./assets/userInfo.jpg" alt="Login Page" style="flex: 1; max-width: 100%; max-height: 300px;">
+</div>
+
 
 ### Sidebar
 
 - Компонент, що містить навігацію по дошкам та можливість створення нових дошок.
+- Блок де можна запросити допомогу.
+- Кнопка Logout.
+
+<div style="display: flex; gap: 15px; margin-bottom: 20px">
+  <img src="./assets/SideBar.jpg" alt="Register Page" style="flex: 1; max-height: 550px;">
+  <img src="./assets/NewBoard.jpg" alt="Login Page" style="flex: 1; max-height: 300px;">
+  <img src="./assets/needHelp.jpg" alt="Login Page" style="flex: 1; max-height: 300px;">
+</div>
+
 
 ### ScreensPage
 
@@ -99,11 +124,8 @@
 береться з URL).
 
 Дошка містить:
-
-- Шапку (HeaderDashboard) з назвою дошки та кнопкою для фільтрації та зміни
-  фону.
-- Основний контент дошки (MainDashboard) з можливістю створення та редагування
-  колонок та карток.
+- Шапку (HeaderDashboard) з назвою дошки та кнопкою для фільтрації та зміни фону.
+- Основний контент дошки (MainDashboard) з можливістю створення та редагування колонок та карток.
 
 ## MainDashboard
 
@@ -114,6 +136,13 @@
 - Кожна колонка містить список карток з можливістю створення, редагування та
   переміщення.
 - Картки мають заголовок, опис, пріоритет та дедлайн.
-- Реалізовано горизонтальний та вертикальний скролл у випадку перевищення
-  розмірів екрану.
+- Реалізовано горизонтальний та вертикальний скролл у випадку перевищення розмірів екрану.
+
+![Home Page](./assets/homePage2.jpg)
+
+<div style="display: flex; gap: 15px; margin-bottom: 20px">
+  <img src="./assets/addColumn.jpg" alt="Login Page" style="flex: 1; max-height: 200px;">
+  <img src="./assets/addCard.jpg" alt="Login Page" style="flex: 1; max-height: 300px; width:100%">
+</div>
+
 
