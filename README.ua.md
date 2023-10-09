@@ -71,7 +71,8 @@
 - Відображається при відкритті додатка.
 - Містить кнопки для переходу на AuthPage (Registration та LogIn).
 
-![Welcome Page](./assets/welcome.jpg)
+<img src="./assets/welcome.jpg" alt="Welcome Page" width='500'>
+
 
 ## AuthPage
 
@@ -79,18 +80,19 @@
 - Складається з компонентів LoginForm та RegisterForm.
 - Поля в формах провалідовані використовуючи `yup` та `formik`.
 
-<div style="display: flex; gap: 15px; margin-bottom: 20px">
-  <img src="./assets/register.jpg" alt="Register Page" style="flex: 1; max-height: 300px;">
-  <img src="./assets/login.jpg" alt="Login Page" style="flex: 1; max-height: 300px;">
+<div style="display: flex; gap: 20px; margin-bottom: 20px;">
+  <img src="./assets/register.jpg" alt="Register Page" width='300' >
+  <img src="./assets/login.jpg" alt="Login Page" width='300'>
 </div>
 
 ## HomePage
 
 - Складається з компонентів Header, Sidebar, та ScreensPage.
-
-![Home Page Dark](./assets/homepageDark.jpg)
-![Home Page Light](./assets/homepageLight.jpg)
-![Home Page Violet](./assets/homepageViolet.jpg)
+<div style="display: flex; gap: 20px; margin-bottom: 20px">
+<img src="./assets/homepageDark.jpg" alt="Home Page Dark" width='500'>
+<img src="./assets/homepageLight.jpg" alt="Home Page Light" width='500'>
+<img src="./assets/homepageViolet.jpg" alt="Home Page Violet" width='500'>
+</div>
 
 ### Header
 
@@ -100,8 +102,8 @@
 - Компонент UserInfo з особистою інформацією про юзера. Складається з Фото та ім'я юзера. 
 
 <div style="display: flex; gap: 15px; margin-bottom: 20px">
-  <img src="./assets/filter.jpg" alt="Register Page" style="max-width: 100%; width: 100%; height: auto;">
-  <img src="./assets/userInfo.jpg" alt="Login Page" style="flex: 1; max-width: 100%; max-height: 300px;">
+  <img src="./assets/filter.jpg" alt="Filter" width='200'>
+  <img src="./assets/userInfo.jpg" alt="User info" width='250'>
 </div>
 
 
@@ -112,9 +114,9 @@
 - Кнопка Logout.
 
 <div style="display: flex; gap: 15px; margin-bottom: 20px">
-  <img src="./assets/SideBar.jpg" alt="Register Page" style="flex: 1; max-height: 550px;">
-  <img src="./assets/NewBoard.jpg" alt="Login Page" style="flex: 1; max-height: 300px;">
-  <img src="./assets/needHelp.jpg" alt="Login Page" style="flex: 1; max-height: 300px;">
+  <img src="./assets/SideBar.jpg" alt="SideBar" width='200'>
+  <img src="./assets/NewBoard.jpg" alt="New Board" width='300'>
+  <img src="./assets/needHelp.jpg" alt="Need Help" width='300'>
 </div>
 
 
@@ -138,11 +140,10 @@
 - Картки мають заголовок, опис, пріоритет та дедлайн.
 - Реалізовано горизонтальний та вертикальний скролл у випадку перевищення розмірів екрану.
 
-![Home Page](./assets/homePage2.jpg)
-
 <div style="display: flex; gap: 15px; margin-bottom: 20px">
-  <img src="./assets/addColumn.jpg" alt="Login Page" style="flex: 1; max-height: 200px;">
-  <img src="./assets/addCard.jpg" alt="Login Page" style="flex: 1; max-height: 300px; width:100%">
+  <img src="./assets/homePage2.jpg" alt="Home Page 2" width='600'>
+  <img src="./assets/addCard.jpg" alt="Add Card" width='300'>
+  <img src="./assets/addColumn.jpg" alt="Add Column" width='300'>
 </div>
 
 
