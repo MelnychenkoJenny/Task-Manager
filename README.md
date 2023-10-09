@@ -66,7 +66,7 @@ Before running the project, make sure you have all the necessary dependencies in
 - Displayed when the application is opened.
 - Contains buttons to navigate to the AuthPage (Registration and LogIn).
 
-![Welcome Page](./assets/welcome.jpg)
+<img src="./assets/welcome.jpg" alt="Welcome Page" width='500'>
 
 ## AuthPage
 
@@ -74,16 +74,20 @@ Before running the project, make sure you have all the necessary dependencies in
 - Consists of the LoginForm and RegisterForm components.
 - Form fields are validated using `yup` and `formik`.
 
-![Register Page](./assets/register.jpg)
-![Login Page](./assets/login.jpg)
+<div style="display: flex; gap: 20px; margin-bottom: 20px;">
+  <img src="./assets/register.jpg" alt="Register Page" width='300' >
+  <img src="./assets/login.jpg" alt="Login Page" width='300'>
+</div>
 
 ## HomePage
 
 - Consists of the Header, Sidebar, and ScreensPage components.
 
-![Home Page Dark](./assets/homepageDark.jpg)
-![Home Page Light](./assets/homepageLight.jpg)
-![Home Page Violet](./assets/homepageViolet.jpg)
+<div style="display: flex; gap: 20px; margin-bottom: 20px">
+<img src="./assets/homepageDark.jpg" alt="Home Page Dark" width='500'>
+<img src="./assets/homepageLight.jpg" alt="Home Page Light" width='500'>
+<img src="./assets/homepageViolet.jpg" alt="Home Page Violet" width='500'>
+</div>
 
 ### Header
 
@@ -92,8 +96,10 @@ The component consists of:
 - A select element that allows changing the theme of the application (choose from three themes: Light, Violet, Dark).
 - UserInfo component with user's personal information, including a photo and user's name.
 
-![Filter](./assets/filter.jpg)
-![User info](./assets/userInfo.jpg)
+<div style="display: flex; gap: 15px; margin-bottom: 20px">
+  <img src="./assets/filter.jpg" alt="Filter" width='200'>
+  <img src="./assets/userInfo.jpg" alt="User info" width='250'>
+</div>
 
 ### Sidebar
 
@@ -101,9 +107,11 @@ The component consists of:
 - A block where you can request help.
 - Logout button.
 
-![SideBar](./assets/SideBar.jpg)
-![New Board](./assets/NewBoard.jpg)
-![Need Help](./assets/needHelp.jpg)
+<div style="display: flex; gap: 15px; margin-bottom: 20px">
+  <img src="./assets/SideBar.jpg" alt="SideBar" width='200'>
+  <img src="./assets/NewBoard.jpg" alt="New Board" width='300'>
+  <img src="./assets/needHelp.jpg" alt="Need Help" width='300'>
+</div>
 
 ### ScreensPage
 
@@ -123,6 +131,8 @@ The main content of the board, which can contain:
 - Cards have a title, description, priority, and deadline.
 - Horizontal and vertical scrolling is implemented in case the screen size is exceeded.
 
-![Home Page 2](./assets/homePage2.jpg)
-![Add Card](./assets/addCard.jpg)
-![Add Column](./assets/addColumn.jpg)
+<div style="display: flex; gap: 15px; margin-bottom: 20px">
+  <img src="./assets/homePage2.jpg" alt="Home Page 2" width='600'>
+  <img src="./assets/addCard.jpg" alt="Add Card" width='300'>
+  <img src="./assets/addColumn.jpg" alt="Add Column" width='300'>
+</div>
