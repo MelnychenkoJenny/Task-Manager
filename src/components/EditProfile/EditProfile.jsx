@@ -12,16 +12,19 @@ import userViolet from '../../images/user-default-violet.png';
 
 const updateUserSchema = object({
   name: string()
-    .matches(/^[0-9a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ!@#$%^&*]{2,32}$/, 'Type in correct name')
+    .matches(
+      /^[0-9a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ!@#$%^&* .\\/-]{2,32}$/,
+      'Type in correct name. For example Jacob Mercer2,'
+    )
     .trim(),
 
   email: string().matches(
     /^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-    'Type in correct email'
+    'Type in correct email. For example: email@gmail.com'
   ),
 
   password: string().matches(
-    /^[0-9a-zA-Z!@#$%^&*]{6,64}$/,
+    /^[a-zA-Z0-9\-!@#$%^&*()_+,.:;'"?/]{6,64}$/,
     'Type in correct password, at least 6 characters'
   ),
 });
@@ -46,10 +49,30 @@ const EditProfile = ({ onClose }) => {
       return;
     }
 
+    // Перевірка розміру файлу (в байтах)
+    const maxSize = 5 * 1024 * 1024; // 5 МБ
+    if (file.size > maxSize) {
+      alert('File size exceeds 5 MB. Select another file.');
+      return;
+    }
+
+    // Перевірка формату файлу
+    const allowedFormats = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+    ]; // Допустимі формати
+    if (!allowedFormats.includes(file.type)) {
+      alert(
+        'Unsupported file format. Choose a file with the extension .jpg, .png, .gif or .webp.'
+      );
+      return;
+    }
+
     setAvatarFile(file);
 
     const reader = new FileReader();
-
     reader.onload = function (event) {
       setCurrentImage(event.target.result);
     };
@@ -63,10 +86,10 @@ const EditProfile = ({ onClose }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     const formData = new FormData();
-    formData.set('name', values.name);
-    formData.set('email', values.email);
+    formData.set('name', values.name.trim());
+    formData.set('email', values.email.trim());
     if (avatarFile) formData.set('avatar', avatarFile);
-    if (values.password) formData.set('password', values.password);
+    if (values.password) formData.set('password', values.password.trim());
     try {
       await dispatch(updateUserProfile(formData));
       onClose();
@@ -148,6 +171,7 @@ const EditProfile = ({ onClose }) => {
                   className={scss.formInputEditUser}
                   type="name"
                   name="name"
+                  title="Name may contain letters and numbers, apostrophe, dash and spaces. For example Adrian, Jacob Mercer2, Charles de Batz d'Artagnan"
                 />
               </label>
               <label className={scss.formLabelEditUser}>
