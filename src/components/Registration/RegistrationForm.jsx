@@ -27,6 +27,7 @@ const RegistrationForm = () => {
     const res = await dispatch(userRegistration(dataRegister));
     if (res.error) {
       const backendErr = HandlingBackendErrors(res.payload);
+      console.log('response', res.payload)
       addShowError(backendErr);
     } else {
       navigate('/home');
@@ -36,7 +37,7 @@ const RegistrationForm = () => {
 
   const togglePassword = () => {
     changeShowHidePassword(!showHidePassword);
-    console.log(showHidePassword);
+    // console.log(showHidePassword);
   };
 
   return (
@@ -76,7 +77,8 @@ const RegistrationForm = () => {
                 name="name"
                 placeholder="Enter your name"
                 onChange={handleChange('name')}
-                value={values.name || ''}
+                value={values.name.trim() || ''}
+                title="Name may contain letters and numbers, apostrophe, dash and spaces. For example Adrian, Jacob Mercer2, Charles de Batz d'Artagnan"
                 required
               />
             </div>
@@ -94,8 +96,21 @@ const RegistrationForm = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                onChange={handleChange('email')}
-                value={values.email || ''}
+                onChange={(e) => {
+                  const trimmedValue = e.target.value.trim();
+                  handleChange('email')(trimmedValue);
+                }}
+                onBlur={(e) => {
+                  const trimmedValue = e.target.value.trim();
+                  handleChange('email')(trimmedValue);
+                }}
+                // onChange={handleChange('email')}
+                // onChange={(e) => {
+                //   const trimmedValue = e.target.value.trim();
+                //   handleChange('email')(trimmedValue);
+                // }}
+                value={values.email.trim() || ''}
+                title="Email must be in Latin characters, include @ symbol, and have text after the dot. For example: email@gmail.com"
                 required
               />
             </div>
@@ -114,7 +129,8 @@ const RegistrationForm = () => {
                   name="password"
                   placeholder="Create a password"
                   onChange={handleChange('password')}
-                  value={values.password || ''}
+                  value={values.password.trim() || ''}
+                  title="Password must be between 6 and 32 characters"
                   required
                 />
                 <svg

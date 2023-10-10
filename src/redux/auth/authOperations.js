@@ -34,7 +34,6 @@ instance.interceptors.response.use(
         return Promise.reject(error);
       }
     } else if (error.response.status === 500 || error.response.status === 400) {
-      console.log(555, error.response.status);
     }
     return Promise.reject(error);
   }

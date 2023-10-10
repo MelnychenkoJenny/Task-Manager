@@ -62,7 +62,8 @@
   margin-bottom: 25px;
   margin-left: 110px;
   border-radius: 8px;
-  filter: drop-shadow(0px 0px 5px var(--accent));
+  filter: drop-shadow(0px 0px 8px var(--accentHover)) brightness(0.88);
+  object-fit: cover;
 
   @include minMd() {
     margin-left: 142px;
