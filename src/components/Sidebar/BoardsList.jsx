@@ -49,11 +49,7 @@ const BoardsList = () => {
     navigate(`/home/${activeBoardId}`, { replace: false });
   };
 
-  //   useEffect(() => {
-  //     dispatch(getAllBoards());
-  //   }, [dispatch]);
   /* eslint-disable */
-
   useEffect(() => {
     setActiveBoardId(activeBoardId);
     console.log(activeBoardId)

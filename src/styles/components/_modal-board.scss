@@ -30,7 +30,7 @@
   height: 49px;
   color: var(--modalTitle);
   padding: 14px 18px 14px 18px;
-  font-family: Poppins;
+  font-family: map-get($fonts, r), sans-serif;
   border-radius: 8px;
   border: 1px solid var(--accent);
   opacity: 0.4;
@@ -48,9 +48,9 @@
 .INBoardSubtitle {
   color: var(--modalTitle);
   font-size: 14px;
-  font-family: map-get($fonts, r), sans-serif;
+  font-family: map-get($fonts, m), sans-serif;
   line-height: normal;
-  letter-spacing: 0.28px;
+  letter-spacing: -0.28px;
 }
 
 .INIconsWraper {

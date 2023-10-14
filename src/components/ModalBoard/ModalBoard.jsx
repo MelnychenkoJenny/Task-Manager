@@ -72,7 +72,6 @@ const ModalBoard = ({
         value={valueInputUpdate.title || ''}
         onChange={handleChange}
         required
-        // autoFocus
       />
 
       <div className={styles.INIconsWraper}>

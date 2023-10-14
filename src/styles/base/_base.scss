@@ -9,7 +9,7 @@
 body {
   background-repeat: no-repeat;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Poppins', 'Segoe UI',
+  font-family: -apple-system, BlinkMacSystemFont, 'Poppins-Regular', 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,6 +34,7 @@ h6,
 p {
   margin-top: 0;
   margin-bottom: 0;
+  font-weight: inherit;
 }
 
 ul,
