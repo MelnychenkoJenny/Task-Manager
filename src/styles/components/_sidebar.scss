@@ -1,3 +1,14 @@
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.15);
+  }
+  40% {
+    transform: scale(1.35);
+  }
+}
 .sidebarContainer {
   @include maxLg() {
     position: absolute;
@@ -53,7 +64,6 @@
     background: #555; /* Колір пальця скрола при наведенні */
     background: var(--accentHover);
   }
-
 }
 
 .sbHeader {
@@ -61,6 +71,11 @@
   align-items: center;
   margin-bottom: 50px;
 
+  cursor: pointer;
+
+  &:hover svg {
+    animation: heartbeat 1s infinite;
+  }
   // @include minMd() {
   //   margin-bottom: 60px;
   // }
@@ -204,18 +219,11 @@
 
 .sbHelpButton {
   padding: 0;
-  // margin: 0 89px 14px 14px;
   border: none;
-  // width: 92px;
-  // height: 20px;
   display: inline-flex;
   background-color: transparent;
   justify-content: flex-start;
   align-items: center;
-
-  @include minMd() {
-    // margin: 0 98px 20px 20px;
-  }
 }
 
 .sbNeedhelpSvg {
@@ -264,22 +272,11 @@
   }
 }
 
-// .sbHelp::before {
-//   content: '';
-//   overflow: hidden;
-//   display: block;
-// }
-
 .sbHelpPngCactus {
   width: 54px;
   height: 78px;
-  // margin: 14px 129px 14px 14px;
   flex-shrink: 0;
   background: url(../../images/help-cactus.png), no-repeat;
-
-  @include minMd() {
-    // margin: 20px 138px 14px 20px;
-  }
 }
 
 .sbLogoutText {
@@ -301,24 +298,12 @@
   overflow-y: scroll;
   overflow-x: hidden;
 
-
-
   @include minMd() {
     width: 260px;
     height: 126px;
     margin-left: -24px;
   }
-
-  // @include minLg() {
-  //   height: 126px;
-  // }
-  // @include minMd() {
-  // }
 }
-
-// .boardsList::-webkit-scrollbar {
-//   width: 0px;
-// }
 
 .boardsListItemWrap {
   width: 100%;
@@ -333,7 +318,6 @@
   border-color: transparent;
 
   &:focus-within {
-    // opacity: 0.4;
     background: var(--sbActiveBoard);
 
     .boardsListItemTitle {
