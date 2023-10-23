@@ -7,11 +7,10 @@ import { useParams } from 'react-router-dom';
 import { RadioBtns } from './RadioBtns';
 import { Calendar } from './Calendar';
 
-
 export const AddCard = ({
   modalTitle,
   modalBtnTitle,
-  idColumn,  // тут і нижче для редагування
+  idColumn, // тут і нижче для редагування
   id,
   cardTitle,
   description,
@@ -27,24 +26,33 @@ export const AddCard = ({
   const [titleValue, setTitleValue] = useState(cardTitle); // для редагування
   const [descriptionValue, setDescriptionValue] = useState(description); // для редагування
   const [inputDeadline, setInputDeadline] = useState(null);
-  
 
-  const onHandleFormatDeadline = (formatedSelectedDate) => {
+  const onHandleFormatDeadline = formatedSelectedDate => {
     setInputDeadline(formatedSelectedDate);
   };
 
   //------------------------------------- Submit -------------------------------------------
 
-  const handleFormSubmit = event => {   // відправка даних
+  const handleFormSubmit = event => {
+    // відправка даних
     event.preventDefault();
 
     const inputTitle = event.target.elements.title.value.trim();
     let inputDescription = event.target.elements.description.value.trim();
     const inputPriority = event.target.elements.priority.value;
-    
 
     if (inputDescription === '') {
       inputDescription = ' ';
+    }
+
+    if (
+      inputTitle === cardTitle &&
+      inputDescription === description &&
+      inputPriority === priority &&
+      inputDeadline === deadline
+    ) {
+      onClose();
+      return;
     }
 
     const cardData = {
@@ -77,7 +85,6 @@ export const AddCard = ({
     }
   };
 
-
   return (
     <div className={scss.OBAddContainer} data-theme={user.theme}>
       <h4 className={scss.OBAddTitle}>{modalTitle}</h4>
@@ -109,7 +116,10 @@ export const AddCard = ({
 
         <div>
           <p className={scss.OBAddlabel}>Deadline</p>
-          <Calendar deadline={deadline} onFormatDeadline={onHandleFormatDeadline} />
+          <Calendar
+            deadline={deadline}
+            onFormatDeadline={onHandleFormatDeadline}
+          />
         </div>
 
         <button type="submit" className={scss.OBAddSubmitBtn}>
