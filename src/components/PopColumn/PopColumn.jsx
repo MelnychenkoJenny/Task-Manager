@@ -26,7 +26,7 @@ export const PopColumn = ({
       [name]: value,
     }));
   };
-
+  console.log('columns :>> ', infoData);
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -39,6 +39,12 @@ export const PopColumn = ({
           title: valueInput.title,
           board: boardId.boardName,
         };
+
+    if (infoData.title === valueInput.title) {
+      onClose();
+      return;
+    }
+
     dispatch(operation(dataSubmit));
 
     onClose();
