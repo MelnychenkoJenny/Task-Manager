@@ -40,7 +40,7 @@ export const PopColumn = ({
           board: boardId.boardName,
         };
 
-    if (infoData.title === valueInput.title) {
+    if (infoData?.title === valueInput.title) {
       onClose();
       return;
     }
