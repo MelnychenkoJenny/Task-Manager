@@ -44,7 +44,6 @@ const BoardsList = () => {
   const deleteBoardFromList = activeBoardId => {
     setActiveBoardId(firstBoardId);
     if(activeBoardId===firstBoardId) {setActiveBoardId(boards[1]?._id)}
-    console.log(activeBoardId)
     dispatch(deleteBoards(activeBoardId));
     navigate(`/home/${activeBoardId}`, { replace: false });
   };
@@ -52,7 +51,6 @@ const BoardsList = () => {
   /* eslint-disable */
   useEffect(() => {
     setActiveBoardId(activeBoardId);
-    console.log(activeBoardId)
     navigate(`/home/${activeBoardId}`, { replace: false });
   }, [activeBoardId]);
   /* eslint-enable */

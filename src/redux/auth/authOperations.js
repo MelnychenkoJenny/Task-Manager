@@ -4,7 +4,7 @@ import { store } from 'redux/store';
 import { setToken, setRefreshToken } from './authSlice';
 
 const instance = axios.create({
-  baseURL: 'https://taskpro-backend-jo75.onrender.com',
+  baseURL: 'https://taskpro-backend.vercel.app/',
 });
 
 const token = {
