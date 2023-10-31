@@ -21,6 +21,7 @@ export const getBoardById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await instance.get(`/boards/${id}`);
+      console.log('data boardId', data)
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
