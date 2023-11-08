@@ -26,7 +26,7 @@ export const PopColumn = ({
       [name]: value,
     }));
   };
-  console.log('columns :>> ', infoData);
+  // console.log('columns :>> ', infoData);
   const handleSubmit = e => {
     e.preventDefault();
 

@@ -8,9 +8,9 @@ import {
   addColumn,
   editColumn,
   deleteColumn,
-  addTasks,
-  updateTasks,
-  deleteTasks,
+  addTask,
+  updateTask,
+  deleteTask,
 } from './boardOperations';
 
 const handlePending = state => {
@@ -86,6 +86,7 @@ const handleFulfilledEditColumn = (state, { payload }) => {
   const newColumn = {
     ...state.boardById.columns[index],
     title: payload.title,
+    taskOrder: payload.taskOrder,
   };
   state.boardById.columns.splice(index, 1, newColumn);
 };
@@ -99,17 +100,18 @@ const handleFulfilledDeleteColumn = (state, { payload }) => {
   state.boardById.columns.splice(columnIndexToDelete, 1);
 };
 
-const handleFulfilledAddTasks = (state, { payload }) => {
+const handleFulfilledAddTask = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
 };
 
-const handleFulfilledUpdateTasks = (state, { payload }) => {
+const handleFulfilledUpdateTask = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
+  payload.columnIndex && state.boardById.columns[payload.columnIndex].tasks.push(payload.data);
 };
 
-const handleFulfilledDeleteTasks = (state, action) => {
+const handleFulfilledDeleteTask = (state, action) => {
   state.isLoading = false;
   state.error = null;
 };
@@ -139,9 +141,9 @@ export const boardsSlice = createSlice({
       .addCase(addColumn.fulfilled, handleFulfilledAddColumn)
       .addCase(editColumn.fulfilled, handleFulfilledEditColumn)
       .addCase(deleteColumn.fulfilled, handleFulfilledDeleteColumn)
-      .addCase(addTasks.fulfilled, handleFulfilledAddTasks)
-      .addCase(updateTasks.fulfilled, handleFulfilledUpdateTasks)
-      .addCase(deleteTasks.fulfilled, handleFulfilledDeleteTasks)
+      .addCase(addTask.fulfilled, handleFulfilledAddTask)
+      .addCase(updateTask.fulfilled, handleFulfilledUpdateTask)
+      .addCase(deleteTask.fulfilled, handleFulfilledDeleteTask)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
