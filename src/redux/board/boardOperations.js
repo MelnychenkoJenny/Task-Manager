@@ -21,7 +21,7 @@ export const getBoardById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await instance.get(`/boards/${id}`);
-      console.log('data boardId', data)
+      // console.log('data boardId', data)
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -98,11 +98,11 @@ export const addColumn = createAsyncThunk(
 
 export const editColumn = createAsyncThunk(
   'boards/editColumn',
-  async ({ idColumn, title }, { rejectWithValue }) => {
+  async ({ idColumn, title, taskOrder }, { rejectWithValue }) => {
     try {
       const {
         data: { result },
-      } = await instance.put(`/columns/${idColumn}`, { title });
+      } = await instance.put(`/columns/${idColumn}`, { title, taskOrder });
       return result;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -125,8 +125,8 @@ export const deleteColumn = createAsyncThunk(
   }
 );
 
-export const addTasks = createAsyncThunk(
-  'boards/addTasks',
+export const addTask = createAsyncThunk(
+  'boards/addTask',
   async (
     { boardId, deadLine, description, priority, taskOwner, title },
     thunkAPI
@@ -147,10 +147,10 @@ export const addTasks = createAsyncThunk(
   }
 );
 
-export const updateTasks = createAsyncThunk(
-  'boards/updateTasks',
+export const updateTask = createAsyncThunk(
+  'boards/updateTask',
   async (
-    { deadLine, description, priority, taskOwner, title, idTask, boardId },
+    { deadLine, description, priority, taskOwner, title, idTask, boardId, columnIndex },
     thunkAPI
   ) => {
     try {
@@ -162,15 +162,15 @@ export const updateTasks = createAsyncThunk(
         taskOwner,
       });
       thunkAPI.dispatch(getBoardById(boardId));
-      return data;
+      return { data, columnIndex };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const deleteTasks = createAsyncThunk(
-  'boards/deleteTasks',
+export const deleteTask = createAsyncThunk(
+  'boards/deleteTask',
   async ({ id, boardName }, thunkAPI) => {
     try {
       const { data } = await instance.delete(`/tasks/${id}`);

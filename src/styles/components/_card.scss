@@ -8,6 +8,7 @@
   border-radius: 8px;
   padding: 14px 24px;
   background-color: var(--bgCard);
+  cursor: move;
 }
 
 .OBCardTitle {
@@ -36,6 +37,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden; // щоб текст, який не вмістився, не виліз за рамки картки
   text-overflow: ellipsis; // проставляє три крапки, інакше текст обрізаний на півбукві
+  cursor: pointer;
 }
 
 .OBCardDescriptionFull {
@@ -90,10 +92,12 @@ td {
   display: flex;
   align-items: flex-end;
   gap: 8px;
+  cursor: pointer;
 }
 
 .OBCardBellIcon {
     fill: transparent; 
+    cursor: auto;
 }
 
 .OBCardBtnIcon {
@@ -107,7 +111,6 @@ td {
     &:hover,
     &:focus {
       stroke: var(--inputBorderAccent);
-      cursor: pointer;
       transform: scale(1.1);
     }
 }
