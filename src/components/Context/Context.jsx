@@ -12,7 +12,7 @@ const Context = ({ children }) => {
     const [updatedColumns, setUpdatedColumns] = useState();
 
     useEffect(() => {     
-        const newColumns = columns.length > 0 && 
+        const newColumns = columns?.length > 0 && 
             columns.map(column => {
                 const newColumn = { ...column };
                 
