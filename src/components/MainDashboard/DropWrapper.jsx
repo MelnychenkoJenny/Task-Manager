@@ -6,7 +6,7 @@ import { ItemTypes } from "./items";
 export const DropWrapper = ({ onDrop, board, taskOwner, columnTitle, tasks, taskOrder, columns, columnIndex, children }) => { 
     
 //------------------- dnd (перетягування картки між колонками) -------------------------
-    const [{ isOver, canDrop }, drop] = useDrop({
+    const [, drop] = useDrop({ // const [{ isOver, canDrop }, drop] = useDrop({
         accept: ItemTypes.CARD,
         // canDrop: (item, monitor) => {
         //     // знаходимо індекс колонки, з якої тягнемо
