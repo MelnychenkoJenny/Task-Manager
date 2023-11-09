@@ -55,12 +55,18 @@ export const TasksList = ({ tasks, idColumn:_id, columnTitle, getReoderedCardsId
     // dragIndex - місце, з якого зірвали картку і тягнемо 
     // hoverIndex - позиція, над якою утримуємо картку
       const newTasks = [...tasks]; 
-      const reoderedTasks = update(newTasks, { 
-        $splice: [  
-          [dragIndex, 1],
-          [hoverIndex, 0, newTasks[dragIndex]], 
-        ],
-      });
+      let reoderedTasks = [];
+
+      if(newTasks.length === 1) { // запобігання помилці (коли повертаємо назад на своє місце єдину картку, яку ховерили по іншій колонці):
+        return;                                           // зрідка проскакує dragIndex - 1, hoverIndex - 0
+      } else {
+        reoderedTasks = update(newTasks, { 
+          $splice: [  
+            [dragIndex, 1],
+            [hoverIndex, 0, newTasks[dragIndex]], 
+          ],
+        });        
+      }
       dispatch(editColumn({ idColumn: _id, title: columnTitle, taskOrder: getReoderedCardsIdxs(reoderedTasks) }))  
   }, [tasks, _id, columnTitle, dispatch]);
 

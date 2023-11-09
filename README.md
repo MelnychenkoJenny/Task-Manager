@@ -7,7 +7,7 @@ This project is a web application built with React and a custom backend that imp
 | Frontend                  | Backend                   |
 |---------------------------|---------------------------|
 | [Yevheniia Melnychenko](https://github.com/MelnychenkoJenny) - Team Lead | [Zakhar Tsarapov](https://github.com/ZakharTsarapov) - Team Lead |
-| [Olga Bahrii](https://github.com/OIgaB) - Developer | [Olga Tikhonchik](https://github.com/OlgaTikhonchik) - Developer |
+| [Olga Bagrii](https://github.com/OIgaB) - Developer | [Olga Tikhonchik](https://github.com/OlgaTikhonchik) - Developer |
 | [Karina Khaliullina](https://github.com/Karinkarllina) - Developer | [Olena Hachkovska](https://github.com/HelenGachkovska) - Developer |
 | [Dmytro Nahirniak](https://github.com/TyllerDurden97) - Developer | [Kostiantyn Koshyk](https://github.com/K-Basket) - Developer |
 | [Iryna Neher](https://github.com/iratsaruk13) - Developer | |
